@@ -14,9 +14,7 @@ export default function Home() {
     <>
       <Hero />
       <div className="relative z-10">
-        <AnimatedSection>
-          <StatsCard />
-        </AnimatedSection>
+        <StatsCard />
         <AnimatedSection>
           <AboutSummary />
         </AnimatedSection>
