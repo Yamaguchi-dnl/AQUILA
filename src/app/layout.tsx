@@ -4,16 +4,16 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Toaster } from "@/components/ui/toaster";
 import { Analytics } from '@vercel/analytics/react';
-import { Inter, Prata } from 'next/font/google';
+import { Inter, Cinzel } from 'next/font/google';
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
 });
 
-const prata = Prata({
+const cinzel = Cinzel({
   subsets: ['latin'],
-  weight: ['400'],
+  weight: ['400', '700'],
   variable: '--font-headline',
 });
 
@@ -57,7 +57,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-PT" suppressHydrationWarning className={`${inter.variable} ${prata.variable}`}>
+    <html lang="pt-PT" suppressHydrationWarning className={`${inter.variable} ${cinzel.variable}`}>
       <head />
       <body className="font-body antialiased bg-background text-foreground">
         <div className="flex flex-col min-h-screen">
