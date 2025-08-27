@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -45,7 +46,7 @@ export function Header() {
                     variant="ghost"
                     className={cn(
                       "text-sm font-medium transition-colors px-3 py-2 gap-1",
-                      isScrolled ? "text-foreground hover:bg-muted" : "text-primary-foreground hover:bg-white/10",
+                      isScrolled ? "text-foreground hover:bg-muted" : "text-primary-foreground hover:text-white hover:underline underline-offset-4",
                       item.subItems.some((sub) => pathname.startsWith(sub.href))
                         ? isScrolled ? "text-primary" : "text-white"
                         : isScrolled ? "text-foreground/80" : "text-primary-foreground/80"
