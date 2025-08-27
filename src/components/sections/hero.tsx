@@ -5,7 +5,7 @@ import { ArrowRight, PlayCircle } from 'lucide-react';
 
 export function Hero() {
   return (
-    <section className="relative w-full h-[90vh] min-h-[650px] flex items-center p-0">
+    <section className="relative w-full h-screen min-h-[650px] flex items-center p-0">
       <div className="absolute inset-0 z-0">
         <Image
           src="https://ik.imagekit.io/leosmc2zb/3493.jpg"

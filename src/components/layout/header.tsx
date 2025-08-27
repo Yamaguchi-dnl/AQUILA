@@ -19,7 +19,7 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="fixed top-0 z-50 w-full bg-transparent backdrop-blur-md">
       <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
         <Logo />
         <nav className="hidden md:flex items-center absolute left-1/2 -translate-x-1/2">
@@ -30,10 +30,10 @@ export function Header() {
                   <Button
                     variant="ghost"
                     className={cn(
-                      "text-sm font-medium transition-colors hover:text-primary px-3 py-2 gap-1",
+                      "text-sm font-medium transition-colors hover:text-primary px-3 py-2 gap-1 text-primary-foreground hover:bg-white/10",
                       item.subItems.some((sub) => pathname.startsWith(sub.href))
-                        ? "text-primary"
-                        : "text-muted-foreground"
+                        ? "text-white"
+                        : "text-primary-foreground/80"
                     )}
                   >
                     {item.label}
@@ -58,8 +58,8 @@ export function Header() {
                 key={item.href}
                 href={item.href!}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary px-3 py-2",
-                  pathname === item.href ? "text-primary" : "text-muted-foreground"
+                  "text-sm font-medium transition-colors hover:text-primary px-3 py-2 text-primary-foreground hover:bg-white/10",
+                  pathname === item.href ? "text-white" : "text-primary-foreground/80"
                 )}
               >
                 {item.label}

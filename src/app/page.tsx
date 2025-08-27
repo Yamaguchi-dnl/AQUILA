@@ -12,14 +12,16 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <StatsCard />
-      <AboutSummary />
-      <FundsSummary />
-      <WhyPortugal />
-      <GoldenVisaSummary />
-      <InvestmentCycle />
-      <InvestmentStrategy />
-      <ContactSummary />
+      <div className="relative z-10">
+        <StatsCard />
+        <AboutSummary />
+        <FundsSummary />
+        <WhyPortugal />
+        <GoldenVisaSummary />
+        <InvestmentCycle />
+        <InvestmentStrategy />
+        <ContactSummary />
+      </div>
     </>
   );
 }
