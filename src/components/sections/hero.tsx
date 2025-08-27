@@ -21,11 +21,6 @@ export function Hero() {
       </div>
       <div className="relative z-10 container text-primary-foreground">
         <div className='max-w-2xl'>
-            <AnimatedSection>
-                <div className="hidden md:inline-flex mb-4 items-center gap-2 rounded-bl-lg rounded-tr-lg border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium backdrop-blur-md">
-                    Fundos elegíveis ao Golden Visa português
-                </div>
-            </AnimatedSection>
             <AnimatedSection delay={0.1}>
                 <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
                     Investimentos <span className="text-highlight">Inteligentes</span> <span className="block">para o seu Futuro</span>
