@@ -1,12 +1,11 @@
 
 "use server";
 
-import { run } from "@genkit-ai/next";
 import { recommendFund, type InvestorProfileInput } from "@/ai/flows/investorProfile";
 
 export async function getFundRecommendation(profile: InvestorProfileInput) {
     try {
-        const result = await run(recommendFund, profile);
+        const result = await recommendFund(profile);
         return result;
     } catch (error) {
         console.error("Error in getFundRecommendation action:", error);
