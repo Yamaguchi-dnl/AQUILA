@@ -108,7 +108,10 @@
   }
   
   .strategy-card:hover {
-    @apply -translate-y-5 border-transparent bg-clip-border bg-gradient-to-r from-highlight to-amber-400;
+    @apply -translate-y-5;
+    border-image: linear-gradient(to right, theme(colors.highlight), theme(colors.amber.400)) 1;
+    border-width: 2px;
+    border-style: solid;
   }
 
   .strategy-card:hover ~ .strategy-card {
