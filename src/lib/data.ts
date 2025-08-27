@@ -1,0 +1,173 @@
+import type { Fund, TeamMember, FaqItem, NavItem } from './types';
+
+export const navItems: NavItem[] = [
+  { href: '/', label: 'Home' },
+  { href: '/sobre', label: 'Sobre' },
+  { href: '/fundos', label: 'Fundos' },
+  { href: '/equipa', label: 'Equipa' },
+  { href: '/golden-visa', label: 'Golden Visa' },
+  { href: '/calculadora-perfil', label: 'Calculadora' },
+  { href: '/trabalhe-conosco', label: 'Trabalhe Conosco' },
+  { href: '/contato', label: 'Contato' },
+];
+
+export const fundsData: Fund[] = [
+  {
+    slug: 'aquila-wheels',
+    nome: 'Aquila Wheels',
+    subtitulo: 'Acelere seu patrimônio com carros clássicos',
+    descricaoHtml: `<p>O Aquila Wheels é um fundo de investimento inovador que transforma a paixão por carros clássicos e icônicos em uma estratégia financeira sólida e rentável. Focado na aquisição e gestão de veículos de alto valor, o fundo aproveita a valorização histórica desse mercado, que na última década, valorizou impressionantes 193%.</p><p>A Aquila combina conhecimento de mercado, análise de dados e parcerias estratégicas globais para selecionar veículos com maior potencial de valorização. Além disso, o fundo é 100% elegível ao Golden Visa português, permitindo que investidores obtenham residência europeia por meio de um ativo tangível e exclusivo.</p>`,
+    detalhes: {
+      tipo: 'Fundo de capital de risco fechado',
+      dimensao: '€20 milhões',
+      prazo: '8 anos',
+      investimentoInicial: '€100 mil',
+      movimentacaoMinima: '€100 mil',
+      retornoEsperado: '12% após fees',
+      elegibilidadeGoldenVisa: true,
+    },
+    beneficios: [
+      'Ativo de prestígio — mercado projetado em US$ 51,3 bilhões/ano.',
+      'Portfólio seletivo — veículos raros, risco controlado.',
+      'Liquidez otimizada — avaliação semestral.',
+      'Marcas selecionadas — Porsche, Ferrari, Mercedes etc.',
+    ],
+    status: 'ativo',
+  },
+  {
+    slug: 'aquila-hotel-invest',
+    nome: 'Aquila Hotel Invest',
+    subtitulo: 'Oportunidades lucrativas no turismo português',
+    descricaoHtml: `<p>O Hotel Invest é um fundo de capital de risco que investe na gestão hoteleira de luxo em Portugal. Com foco em hotéis de luxo, o investimento busca alta rentabilidade e distribuição anual de dividendos isentos de impostos, alinhando-se ao sucesso do turismo português e oferecendo benefícios significativos aos investidores.</p><p>O fundo visa angariar 100 milhões de euros para investimento na empresa de gestão hoteleira Estoril 8023 SA, que atualmente gerencia 7 hotéis de luxo em Portugal, com o objetivo de expandir para 30 operações hoteleiras em 4 anos.</p>`,
+    detalhes: {
+      tipo: 'Fundo de capital de risco fechado',
+      dimensao: '€100 milhões',
+      prazo: '8 anos',
+      investimentoInicial: '€100 mil',
+      movimentacaoMinima: '€100 mil',
+      elegibilidadeGoldenVisa: true,
+    },
+    beneficios: [
+      'Turismo em ascensão — crescimento até 15% a.a.',
+      'Números recordes — projeção de 30 milhões de turistas até 2030.',
+      'Renda isenta de impostos — dividendos livres de tributação.',
+      'Alto potencial de retorno — retorno mínimo estimado de 50% ao final do 8º ano.',
+    ],
+    hoteis: [
+      { nome: 'Valverde Lisboa Hotel & Garden', localizacao: 'Centro de Lisboa', imagem: 'https://picsum.photos/600/400?random=1', dataAiHint: 'luxury hotel garden' },
+      { nome: 'Valverde Sintra Palácio de Seteais', localizacao: 'Sintra, Lisboa', imagem: 'https://picsum.photos/600/400?random=2', dataAiHint: 'historic palace hotel' },
+      { nome: 'Valverde Santar Hotel & SPA', localizacao: 'Santar, Viseu', imagem: 'https://picsum.photos/600/400?random=3', dataAiHint: 'hotel spa interior' },
+      { nome: 'Hotel Intercontinental Estoril', localizacao: 'Cascais', imagem: 'https://picsum.photos/600/400?random=4', dataAiHint: 'coastal hotel view' },
+      { nome: 'Palácio Condes de Azevedo', localizacao: 'Centro do Porto', imagem: 'https://picsum.photos/600/400?random=5', dataAiHint: 'historic hotel facade' },
+    ],
+    status: 'ativo',
+  },
+  {
+    slug: 'aquila-real-estate',
+    nome: 'Aquila Real Estate',
+    subtitulo: 'Solidez e valorização no mercado imobiliário',
+    descricaoHtml: `<p>Com uma dimensão de €60 milhões, o Aquila Real Estate se especializa em ativos imobiliários localizados em áreas privilegiadas e/ou no mercado de residências de marca. Essa estratégia visa proporcionar retornos moderados ajustados ao risco, minimizando a exposição ao risco para nossos investidores.</p><p>O fundo aloca 60% do seu capital em propriedades que geram renda e valorização, com investimentos garantidos por ativos imobiliários. Além disso, até 40% do capital será investido no International Hospitality Fund.</p>`,
+    detalhes: {
+      tipo: 'Fundo de capital de risco fechado',
+      dimensao: '€60 milhões',
+      prazo: '8 anos',
+      investimentoInicial: '€100 mil',
+      movimentacaoMinima: '€100 mil',
+      retornoEsperado: '10% após fees',
+      elegibilidadeGoldenVisa: false,
+    },
+    beneficios: [
+      'Segurança patrimonial — garantias em ativos imobiliários.',
+      'Localização estratégica — áreas privilegiadas, alta liquidez.',
+      'Diversificação inteligente — até 40% no International Hospitality Fund.',
+      'Perfil de risco moderado — estabilidade e previsibilidade.',
+    ],
+    status: 'ativo',
+  },
+  {
+    slug: 'aquila-agro',
+    nome: 'Aquila Agro',
+    subtitulo: 'Investindo no futuro da agricultura portuguesa',
+    descricaoHtml: `<p>O setor agrícola em Portugal apresenta um potencial de crescimento robusto, impulsionado pela inovação tecnológica e pela crescente demanda global por produtos de alta qualidade. O Aquila Agro será estruturado para capitalizar sobre estas oportunidades, focando em projetos sustentáveis e de alto valor agregado.</p>`,
+    detalhes: {
+      tipo: 'Fundo de capital de risco fechado',
+      dimensao: 'A definir',
+      prazo: 'A definir',
+      investimentoInicial: 'A definir',
+      movimentacaoMinima: 'A definir',
+      elegibilidadeGoldenVisa: false,
+    },
+    beneficios: [],
+    status: 'em_breve',
+  },
+];
+
+export const teamData: TeamMember[] = [
+  {
+    nome: 'Luís Assis Teixeira',
+    cargo: 'CEO & Founder',
+    bioHtml: '<p>Com mais de 20 anos de experiência no mercado financeiro, Luís é especialista em gestão de ativos e private equity. Liderou operações em bancos de investimento globais antes de fundar a Aquila para oferecer soluções de investimento mais alinhadas com as necessidades dos investidores de alta renda.</p>',
+    foto: 'https://picsum.photos/400/400?random=10',
+    dataAiHint: 'male executive portrait',
+    ordem: 1,
+  },
+  {
+    nome: 'Diana Bizzarro',
+    cargo: 'Chief Investment Officer',
+    bioHtml: '<p>Diana possui um profundo conhecimento em análise de risco e mercados de capitais. É responsável pela estratégia de alocação de ativos e pela seleção de oportunidades de investimento em todos os fundos da Aquila, garantindo um portfólio diversificado e de alta performance.</p>',
+    foto: 'https://picsum.photos/400/400?random=11',
+    dataAiHint: 'female executive portrait',
+    ordem: 2,
+  },
+  {
+    nome: 'Pedro Mendes Leal',
+    cargo: 'Head of Real Estate',
+    bioHtml: '<p>Pedro lidera a divisão imobiliária, trazendo uma vasta experiência em desenvolvimento e gestão de ativos de grande escala em Portugal. Sua visão estratégica é fundamental para o sucesso do fundo Aquila Real Estate.</p>',
+    foto: 'https://picsum.photos/400/400?random=12',
+    dataAiHint: 'male professional smiling',
+    ordem: 3,
+  },
+  {
+    nome: 'Luiz Godinho Lopes',
+    cargo: 'Head of Alternative Investments',
+    bioHtml: '<p>Apaixonado por ativos não convencionais, Luiz é a força motriz por trás do Aquila Wheels. Sua expertise em mercados de nicho e bens de luxo permite à Aquila explorar novas fronteiras de rentabilidade.</p>',
+    foto: 'https://picsum.photos/400/400?random=13',
+    dataAiHint: 'male professional glasses',
+    ordem: 4,
+  },
+  {
+    nome: 'Michael Maxwell',
+    cargo: 'Head of Hospitality',
+    bioHtml: '<p>Michael tem uma carreira internacional em gestão hoteleira de luxo. Ele supervisiona o fundo Aquila Hotel Invest, focando na expansão do portfólio e na maximização do retorno através de uma gestão de excelência.</p>',
+    foto: 'https://picsum.photos/400/400?random=14',
+    dataAiHint: 'professional man suit',
+    ordem: 5,
+  },
+  {
+    nome: 'Tânia Marreiros Silva',
+    cargo: 'Head of Legal & Compliance',
+    bioHtml: '<p>Tânia garante que todas as operações da Aquila estejam em conformidade com as mais rigorosas regulamentações financeiras. Sua experiência jurídica é vital para a segurança e transparência dos investimentos.</p>',
+    foto: 'https://picsum.photos/400/400?random=15',
+    dataAiHint: 'female professional glasses',
+    ordem: 6,
+  },
+];
+
+export const goldenVisaFaqs: FaqItem[] = [
+    {
+      question: "Quais fundos da Aquila são elegíveis para o Golden Visa?",
+      answer: "Atualmente, os fundos Aquila Wheels e Aquila Hotel Invest são 100% elegíveis para o programa Golden Visa de Portugal, permitindo que investidores obtenham residência europeia."
+    },
+    {
+      question: "Qual é o valor mínimo de investimento para o Golden Visa através de fundos?",
+      answer: "O investimento mínimo requerido pelo governo português para a aplicação ao Golden Visa através de fundos de investimento qualificados é de €500.000. No entanto, nossos fundos possuem um investimento inicial de €100.000, e podemos estruturar a aplicação para atender aos requisitos."
+    },
+    {
+      question: "Quais são as principais vantagens do Golden Visa português?",
+      answer: "Os benefícios incluem o direito de viver, trabalhar e estudar em Portugal, livre circulação no Espaço Schengen, a possibilidade de reagrupamento familiar e a elegibilidade para solicitar a cidadania portuguesa após 5 anos."
+    },
+    {
+      question: "Preciso morar em Portugal para manter meu Golden Visa?",
+      answer: "Não. O programa exige uma permanência mínima em Portugal de apenas 7 dias no primeiro ano e 14 dias nos subsequentes períodos de dois anos, tornando-o ideal para investidores que não desejam residir permanentemente no país."
+    }
+];
