@@ -19,7 +19,7 @@ export function Hero() {
       </div>
       <div className="relative z-10 container text-primary-foreground">
         <div className='max-w-2xl'>
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium backdrop-blur-md">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-bl-lg rounded-tr-lg border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium backdrop-blur-md">
                 Fundos elegíveis ao Golden Visa português
             </div>
             <h1 className="font-headline text-5xl md:text-7xl font-bold tracking-tight">
