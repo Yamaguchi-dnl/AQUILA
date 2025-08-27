@@ -28,6 +28,11 @@ export function FundsSummary() {
                     {fund.detalhes.retornoEsperado && <p className="text-sm text-muted-foreground">Retorno de {fund.detalhes.retornoEsperado}</p>}
                     {fund.detalhes.parceria && <p className="text-sm text-muted-foreground">{fund.detalhes.parceria}</p>}
                 </CardContent>
+                 <CardFooter>
+                    <Button asChild className="w-full">
+                        <Link href={`/fundos#${fund.slug}`}>Saiba Mais</Link>
+                    </Button>
+                </CardFooter>
             </Card>
           ))}
            {comingSoonFunds.map((fund) => (
