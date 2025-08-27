@@ -22,7 +22,7 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 max-w-screen-2xl items-center">
         <Logo />
-        <nav className="hidden md:flex md:ml-10 md:gap-6">
+        <nav className="hidden md:flex md:ml-10 md:gap-4 lg:gap-6 items-center">
           {navItems.map((item) =>
             item.subItems ? (
               <DropdownMenu key={item.label}>
@@ -30,7 +30,7 @@ export function Header() {
                   <Button
                     variant="ghost"
                     className={cn(
-                      "text-sm font-medium transition-colors hover:text-primary px-0 gap-1",
+                      "text-sm font-medium transition-colors hover:text-primary px-3 py-2 gap-1",
                       item.subItems.some((sub) => pathname.startsWith(sub.href))
                         ? "text-primary"
                         : "text-muted-foreground"
@@ -58,7 +58,7 @@ export function Header() {
                 key={item.href}
                 href={item.href!}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary",
+                  "text-sm font-medium transition-colors hover:text-primary px-3 py-2",
                   pathname === item.href ? "text-primary" : "text-muted-foreground"
                 )}
               >
