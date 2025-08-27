@@ -4,11 +4,17 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Toaster } from "@/components/ui/toaster";
 import { Analytics } from '@vercel/analytics/react';
-import { Inter } from 'next/font/google';
+import { Inter, Cormorant_Garamond } from 'next/font/google';
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-headline',
 });
 
 export const metadata: Metadata = {
@@ -51,7 +57,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-PT" suppressHydrationWarning className={`${inter.variable}`}>
+    <html lang="pt-PT" suppressHydrationWarning className={`${inter.variable} ${cormorant.variable}`}>
       <head />
       <body className="font-body antialiased bg-background text-foreground">
         <div className="flex flex-col min-h-screen">
