@@ -33,12 +33,12 @@ export function InvestmentStrategy() {
         </div>
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {strategySteps.map((step, index) => (
-                <Card key={index} className="bg-transparent border-0 shadow-none hover:shadow-none hover:-translate-y-0 text-center">
+                <Card key={index} className="bg-transparent border-0 shadow-none text-center">
                     <CardHeader className="items-center">
                         <div className="bg-primary-foreground text-primary p-4 rounded-full mb-2">
                             <step.icon className="h-8 w-8" />
                         </div>
-                        <CardTitle className="text-xl text-primary-foreground">{step.title}</CardTitle>
+                        <CardTitle className="text-xl text-primary-foreground font-bold">{step.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <p className="text-primary-foreground/80">{step.description}</p>
