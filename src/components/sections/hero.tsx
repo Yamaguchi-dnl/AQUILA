@@ -16,7 +16,7 @@ export function Hero() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/70 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-primary/40 md:via-primary/70 md:to-transparent"></div>
       </div>
       <div className="relative z-10 container text-primary-foreground">
         <div className='max-w-2xl'>
