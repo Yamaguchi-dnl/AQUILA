@@ -40,7 +40,7 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     
-    --radius: 0.75rem; /* Slightly larger radius for a more modern feel */
+    --radius: 0rem;
   }
 
   .dark {
