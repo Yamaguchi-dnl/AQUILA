@@ -29,7 +29,9 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isTransparent = !isScrolled;
+  const isHome = pathname === '/';
+  const isTransparent = isHome && !isScrolled;
+  const useWhiteText = isHome && !isScrolled;
 
   return (
     <header className={cn(
@@ -37,7 +39,7 @@ export function Header() {
         isTransparent ? "bg-transparent" : "bg-card/80 backdrop-blur-sm border-b"
     )}>
       <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
-        <Logo variant={isTransparent ? 'white' : 'default'} />
+        <Logo variant={useWhiteText ? 'white' : 'default'} />
         <nav className="hidden md:flex items-center absolute left-1/2 -translate-x-1/2">
           {navItems.map((item) =>
             item.subItems ? (
@@ -47,12 +49,12 @@ export function Header() {
                     variant="ghost"
                     className={cn(
                       "text-sm font-medium transition-colors px-3 py-2 gap-1 hover:underline underline-offset-4",
-                      isTransparent 
+                      useWhiteText
                         ? "text-primary-foreground hover:text-white" 
                         : "text-foreground hover:text-primary",
                       item.subItems.some((sub) => pathname.startsWith(sub.href))
-                        ? isTransparent ? "text-white" : "text-primary"
-                        : isTransparent ? "text-primary-foreground/80" : "text-foreground/80"
+                        ? useWhiteText ? "text-white" : "text-primary"
+                        : useWhiteText ? "text-primary-foreground/80" : "text-foreground/80"
                     )}
                   >
                     {item.label}
@@ -78,12 +80,12 @@ export function Header() {
                 href={item.href!}
                 className={cn(
                   "text-sm font-medium transition-colors px-3 py-2 hover:underline underline-offset-4",
-                   isTransparent 
+                   useWhiteText 
                     ? "text-primary-foreground hover:text-white" 
                     : "text-foreground hover:text-primary",
                   pathname === item.href 
-                    ? isTransparent ? "text-white" : "text-primary"
-                    : isTransparent ? "text-primary-foreground/80" : "text-foreground/80"
+                    ? useWhiteText ? "text-white" : "text-primary"
+                    : useWhiteText ? "text-primary-foreground/80" : "text-foreground/80"
                 )}
               >
                 {item.label}
