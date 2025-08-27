@@ -108,21 +108,10 @@
   }
   
   .strategy-card:hover {
-    @apply -translate-y-5;
+    @apply -translate-y-5 bg-gradient-to-r from-highlight to-amber-400;
   }
 
   .strategy-card:hover ~ .strategy-card {
     @apply translate-x-20;
-  }
-
-  /* New border animation styles */
-  .strategy-card::before {
-    content: '';
-    @apply absolute -inset-0.5 rounded-bl-lg rounded-tr-lg opacity-0 transition-opacity duration-300;
-    z-index: -1;
-  }
-  
-  .strategy-card:hover::before {
-    @apply bg-gradient-to-r from-highlight to-amber-400 opacity-100;
   }
 }

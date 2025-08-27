@@ -37,8 +37,8 @@ export function InvestmentStrategy() {
         <div className="mt-24 flex items-center justify-center">
             <div className="strategy-cards-container">
                 {strategySteps.map((step, index) => (
-                    <div key={index} className="strategy-card rounded-bl-lg rounded-tr-lg">
-                        <div className="relative z-10 bg-card rounded-bl-lg rounded-tr-lg h-full p-6 flex flex-col items-center justify-center">
+                    <div key={index} className="strategy-card rounded-bl-lg rounded-tr-lg p-0.5">
+                        <div className="bg-card rounded-[calc(1.5rem-2px)] h-full p-6 flex flex-col items-center justify-center">
                             <div className="bg-primary text-primary-foreground p-4 rounded-full mb-4 inline-block">
                                 <step.icon className="h-8 w-8" />
                             </div>
