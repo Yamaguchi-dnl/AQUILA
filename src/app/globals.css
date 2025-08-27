@@ -108,7 +108,7 @@
   }
   
   .strategy-card:hover {
-    @apply -translate-y-5 bg-gradient-to-r from-highlight to-amber-400;
+    @apply -translate-y-5 bg-gradient-to-r from-highlight to-highlight/80;
   }
 
   .strategy-card:hover ~ .strategy-card {
