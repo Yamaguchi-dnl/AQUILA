@@ -53,7 +53,6 @@ export default {
           foreground: 'hsl(var(--destructive-foreground))',
         },
         highlight: 'hsl(var(--highlight))',
-        'highlight-start': 'hsl(var(--highlight-start))',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',

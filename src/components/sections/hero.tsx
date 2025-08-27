@@ -40,7 +40,7 @@ export function Hero() {
                 ))}
             </div>
             <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">
-            <Button asChild size="lg" className="bg-gradient-to-r from-highlight-start to-highlight hover:from-highlight-start/90 hover:to-highlight/90 text-black w-full sm:w-auto">
+            <Button asChild size="lg" className="bg-gradient-to-r from-highlight to-highlight/80 hover:from-highlight/90 hover:to-highlight/70 text-black w-full sm:w-auto">
                 <Link href="/contato">Começar Investimento <ArrowRight className="ml-2" /></Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="bg-white/10 border-white/20 backdrop-blur-md text-white hover:bg-white/20 w-full sm:w-auto">

@@ -28,8 +28,7 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     
-    --highlight: 173 58% 39%; /* Teal for highlights */
-    --highlight-start: 177 56% 41%; /* #20b2aa */
+    --highlight: 177 56% 41%; /* #20b2aa */
 
     --border: 0 0% 89.8%;
     --input: 0 0% 100%;
@@ -66,9 +65,7 @@
     --accent: 212 11% 43%;
     --accent-foreground: 0 0% 98%;
     
-    --highlight: 173 58% 45%;
-    --highlight-start: 177 56% 51%;
-
+    --highlight: 177 56% 51%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
