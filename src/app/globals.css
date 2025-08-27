@@ -93,3 +93,41 @@
     @apply w-full py-16 md:py-24 lg:py-28; /* Increased padding for more breathing room */
   }
 }
+
+@layer components {
+  .strategy-cards-container {
+    @apply flex h-[350px] w-full max-w-4xl items-center;
+  }
+
+  .strategy-card {
+    @apply relative flex h-[320px] w-[240px] flex-col items-center bg-[#17141d] rounded-lg shadow-2xl transition-all duration-300 ease-out;
+  }
+
+  .strategy-card:not(:first-child) {
+    @apply -ml-20;
+  }
+  
+  .strategy-card:hover {
+    @apply -translate-y-5;
+  }
+
+  .strategy-card:hover ~ .strategy-card {
+    @apply translate-x-20;
+  }
+
+  .strategy-card .bar {
+    @apply absolute top-36 left-1/2 -translate-x-1/2 h-1 w-36;
+  }
+
+  .strategy-card .emptybar {
+    @apply h-full w-full bg-gray-600;
+  }
+  
+  .strategy-card .filledbar {
+    @apply absolute top-0 z-10 h-full w-0 bg-gradient-to-r from-highlight to-amber-400 transition-all duration-500 ease-out;
+  }
+  
+  .strategy-card:hover .filledbar {
+    @apply w-full;
+  }
+}

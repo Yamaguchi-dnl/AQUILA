@@ -30,26 +30,28 @@ export function InvestmentStrategy() {
     <section id="investment-strategy" className="bg-gradient-to-r from-[#121e34] to-[#22385e] text-primary-foreground rounded-t-3xl pb-48 shadow-md">
       <div className="container">
         <AnimatedSection>
-        <div className="text-center max-w-3xl mx-auto">
-          <h2 className="font-headline text-3xl md:text-4xl text-primary-foreground font-bold">Estratégia de investimento: o caminho para o sucesso</h2>
-        </div>
+          <div className="text-center max-w-3xl mx-auto">
+            <h2 className="font-headline text-3xl md:text-4xl text-primary-foreground font-bold">Estratégia de investimento: o caminho para o sucesso</h2>
+          </div>
         </AnimatedSection>
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {strategySteps.map((step, index) => (
-                <AnimatedSection key={index} delay={index * 0.1}>
-                <Card className="bg-transparent border-0 shadow-none text-center">
-                    <CardHeader className="items-center">
-                        <div className="bg-primary-foreground text-primary p-4 rounded-full mb-2">
-                            <step.icon className="h-8 w-8" />
+        <div className="mt-24 flex items-center justify-center">
+            <div className="strategy-cards-container">
+                {strategySteps.map((step, index) => (
+                    <div key={index} className="strategy-card">
+                        <div className="p-6 text-center">
+                             <div className="bg-primary-foreground text-primary p-4 rounded-full mb-4 inline-block">
+                                <step.icon className="h-8 w-8" />
+                            </div>
+                            <h3 className="text-xl text-primary-foreground font-bold font-headline">{step.title}</h3>
+                            <div className="bar mt-4">
+                                <div className="emptybar"></div>
+                                <div className="filledbar"></div>
+                            </div>
+                            <p className="text-primary-foreground/80 mt-4 text-sm">{step.description}</p>
                         </div>
-                        <CardTitle className="text-xl text-primary-foreground font-bold">{step.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <p className="text-primary-foreground/80">{step.description}</p>
-                    </CardContent>
-                </Card>
-                </AnimatedSection>
-            ))}
+                    </div>
+                ))}
+            </div>
         </div>
       </div>
     </section>
