@@ -29,14 +29,16 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const isHomePage = pathname === '/';
+  const isTransparent = isHomePage && !isScrolled;
 
   return (
     <header className={cn(
         "fixed top-0 z-50 w-full transition-colors duration-300",
-        isScrolled ? "bg-card/80 backdrop-blur-sm border-b" : "bg-transparent"
+        isTransparent ? "bg-transparent" : "bg-card/80 backdrop-blur-sm border-b"
     )}>
       <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
-        <Logo variant={isScrolled ? 'default' : 'white'} />
+        <Logo variant={isTransparent ? 'white' : 'default'} />
         <nav className="hidden md:flex items-center absolute left-1/2 -translate-x-1/2">
           {navItems.map((item) =>
             item.subItems ? (
@@ -46,12 +48,12 @@ export function Header() {
                     variant="ghost"
                     className={cn(
                       "text-sm font-medium transition-colors px-3 py-2 gap-1 hover:underline underline-offset-4",
-                      isScrolled 
-                        ? "text-foreground hover:text-primary" 
-                        : "text-primary-foreground hover:text-white",
+                      isTransparent 
+                        ? "text-primary-foreground hover:text-white" 
+                        : "text-foreground hover:text-primary",
                       item.subItems.some((sub) => pathname.startsWith(sub.href))
-                        ? isScrolled ? "text-primary" : "text-white"
-                        : isScrolled ? "text-foreground/80" : "text-primary-foreground/80"
+                        ? isTransparent ? "text-white" : "text-primary"
+                        : isTransparent ? "text-primary-foreground/80" : "text-foreground/80"
                     )}
                   >
                     {item.label}
@@ -77,12 +79,12 @@ export function Header() {
                 href={item.href!}
                 className={cn(
                   "text-sm font-medium transition-colors px-3 py-2 hover:underline underline-offset-4",
-                   isScrolled 
-                    ? "text-foreground hover:text-primary" 
-                    : "text-primary-foreground hover:text-white",
+                   isTransparent 
+                    ? "text-primary-foreground hover:text-white" 
+                    : "text-foreground hover:text-primary",
                   pathname === item.href 
-                    ? isScrolled ? "text-primary" : "text-white"
-                    : isScrolled ? "text-foreground/80" : "text-primary-foreground/80"
+                    ? isTransparent ? "text-white" : "text-primary"
+                    : isTransparent ? "text-primary-foreground/80" : "text-foreground/80"
                 )}
               >
                 {item.label}
@@ -91,12 +93,12 @@ export function Header() {
           )}
         </nav>
         <div className="flex items-center justify-end gap-2">
-          <Button asChild className="hidden sm:flex" variant={isScrolled ? 'default' : 'secondary'}>
+          <Button asChild className="hidden sm:flex" variant={isTransparent ? 'secondary' : 'default'}>
             <Link href="/contato">Fale com um especialista</Link>
           </Button>
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant={isScrolled ? "outline" : "secondary"} size="icon" className="md:hidden">
+              <Button variant={isTransparent ? "secondary" : "outline"} size="icon" className="md:hidden">
                 <Menu className="h-4 w-4" />
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
