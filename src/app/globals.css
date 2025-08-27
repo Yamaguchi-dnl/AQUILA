@@ -100,7 +100,7 @@
   }
 
   .strategy-card {
-    @apply relative flex h-[320px] w-[240px] flex-col items-center justify-center bg-white shadow-2xl transition-all duration-300 ease-out;
+    @apply relative flex h-[320px] w-[240px] flex-col justify-center bg-white shadow-2xl transition-all duration-300 ease-out;
   }
 
   .strategy-card:not(:first-child) {
@@ -109,12 +109,20 @@
   
   .strategy-card:hover {
     @apply -translate-y-5;
-    border-width: 2px;
-    border-style: solid;
-    border-image: linear-gradient(to right, theme(colors.highlight), theme(colors.amber.400)) 1;
   }
 
   .strategy-card:hover ~ .strategy-card {
     @apply translate-x-20;
+  }
+
+  /* New border animation styles */
+  .strategy-card::before {
+    content: '';
+    @apply absolute -inset-0.5 rounded-bl-lg rounded-tr-lg opacity-0 transition-opacity duration-300;
+    z-index: -1;
+  }
+  
+  .strategy-card:hover::before {
+    @apply bg-gradient-to-r from-highlight to-amber-400 opacity-100;
   }
 }
