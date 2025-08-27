@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 
 export function ContactSummary() {
   return (
-    <section id="contato" className="bg-card">
+    <section id="contato" className="bg-card rounded-3xl">
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
