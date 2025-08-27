@@ -43,7 +43,7 @@ export function Hero() {
             <Button asChild size="lg" className="bg-highlight hover:bg-highlight/90 text-black w-full sm:w-auto">
                 <Link href="/contato">Começar Investimento <ArrowRight className="ml-2" /></Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="text-primary-foreground border-primary-foreground/50 hover:bg-primary-foreground/10 hover:text-primary-foreground w-full sm:w-auto">
+            <Button asChild size="lg" variant="outline" className="bg-white/10 border-white/20 backdrop-blur-md text-white hover:bg-white/20 w-full sm:w-auto">
                 <Link href="/#fundos">
                     <PlayCircle className="mr-2" />
                     Ver Apresentação
