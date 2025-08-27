@@ -12,8 +12,8 @@ export function Logo({ className }: LogoProps) {
       <Image 
         src="https://ik.imagekit.io/leosmc2zb/logo.png?updatedAt=1756308765013"
         alt="Áquila Fund FCR Logo"
-        width={180}
-        height={40}
+        width={140}
+        height={32}
         priority
       />
     </Link>
