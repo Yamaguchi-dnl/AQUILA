@@ -3,14 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  @font-face {
-    font-family: 'Italiana';
-    src: url('/fonts/italiana-regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-
   :root {
     --background: 0 0% 96%; /* #F5F5F5 */
     --foreground: 215 43% 16%; /* #15233b */

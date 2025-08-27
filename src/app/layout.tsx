@@ -4,6 +4,20 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Toaster } from "@/components/ui/toaster";
 import { Analytics } from '@vercel/analytics/react';
+import { Inter } from 'next/font/google';
+import localFont from 'next/font/local';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+});
+
+const italiana = localFont({
+  src: '../fonts/italiana-regular.ttf',
+  display: 'swap',
+  variable: '--font-italiana',
+});
+
 
 export const metadata: Metadata = {
   title: {
@@ -45,12 +59,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-PT" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet" />
-      </head>
+    <html lang="pt-PT" suppressHydrationWarning className={`${inter.variable} ${italiana.variable}`}>
+      <head />
       <body className="font-body antialiased bg-background text-foreground">
         <div className="flex flex-col min-h-screen">
           <Header />
