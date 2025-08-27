@@ -20,9 +20,9 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 max-w-screen-2xl items-center">
+      <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
         <Logo />
-        <nav className="hidden md:flex md:ml-10 md:gap-4 lg:gap-6 items-center">
+        <nav className="hidden md:flex items-center absolute left-1/2 -translate-x-1/2">
           {navItems.map((item) =>
             item.subItems ? (
               <DropdownMenu key={item.label}>
@@ -67,7 +67,7 @@ export function Header() {
             )
           )}
         </nav>
-        <div className="flex flex-1 items-center justify-end gap-2">
+        <div className="flex items-center justify-end gap-2">
           <Button asChild className="hidden sm:flex">
             <Link href="/contato">Fale com um especialista</Link>
           </Button>
