@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { AnimatedSection } from "../shared/animated-section";
 
 export function FundsSummary() {
     const activeFunds = fundsData.filter(f => f.status === 'ativo');
@@ -12,13 +13,16 @@ export function FundsSummary() {
   return (
     <section id="fundos">
       <div className="container">
+        <AnimatedSection>
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="font-headline text-3xl md:text-4xl text-primary font-bold">Nossos Fundos de Investimento</h2>
         </div>
+        </AnimatedSection>
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {activeFunds.map((fund) => (
-            <Card key={fund.slug} className="flex flex-col bg-card">
+          {activeFunds.map((fund, index) => (
+            <AnimatedSection key={fund.slug} delay={index * 0.1}>
+            <Card className="flex flex-col bg-card h-full">
                 <CardHeader>
                     <CardTitle className="text-2xl">{fund.nome}</CardTitle>
                     <CardDescription>{fund.subtitulo}</CardDescription>
@@ -34,9 +38,11 @@ export function FundsSummary() {
                     </Button>
                 </CardFooter>
             </Card>
+            </AnimatedSection>
           ))}
-           {comingSoonFunds.map((fund) => (
-            <Card key={fund.slug} className="flex flex-col bg-muted/50 border-dashed hover:shadow-none">
+           {comingSoonFunds.map((fund, index) => (
+            <AnimatedSection key={fund.slug} delay={(activeFunds.length + index) * 0.1}>
+            <Card className="flex flex-col bg-muted/50 border-dashed hover:shadow-none h-full">
                 <CardHeader>
                     <CardTitle className="text-2xl">{fund.nome}</CardTitle>
                 </CardHeader>
@@ -44,14 +50,15 @@ export function FundsSummary() {
                     <p className="text-muted-foreground">(Aguardando informações)</p>
                 </CardContent>
             </Card>
+            </AnimatedSection>
            ))}
         </div>
 
-        <div className="text-center mt-12">
+        <AnimatedSection className="text-center mt-12">
             <Button asChild size="lg">
                 <Link href="/fundos">SAIBA MAIS SOBRE OS FUNDOS!</Link>
             </Button>
-        </div>
+        </AnimatedSection>
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Zap, Search, ShieldCheck, DollarSign } from "lucide-react";
+import { AnimatedSection } from "../shared/animated-section";
 
 const strategySteps = [
     {
@@ -28,12 +29,15 @@ export function InvestmentStrategy() {
   return (
     <section id="investment-strategy" className="bg-primary text-primary-foreground rounded-t-3xl pb-48 shadow-md">
       <div className="container">
+        <AnimatedSection>
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="font-headline text-3xl md:text-4xl text-primary-foreground font-bold">Estratégia de investimento: o caminho para o sucesso</h2>
         </div>
+        </AnimatedSection>
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {strategySteps.map((step, index) => (
-                <Card key={index} className="bg-transparent border-0 shadow-none text-center">
+                <AnimatedSection key={index} delay={index * 0.1}>
+                <Card className="bg-transparent border-0 shadow-none text-center">
                     <CardHeader className="items-center">
                         <div className="bg-primary-foreground text-primary p-4 rounded-full mb-2">
                             <step.icon className="h-8 w-8" />
@@ -44,6 +48,7 @@ export function InvestmentStrategy() {
                         <p className="text-primary-foreground/80">{step.description}</p>
                     </CardContent>
                 </Card>
+                </AnimatedSection>
             ))}
         </div>
       </div>
