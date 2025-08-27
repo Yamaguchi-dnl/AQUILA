@@ -96,19 +96,19 @@
 
 @layer components {
   .strategy-cards-container {
-    @apply flex h-[350px] max-w-4xl items-center justify-center;
+    @apply flex h-[400px] max-w-4xl items-center justify-center;
   }
 
   .strategy-card {
-    @apply relative flex h-[320px] w-[240px] flex-col justify-center bg-white shadow-2xl transition-all duration-300 ease-out;
+    @apply relative flex h-[350px] w-[280px] flex-col justify-center bg-white shadow-2xl transition-all duration-300 ease-out;
   }
 
   .strategy-card:not(:first-child) {
-    @apply -ml-20;
+    @apply -ml-24;
   }
   
   .strategy-card:hover {
-    @apply -translate-y-5 bg-gradient-to-r from-highlight to-highlight/80;
+    @apply -translate-y-5;
   }
 
   .strategy-card:hover ~ .strategy-card {
