@@ -1,3 +1,4 @@
+
 import { fundsData } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -30,7 +31,7 @@ export function FundsSummary() {
             </Card>
           ))}
            {comingSoonFunds.map((fund) => (
-            <Card key={fund.slug} className="flex flex-col bg-muted/50 border-dashed">
+            <Card key={fund.slug} className="flex flex-col bg-muted/50 border-dashed hover:shadow-none">
                 <CardHeader>
                     <CardTitle className="text-2xl">{fund.nome}</CardTitle>
                 </CardHeader>
