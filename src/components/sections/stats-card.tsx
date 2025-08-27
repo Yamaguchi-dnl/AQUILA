@@ -4,6 +4,7 @@ const stats = [
     { value: '€420M', label: 'Ativos sob gestão' },
     { value: '4', label: 'Fundos especializados' },
     { value: '12%', label: 'Retorno médio anual' },
+    { value: '550+', label: 'Investidores' },
 ]
 
 export function StatsCard() {
@@ -11,7 +12,7 @@ export function StatsCard() {
         <div className="relative z-20">
             <div className="container">
                 <Card className="p-8 -mt-16 bg-card shadow-xl">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                         {stats.map(stat => (
                             <div key={stat.label}>
                                 <p className="text-4xl font-bold text-highlight">{stat.value}</p>
