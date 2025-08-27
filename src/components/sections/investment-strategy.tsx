@@ -39,11 +39,11 @@ export function InvestmentStrategy() {
                 {strategySteps.map((step, index) => (
                     <div key={index} className="strategy-card">
                         <div className="p-6 text-center">
-                             <div className="bg-primary-foreground text-primary p-4 rounded-full mb-4 inline-block">
+                             <div className="bg-primary text-primary-foreground p-4 rounded-full mb-4 inline-block">
                                 <step.icon className="h-8 w-8" />
                             </div>
-                            <h3 className="text-xl text-primary-foreground font-bold font-headline">{step.title}</h3>
-                            <p className="text-primary-foreground/80 mt-6 text-sm">{step.description}</p>
+                            <h3 className="text-xl text-primary font-bold font-headline">{step.title}</h3>
+                            <p className="text-muted-foreground mt-6 text-sm">{step.description}</p>
                         </div>
                     </div>
                 ))}
