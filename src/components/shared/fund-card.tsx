@@ -15,7 +15,7 @@ export function FundCard({ fund }: FundCardProps) {
   const isComingSoon = fund.status === "em_breve";
 
   return (
-    <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+    <Card className="flex flex-col h-full overflow-hidden">
       <CardHeader>
         <div className="aspect-video relative mb-4">
              <Image 

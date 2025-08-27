@@ -17,7 +17,7 @@ export function FundsSummary() {
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {activeFunds.map((fund) => (
-            <Card key={fund.slug} className="flex flex-col bg-card hover:shadow-xl hover:-translate-y-1 transition-transform duration-300">
+            <Card key={fund.slug} className="flex flex-col bg-card">
                 <CardHeader>
                     <CardTitle className="font-headline text-2xl">{fund.nome}</CardTitle>
                     <CardDescription>{fund.subtitulo}</CardDescription>
