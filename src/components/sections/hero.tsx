@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, PlayCircle } from 'lucide-react';
+import { AnimatedSection } from '../shared/animated-section';
 
 export function Hero() {
   return (
@@ -20,26 +21,34 @@ export function Hero() {
       </div>
       <div className="relative z-10 container text-primary-foreground">
         <div className='max-w-2xl'>
-            <div className="hidden md:inline-flex mb-4 items-center gap-2 rounded-bl-lg rounded-tr-lg border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium backdrop-blur-md">
-                Fundos elegíveis ao Golden Visa português
-            </div>
-            <h1 className="font-headline text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight">
-                Investimentos <span className="text-highlight">Inteligentes</span> para o seu Futuro
-            </h1>
-            <p className="mt-6 text-base text-primary-foreground/80">
-              Acesse fundos de investimento portugueses exclusivos com elegibilidade ao Golden Visa. Estratégias comprovadas em mercados especializados com gestão profissional e transparente.
-            </p>
-            <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">
-            <Button asChild size="lg" className="bg-gradient-to-r from-highlight to-highlight/80 hover:from-highlight/90 hover:to-highlight/70 text-black w-full sm:w-auto">
-                <Link href="/contato">Começar Investimento <ArrowRight className="ml-2" /></Link>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="bg-white/10 border-white/20 backdrop-blur-md text-white hover:bg-white/20 w-full sm:w-auto">
-                <Link href="/#fundos">
-                    <PlayCircle className="mr-2" />
-                    Ver Apresentação
-                </Link>
-            </Button>
-            </div>
+            <AnimatedSection>
+                <div className="hidden md:inline-flex mb-4 items-center gap-2 rounded-bl-lg rounded-tr-lg border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium backdrop-blur-md">
+                    Fundos elegíveis ao Golden Visa português
+                </div>
+            </AnimatedSection>
+            <AnimatedSection delay={0.1}>
+                <h1 className="font-headline text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight">
+                    Investimentos <span className="text-highlight">Inteligentes</span> para o seu Futuro
+                </h1>
+            </AnimatedSection>
+            <AnimatedSection delay={0.2}>
+                <p className="mt-6 text-base text-primary-foreground/80">
+                Acesse fundos de investimento portugueses exclusivos com elegibilidade ao Golden Visa. Estratégias comprovadas em mercados especializados com gestão profissional e transparente.
+                </p>
+            </AnimatedSection>
+            <AnimatedSection delay={0.3}>
+                <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">
+                    <Button asChild size="lg" className="bg-gradient-to-r from-highlight to-highlight/80 hover:from-highlight/90 hover:to-highlight/70 text-black w-full sm:w-auto">
+                        <Link href="/contato">Começar Investimento <ArrowRight className="ml-2" /></Link>
+                    </Button>
+                    <Button asChild size="lg" variant="outline" className="bg-white/10 border-white/20 backdrop-blur-md text-white hover:bg-white/20 w-full sm:w-auto">
+                        <Link href="/#fundos">
+                            <PlayCircle className="mr-2" />
+                            Ver Apresentação
+                        </Link>
+                    </Button>
+                </div>
+            </AnimatedSection>
         </div>
       </div>
     </section>
