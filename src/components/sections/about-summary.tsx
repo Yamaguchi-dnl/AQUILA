@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export function AboutSummary() {
   return (
-    <section id="sobre" className="bg-card">
+    <section id="sobre">
       <div className="container">
         <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
           <div>
@@ -30,7 +30,7 @@ export function AboutSummary() {
                 alt="Escritório moderno"
                 width={600}
                 height={400}
-                className="rounded-lg object-cover"
+                className="rounded-lg object-cover shadow-xl"
                 data-ai-hint="modern office"
              />
           </div>

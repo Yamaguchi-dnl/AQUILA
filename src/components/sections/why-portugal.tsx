@@ -36,14 +36,14 @@ const benefits = [
 
 export function WhyPortugal() {
   return (
-    <section id="why-portugal" className="bg-card">
+    <section id="why-portugal">
       <div className="container">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="font-headline text-3xl md:text-4xl text-primary">Por que investir em Portugal?</h2>
         </div>
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => (
-                <Card key={index} className="bg-background border-0 shadow-none">
+                <Card key={index} className="bg-card border-0 shadow-none hover:shadow-xl transition-shadow duration-300">
                     <CardHeader className="flex flex-row items-center gap-4">
                         <div className="bg-primary/10 text-primary p-3 rounded-full">
                             <benefit.icon className="h-6 w-6" />

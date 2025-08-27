@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 96%; /* #F5F5F5 */
+    --background: 0 0% 98%; /* #FAFAFA - Lighter Gray */
     --foreground: 215 43% 16%; /* #15233b */
 
     --card: 0 0% 100%;
@@ -16,7 +16,7 @@
     --primary: 215 43% 16%; /* #15233b */
     --primary-foreground: 0 0% 100%; /* #FFFFFF */
 
-    --secondary: 0 0% 90%;
+    --secondary: 0 0% 94%; /* Slightly darker gray for secondary elements */
     --secondary-foreground: 215 43% 16%;
 
     --muted: 0 0% 90%;
@@ -38,20 +38,20 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     
-    --radius: 0.5rem;
+    --radius: 0.75rem; /* Slightly larger radius for a more modern feel */
   }
 
   .dark {
     --background: 215 43% 10%;
-    --foreground: 0 0% 96%;
+    --foreground: 0 0% 98%;
 
     --card: 215 43% 12%;
-    --card-foreground: 0 0% 96%;
+    --card-foreground: 0 0% 98%;
 
     --popover: 215 43% 10%;
-    --popover-foreground: 0 0% 96%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 0 0% 96%;
+    --primary: 0 0% 98%;
     --primary-foreground: 215 43% 16%;
 
     --secondary: 215 43% 18%;
@@ -86,6 +86,6 @@
     @apply bg-background text-foreground;
   }
   section {
-    @apply w-full py-12 md:py-24 lg:py-32;
+    @apply w-full py-16 md:py-24 lg:py-28; /* Increased padding for more breathing room */
   }
 }

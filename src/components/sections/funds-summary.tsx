@@ -9,7 +9,7 @@ export function FundsSummary() {
     const comingSoonFunds = fundsData.filter(f => f.status === 'em_breve');
 
   return (
-    <section id="fundos" className="bg-background">
+    <section id="fundos">
       <div className="container">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="font-headline text-3xl md:text-4xl text-primary">Nossos Fundos de Investimento</h2>
@@ -17,7 +17,7 @@ export function FundsSummary() {
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {activeFunds.map((fund) => (
-            <Card key={fund.slug} className="flex flex-col">
+            <Card key={fund.slug} className="flex flex-col bg-card hover:shadow-xl hover:-translate-y-1 transition-transform duration-300">
                 <CardHeader>
                     <CardTitle className="font-headline text-2xl">{fund.nome}</CardTitle>
                     <CardDescription>{fund.subtitulo}</CardDescription>
@@ -30,7 +30,7 @@ export function FundsSummary() {
             </Card>
           ))}
            {comingSoonFunds.map((fund) => (
-            <Card key={fund.slug} className="flex flex-col bg-muted">
+            <Card key={fund.slug} className="flex flex-col bg-muted/50 border-dashed">
                 <CardHeader>
                     <CardTitle className="font-headline text-2xl">{fund.nome}</CardTitle>
                 </CardHeader>
