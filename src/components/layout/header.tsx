@@ -14,14 +14,28 @@ import { Logo } from "@/components/shared/logo";
 import { navItems } from "@/lib/data";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { useEffect, useState } from "react";
 
 export function Header() {
   const pathname = usePathname();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
 
   return (
-    <header className="fixed top-0 z-50 w-full bg-transparent backdrop-blur-sm">
+    <header className={cn(
+        "fixed top-0 z-50 w-full transition-colors duration-300",
+        isScrolled ? "bg-card/80 backdrop-blur-sm border-b" : "bg-transparent"
+    )}>
       <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
-        <Logo variant="white" />
+        <Logo variant={isScrolled ? 'default' : 'white'} />
         <nav className="hidden md:flex items-center absolute left-1/2 -translate-x-1/2">
           {navItems.map((item) =>
             item.subItems ? (
@@ -30,10 +44,11 @@ export function Header() {
                   <Button
                     variant="ghost"
                     className={cn(
-                      "text-sm font-medium transition-colors hover:text-primary px-3 py-2 gap-1 text-primary-foreground hover:bg-white/10",
+                      "text-sm font-medium transition-colors hover:text-primary px-3 py-2 gap-1",
+                      isScrolled ? "text-foreground hover:bg-muted" : "text-primary-foreground hover:bg-white/10",
                       item.subItems.some((sub) => pathname.startsWith(sub.href))
-                        ? "text-white"
-                        : "text-primary-foreground/80"
+                        ? isScrolled ? "text-primary" : "text-white"
+                        : isScrolled ? "text-foreground/80" : "text-primary-foreground/80"
                     )}
                   >
                     {item.label}
@@ -58,8 +73,11 @@ export function Header() {
                 key={item.href}
                 href={item.href!}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary px-3 py-2 text-primary-foreground hover:bg-white/10",
-                  pathname === item.href ? "text-white" : "text-primary-foreground/80"
+                  "text-sm font-medium transition-colors hover:text-primary px-3 py-2",
+                  isScrolled ? "text-foreground hover:bg-muted" : "text-primary-foreground hover:bg-white/10",
+                  pathname === item.href 
+                    ? isScrolled ? "text-primary" : "text-white"
+                    : isScrolled ? "text-foreground/80" : "text-primary-foreground/80"
                 )}
               >
                 {item.label}
@@ -68,12 +86,12 @@ export function Header() {
           )}
         </nav>
         <div className="flex items-center justify-end gap-2">
-          <Button asChild className="hidden sm:flex">
+          <Button asChild className="hidden sm:flex" variant={isScrolled ? 'default' : 'secondary'}>
             <Link href="/contato">Fale com um especialista</Link>
           </Button>
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon" className="md:hidden">
+              <Button variant={isScrolled ? "outline" : "secondary"} size="icon" className="md:hidden">
                 <Menu className="h-4 w-4" />
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
