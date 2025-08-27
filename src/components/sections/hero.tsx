@@ -3,15 +3,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, PlayCircle } from 'lucide-react';
 
-const stats = [
-    { value: '€420M', label: 'Ativos sob gestão' },
-    { value: '4', label: 'Fundos especializados' },
-    { value: '12%', label: 'Retorno médio anual' },
-]
-
 export function Hero() {
   return (
-    <section className="relative w-full h-[100vh] min-h-[700px] flex items-center p-0">
+    <section className="relative w-full h-[90vh] min-h-[650px] flex items-center p-0">
       <div className="absolute inset-0 z-0">
         <Image
           src="https://picsum.photos/1920/1080?blur=5"
@@ -31,14 +25,6 @@ export function Hero() {
             <p className="mt-6 text-lg text-primary-foreground/80">
               Acesse fundos de investimento portugueses exclusivos com elegibilidade ao Golden Visa. Estratégias comprovadas em mercados especializados com gestão profissional e transparente.
             </p>
-            <div className="mt-10 grid grid-cols-3 gap-4 text-center">
-                {stats.map(stat => (
-                    <div key={stat.label}>
-                        <p className="text-3xl font-bold text-highlight">{stat.value}</p>
-                        <p className="text-xs uppercase tracking-wider text-primary-foreground/70">{stat.label}</p>
-                    </div>
-                ))}
-            </div>
             <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">
             <Button asChild size="lg" className="bg-gradient-to-r from-highlight to-highlight/80 hover:from-highlight/90 hover:to-highlight/70 text-black w-full sm:w-auto">
                 <Link href="/contato">Começar Investimento <ArrowRight className="ml-2" /></Link>
