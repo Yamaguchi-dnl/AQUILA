@@ -9,7 +9,7 @@ export function ContactSummary() {
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-                 <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary">Pronto para investir em Portugal?</h2>
+                 <h2 className="font-headline text-3xl md:text-4xl text-primary">Pronto para investir em Portugal?</h2>
                  <p className="mt-4 text-lg text-muted-foreground max-w-lg">
                     Preencha o formulário abaixo para agendar uma reunião com nossa equipe e conhecer as oportunidades de diversificação global de investimento com foco em Golden Visa. Estamos prontos para ajudar a alcançar seus objetivos financeiros em Portugal.
                  </p>

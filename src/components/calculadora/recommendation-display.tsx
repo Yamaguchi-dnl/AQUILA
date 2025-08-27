@@ -20,7 +20,7 @@ export function RecommendationDisplay({ recommendation, onReset }: Recommendatio
 
   return (
     <div className="text-center">
-      <h2 className="font-headline text-3xl font-bold text-primary">Sua Recomendação Personalizada</h2>
+      <h2 className="font-headline text-3xl text-primary">Sua Recomendação Personalizada</h2>
       <p className="mt-2 text-muted-foreground">Com base em suas respostas, estes são os fundos que mais se alinham ao seu perfil.</p>
       
       <div className="mt-8 grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">

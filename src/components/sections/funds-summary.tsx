@@ -12,7 +12,7 @@ export function FundsSummary() {
     <section id="fundos" className="bg-background">
       <div className="container">
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary">Nossos Fundos de Investimento</h2>
+          <h2 className="font-headline text-3xl md:text-4xl text-primary">Nossos Fundos de Investimento</h2>
         </div>
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

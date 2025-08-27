@@ -29,7 +29,7 @@ export function InvestmentStrategy() {
     <section id="investment-strategy" className="bg-card">
       <div className="container">
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary">Estratégia de investimento: o caminho para o sucesso</h2>
+          <h2 className="font-headline text-3xl md:text-4xl text-primary">Estratégia de investimento: o caminho para o sucesso</h2>
         </div>
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {strategySteps.map((step, index) => (
@@ -37,7 +37,7 @@ export function InvestmentStrategy() {
                     <div className="bg-primary text-primary-foreground p-4 rounded-full mb-4">
                         <step.icon className="h-8 w-8" />
                     </div>
-                    <h3 className="font-headline text-xl font-bold">{step.title}</h3>
+                    <h3 className="font-headline text-xl">{step.title}</h3>
                     <p className="text-muted-foreground mt-2">{step.description}</p>
                 </div>
             ))}

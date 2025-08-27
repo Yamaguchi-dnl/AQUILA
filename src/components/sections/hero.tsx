@@ -15,7 +15,7 @@ export function Hero() {
       />
       <div className="absolute inset-0 bg-primary/85 z-10"></div>
       <div className="relative z-20 text-center container px-4 md:px-6">
-        <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight">
+        <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl tracking-tight">
           Sua estratégia de sucesso para investir no exterior
         </h1>
         <p className="mt-4 md:mt-6 max-w-3xl mx-auto text-lg md:text-xl text-primary-foreground/90">

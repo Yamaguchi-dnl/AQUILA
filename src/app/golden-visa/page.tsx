@@ -42,7 +42,7 @@ export default function GoldenVisaPage() {
             <section className="bg-background">
                 <div className="container grid md:grid-cols-2 gap-12 items-center">
                     <div>
-                        <h2 className="font-headline text-3xl font-bold text-primary">Benefícios de um Futuro Europeu</h2>
+                        <h2 className="font-headline text-3xl text-primary">Benefícios de um Futuro Europeu</h2>
                         <p className="mt-4 text-muted-foreground">O programa Golden Visa de Portugal é um dos mais procurados do mundo, oferecendo um caminho claro para a residência e cidadania europeia em troca de um investimento qualificado no país.</p>
                         <ul className="mt-6 space-y-3">
                            {benefits.map((benefit, i) => (
@@ -75,7 +75,7 @@ export default function GoldenVisaPage() {
             <section className="bg-card">
                 <div className="container">
                     <div className="text-center max-w-3xl mx-auto">
-                        <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary">Fundos Elegíveis para Golden Visa</h2>
+                        <h2 className="font-headline text-3xl md:text-4xl text-primary">Fundos Elegíveis para Golden Visa</h2>
                         <p className="mt-4 text-lg text-muted-foreground">Invista em ativos de alta performance enquanto garante seu futuro na Europa. Conheça nossos fundos qualificados para o programa.</p>
                     </div>
                     <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -87,7 +87,7 @@ export default function GoldenVisaPage() {
             <section className="bg-background">
                 <div className="container max-w-4xl">
                      <div className="text-center">
-                        <h2 className="font-headline text-3xl font-bold text-primary">Perguntas Frequentes</h2>
+                        <h2 className="font-headline text-3xl text-primary">Perguntas Frequentes</h2>
                     </div>
                     <Accordion type="single" collapsible className="w-full mt-8">
                         {goldenVisaFaqs.map((faq, i) => (
