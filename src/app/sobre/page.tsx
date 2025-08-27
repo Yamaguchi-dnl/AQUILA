@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
+import { TeamSummary } from "@/components/sections/team-summary";
 
 export const metadata = {
   title: "Sobre a Aquila Fund FCR",
@@ -76,6 +77,8 @@ export default function SobrePage() {
             </Button>
         </div>
       </section>
+
+      <TeamSummary />
     </>
   );
 }

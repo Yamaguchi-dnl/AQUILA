@@ -11,6 +11,7 @@ export type Fund = {
     movimentacaoMinima: string;
     retornoEsperado?: string;
     elegibilidadeGoldenVisa: boolean;
+    parceria?: string;
   };
   beneficios: string[];
   hoteis?: {

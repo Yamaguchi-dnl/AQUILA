@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -20,14 +19,14 @@ export function GoldenVisaSummary() {
             <div className="relative z-10 grid md:grid-cols-2 gap-8 items-center">
                 <div className="text-primary-foreground">
                     <h2 className="font-headline text-3xl md:text-4xl font-bold">
-                        Golden Visa Portugal
+                        O caminho para Portugal com o Golden Visa
                     </h2>
                     <p className="mt-4 text-lg text-primary-foreground/90 max-w-lg">
-                        Invista em nossos fundos elegíveis e abra as portas para a residência europeia para você e sua família. Uma oportunidade única de diversificação e mobilidade global.
+                        O Golden Visa é o visto de residência em países da União Europeia por meio de investimentos. Ao investir em nossos fundos de investimentos, você e sua família podem conquistar o direito de residir em Portugal, ter acesso à educação, saúde e demais direitos de qualquer cidadão com residência permanente. Com a Aquila Fund FCR, você tem acesso a fundos elegíveis que facilitam a obtenção deste valioso documento.
                     </p>
                     <Button asChild variant="secondary" className="mt-8 text-base">
                         <Link href="/golden-visa">
-                            Entenda o processo <ArrowRight className="ml-2 h-4 w-4" />
+                            SAIBA MAIS! <ArrowRight className="ml-2 h-4 w-4" />
                         </Link>
                     </Button>
                 </div>

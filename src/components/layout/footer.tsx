@@ -2,6 +2,8 @@ import Link from "next/link";
 import { Logo } from "@/components/shared/logo";
 import { navItems } from "@/lib/data";
 import { Separator } from "@/components/ui/separator";
+import { Button } from "../ui/button";
+import { Instagram, Linkedin } from "lucide-react";
 
 export function Footer() {
   const legalLinks = [
@@ -18,6 +20,18 @@ export function Footer() {
             <p className="mt-4 text-sm">
               Investimentos de Valor em Portugal.
             </p>
+            <div className="flex gap-2 mt-4">
+                <Button asChild variant="ghost" size="icon">
+                    <Link href="https://www.instagram.com/aquilafcr/" target="_blank" aria-label="Instagram">
+                        <Instagram className="h-5 w-5" />
+                    </Link>
+                </Button>
+                <Button asChild variant="ghost" size="icon">
+                    <Link href="https://www.linkedin.com/company/aquila-fcr/" target="_blank" aria-label="LinkedIn">
+                        <Linkedin className="h-5 w-5" />
+                    </Link>
+                </Button>
+            </div>
           </div>
           <div>
             <h4 className="font-headline text-lg font-semibold text-foreground">Navegação</h4>
@@ -48,6 +62,7 @@ export function Footer() {
             <address className="mt-4 space-y-2 text-sm not-italic">
               <p>Av. Engenheiro Duarte Pacheco, Torre 1, 15º(2)<br />1070 – 101 Lisboa, Portugal</p>
               <p><strong>Telefone:</strong> +351 21 310 36 20</p>
+              <p><strong>Fax:</strong> +351 21 310 36 29</p>
               <p><strong>Email:</strong> info@aquilafund.com</p>
             </address>
           </div>

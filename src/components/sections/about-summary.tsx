@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 export function AboutSummary() {
   return (
@@ -8,28 +8,31 @@ export function AboutSummary() {
       <div className="container">
         <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
           <div>
-            <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary">Sobre a Aquila Fund FCR</h2>
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary">Seu capital, nossa expertise</h2>
             <div className="mt-6 space-y-4 text-muted-foreground prose prose-lg max-w-none">
               <p>
-                A Aquila Fund FCR nasceu com a visão de ser uma plataforma de investimentos diferenciada, focada em oferecer soluções inovadoras para investidores de alta renda. Desde o início, temos nos dedicado a construir um legado de confiança, transparência e excelência no mercado financeiro português.
+                A Aquila Fund FCR é uma plataforma de investimentos portuguesa, com quatro fundos de investimento totalmente independentes e registrados na Comissão do Mercado de Valores Mobiliários (CMVM).
+              </p>
+              <p>
+                Com uma equipe experiente e altamente qualificada, oferecemos soluções seguras e rentáveis para investidores brasileiros, através de nossos fundos - Wheels, Agro, Hotel Invest e Real State.
+              </p>
+              <p>
+                Com estas soluções, você diversifica seu portfólio, ganha acesso facilitado ao passaporte europeu e protege seu patrimônio em um mercado estável e repleto de oportunidades.
               </p>
             </div>
-            <Button asChild variant="link" className="px-0 mt-6 text-base">
-              <Link href="/sobre">Conheça nossa história <ArrowRight className="ml-2 h-4 w-4" /></Link>
+            <Button asChild size="lg" className="mt-8">
+              <Link href="/contato">FALE COM UM ESPECIALISTA!</Link>
             </Button>
           </div>
-          <div className="bg-background p-8 rounded-lg">
-            <h3 className="text-lg font-semibold text-muted-foreground uppercase tracking-wider text-center">Parceiros Estratégicos</h3>
-            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-8 items-center">
-              <div className="text-center">
-                <p className="text-4xl font-bold text-primary opacity-70">FundBox</p>
-                <p className="text-sm text-muted-foreground mt-1">Gestão de Fundos</p>
-              </div>
-              <div className="text-center">
-                <p className="text-4xl font-bold text-primary opacity-70">BTG Pactual</p>
-                <p className="text-sm text-muted-foreground mt-1">Garantia de Ativos</p>
-              </div>
-            </div>
+          <div className="hidden md:block">
+             <Image 
+                src="https://picsum.photos/600/400"
+                alt="Escritório moderno"
+                width={600}
+                height={400}
+                className="rounded-lg object-cover"
+                data-ai-hint="modern office"
+             />
           </div>
         </div>
       </div>

@@ -15,7 +15,7 @@ export const fundsData: Fund[] = [
   {
     slug: 'aquila-wheels',
     nome: 'Aquila Wheels',
-    subtitulo: 'Acelere seu patrimônio com carros clássicos',
+    subtitulo: 'O Aquila Wheels é um fundo de investimento inovador que transforma a paixão por carros clássicos e icônicos em uma estratégia financeira sólida e rentável.',
     descricaoHtml: `<p>O Aquila Wheels é um fundo de investimento inovador que transforma a paixão por carros clássicos e icônicos em uma estratégia financeira sólida e rentável. Focado na aquisição e gestão de veículos de alto valor, o fundo aproveita a valorização histórica desse mercado, que na última década, valorizou impressionantes 193%.</p><p>A Aquila combina conhecimento de mercado, análise de dados e parcerias estratégicas globais para selecionar veículos com maior potencial de valorização. Além disso, o fundo é 100% elegível ao Golden Visa português, permitindo que investidores obtenham residência europeia por meio de um ativo tangível e exclusivo.</p>`,
     detalhes: {
       tipo: 'Fundo de capital de risco fechado',
@@ -37,7 +37,7 @@ export const fundsData: Fund[] = [
   {
     slug: 'aquila-hotel-invest',
     nome: 'Aquila Hotel Invest',
-    subtitulo: 'Oportunidades lucrativas no turismo português',
+    subtitulo: 'O Aquila Hotel Invest é um fundo de capital de risco com investimento em empresas de gestão hoteleira, focado na aquisição e gestão de hotéis de luxo em Portugal.',
     descricaoHtml: `<p>O Hotel Invest é um fundo de capital de risco que investe na gestão hoteleira de luxo em Portugal. Com foco em hotéis de luxo, o investimento busca alta rentabilidade e distribuição anual de dividendos isentos de impostos, alinhando-se ao sucesso do turismo português e oferecendo benefícios significativos aos investidores.</p><p>O fundo visa angariar 100 milhões de euros para investimento na empresa de gestão hoteleira Estoril 8023 SA, que atualmente gerencia 7 hotéis de luxo em Portugal, com o objetivo de expandir para 30 operações hoteleiras em 4 anos.</p>`,
     detalhes: {
       tipo: 'Fundo de capital de risco fechado',
@@ -45,6 +45,7 @@ export const fundsData: Fund[] = [
       prazo: '8 anos',
       investimentoInicial: '€100 mil',
       movimentacaoMinima: '€100 mil',
+      retornoEsperado: 'mínimo de 10% ao ano',
       elegibilidadeGoldenVisa: true,
     },
     beneficios: [
@@ -64,9 +65,9 @@ export const fundsData: Fund[] = [
   },
   {
     slug: 'aquila-real-estate',
-    nome: 'Aquila Real Estate',
-    subtitulo: 'Solidez e valorização no mercado imobiliário',
-    descricaoHtml: `<p>Com uma dimensão de €60 milhões, o Aquila Real Estate se especializa em ativos imobiliários localizados em áreas privilegiadas e/ou no mercado de residências de marca. Essa estratégia visa proporcionar retornos moderados ajustados ao risco, minimizando a exposição ao risco para nossos investidores.</p><p>O fundo aloca 60% do seu capital em propriedades que geram renda e valorização, com investimentos garantidos por ativos imobiliários. Além disso, até 40% do capital será investido no International Hospitality Fund.</p>`,
+    nome: 'Aquila Real State',
+    subtitulo: 'O Aquila Real State é um fundo focado em ativos imobiliários de alto valor, localizados em áreas privilegiadas e no mercado de residências assinadas.',
+    descricaoHtml: `<p>Com uma dimensão de €60 milhões, o Aquila Real Estate se especializa em ativos imobiliários localizados em áreas privilegiadas e/ou no mercado de residências de marca. Essa estrategia visa proporcionar retornos moderados ajustados ao risco, minimizando a exposição ao risco para nossos investidores.</p><p>O fundo aloca 60% do seu capital em propriedades que geram renda e valorização, com investimentos garantidos por ativos imobiliários. Além disso, até 40% do capital será investido no International Hospitality Fund.</p>`,
     detalhes: {
       tipo: 'Fundo de capital de risco fechado',
       dimensao: '€60 milhões',
@@ -75,6 +76,7 @@ export const fundsData: Fund[] = [
       movimentacaoMinima: '€100 mil',
       retornoEsperado: '10% após fees',
       elegibilidadeGoldenVisa: false,
+      parceria: "Parceria com a Overseas e BWA Group"
     },
     beneficios: [
       'Segurança patrimonial — garantias em ativos imobiliários.',

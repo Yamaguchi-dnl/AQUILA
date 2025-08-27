@@ -1,9 +1,10 @@
 import { Hero } from '@/components/sections/hero';
 import { AboutSummary } from '@/components/sections/about-summary';
 import { FundsSummary } from '@/components/sections/funds-summary';
+import { WhyPortugal } from '@/components/sections/why-portugal';
 import { GoldenVisaSummary } from '@/components/sections/golden-visa-summary';
-import { CalculatorCta } from '@/components/sections/calculator-cta';
-import { TeamSummary } from '@/components/sections/team-summary';
+import { InvestmentCycle } from '@/components/sections/investment-cycle';
+import { InvestmentStrategy } from '@/components/sections/investment-strategy';
 import { ContactSummary } from '@/components/sections/contact-summary';
 
 export default function Home() {
@@ -12,9 +13,10 @@ export default function Home() {
       <Hero />
       <AboutSummary />
       <FundsSummary />
+      <WhyPortugal />
       <GoldenVisaSummary />
-      <CalculatorCta />
-      <TeamSummary />
+      <InvestmentCycle />
+      <InvestmentStrategy />
       <ContactSummary />
     </>
   );
