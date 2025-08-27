@@ -38,7 +38,7 @@ export function InvestmentStrategy() {
             <div className="strategy-cards-container">
                 {strategySteps.map((step, index) => (
                     <div key={index} className="strategy-card">
-                        <div className="p-6 text-center">
+                        <div className="p-6">
                              <div className="bg-primary text-primary-foreground p-4 rounded-full mb-4 inline-block">
                                 <step.icon className="h-8 w-8" />
                             </div>
