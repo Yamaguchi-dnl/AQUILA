@@ -100,15 +100,16 @@
   }
 
   .strategy-card {
-    @apply relative w-[280px] h-auto md:h-[350px] bg-white shadow-2xl transition-all duration-300 ease-out;
-  }
-
-  .strategy-card:hover {
-      @apply md:-translate-y-5;
+    @apply relative w-full md:w-[280px] h-auto md:h-[350px] bg-white shadow-2xl transition-all duration-300 ease-out;
   }
   
-
   @media (min-width: 768px) {
+    .strategy-card {
+        @apply w-[280px];
+    }
+    .strategy-card:hover {
+        @apply md:-translate-y-5;
+    }
     .strategy-card:not(:first-child) {
       @apply -ml-24;
     }
