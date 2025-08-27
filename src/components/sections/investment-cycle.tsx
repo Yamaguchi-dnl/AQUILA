@@ -16,11 +16,11 @@ export function InvestmentCycle() {
         <AnimatedSection delay={0.1}>
         <div className="mt-12 flex justify-center">
             <Image 
-                src="https://picsum.photos/1000/400"
+                src="https://ik.imagekit.io/leosmc2zb/Agrupar%201.png"
                 alt="Gráfico do ciclo de investimento de 8 anos"
-                width={1000}
-                height={400}
-                className="rounded-lg object-cover"
+                width={1138}
+                height={463}
+                className="rounded-lg object-contain"
                 data-ai-hint="investment cycle graph"
             />
         </div>
