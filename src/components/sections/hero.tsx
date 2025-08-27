@@ -8,14 +8,14 @@ export function Hero() {
     <section className="relative w-full h-[90vh] min-h-[650px] flex items-center p-0">
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://picsum.photos/1920/1080?blur=5"
-          alt="Paisagem da costa portuguesa"
-          data-ai-hint="portugal coastline cliff"
+          src="https://ik.imagekit.io/leosmc2zb/3493.jpg"
+          alt="Paisagem de Portugal"
+          data-ai-hint="portugal landscape"
           fill
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-primary/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/70 to-transparent"></div>
       </div>
       <div className="relative z-10 container text-primary-foreground">
         <div className='max-w-2xl'>
