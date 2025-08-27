@@ -4,17 +4,9 @@
 
 @layer base {
   @font-face {
-    font-family: 'Austin';
-    src: url('/fonts/Austin-Regular.woff2') format('woff2');
+    font-family: 'Italiana';
+    src: url('/fonts/italiana-regular.ttf') format('truetype');
     font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: 'Austin';
-    src: url('/fonts/Austin-Bold.woff2') format('woff2');
-    font-weight: bold;
     font-style: normal;
     font-display: swap;
   }
