@@ -66,8 +66,8 @@ const recommendFundPrompt = ai.definePrompt({
 
       Based on this, provide your recommendations.
     `,
+    model: 'googleai/gemini-1.5-flash-latest',
     config: {
-        model: 'googleai/gemini-1.5-flash-latest',
         temperature: 0.1,
     }
 });
