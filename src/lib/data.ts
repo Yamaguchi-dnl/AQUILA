@@ -2,12 +2,22 @@ import type { Fund, TeamMember, FaqItem, NavItem } from './types';
 
 export const navItems: NavItem[] = [
   { href: '/', label: 'Home' },
-  { href: '/sobre', label: 'Sobre' },
-  { href: '/fundos', label: 'Fundos' },
-  { href: '/equipa', label: 'Equipa' },
-  { href: '/golden-visa', label: 'Golden Visa' },
-  { href: '/calculadora-perfil', label: 'Calculadora' },
-  { href: '/trabalhe-conosco', label: 'Trabalhe Conosco' },
+  { 
+    label: 'Sobre',
+    subItems: [
+      { href: '/sobre', label: 'Sobre Nós', description: 'Conheça nossa história e missão.' },
+      { href: '/equipa', label: 'Nossa Equipa', description: 'Conheça os especialistas por trás da Aquila.' },
+      { href: '/trabalhe-conosco', label: 'Trabalhe Conosco', description: 'Faça parte da nossa equipe de talentos.' },
+    ]
+  },
+  {
+    label: 'Investimentos',
+    subItems: [
+      { href: '/fundos', label: 'Fundos de Investimento', description: 'Explore nosso portfólio de fundos.' },
+      { href: '/golden-visa', label: 'Golden Visa', description: 'Seu passaporte para a Europa.' },
+      { href: '/calculadora-perfil', label: 'Calculadora de Perfil', description: 'Descubra seu perfil de investidor.' },
+    ]
+  },
   { href: '/contato', label: 'Contato' },
 ];
 

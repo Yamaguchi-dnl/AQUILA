@@ -37,7 +37,14 @@ export type FaqItem = {
   answer: string;
 };
 
-export type NavItem = {
+export type NavSubItem = {
   href: string;
   label: string;
+  description: string;
+};
+
+export type NavItem = {
+  href?: string;
+  label: string;
+  subItems?: NavSubItem[];
 };

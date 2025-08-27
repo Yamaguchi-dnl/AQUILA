@@ -1,15 +1,18 @@
 import Link from "next/link";
 import { Logo } from "@/components/shared/logo";
-import { navItems } from "@/lib/data";
+import { fundsData, navItems } from "@/lib/data";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "../ui/button";
 import { Instagram, Linkedin } from "lucide-react";
+import type { NavItem } from "@/lib/types";
 
 export function Footer() {
   const legalLinks = [
     { href: "/politica-privacidade", label: "Política de Privacidade" },
     { href: "/termos-uso", label: "Termos de Uso" },
   ];
+  
+  const allNavLinks: NavItem[] = navItems.flatMap(item => item.subItems ? item.subItems.map(s => ({label: s.label, href: s.href})) : ({label: item.label, href: item.href!}));
 
   return (
     <footer className="bg-muted text-muted-foreground">
@@ -36,9 +39,9 @@ export function Footer() {
           <div>
             <h4 className="font-headline text-lg font-semibold text-foreground">Navegação</h4>
             <ul className="mt-4 space-y-2">
-              {navItems.slice(0,5).map((item) => (
+              {allNavLinks.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="text-sm hover:text-primary transition-colors">
+                  <Link href={item.href!} className="text-sm hover:text-primary transition-colors">
                     {item.label}
                   </Link>
                 </li>
