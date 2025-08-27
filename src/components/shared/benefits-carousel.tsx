@@ -6,11 +6,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
-import SwiperCore from 'swiper';
+import type SwiperCore from 'swiper';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { LucideIcon } from 'lucide-react';
-
-SwiperCore.use([Navigation]);
 
 type BenefitItem = {
   icon: LucideIcon;
@@ -25,6 +23,16 @@ type BenefitsCarouselProps = {
 export function BenefitsCarousel({ items }: BenefitsCarouselProps) {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  const swiperRef = useRef<SwiperCore | null>(null);
+
+  useEffect(() => {
+    if (swiperRef.current) {
+        swiperRef.current.params.navigation.prevEl = prevRef.current;
+        swiperRef.current.params.navigation.nextEl = nextRef.current;
+        swiperRef.current.navigation.init();
+        swiperRef.current.navigation.update();
+    }
+  }, []);
 
   return (
     <>
@@ -88,6 +96,9 @@ export function BenefitsCarousel({ items }: BenefitsCarouselProps) {
         <Swiper
           className="benefits-swiper"
           modules={[Navigation]}
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+          }}
           loop={true}
           centeredSlides={true}
           slidesPerView={1.5}
@@ -95,12 +106,6 @@ export function BenefitsCarousel({ items }: BenefitsCarouselProps) {
           navigation={{
             prevEl: prevRef.current,
             nextEl: nextRef.current,
-          }}
-          onBeforeInit={(swiper) => {
-             if (swiper.params.navigation && typeof swiper.params.navigation !== 'boolean') {
-                swiper.params.navigation.prevEl = prevRef.current;
-                swiper.params.navigation.nextEl = nextRef.current;
-            }
           }}
           breakpoints={{
             768: {
