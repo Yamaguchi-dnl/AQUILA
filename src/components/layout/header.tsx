@@ -19,9 +19,9 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="fixed top-0 z-50 w-full bg-transparent backdrop-blur-md">
+    <header className="fixed top-0 z-50 w-full bg-transparent backdrop-blur-sm">
       <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
-        <Logo />
+        <Logo variant="white" />
         <nav className="hidden md:flex items-center absolute left-1/2 -translate-x-1/2">
           {navItems.map((item) =>
             item.subItems ? (
