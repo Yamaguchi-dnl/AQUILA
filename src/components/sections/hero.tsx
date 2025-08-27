@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, PlayCircle, TrendingUp } from 'lucide-react';
+import { ArrowRight, PlayCircle } from 'lucide-react';
 
 export function Hero() {
   return (
@@ -20,7 +20,6 @@ export function Hero() {
       <div className="relative z-10 container text-primary-foreground">
         <div className='max-w-2xl'>
             <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium backdrop-blur-md">
-                <TrendingUp className="h-4 w-4" />
                 Fundos elegíveis ao Golden Visa português
             </div>
             <h1 className="font-headline text-5xl md:text-7xl font-bold tracking-tight">
