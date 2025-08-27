@@ -23,10 +23,10 @@ export function Hero() {
             <div className="hidden md:inline-flex mb-4 items-center gap-2 rounded-bl-lg rounded-tr-lg border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium backdrop-blur-md">
                 Fundos elegíveis ao Golden Visa português
             </div>
-            <h1 className="font-headline text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight">
+            <h1 className="font-headline text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight">
                 Investimentos <span className="text-highlight">Inteligentes</span> para o seu Futuro
             </h1>
-            <p className="mt-6 text-lg text-primary-foreground/80">
+            <p className="mt-6 text-base text-primary-foreground/80">
               Acesse fundos de investimento portugueses exclusivos com elegibilidade ao Golden Visa. Estratégias comprovadas em mercados especializados com gestão profissional e transparente.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">
