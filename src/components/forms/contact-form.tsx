@@ -3,8 +3,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { useFormState } from "react-dom";
-import { useEffect } from "react";
+import { useActionState, useEffect } from "react";
 import { useRouter } from 'next/navigation';
 
 import { Button } from "@/components/ui/button";
@@ -52,7 +51,7 @@ type ContactFormProps = {
 };
 
 export function ContactForm({ isSummary = false }: ContactFormProps) {
-  const [state, formAction] = useFormState(submitContactForm, initialState);
+  const [state, formAction] = useActionState(submitContactForm, initialState);
   const { toast } = useToast();
   const router = useRouter();
 
