@@ -27,7 +27,7 @@ export function Hero() {
                 </div>
             </AnimatedSection>
             <AnimatedSection delay={0.1}>
-                <h1 className="font-headline text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight">
+                <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
                     Investimentos <span className="text-highlight">Inteligentes</span> para o seu Futuro
                 </h1>
             </AnimatedSection>
