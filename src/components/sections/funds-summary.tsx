@@ -19,7 +19,7 @@ export function FundsSummary() {
           {activeFunds.map((fund) => (
             <Card key={fund.slug} className="flex flex-col bg-card">
                 <CardHeader>
-                    <CardTitle className="font-headline text-2xl">{fund.nome}</CardTitle>
+                    <CardTitle className="text-2xl">{fund.nome}</CardTitle>
                     <CardDescription>{fund.subtitulo}</CardDescription>
                 </CardHeader>
                 <CardContent className="flex-grow space-y-2">
@@ -32,7 +32,7 @@ export function FundsSummary() {
            {comingSoonFunds.map((fund) => (
             <Card key={fund.slug} className="flex flex-col bg-muted/50 border-dashed">
                 <CardHeader>
-                    <CardTitle className="font-headline text-2xl">{fund.nome}</CardTitle>
+                    <CardTitle className="text-2xl">{fund.nome}</CardTitle>
                 </CardHeader>
                 <CardContent className="flex-grow">
                     <p className="text-muted-foreground">(Aguardando informações)</p>

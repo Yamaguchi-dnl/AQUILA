@@ -56,7 +56,7 @@ export default function SobrePage() {
         <div className="container mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
             <Card>
                 <CardHeader>
-                    <CardTitle className="font-headline text-2xl">FundBox</CardTitle>
+                    <CardTitle className="text-2xl">FundBox</CardTitle>
                 </CardHeader>
                 <CardContent className="prose max-w-none text-muted-foreground">
                     <p>Nossos fundos são geridos pela FundBox, empresa de investimento independente líder em Portugal que gera ativamente cerca de €420 milhões em ativos sob gestão (AUM) através de dois gestores de fundos regulados, especializados em fundos imobiliários, classes de investimento alternativo e investimentos em private equity (FundBox SCR). A FundBox oferece estruturação e execução de transações de primeira classe, livre de qualquer agenda conflitante, e com envolvimento ativo de executivos seniores ao longo de todo o processo de investimento.</p>
@@ -64,7 +64,7 @@ export default function SobrePage() {
             </Card>
              <Card>
                 <CardHeader>
-                    <CardTitle className="font-headline text-2xl">BTG Pactual</CardTitle>
+                    <CardTitle className="text-2xl">BTG Pactual</CardTitle>
                 </CardHeader>
                 <CardContent className="prose max-w-none text-muted-foreground">
                     <p>Para facilitar ainda mais o seu acesso aos nossos fundos, estabelecemos uma parceria exclusiva com o BTG Pactual. Isso significa que nossos clientes podem investir nos fundos Aquila mantendo seus ativos no Brasil como garantia, sem a necessidade de transferir capital para o exterior. Essa solução é ideal para quem busca diversificação internacional e as oportunidades de crescimento que nossos fundos oferecem, sem desmobilizar seus investimentos atuais no Brasil.</p>
