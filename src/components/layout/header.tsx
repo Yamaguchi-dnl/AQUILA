@@ -19,19 +19,51 @@ import { useEffect, useState } from "react";
 
 export function Header() {
   const pathname = usePathname();
+  const [isMounted, setIsMounted] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Check scroll position on mount
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const isHome = pathname === '/';
-  const isTransparent = isHome && !isScrolled;
+  
+  // Prevent mismatch by delaying client-specific rendering
+  if (!isMounted) {
+    // Render a default state on the server and initial client render
+    return (
+        <header className="fixed top-0 z-50 w-full transition-colors duration-300 bg-card/80 backdrop-blur-sm border-b">
+            <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
+                <Logo variant={'default'} />
+                 <nav className="hidden md:flex items-center absolute left-1/2 -translate-x-1/2" />
+                 <div className="flex items-center justify-end gap-2">
+                    <Button asChild className="hidden sm:flex" variant={'default'}>
+                        <Link href="/contato">Fale com um especialista</Link>
+                    </Button>
+                     <Sheet>
+                        <SheetTrigger asChild>
+                        <Button variant="outline" size="icon" className="md:hidden">
+                            <Menu className="h-4 w-4" />
+                            <span className="sr-only">Toggle navigation menu</span>
+                        </Button>
+                        </SheetTrigger>
+                     </Sheet>
+                 </div>
+            </div>
+        </header>
+    );
+  }
+
   const useWhiteText = isHome && !isScrolled;
+  const isTransparent = isHome && !isScrolled;
 
   return (
     <header className={cn(
