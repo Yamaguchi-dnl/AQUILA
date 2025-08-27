@@ -8,7 +8,7 @@ export function AboutSummary() {
       <div className="container">
         <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
           <div>
-            <h2 className="font-headline text-3xl md:text-4xl text-primary">Seu capital, nossa expertise</h2>
+            <h2 className="font-headline text-3xl md:text-4xl text-primary font-bold">Seu capital, nossa expertise</h2>
             <div className="mt-6 space-y-4 text-muted-foreground prose prose-lg max-w-none">
               <p>
                 A Aquila Fund FCR é uma plataforma de investimentos portuguesa, com quatro fundos de investimento totalmente independentes e registrados na Comissão do Mercado de Valores Mobiliários (CMVM).

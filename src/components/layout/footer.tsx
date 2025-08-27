@@ -37,7 +37,7 @@ export function Footer() {
             </div>
           </div>
           <div>
-            <h4 className="font-headline text-lg font-semibold text-primary-foreground">Navegação</h4>
+            <h4 className="font-headline text-lg font-bold text-primary-foreground">Navegação</h4>
             <ul className="mt-4 space-y-2">
               {allNavLinks.map((item) => (
                 <li key={item.href}>
@@ -49,7 +49,7 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="font-headline text-lg font-semibold text-primary-foreground">Legal</h4>
+            <h4 className="font-headline text-lg font-bold text-primary-foreground">Legal</h4>
             <ul className="mt-4 space-y-2">
               {legalLinks.map((item) => (
                 <li key={item.href}>
@@ -61,7 +61,7 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="font-headline text-lg font-semibold text-primary-foreground">Contato</h4>
+            <h4 className="font-headline text-lg font-bold text-primary-foreground">Contato</h4>
             <address className="mt-4 space-y-2 text-sm not-italic">
               <p>Av. Engenheiro Duarte Pacheco, Torre 1, 15º(2)<br />1070 – 101 Lisboa, Portugal</p>
               <p><strong>Telefone:</strong> +351 21 310 36 20</p>

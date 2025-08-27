@@ -35,7 +35,7 @@ export default function FundosPage() {
                 <section id={fund.slug} key={fund.slug} className="scroll-mt-20">
                     <div className="grid lg:grid-cols-3 gap-8 lg:gap-16">
                         <div className="lg:col-span-2">
-                             <h2 className="font-headline text-3xl md:text-4xl text-primary">{fund.nome}</h2>
+                             <h2 className="font-headline text-3xl md:text-4xl text-primary font-bold">{fund.nome}</h2>
                              {fund.detalhes.elegibilidadeGoldenVisa && <Badge variant="destructive" className="mt-2">Elegível para Golden Visa</Badge>}
                              <h3 className="mt-2 text-xl text-muted-foreground">{fund.subtitulo}</h3>
                              <div className="mt-6 prose prose-lg max-w-none text-muted-foreground" dangerouslySetInnerHTML={{ __html: fund.descricaoHtml }} />

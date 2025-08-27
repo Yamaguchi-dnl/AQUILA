@@ -18,7 +18,7 @@ export function GoldenVisaSummary() {
             <div className="absolute inset-0 bg-primary/80"></div>
             <div className="relative z-10 grid md:grid-cols-2 gap-8 items-center">
                 <div className="text-primary-foreground">
-                    <h2 className="font-headline text-3xl md:text-4xl">
+                    <h2 className="font-headline text-3xl md:text-4xl font-bold">
                         O caminho para Portugal com o Golden Visa
                     </h2>
                     <p className="mt-4 text-lg text-primary-foreground/90 max-w-lg">

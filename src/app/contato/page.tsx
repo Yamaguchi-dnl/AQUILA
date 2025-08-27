@@ -48,7 +48,7 @@ export default function ContatoPage() {
             </div>
             <div className="lg:col-span-3">
               <div className="bg-card p-8 rounded-lg shadow-lg">
-                <h2 className="text-2xl font-bold text-foreground mb-2">Fale com um especialista</h2>
+                <h2 className="text-2xl font-bold font-headline text-foreground mb-2">Fale com um especialista</h2>
                 <p className="text-muted-foreground mb-6">Preencha o formulário e nossa equipe entrará em contato para uma consulta personalizada.</p>
                 <ContactForm />
               </div>

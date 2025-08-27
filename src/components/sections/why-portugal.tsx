@@ -39,7 +39,7 @@ export function WhyPortugal() {
     <section id="why-portugal" className="bg-primary text-primary-foreground">
       <div className="container">
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="font-headline text-3xl md:text-4xl text-primary-foreground">Por que investir em Portugal?</h2>
+          <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary-foreground">Por que investir em Portugal?</h2>
         </div>
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => (
@@ -48,7 +48,7 @@ export function WhyPortugal() {
                         <div className="bg-primary-foreground/10 text-primary-foreground p-3 rounded-full">
                             <benefit.icon className="h-6 w-6" />
                         </div>
-                        <CardTitle className="font-headline text-xl text-primary-foreground">{benefit.title}</CardTitle>
+                        <CardTitle className="font-headline text-xl font-bold text-primary-foreground">{benefit.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <p className="text-primary-foreground/80">{benefit.description}</p>
