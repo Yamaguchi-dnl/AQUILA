@@ -62,20 +62,20 @@ export function BenefitsCarousel({ items }: BenefitsCarouselProps) {
         
         .swiper-button {
           --position: 1rem;
-          background-color: hsl(var(--highlight));
-          height: 3rem;
-          width: 3rem;
+          background-color: rgba(255, 255, 255, 0.1);
+          height: 2.5rem;
+          width: 2.5rem;
           border-radius: 9999px;
           color: white;
           transition: background-color 0.2s;
         }
 
         .swiper-button:hover {
-          background-color: hsl(var(--primary));
+          background-color: rgba(255, 255, 255, 0.2);
         }
 
         .swiper-button::after {
-          font-size: 1.25rem;
+          font-size: 1rem;
           font-weight: bold;
         }
         
