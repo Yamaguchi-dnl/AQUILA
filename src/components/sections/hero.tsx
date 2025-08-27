@@ -32,7 +32,7 @@ export function Hero() {
             </AnimatedSection>
             <AnimatedSection delay={0.3}>
                 <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">
-                    <Button asChild size="lg" className="w-full sm:w-auto">
+                    <Button asChild size="lg" className="w-full sm:w-auto" variant="highlight">
                         <Link href="/contato">Começar Investimento <ArrowRight className="ml-2" /></Link>
                     </Button>
                     <Button asChild size="lg" variant="outline" className="bg-white/10 border-white/20 backdrop-blur-md text-white hover:bg-white/20 w-full sm:w-auto">
