@@ -68,6 +68,7 @@ export default {
         lg: '1.5rem',
         md: 'calc(1.5rem - 2px)',
         sm: 'calc(1.5rem - 4px)',
+        '3xl': '2.5rem',
       },
       keyframes: {
         'accordion-down': {
