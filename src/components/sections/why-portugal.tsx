@@ -36,22 +36,22 @@ const benefits = [
 
 export function WhyPortugal() {
   return (
-    <section id="why-portugal">
+    <section id="why-portugal" className="bg-primary text-primary-foreground">
       <div className="container">
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="font-headline text-3xl md:text-4xl text-primary">Por que investir em Portugal?</h2>
+          <h2 className="font-headline text-3xl md:text-4xl text-primary-foreground">Por que investir em Portugal?</h2>
         </div>
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => (
-                <Card key={index} className="bg-card border-0 shadow-none hover:shadow-xl transition-shadow duration-300">
+                <Card key={index} className="bg-transparent border-primary-foreground/20 text-primary-foreground shadow-none hover:bg-primary-foreground/5 transition-colors duration-300">
                     <CardHeader className="flex flex-row items-center gap-4">
-                        <div className="bg-primary/10 text-primary p-3 rounded-full">
+                        <div className="bg-primary-foreground/10 text-primary-foreground p-3 rounded-full">
                             <benefit.icon className="h-6 w-6" />
                         </div>
-                        <CardTitle className="font-headline text-xl">{benefit.title}</CardTitle>
+                        <CardTitle className="font-headline text-xl text-primary-foreground">{benefit.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <p className="text-muted-foreground">{benefit.description}</p>
+                        <p className="text-primary-foreground/80">{benefit.description}</p>
                     </CardContent>
                 </Card>
             ))}
