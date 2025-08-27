@@ -1,12 +1,15 @@
+"use client";
+
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { AnimatedStat } from "@/components/shared/animated-stat";
 
 const stats = [
-    { value: '€420M', label: 'Ativos sob gestão' },
-    { value: '4', label: 'Fundos especializados' },
-    { value: '12%', label: 'Retorno médio anual' },
-    { value: '550+', label: 'Investidores' },
-]
+    { value: 420, label: 'Ativos sob gestão', suffix: 'M', prefix: '€' },
+    { value: 4, label: 'Fundos especializados' },
+    { value: 12, label: 'Retorno médio anual', suffix: '%' },
+    { value: 550, label: 'Investidores', suffix: '+' },
+];
 
 export function StatsCard() {
     return (
@@ -18,7 +21,7 @@ export function StatsCard() {
                             <div key={stat.label} className="relative flex flex-col items-center justify-center">
                                 {index > 0 && <Separator orientation="vertical" className="absolute left-0 top-1/2 -translate-y-1/2 h-1/2 hidden md:block" />}
                                 <p className="text-sm uppercase tracking-wider text-muted-foreground">{stat.label}</p>
-                                <p className="text-4xl font-bold text-highlight mt-2">{stat.value}</p>
+                                <AnimatedStat value={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
                             </div>
                         ))}
                     </div>
