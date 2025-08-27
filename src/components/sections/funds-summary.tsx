@@ -21,7 +21,7 @@ export function FundsSummary() {
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {activeFunds.map((fund, index) => (
-            <AnimatedSection key={fund.slug} delay={index * 0.1}>
+            <AnimatedSection key={fund.slug} delay={index * 0.1} className="h-full">
             <Card className="flex flex-col bg-card h-full">
                 <CardHeader>
                     <CardTitle className="text-2xl">{fund.nome}</CardTitle>
@@ -41,7 +41,7 @@ export function FundsSummary() {
             </AnimatedSection>
           ))}
            {comingSoonFunds.map((fund, index) => (
-            <AnimatedSection key={fund.slug} delay={(activeFunds.length + index) * 0.1}>
+            <AnimatedSection key={fund.slug} delay={(activeFunds.length + index) * 0.1} className="h-full">
             <Card className="flex flex-col bg-muted/50 border-dashed hover:shadow-none h-full">
                 <CardHeader>
                     <CardTitle className="text-2xl">{fund.nome}</CardTitle>
