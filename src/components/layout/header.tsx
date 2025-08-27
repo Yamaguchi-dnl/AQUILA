@@ -45,8 +45,10 @@ export function Header() {
                   <Button
                     variant="ghost"
                     className={cn(
-                      "text-sm font-medium transition-colors px-3 py-2 gap-1",
-                      isScrolled ? "text-foreground hover:bg-muted" : "text-primary-foreground hover:text-white hover:underline underline-offset-4",
+                      "text-sm font-medium transition-colors px-3 py-2 gap-1 hover:underline underline-offset-4",
+                      isScrolled 
+                        ? "text-foreground hover:text-primary" 
+                        : "text-primary-foreground hover:text-white",
                       item.subItems.some((sub) => pathname.startsWith(sub.href))
                         ? isScrolled ? "text-primary" : "text-white"
                         : isScrolled ? "text-foreground/80" : "text-primary-foreground/80"
@@ -74,8 +76,10 @@ export function Header() {
                 key={item.href}
                 href={item.href!}
                 className={cn(
-                  "text-sm font-medium transition-colors px-3 py-2",
-                  isScrolled ? "text-foreground hover:bg-muted" : "text-primary-foreground hover:text-white hover:underline underline-offset-4",
+                  "text-sm font-medium transition-colors px-3 py-2 hover:underline underline-offset-4",
+                   isScrolled 
+                    ? "text-foreground hover:text-primary" 
+                    : "text-primary-foreground hover:text-white",
                   pathname === item.href 
                     ? isScrolled ? "text-primary" : "text-white"
                     : isScrolled ? "text-foreground/80" : "text-primary-foreground/80"
