@@ -1,25 +1,25 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Zap, Search, ShieldCheck, DollarSign } from "lucide-react";
+import { Lightbulb, Target, TrendingUp, Award } from "lucide-react";
 import { AnimatedSection } from "../shared/animated-section";
 
 const strategySteps = [
     {
-        icon: Zap,
+        icon: Lightbulb,
         title: "Origem de negócios",
         description: "Nossa expertise e nossa vasta rede de relacionamentos nos permitem identificar mercados relevantes e oportunidades atraentes de investimentos."
     },
     {
-        icon: Search,
+        icon: Target,
         title: "Seleção e Due Diligence",
         description: "Realizamos uma análise rigorosa e rápida das perspectivas de aquisição para alcançar acordos de compra e venda vinculativos em tempo hábil."
     },
     {
-        icon: ShieldCheck,
+        icon: TrendingUp,
         title: "Criação de valor",
         description: "Implementamos estratégias sólidas em cada subfundo para otimizar o valor dos ativos e potencializar o retorno dos investimentos."
     },
     {
-        icon: DollarSign,
+        icon: Award,
         title: "Exit",
         description: "Possuímos habilidades comprovadas em transações e um histórico de múltiplas saídas bem-sucedidas, garantindo que o momento certo para a venda seja identificado e executado."
     }
