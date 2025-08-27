@@ -100,7 +100,7 @@
   }
 
   .strategy-card {
-    @apply relative flex h-[320px] w-[240px] flex-col items-center bg-[#17141d] rounded-lg shadow-2xl transition-all duration-300 ease-out;
+    @apply relative flex h-[320px] w-[240px] flex-col items-center bg-white/5 rounded-lg shadow-2xl transition-all duration-300 ease-out border border-transparent backdrop-blur-sm;
   }
 
   .strategy-card:not(:first-child) {
@@ -108,26 +108,10 @@
   }
   
   .strategy-card:hover {
-    @apply -translate-y-5;
+    @apply -translate-y-5 border-transparent bg-clip-border bg-gradient-to-r from-highlight to-amber-400;
   }
 
   .strategy-card:hover ~ .strategy-card {
     @apply translate-x-20;
-  }
-
-  .strategy-card .bar {
-    @apply absolute top-36 left-1/2 -translate-x-1/2 h-1 w-36;
-  }
-
-  .strategy-card .emptybar {
-    @apply h-full w-full bg-gray-600;
-  }
-  
-  .strategy-card .filledbar {
-    @apply absolute top-0 z-10 h-full w-0 bg-gradient-to-r from-highlight to-amber-400 transition-all duration-500 ease-out;
-  }
-  
-  .strategy-card:hover .filledbar {
-    @apply w-full;
   }
 }

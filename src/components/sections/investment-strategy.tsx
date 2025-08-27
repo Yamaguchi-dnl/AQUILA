@@ -43,11 +43,7 @@ export function InvestmentStrategy() {
                                 <step.icon className="h-8 w-8" />
                             </div>
                             <h3 className="text-xl text-primary-foreground font-bold font-headline">{step.title}</h3>
-                            <div className="bar mt-4">
-                                <div className="emptybar"></div>
-                                <div className="filledbar"></div>
-                            </div>
-                            <p className="text-primary-foreground/80 mt-4 text-sm">{step.description}</p>
+                            <p className="text-primary-foreground/80 mt-6 text-sm">{step.description}</p>
                         </div>
                     </div>
                 ))}
