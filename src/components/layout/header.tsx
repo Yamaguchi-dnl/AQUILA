@@ -131,7 +131,7 @@ export function Header() {
           </Button>
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant={isTransparent ? "secondary" : "outline"} size="icon" className="md:hidden">
+              <Button variant="ghost" size="icon" className={cn("md:hidden", isTransparent && "text-white hover:bg-white/10")}>
                 <Menu className="h-4 w-4" />
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
