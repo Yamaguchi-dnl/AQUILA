@@ -96,24 +96,32 @@
 
 @layer components {
   .strategy-cards-container {
-    @apply grid grid-cols-2 gap-4 md:flex md:h-[400px] md:max-w-4xl md:items-center md:justify-center;
+    @apply flex flex-col items-center md:flex-row md:h-[400px] md:max-w-4xl md:justify-center;
   }
 
   .strategy-card {
-    @apply relative flex h-full md:h-[350px] md:w-[280px] flex-col justify-center bg-white shadow-2xl transition-all duration-300 ease-out;
+    @apply relative w-[280px] h-[240px] md:h-[350px] bg-white shadow-2xl transition-all duration-300 ease-out;
   }
+
+  .strategy-card:not(:first-child) {
+      @apply -mt-48 md:mt-0;
+  }
+
+  .strategy-card:hover {
+      @apply md:-translate-y-5 translate-x-5 md:translate-x-0;
+  }
+
+  .strategy-card:hover ~ .strategy-card {
+      @apply translate-y-20 md:translate-y-0;
+  }
+  
 
   @media (min-width: 768px) {
     .strategy-card:not(:first-child) {
       @apply -ml-24;
     }
-  }
-  
-  .strategy-card:hover {
-    @apply md:-translate-y-5;
-  }
-
-  .strategy-card:hover ~ .strategy-card {
-    @apply md:translate-x-20;
+     .strategy-card:hover ~ .strategy-card {
+      @apply md:translate-x-20;
+    }
   }
 }
