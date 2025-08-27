@@ -20,7 +20,7 @@ export function InvestmentCycle() {
                 alt="Gráfico do ciclo de investimento de 8 anos"
                 width={1138}
                 height={463}
-                className="rounded-lg object-contain"
+                className="object-contain"
                 data-ai-hint="investment cycle graph"
             />
         </div>
