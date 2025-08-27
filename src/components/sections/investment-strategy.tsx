@@ -43,7 +43,7 @@ export function InvestmentStrategy() {
                                 <step.icon className="h-8 w-8" />
                             </div>
                             <h3 className="text-xl text-primary font-bold font-headline">{step.title}</h3>
-                            <p className="text-muted-foreground mt-2 text-sm">{step.description}</p>
+                            <p className="text-muted-foreground mt-2 text-sm text-center">{step.description}</p>
                         </div>
                     </div>
                 ))}
