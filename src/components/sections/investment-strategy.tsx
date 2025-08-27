@@ -35,7 +35,7 @@ export function InvestmentStrategy() {
           </div>
         </AnimatedSection>
         <div className="mt-24 flex items-center justify-center">
-            <div className="strategy-cards-container">
+            <div className="strategy-cards-container flex-col md:flex-row gap-8 md:gap-0">
                 {strategySteps.map((step, index) => (
                     <div key={index} className="strategy-card rounded-bl-lg rounded-tr-lg p-0.5 hover:bg-gradient-to-r from-highlight to-highlight/80">
                         <div className="bg-card rounded-bl-lg rounded-tr-lg h-full p-6 flex flex-col justify-center text-center">
