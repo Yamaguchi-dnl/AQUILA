@@ -26,7 +26,7 @@ const strategySteps = [
 
 export function InvestmentStrategy() {
   return (
-    <section id="investment-strategy" className="bg-primary text-primary-foreground rounded-t-3xl">
+    <section id="investment-strategy" className="bg-primary text-primary-foreground rounded-t-3xl pb-24">
       <div className="container">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="font-headline text-3xl md:text-4xl text-primary-foreground">Estratégia de investimento: o caminho para o sucesso</h2>
