@@ -38,12 +38,12 @@ export function InvestmentStrategy() {
             <div className="strategy-cards-container">
                 {strategySteps.map((step, index) => (
                     <div key={index} className="strategy-card rounded-bl-lg rounded-tr-lg p-0.5">
-                        <div className="bg-card rounded-[calc(1.5rem-2px)] h-full p-6 flex flex-col items-center justify-center">
+                        <div className="bg-card rounded-bl-lg rounded-tr-lg h-full p-6 flex flex-col items-center text-center">
                             <div className="bg-primary text-primary-foreground p-4 rounded-full mb-4 inline-block">
                                 <step.icon className="h-8 w-8" />
                             </div>
                             <h3 className="text-xl text-primary font-bold font-headline">{step.title}</h3>
-                            <p className="text-muted-foreground mt-2 text-sm text-center">{step.description}</p>
+                            <p className="text-muted-foreground mt-2 text-sm">{step.description}</p>
                         </div>
                     </div>
                 ))}
