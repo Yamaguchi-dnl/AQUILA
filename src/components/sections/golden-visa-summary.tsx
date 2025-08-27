@@ -15,7 +15,7 @@ export function GoldenVisaSummary() {
                 fill
                 className="object-cover"
             />
-            <div className="absolute inset-0 bg-primary/90"></div>
+            <div className="absolute inset-0 bg-primary/80"></div>
             <div className="relative z-10 grid md:grid-cols-2 gap-8 items-center">
                 <div className="text-primary-foreground">
                     <h2 className="font-headline text-3xl md:text-4xl">
