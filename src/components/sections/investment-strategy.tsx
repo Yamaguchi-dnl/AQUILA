@@ -27,7 +27,7 @@ const strategySteps = [
 
 export function InvestmentStrategy() {
   return (
-    <section id="investment-strategy" className="bg-primary text-primary-foreground rounded-t-3xl pb-48 shadow-md">
+    <section id="investment-strategy" className="bg-gradient-to-r from-[#15233b] to-[#22385e] text-primary-foreground rounded-t-3xl pb-48 shadow-md">
       <div className="container">
         <AnimatedSection>
         <div className="text-center max-w-3xl mx-auto">
