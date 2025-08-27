@@ -65,9 +65,9 @@ export default {
         },
       },
       borderRadius: {
-        lg: '0.5rem',
-        md: 'calc(0.5rem - 2px)',
-        sm: 'calc(0.5rem - 4px)',
+        lg: '1.5rem',
+        md: 'calc(1.5rem - 2px)',
+        sm: 'calc(1.5rem - 4px)',
       },
       keyframes: {
         'accordion-down': {
