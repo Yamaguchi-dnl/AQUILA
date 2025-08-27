@@ -22,7 +22,7 @@ export function GoldenVisaSummary() {
                         O caminho para Portugal com o Golden Visa
                     </h2>
                     <p className="mt-4 text-lg text-primary-foreground/90 max-w-lg">
-                        O Golden Visa é o visto de residência em países da União Europeia por meio de investimentos. Ao investir em nossos fundos de investimentos, você e sua família podem conquistar o direito de residir em Portugal, ter acesso à educação, saúde e demais direitos de qualquer cidadão com residência permanente. Com a Aquila Fund FCR, você tem acesso a fundos elegíveis que facilitam a obtenção deste valioso documento.
+                        O Golden Visa é o seu passaporte para a União Europeia. Ao investir em nossos fundos elegíveis, você e sua família garantem o direito de residir em Portugal, com acesso a todos os benefícios de um cidadão europeu, como educação e saúde de qualidade.
                     </p>
                     <Button asChild variant="secondary" className="mt-8 text-base">
                         <Link href="/golden-visa">
