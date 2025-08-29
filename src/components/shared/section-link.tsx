@@ -23,6 +23,7 @@ const SectionLink: React.FC<SectionLinkProps> = ({
 }) => {
   return (
     <div className={`relative w-full ${className}`} aria-hidden="true">
+        <div className="max-w-4xl mx-auto">
       <svg
         viewBox="0 0 100 20"
         preserveAspectRatio="none"
@@ -38,9 +39,10 @@ const SectionLink: React.FC<SectionLinkProps> = ({
           <polygon points="0,20 100,8 100,20 0,20" fill={bottomColor} />
         ) : (
           // “quebrada/zig-zag” (mais fiel ao print)
-          <polygon points="0,20 52,9 100,9 100,20 0,20" fill={bottomColor} />
+          <polygon points="0,16 52,9 100,9 100,20 0,20" fill={bottomColor} />
         )}
       </svg>
+      </div>
     </div>
   );
 };
