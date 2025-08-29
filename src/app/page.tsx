@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <div className="hidden md:block -mt-48">
+      <div className="hidden md:block">
         <SectionLink topColor="hsl(var(--card))" bottomColor="hsl(var(--primary))" height={160} variant="quebrada" />
       </div>
       <AboutSummary />
