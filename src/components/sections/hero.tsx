@@ -1,13 +1,11 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight, PlayCircle } from 'lucide-react';
 import { AnimatedSection } from '../shared/animated-section';
 
 export function Hero() {
   return (
     <section className="relative w-full min-h-[650px] flex items-center p-0 bg-card">
-       <div className="absolute inset-0 bg-black/60"></div>
       <div className="container z-10">
         <div className='max-w-2xl'>
             <AnimatedSection delay={0.1}>
