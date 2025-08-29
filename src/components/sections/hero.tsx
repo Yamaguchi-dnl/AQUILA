@@ -2,10 +2,11 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowRight, PlayCircle } from 'lucide-react';
 import { AnimatedSection } from '../shared/animated-section';
+import { HeroTransition } from './hero-transition';
 
 export function Hero() {
   return (
-    <section className="relative w-full min-h-[650px] flex items-center p-0 bg-card">
+    <section className="relative w-full bg-card pt-24 pb-48">
       <div className="container z-10">
         <div className='max-w-2xl'>
             <AnimatedSection delay={0.1}>
@@ -33,6 +34,7 @@ export function Hero() {
             </AnimatedSection>
         </div>
       </div>
+      <HeroTransition />
     </section>
   );
 }

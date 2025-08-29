@@ -27,11 +27,11 @@ const strategySteps = [
 
 export function InvestmentStrategy() {
   return (
-    <section id="investment-strategy" className="bg-gradient-to-r from-black to-zinc-900 text-primary-foreground pb-24 shadow-md">
+    <section id="investment-strategy" className="bg-background text-foreground pb-24 shadow-md">
       <div className="container">
         <AnimatedSection>
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className="font-headline text-3xl md:text-4xl text-primary-foreground font-bold">Estratégia de investimento: o caminho para o sucesso</h2>
+            <h2 className="font-headline text-3xl md:text-4xl text-primary font-bold">Estratégia de investimento: o caminho para o sucesso</h2>
           </div>
         </AnimatedSection>
         <div className="mt-24 flex items-center justify-center">
