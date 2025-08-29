@@ -6,9 +6,9 @@ import Image from 'next/image';
 
 export function Hero() {
   return (
-    <section className="w-full bg-card z-10">
+    <section className="w-full bg-card z-10 py-16 md:py-20">
       <div className="container z-10 grid md:grid-cols-2 gap-8 items-center">
-        <div className="max-w-2xl order-last md:order-first md:pt-8 md:pb-8">
+        <div className="max-w-2xl order-last md:order-first">
             <AnimatedSection delay={0.1}>
                 <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-foreground">
                     Investimentos <span className="text-primary">Inteligentes</span> <span className="block">para o seu Futuro</span>
