@@ -31,7 +31,7 @@ export function Header() {
     return (
         <header className="fixed top-0 z-50 w-full transition-colors duration-300 bg-card/80 backdrop-blur-sm border-b">
             <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
-                <Logo variant={'default'} />
+                <Logo />
                  <nav className="hidden md:flex items-center absolute left-1/2 -translate-x-1/2" />
                  <div className="flex items-center justify-end gap-2">
                     <Button asChild className="hidden sm:flex" variant={'default'}>
@@ -54,7 +54,7 @@ export function Header() {
   return (
     <header className="fixed top-0 z-50 w-full transition-colors duration-300 bg-card/80 backdrop-blur-sm border-b">
       <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
-        <Logo variant={'default'} />
+        <Logo />
         <nav className="hidden md:flex items-center absolute left-1/2 -translate-x-1/2">
           {navItems.map((item) =>
             item.subItems ? (
