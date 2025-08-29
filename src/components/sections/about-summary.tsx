@@ -10,7 +10,10 @@ export function AboutSummary() {
         <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
           <div>
             <AnimatedSection>
-              <h2 className="font-headline text-3xl md:text-4xl text-primary font-bold">Seu capital, nossa expertise</h2>
+              <h2 className="text-sm uppercase tracking-widest text-muted-foreground">
+                  <Link href="/sobre">Sobre Nós</Link>
+              </h2>
+              <h3 className="font-headline text-3xl md:text-4xl text-primary font-bold mt-2">Seu capital, nossa expertise</h3>
             </AnimatedSection>
             <AnimatedSection delay={0.1}>
               <div className="mt-6 space-y-4 text-muted-foreground prose prose-lg max-w-none">
