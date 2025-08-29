@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <SectionLink topColor="hsl(var(--card))" bottomColor="hsl(var(--primary))" height={120} variant="quebrada" />
+      <SectionLink topColor="hsl(var(--card))" bottomColor="hsl(var(--primary))" height={160} variant="quebrada" />
       <AboutSummary />
       <InvestmentStrategy />
       <FundsSummary />

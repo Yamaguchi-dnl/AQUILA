@@ -17,7 +17,7 @@ interface SectionLinkProps {
 const SectionLink: React.FC<SectionLinkProps> = ({
   topColor = "#ffffff",
   bottomColor = "#000000",
-  height = 120,
+  height = 160,
   variant = "quebrada",
   className = "",
 }) => {
