@@ -6,14 +6,12 @@ import { GoldenVisaSummary } from '@/components/sections/golden-visa-summary';
 import { InvestmentCycle } from '@/components/sections/investment-cycle';
 import { InvestmentStrategy } from '@/components/sections/investment-strategy';
 import { ContactSummary } from '@/components/sections/contact-summary';
-import { StatsCard } from '@/components/sections/stats-card';
 
 export default function Home() {
   return (
     <>
       <Hero />
       <div className="relative z-10">
-        <StatsCard />
         <AboutSummary />
         <FundsSummary />
         <WhyPortugal />
