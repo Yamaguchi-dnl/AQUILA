@@ -8,7 +8,7 @@ export function Hero() {
   return (
     <section className="w-full bg-card z-10">
       <div className="container z-10 grid md:grid-cols-2 gap-8 items-center">
-        <div className='max-w-2xl order-last md:order-first pt-8 pb-0 md:py-20'>
+        <div className='max-w-2xl order-last md:order-first pt-8 pb-0 md:pt-20'>
             <AnimatedSection delay={0.1}>
                 <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-foreground">
                     Investimentos <span className="text-primary">Inteligentes</span> <span className="block">para o seu Futuro</span>
