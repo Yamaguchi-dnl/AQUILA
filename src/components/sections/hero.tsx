@@ -36,7 +36,7 @@ export function Hero() {
         <AnimatedSection delay={0.2}>
           <div className="hidden md:block">
             <Image 
-              src="https://ik.imagekit.io/leosmc2zb/AQUILA%20FOUND%20HERO.png"
+              src="https://ik.imagekit.io/leosmc2zb/AQUILA%20FOUND%20HERO(1).png"
               alt="Imagem da Hero Section Aquila"
               width={600}
               height={600}
