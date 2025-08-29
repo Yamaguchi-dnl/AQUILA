@@ -36,10 +36,10 @@ export function Hero() {
         <AnimatedSection delay={0.2}>
           <div className="hidden md:block">
             <Image 
-              src="https://picsum.photos/600/700"
+              src="https://picsum.photos/600/600"
               alt="Investimento e crescimento"
               width={600}
-              height={700}
+              height={600}
               className="rounded-lg object-cover"
               data-ai-hint="abstract investment growth"
             />
