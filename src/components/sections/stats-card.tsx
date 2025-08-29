@@ -15,7 +15,7 @@ export function StatsCard() {
     return (
         <div className="relative z-20">
             <div className="">
-                <Card className="p-8 bg-card/10 backdrop-blur-md border-primary-foreground/20">
+                <Card className="p-8 bg-card/10 backdrop-blur-md border-primary-foreground/20 shadow-xl">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-y-8 text-center">
                         {stats.map((stat, index) => (
                             <div key={stat.label} className="relative flex flex-col items-center justify-center">
