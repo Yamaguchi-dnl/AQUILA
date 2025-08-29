@@ -27,7 +27,7 @@ const strategySteps = [
 
 export function InvestmentStrategy() {
   return (
-    <section id="investment-strategy" className="bg-gradient-to-r from-[#121e34] to-[#22385e] text-primary-foreground rounded-t-3xl pb-48 shadow-md">
+    <section id="investment-strategy" className="bg-gradient-to-r from-black to-zinc-900 text-primary-foreground rounded-t-3xl pb-48 shadow-md">
       <div className="container">
         <AnimatedSection>
           <div className="text-center max-w-3xl mx-auto">
@@ -35,7 +35,7 @@ export function InvestmentStrategy() {
           </div>
         </AnimatedSection>
         <div className="mt-24 flex items-center justify-center">
-            <div className="strategy-cards-container grid grid-cols-1 gap-8 md:flex md:gap-0">
+            <div className="strategy-cards-container">
                 {strategySteps.map((step, index) => (
                     <div key={index} className="strategy-card rounded-bl-lg rounded-tr-lg p-0.5 hover:bg-gradient-to-r from-highlight to-highlight/80">
                         <div className="bg-card rounded-bl-lg rounded-tr-lg h-full p-6 flex flex-col justify-center text-center">

@@ -39,7 +39,7 @@ const benefits = [
 
 export function WhyPortugal() {
   return (
-    <section id="why-portugal" className="bg-gradient-to-r from-[#121e34] to-[#22385e] text-primary-foreground overflow-hidden">
+    <section id="why-portugal" className="bg-gradient-to-r from-black to-zinc-900 text-primary-foreground overflow-hidden">
       <div className="container">
         <AnimatedSection>
         <div className="text-center max-w-3xl mx-auto">
