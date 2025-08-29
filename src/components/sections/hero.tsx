@@ -40,7 +40,7 @@ export function Hero() {
               alt="Imagem da Hero Section Aquila"
               width={600}
               height={600}
-              className="rounded-lg object-cover"
+              className="rounded-lg object-contain"
               data-ai-hint="abstract investment growth"
             />
           </div>
