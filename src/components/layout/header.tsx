@@ -20,22 +20,11 @@ import { useEffect, useState } from "react";
 export function Header() {
   const pathname = usePathname();
   const [isMounted, setIsMounted] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
-
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Check scroll position on mount
-
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isHome = pathname === '/';
-  
   // Prevent mismatch by delaying client-specific rendering
   if (!isMounted) {
     // Render a default state on the server and initial client render
@@ -62,16 +51,10 @@ export function Header() {
     );
   }
 
-  const useWhiteText = isHome && !isScrolled;
-  const isTransparent = isHome && !isScrolled;
-
   return (
-    <header className={cn(
-        "fixed top-0 z-50 w-full transition-colors duration-300",
-        isTransparent ? "bg-transparent" : "bg-card/80 backdrop-blur-sm border-b"
-    )}>
+    <header className="fixed top-0 z-50 w-full transition-colors duration-300 bg-card/80 backdrop-blur-sm border-b">
       <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
-        <Logo variant={useWhiteText ? 'white' : 'default'} />
+        <Logo variant={'default'} />
         <nav className="hidden md:flex items-center absolute left-1/2 -translate-x-1/2">
           {navItems.map((item) =>
             item.subItems ? (
@@ -80,13 +63,8 @@ export function Header() {
                   <Button
                     variant="ghost"
                     className={cn(
-                      "text-sm font-medium transition-colors px-3 py-2 gap-1 hover:underline underline-offset-4",
-                      useWhiteText
-                        ? "text-primary-foreground hover:text-white" 
-                        : "text-foreground hover:text-primary",
-                      item.subItems.some((sub) => pathname.startsWith(sub.href))
-                        ? useWhiteText ? "text-white" : "text-primary"
-                        : useWhiteText ? "text-primary-foreground/80" : "text-foreground/80"
+                      "text-sm font-medium transition-colors px-3 py-2 gap-1 hover:underline underline-offset-4 text-foreground/80 hover:text-primary",
+                      item.subItems.some((sub) => pathname.startsWith(sub.href)) && "text-primary"
                     )}
                   >
                     {item.label}
@@ -111,13 +89,8 @@ export function Header() {
                 key={item.href}
                 href={item.href!}
                 className={cn(
-                  "text-sm font-medium transition-colors px-3 py-2 hover:underline underline-offset-4",
-                   useWhiteText 
-                    ? "text-primary-foreground hover:text-white" 
-                    : "text-foreground hover:text-primary",
-                  pathname === item.href 
-                    ? useWhiteText ? "text-white" : "text-primary"
-                    : useWhiteText ? "text-primary-foreground/80" : "text-foreground/80"
+                  "text-sm font-medium transition-colors px-3 py-2 hover:underline underline-offset-4 text-foreground/80 hover:text-primary",
+                  pathname === item.href && "text-primary"
                 )}
               >
                 {item.label}
@@ -126,12 +99,12 @@ export function Header() {
           )}
         </nav>
         <div className="flex items-center justify-end gap-2">
-          <Button asChild className="hidden sm:flex" variant={isTransparent ? 'secondary' : 'default'}>
+          <Button asChild className="hidden sm:flex" variant={'default'}>
             <Link href="/contato">Fale com um especialista</Link>
           </Button>
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className={cn("md:hidden", isTransparent && "text-white hover:bg-white/10 hover:text-white")}>
+              <Button variant="ghost" size="icon" className="md:hidden">
                 <Menu className="h-4 w-4" />
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
