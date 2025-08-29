@@ -6,7 +6,7 @@ import { StatsCard } from "./stats-card";
 
 export function AboutSummary() {
   return (
-    <section id="sobre" className="bg-primary text-primary-foreground pt-48 pb-24 -mt-24">
+    <section id="sobre" className="bg-primary text-primary-foreground geometric-clip pt-48 pb-24 -mt-24 md:-mt-32">
       <div className="container relative z-20">
         <StatsCard />
         <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center mt-24">

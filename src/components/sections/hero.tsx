@@ -2,7 +2,6 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowRight, PlayCircle } from 'lucide-react';
 import { AnimatedSection } from '../shared/animated-section';
-import { HeroTransition } from './hero-transition';
 
 export function Hero() {
   return (
@@ -34,7 +33,6 @@ export function Hero() {
             </AnimatedSection>
         </div>
       </div>
-      <HeroTransition />
     </section>
   );
 }
