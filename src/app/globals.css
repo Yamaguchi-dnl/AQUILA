@@ -121,4 +121,8 @@
   .diagonal-clip {
     clip-path: polygon(0 8%, 100% 0, 100% 100%, 0% 100%);
   }
+  .geometric-clip {
+    clip-path: polygon(0% 15%, 25% 15%, 50% 0%, 75% 15%, 100% 15%, 100% 100%, 0% 100%);
+  }
+
 }

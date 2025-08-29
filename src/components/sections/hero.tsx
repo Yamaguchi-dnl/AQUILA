@@ -7,7 +7,8 @@ import { AnimatedSection } from '../shared/animated-section';
 export function Hero() {
   return (
     <section className="relative w-full min-h-[650px] flex items-center p-0 bg-card">
-      <div className="container">
+       <div className="absolute inset-0 bg-black/60"></div>
+      <div className="container z-10">
         <div className='max-w-2xl'>
             <AnimatedSection delay={0.1}>
                 <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-foreground">
