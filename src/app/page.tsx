@@ -6,13 +6,13 @@ import { InvestmentCycle } from '@/components/sections/investment-cycle';
 import { ContactSummary } from '@/components/sections/contact-summary';
 import { Hero } from '@/components/sections/hero';
 import { InvestmentStrategy } from '@/components/sections/investment-strategy';
-import { SectionDivider } from '@/components/shared/section-divider';
+import SectionLink from '@/components/shared/section-link';
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <SectionDivider />
+      <SectionLink topColor="hsl(var(--card))" bottomColor="hsl(var(--primary))" height={120} variant="quebrada" />
       <AboutSummary />
       <InvestmentStrategy />
       <FundsSummary />
