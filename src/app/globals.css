@@ -117,9 +117,4 @@
       @apply md:translate-x-20;
     }
   }
-  
-  .geometric-clip {
-     clip-path: polygon(0 8%, 100% 0, 100% 100%, 0% 100%);
-  }
-
 }
