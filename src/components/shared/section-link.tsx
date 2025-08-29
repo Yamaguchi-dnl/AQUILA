@@ -15,15 +15,15 @@ interface SectionLinkProps {
 }
 
 const SectionLink: React.FC<SectionLinkProps> = ({
-  topColor = "#ffffff",
-  bottomColor = "#000000",
+  topColor = "hsl(var(--card))",
+  bottomColor = "hsl(var(--primary))",
   height = 160,
   variant = "quebrada",
   className = "",
 }) => {
   return (
     <div className={`relative w-full ${className}`} aria-hidden="true">
-        <div className="max-w-4xl ml-auto">
+        <div className="max-w-xl ml-auto">
       <svg
         viewBox="0 0 100 20"
         preserveAspectRatio="none"
