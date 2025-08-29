@@ -39,7 +39,7 @@ const SectionLink: React.FC<SectionLinkProps> = ({
           <polygon points="0,20 100,8 100,20 0,20" fill={bottomColor} />
         ) : (
           // “quebrada/zig-zag” (mais fiel ao print)
-          <polygon points="2,16 52,9 100,9 100,20 2,20" fill={bottomColor} />
+          <polygon points="10,20 52,9 100,13 100,20 0,20" fill={bottomColor} />
         )}
       </svg>
       </div>
