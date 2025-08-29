@@ -2,11 +2,12 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowRight, PlayCircle } from 'lucide-react';
 import { AnimatedSection } from '../shared/animated-section';
+import Image from 'next/image';
 
 export function Hero() {
   return (
     <section className="w-full bg-card pt-32 pb-24 z-10">
-      <div className="container z-10">
+      <div className="container z-10 grid md:grid-cols-2 gap-8 items-center">
         <div className='max-w-2xl'>
             <AnimatedSection delay={0.1}>
                 <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-foreground">
@@ -32,6 +33,18 @@ export function Hero() {
                 </div>
             </AnimatedSection>
         </div>
+        <AnimatedSection delay={0.2}>
+          <div className="hidden md:block">
+            <Image 
+              src="https://picsum.photos/600/700"
+              alt="Investimento e crescimento"
+              width={600}
+              height={700}
+              className="rounded-lg object-cover"
+              data-ai-hint="abstract investment growth"
+            />
+          </div>
+        </AnimatedSection>
       </div>
     </section>
   );
