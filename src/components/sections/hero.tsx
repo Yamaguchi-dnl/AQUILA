@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 export function Hero() {
   return (
-    <section className="w-full bg-card pt-32 pb-0 z-10">
+    <section className="w-full bg-card pt-32 pb-16 md:pb-0 z-10">
       <div className="container z-10 grid md:grid-cols-2 gap-8 items-center">
         <div className='max-w-2xl order-last md:order-first'>
             <AnimatedSection delay={0.1}>
@@ -34,7 +34,7 @@ export function Hero() {
             </AnimatedSection>
         </div>
         <AnimatedSection delay={0.2}>
-          <div>
+          <div className="order-first md:order-last">
             <Image 
               src="https://ik.imagekit.io/leosmc2zb/AQUILA%20FOUND%20HERO(1).png"
               alt="Imagem da Hero Section Aquila"
