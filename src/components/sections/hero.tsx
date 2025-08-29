@@ -5,7 +5,7 @@ import { AnimatedSection } from '../shared/animated-section';
 
 export function Hero() {
   return (
-    <section className="relative w-full bg-card pt-24 pb-24 z-10">
+    <section className="w-full bg-card pt-24 pb-24 z-10">
       <div className="container z-10">
         <div className='max-w-2xl'>
             <AnimatedSection delay={0.1}>
