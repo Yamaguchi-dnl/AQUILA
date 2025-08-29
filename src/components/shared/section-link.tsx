@@ -23,7 +23,7 @@ const SectionLink: React.FC<SectionLinkProps> = ({
 }) => {
   return (
     <div className={`relative w-full ${className}`} aria-hidden="true">
-        <div className="max-w-xl ml-auto">
+        <div className="ml-auto w-full">
       <svg
         viewBox="0 0 100 20"
         preserveAspectRatio="none"
