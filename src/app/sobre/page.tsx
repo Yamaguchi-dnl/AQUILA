@@ -48,7 +48,7 @@ export default function SobrePage() {
 
       <section className="bg-card">
         <div className="container text-center">
-            <h2 className="font-headline text-3xl md:text-4xl text-primary uppercase">Nossos Parceiros</h2>
+            <h2 className="font-headline text-3xl md:text-4xl lg:text-[2.75rem] lg:leading-[1.1] text-primary uppercase">Nossos Parceiros</h2>
             <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
                 Colaboramos com líderes de mercado para oferecer estrutura, segurança e as melhores oportunidades para nossos investidores.
             </p>
