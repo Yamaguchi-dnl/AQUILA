@@ -27,21 +27,21 @@ const strategySteps = [
 
 export function InvestmentStrategy() {
   return (
-    <section id="investment-strategy" className="bg-background text-foreground pb-24">
+    <section id="investment-strategy" className="bg-primary text-primary-foreground pb-24">
       <div className="container">
         <AnimatedSection>
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className="font-headline text-3xl md:text-4xl lg:text-[2.75rem] lg:leading-[1.1] text-primary uppercase">Estratégia de investimento: o caminho para o sucesso</h2>
+            <h2 className="font-headline text-3xl md:text-4xl lg:text-[2.75rem] lg:leading-[1.1] text-primary-foreground uppercase">Estratégia de investimento: o caminho para o sucesso</h2>
           </div>
         </AnimatedSection>
         <div className="mt-24 flex items-center justify-center">
             <div className="strategy-cards-container">
                 {strategySteps.map((step, index) => (
                     <div key={index} className="strategy-card rounded-bl-lg rounded-tr-lg p-0.5 hover:bg-gradient-to-r from-highlight to-highlight/80">
-                        <div className="bg-card rounded-bl-lg rounded-tr-lg h-full p-6 flex flex-col justify-center text-center">
-                            <step.icon className="h-10 w-10 text-primary mb-4 mx-auto" />
-                            <h3 className="text-xl text-primary font-headline uppercase">{step.title}</h3>
-                            <p className="text-muted-foreground mt-2 text-sm">{step.description}</p>
+                        <div className="bg-card/10 rounded-bl-lg rounded-tr-lg h-full p-6 flex flex-col justify-center text-center">
+                            <step.icon className="h-10 w-10 text-primary-foreground mb-4 mx-auto" />
+                            <h3 className="text-xl text-primary-foreground font-headline uppercase">{step.title}</h3>
+                            <p className="text-primary-foreground/80 mt-2 text-sm">{step.description}</p>
                         </div>
                     </div>
                 ))}
