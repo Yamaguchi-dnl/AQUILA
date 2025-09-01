@@ -14,7 +14,7 @@ export function AboutSummary() {
       <div className="container relative z-20 pt-16 pb-24">
         <StatsCard />
         <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center mt-24">
-          <div className="order-first md:order-last">
+          <div className="order-first">
             <AnimatedSection delay={0.1}>
             <Image 
                 src="https://picsum.photos/600/400"
@@ -26,7 +26,7 @@ export function AboutSummary() {
             />
             </AnimatedSection>
           </div>
-           <div className="order-last md:order-first">
+           <div className="order-last">
             <AnimatedSection>
               <h2 className="text-sm uppercase tracking-widest text-primary-foreground/60">
                   <Link href="/sobre">Sobre Nós</Link>
