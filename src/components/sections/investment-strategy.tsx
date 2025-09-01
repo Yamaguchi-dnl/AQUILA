@@ -43,7 +43,7 @@ export function InvestmentStrategy() {
         <div className="mt-24 flex items-center justify-center">
             <div className="strategy-cards-container">
                 {strategySteps.map((step, index) => (
-                    <div key={index} className="strategy-card rounded-lg border border-transparent transition-colors hover:border-primary">
+                    <div key={index} className="strategy-card rounded-lg">
                         <div className="bg-card rounded-lg h-full p-6 flex flex-col justify-center text-center">
                             <step.icon className="h-10 w-10 text-primary mb-4 mx-auto" />
                             <h3 className="text-xl text-primary font-headline uppercase">{step.title}</h3>
