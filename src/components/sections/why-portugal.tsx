@@ -70,8 +70,8 @@ export function WhyPortugal() {
               {benefits.map((benefit, index) => (
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pl-4">
                     <Card className="bg-primary-foreground/5 border-primary-foreground/10 text-primary-foreground h-full hover:bg-primary-foreground/10 transition-colors">
-                        <CardContent className="p-6 flex flex-col items-center justify-center text-center gap-4 h-[350px] w-[280px] mx-auto">
-                            <div className="flex-shrink-0 rounded-full bg-primary-foreground/10 p-3">
+                        <CardContent className="p-6">
+                            <div className="flex-shrink-0 rounded-full bg-primary-foreground/10 p-3 w-fit mb-4">
                                 <benefit.icon className="h-7 w-7" />
                             </div>
                             <div>
