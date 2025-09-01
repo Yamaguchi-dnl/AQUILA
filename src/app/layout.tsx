@@ -4,6 +4,20 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Toaster } from "@/components/ui/toaster";
 import { Analytics } from '@vercel/analytics/react';
+import { DM_Sans, Inter } from 'next/font/google';
+import { cn } from '@/lib/utils';
+
+const fontSans = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans',
+});
+
+const fontHeadline = DM_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '700'],
+  variable: '--font-headline',
+});
+
 
 export const metadata: Metadata = {
   title: {
@@ -47,7 +61,7 @@ export default function RootLayout({
   return (
     <html lang="pt-PT" suppressHydrationWarning>
       <head />
-      <body className="font-headline antialiased bg-background text-foreground">
+      <body className={cn("font-sans antialiased bg-background text-foreground", fontSans.variable, fontHeadline.variable)}>
         <div className="flex flex-col min-h-screen">
           <Header />
           <main className="flex-grow">{children}</main>

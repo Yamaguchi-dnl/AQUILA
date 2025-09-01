@@ -28,7 +28,7 @@ export function AboutSummary() {
           </div>
            <div className="order-first md:order-last">
             <AnimatedSection>
-              <h2 className="text-sm uppercase tracking-widest text-primary-foreground/60">
+              <h2 className="text-sm uppercase tracking-widest text-primary-foreground/60 font-headline">
                   <Link href="/sobre">Sobre Nós</Link>
               </h2>
               <h3 className="font-headline text-3xl md:text-4xl text-primary-foreground mt-2 uppercase">Seu capital, nossa expertise</h3>

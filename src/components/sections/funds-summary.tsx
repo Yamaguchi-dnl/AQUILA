@@ -24,7 +24,7 @@ export function FundsSummary() {
             <AnimatedSection key={fund.slug} delay={index * 0.1} className="h-full">
             <Card className="flex flex-col bg-card h-full">
                 <CardHeader>
-                    <CardTitle className="text-2xl">{fund.nome}</CardTitle>
+                    <CardTitle className="text-2xl font-headline">{fund.nome}</CardTitle>
                     <CardDescription>{fund.subtitulo}</CardDescription>
                 </CardHeader>
                 <CardContent className="flex-grow space-y-2">
@@ -44,7 +44,7 @@ export function FundsSummary() {
             <AnimatedSection key={fund.slug} delay={(activeFunds.length + index) * 0.1} className="h-full">
             <Card className="flex flex-col bg-muted/50 border-dashed hover:shadow-none h-full">
                 <CardHeader>
-                    <CardTitle className="text-2xl">{fund.nome}</CardTitle>
+                    <CardTitle className="text-2xl font-headline">{fund.nome}</CardTitle>
                 </CardHeader>
                 <CardContent className="flex-grow">
                     <p className="text-muted-foreground">(Aguardando informações)</p>

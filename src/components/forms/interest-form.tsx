@@ -76,7 +76,7 @@ export function InterestFormDialog({ fundName }: InterestFormDialogProps) {
   if (isSubmitSuccessful && !isSubmitting) {
       return (
         <div className="w-full text-center p-4 bg-green-100 dark:bg-green-900 border border-green-200 dark:border-green-800 rounded-md">
-            <h3 className="font-semibold text-green-800 dark:text-green-200">Obrigado!</h3>
+            <h3 className="font-semibold text-green-800 dark:text-green-200 font-headline">Obrigado!</h3>
             <p className="text-sm text-green-700 dark:text-green-300">Seu interesse foi registrado com sucesso.</p>
              <Button variant="ghost" onClick={() => { form.reset(); setIsOpen(false); }} className="mt-2 text-xs h-auto py-1 px-2">
                 Fechar
@@ -92,7 +92,7 @@ export function InterestFormDialog({ fundName }: InterestFormDialogProps) {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Seja o primeiro a saber</DialogTitle>
+          <DialogTitle className="font-headline">Seja o primeiro a saber</DialogTitle>
           <DialogDescription>
             Registre seu interesse no fundo {fundName} e avisaremos quando estiver disponível.
           </DialogDescription>

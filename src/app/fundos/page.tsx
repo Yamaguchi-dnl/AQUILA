@@ -42,7 +42,7 @@ export default function FundosPage() {
                         </div>
                         <div>
                             <Card>
-                                <CardHeader><CardTitle>Detalhes do Fundo</CardTitle></CardHeader>
+                                <CardHeader><CardTitle className="font-headline">Detalhes do Fundo</CardTitle></CardHeader>
                                 <CardContent>
                                     <dl>
                                         <FundDetail label="Tipo" value={fund.detalhes.tipo} />

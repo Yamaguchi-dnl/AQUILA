@@ -18,7 +18,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        headline: ['DM Sans', 'sans-serif'],
+        sans: ['var(--font-sans)', 'sans-serif'],
+        headline: ['var(--font-headline)', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {

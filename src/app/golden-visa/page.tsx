@@ -110,7 +110,7 @@ export default function GoldenVisaPage() {
                      <div className="flex items-start gap-4 p-4 border border-border rounded-lg bg-card">
                         <ShieldAlert className="h-6 w-6 text-amber-600 shrink-0 mt-1" />
                         <div>
-                             <h4 className="font-semibold text-foreground">Aviso Legal</h4>
+                             <h4 className="font-semibold text-foreground font-headline">Aviso Legal</h4>
                              <p className="text-sm text-muted-foreground mt-1">As informações nesta página são para fins informativos e não constituem aconselhamento jurídico ou fiscal. As condições e regulamentos do programa Golden Visa estão sujeitos a alterações pelo governo português. Recomendamos consultar um advogado de imigração para obter aconselhamento específico à sua situação.</p>
                         </div>
                     </div>

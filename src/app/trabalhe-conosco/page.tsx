@@ -16,7 +16,7 @@ export default function TrabalheConoscoPage() {
       <section>
         <div className="container max-w-2xl">
           <div className="bg-card p-8 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-bold text-foreground mb-2">Envie sua Candidatura</h2>
+            <h2 className="text-2xl font-bold text-foreground mb-2 font-headline">Envie sua Candidatura</h2>
             <p className="text-muted-foreground mb-6">Se você é um profissional motivado e busca desafios, gostaríamos de conhecer você. </p>
             <JobApplicationForm />
           </div>

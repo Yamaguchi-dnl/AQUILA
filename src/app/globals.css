@@ -3,13 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  @font-face {
-    font-family: 'DM Sans';
-    src: url('/fonts/DMSans-Light.ttf') format('truetype');
-    font-weight: 300;
-    font-style: normal;
-  }
-  
   :root {
     --background: 0 0% 100%; /* White */
     --foreground: 0 0% 10%; /* Near Black */
@@ -107,7 +100,7 @@
   }
 
   .strategy-card {
-    @apply relative w-full md:w-[280px] h-auto md:h-[350px] bg-white shadow-2xl transition-all duration-300 ease-out;
+    @apply relative w-full md:w-[280px] h-auto md:h-[350px] shadow-2xl transition-all duration-300 ease-out;
   }
   
   @media (min-width: 768px) {
