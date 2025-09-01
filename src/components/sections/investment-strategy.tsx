@@ -1,3 +1,5 @@
+"use client";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Lightbulb, Target, TrendingUp, Award } from "lucide-react";
 import { AnimatedSection } from "../shared/animated-section";
@@ -6,22 +8,22 @@ const strategySteps = [
     {
         icon: Lightbulb,
         title: "Origem de negócios",
-        description: "Identificamos mercados e oportunidades de investimento através de nossa expertise e vasta rede de contatos."
+        description: "Nossa expertise e nossa vasta rede de relacionamentos nos permitem identificar mercados relevantes e oportunidades atraentes de investimentos."
     },
     {
         icon: Target,
         title: "Seleção e Due Diligence",
-        description: "Análise rigorosa e ágil para garantir os melhores acordos de aquisição e venda."
+        description: "Realizamos uma análise rigorosa e rápida das perspectivas de aquisição para alcançar acordos de compra e venda vinculativos em tempo hábil."
     },
     {
         icon: TrendingUp,
         title: "Criação de valor",
-        description: "Otimizamos o valor dos ativos com estratégias sólidas para potencializar o retorno de cada subfundo."
+        description: "Implementamos estratégias sólidas em cada subfundo para otimizar o valor dos ativos e potencializar o retorno dos investimentos."
     },
     {
         icon: Award,
         title: "Exit",
-        description: "Histórico de saídas bem-sucedidas, garantindo a execução no momento certo para maximizar o retorno."
+        description: "Possuímos habilidades comprovadas em transações e um histórico de múltiplas saídas bem-sucedidas, garantindo que o momento certo para a venda seja identificado e executado."
     }
 ];
 
