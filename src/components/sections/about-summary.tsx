@@ -6,23 +6,15 @@ import { StatsCard } from "./stats-card";
 
 export function AboutSummary() {
   return (
-    <section id="sobre" className="bg-primary text-primary-foreground overflow-hidden">
+    <section id="sobre" className="bg-primary text-primary-foreground overflow-hidden relative">
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[radial-gradient(40%_50%_at_50%_50%,rgba(255,255,255,0.05)_0%,rgba(255,255,255,0)_100%)]"
+      />
       <div className="container relative z-20 pt-16 pb-24">
         <StatsCard />
         <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center mt-24">
-          <div className="hidden md:block">
-            <AnimatedSection delay={0.1}>
-            <Image 
-                src="https://picsum.photos/600/400"
-                alt="Escritório moderno"
-                width={600}
-                height={400}
-                className="rounded-lg object-cover shadow-xl"
-                data-ai-hint="modern office"
-            />
-            </AnimatedSection>
-          </div>
-          <div>
+           <div>
             <AnimatedSection>
               <h2 className="text-sm uppercase tracking-widest text-primary-foreground/60">
                   <Link href="/sobre">Sobre Nós</Link>
@@ -46,6 +38,18 @@ export function AboutSummary() {
               <Button asChild size="lg" className="mt-8" variant="secondary">
                 <Link href="/contato">FALE COM UM ESPECIALISTA!</Link>
               </Button>
+            </AnimatedSection>
+          </div>
+          <div className="hidden md:block">
+            <AnimatedSection delay={0.1}>
+            <Image 
+                src="https://picsum.photos/600/400"
+                alt="Escritório moderno"
+                width={600}
+                height={400}
+                className="rounded-lg object-cover shadow-xl"
+                data-ai-hint="modern office"
+            />
             </AnimatedSection>
           </div>
         </div>

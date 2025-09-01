@@ -16,7 +16,11 @@ export function Footer() {
 
   return (
     <footer className="bg-primary text-primary-foreground/80 relative z-10">
-      <div className="container py-12">
+       <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[radial-gradient(40%_50%_at_50%_50%,rgba(255,25F5,255,0.05)_0%,rgba(255,255,255,0)_100%)]"
+      />
+      <div className="container py-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-1">
             <Logo />

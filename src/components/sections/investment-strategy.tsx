@@ -29,8 +29,12 @@ const strategySteps = [
 
 export function InvestmentStrategy() {
   return (
-    <section id="investment-strategy" className="bg-primary text-primary-foreground pb-24">
-      <div className="container">
+    <section id="investment-strategy" className="bg-primary text-primary-foreground pb-24 relative">
+       <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[radial-gradient(40%_50%_at_50%_50%,rgba(255,255,255,0.05)_0%,rgba(255,255,255,0)_100%)]"
+      />
+      <div className="container relative z-10">
         <AnimatedSection>
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="font-headline text-3xl md:text-4xl lg:text-[2.75rem] lg:leading-[1.1] text-primary-foreground uppercase">Estratégia de investimento: o caminho para o sucesso</h2>
@@ -39,7 +43,7 @@ export function InvestmentStrategy() {
         <div className="mt-24 flex items-center justify-center">
             <div className="strategy-cards-container">
                 {strategySteps.map((step, index) => (
-                    <div key={index} className="strategy-card rounded-lg p-0.5 hover:bg-gradient-to-r from-highlight to-highlight/80">
+                    <div key={index} className="strategy-card rounded-lg border-transparent border transition-colors hover:border-primary">
                         <div className="bg-card rounded-lg h-full p-6 flex flex-col justify-center text-center">
                             <step.icon className="h-10 w-10 text-primary mb-4 mx-auto" />
                             <h3 className="text-xl text-primary font-headline uppercase">{step.title}</h3>
