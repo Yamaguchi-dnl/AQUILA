@@ -15,7 +15,7 @@ export function FundsSummary() {
       <div className="container">
         <AnimatedSection>
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="font-headline text-3xl md:text-4xl text-primary font-bold">Nossos Fundos de Investimento</h2>
+          <h2 className="font-headline text-3xl md:text-4xl text-primary uppercase">Nossos Fundos de Investimento</h2>
         </div>
         </AnimatedSection>
 

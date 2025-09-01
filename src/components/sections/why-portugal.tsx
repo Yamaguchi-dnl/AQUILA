@@ -43,7 +43,7 @@ export function WhyPortugal() {
       <div className="container">
         <AnimatedSection>
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary-foreground">Por que investir em Portugal?</h2>
+          <h2 className="font-headline text-3xl md:text-4xl text-primary-foreground uppercase">Por que investir em Portugal?</h2>
         </div>
         </AnimatedSection>
         <div className="mt-12">

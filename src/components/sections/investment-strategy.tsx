@@ -31,7 +31,7 @@ export function InvestmentStrategy() {
       <div className="container">
         <AnimatedSection>
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className="font-headline text-3xl md:text-4xl text-primary font-bold">Estratégia de investimento: o caminho para o sucesso</h2>
+            <h2 className="font-headline text-3xl md:text-4xl text-primary uppercase">Estratégia de investimento: o caminho para o sucesso</h2>
           </div>
         </AnimatedSection>
         <div className="mt-24 flex items-center justify-center">
@@ -40,7 +40,7 @@ export function InvestmentStrategy() {
                     <div key={index} className="strategy-card rounded-bl-lg rounded-tr-lg p-0.5 hover:bg-gradient-to-r from-highlight to-highlight/80">
                         <div className="bg-card rounded-bl-lg rounded-tr-lg h-full p-6 flex flex-col justify-center text-center">
                             <step.icon className="h-10 w-10 text-primary mb-4 mx-auto" />
-                            <h3 className="text-xl text-primary font-bold font-headline">{step.title}</h3>
+                            <h3 className="text-xl text-primary font-headline uppercase">{step.title}</h3>
                             <p className="text-muted-foreground mt-2 text-sm">{step.description}</p>
                         </div>
                     </div>
