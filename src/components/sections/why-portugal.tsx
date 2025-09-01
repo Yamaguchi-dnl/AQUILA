@@ -38,7 +38,7 @@ const benefits = [
         description: "Aproveite incentivos fiscais e regimes especiais para investidores não residentes."
     },
     { 
-        icon: Sun, 
+        icon: Sun,
         title: "Qualidade de vida",
         description: "Desfrute de um país com excelente infraestrutura, segurança e cultura rica."
     }
