@@ -14,12 +14,24 @@ export function AboutSummary() {
       <div className="container relative z-20 pt-16 pb-24">
         <StatsCard />
         <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center mt-24">
+          <div className="order-first md:order-last">
+            <AnimatedSection delay={0.1}>
+            <Image 
+                src="https://picsum.photos/600/400"
+                alt="Escritório moderno"
+                width={600}
+                height={400}
+                className="rounded-lg object-cover shadow-xl"
+                data-ai-hint="modern office"
+            />
+            </AnimatedSection>
+          </div>
            <div className="order-last md:order-first">
             <AnimatedSection>
               <h2 className="text-sm uppercase tracking-widest text-primary-foreground/60">
                   <Link href="/sobre">Sobre Nós</Link>
               </h2>
-              <h3 className="font-headline text-3xl md:text-4xl lg:text-[2.75rem] lg:leading-[1.1] text-primary-foreground mt-2 uppercase">Seu capital, nossa expertise</h3>
+              <h3 className="font-headline text-3xl md:text-4xl text-primary-foreground mt-2 uppercase">Seu capital, nossa expertise</h3>
             </AnimatedSection>
             <AnimatedSection delay={0.1}>
               <div className="mt-6 space-y-4 text-primary-foreground/80 prose prose-lg max-w-none">
@@ -38,18 +50,6 @@ export function AboutSummary() {
               <Button asChild size="lg" className="mt-8" variant="secondary">
                 <Link href="/contato">FALE COM UM ESPECIALISTA!</Link>
               </Button>
-            </AnimatedSection>
-          </div>
-          <div className="order-first">
-            <AnimatedSection delay={0.1}>
-            <Image 
-                src="https://picsum.photos/600/400"
-                alt="Escritório moderno"
-                width={600}
-                height={400}
-                className="rounded-lg object-cover shadow-xl"
-                data-ai-hint="modern office"
-            />
             </AnimatedSection>
           </div>
         </div>

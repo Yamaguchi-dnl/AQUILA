@@ -61,7 +61,7 @@ export function WhyPortugal() {
         >
           <AnimatedSection>
             <div className="flex justify-between items-center mb-8">
-              <h2 className="font-headline text-3xl md:text-4xl lg:text-[2.75rem] lg:leading-[1.1] text-primary-foreground uppercase">Por que investir<br/>em Portugal?</h2>
+              <h2 className="font-headline text-3xl md:text-4xl text-primary-foreground uppercase">Por que investir<br/>em Portugal?</h2>
               <div className="hidden md:flex gap-2">
                   <CarouselPrevious className="static -translate-y-0 text-primary-foreground bg-primary-foreground/10 hover:bg-primary-foreground/20 border-primary-foreground/20" />
                   <CarouselNext className="static -translate-y-0 text-primary-foreground bg-primary-foreground/10 hover:bg-primary-foreground/20 border-primary-foreground/20" />
@@ -73,7 +73,7 @@ export function WhyPortugal() {
             <CarouselContent className="-ml-4">
               {benefits.map((benefit, index) => (
                 <CarouselItem key={index} className="pl-4 basis-auto">
-                    <Card className="bg-primary-foreground/5 border-primary-foreground/10 text-primary-foreground hover:bg-primary-foreground/10 transition-colors h-[320px] w-[280px]">
+                    <Card className="bg-primary-foreground/5 border-primary-foreground/10 text-primary-foreground hover:bg-primary-foreground/10 transition-colors h-[280px] w-[280px]">
                         <CardContent className="p-6 h-full flex flex-col items-center justify-center text-center">
                             <div className="flex-shrink-0 rounded-full bg-primary-foreground/10 p-3 w-fit mb-4">
                                 <benefit.icon className="h-7 w-7" />
