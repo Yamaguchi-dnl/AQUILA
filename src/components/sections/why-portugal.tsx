@@ -49,7 +49,7 @@ export function WhyPortugal() {
     <section id="why-portugal" className="bg-gradient-to-r from-black to-zinc-900 text-primary-foreground overflow-hidden relative">
        <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(30%_40%_at_5%_5%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%),radial-gradient(30%_40%_at_95%_95%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)]"
+        className="absolute inset-0 bg-[radial-gradient(30%_40%_at_5%_95%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%),radial-gradient(30%_40%_at_95%_5%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)]"
       />
       <div className="container relative z-10">
         <Carousel
@@ -61,7 +61,7 @@ export function WhyPortugal() {
         >
           <AnimatedSection>
             <div className="flex justify-between items-center mb-8">
-              <h2 className="font-headline text-3xl md:text-4xl text-primary-foreground uppercase">Por que investir<br/>em Portugal?</h2>
+              <h2 className="font-headline text-3xl md:text-4xl lg:text-[2.75rem] lg:leading-[1.1] text-primary-foreground uppercase">Por que investir<br/>em Portugal?</h2>
               <div className="hidden md:flex gap-2">
                   <CarouselPrevious className="static -translate-y-0 text-primary-foreground bg-primary-foreground/10 hover:bg-primary-foreground/20 border-primary-foreground/20" />
                   <CarouselNext className="static -translate-y-0 text-primary-foreground bg-primary-foreground/10 hover:bg-primary-foreground/20 border-primary-foreground/20" />
