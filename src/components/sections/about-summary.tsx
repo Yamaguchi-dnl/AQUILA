@@ -7,14 +7,14 @@ import { StatsCard } from "./stats-card";
 export function AboutSummary() {
   return (
     <section id="sobre" className="bg-primary text-primary-foreground overflow-hidden relative">
-      <div
+       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(40%_50%_at_50%_50%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)]"
+        className="absolute inset-0 bg-[radial-gradient(15%_15%_at_5%_5%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%),radial-gradient(15%_15%_at_95%_95%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)]"
       />
       <div className="container relative z-20 pt-16 pb-24">
         <StatsCard />
         <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center mt-24">
-           <div className="order-last">
+           <div className="order-last md:order-first">
             <AnimatedSection>
               <h2 className="text-sm uppercase tracking-widest text-primary-foreground/60">
                   <Link href="/sobre">Sobre Nós</Link>
@@ -40,7 +40,7 @@ export function AboutSummary() {
               </Button>
             </AnimatedSection>
           </div>
-          <div className="order-first md:order-last">
+          <div className="order-first">
             <AnimatedSection delay={0.1}>
             <Image 
                 src="https://picsum.photos/600/400"

@@ -32,7 +32,7 @@ export function InvestmentStrategy() {
     <section id="investment-strategy" className="bg-primary text-primary-foreground pb-24 relative">
        <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(40%_50%_at_50%_50%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)]"
+        className="absolute inset-0 bg-[radial-gradient(15%_15%_at_5%_95%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%),radial-gradient(15%_15%_at_95%_5%,rgba(25_255,255,0.1)_0%,rgba(255,255,255,0)_100%)]"
       />
       <div className="container relative z-10">
         <AnimatedSection>
