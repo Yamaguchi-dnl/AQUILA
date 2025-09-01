@@ -31,7 +31,7 @@ export function InvestmentStrategy() {
       <div className="container">
         <AnimatedSection>
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className="font-headline text-3xl md:text-4xl text-primary uppercase">Estratégia de investimento: o caminho para o sucesso</h2>
+            <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl text-primary uppercase">Estratégia de investimento: o caminho para o sucesso</h2>
           </div>
         </AnimatedSection>
         <div className="mt-24 flex items-center justify-center">

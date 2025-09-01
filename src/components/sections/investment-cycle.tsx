@@ -7,7 +7,7 @@ export function InvestmentCycle() {
       <div className="container">
         <AnimatedSection>
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="font-headline text-3xl md:text-4xl text-primary uppercase">Entenda o ciclo completo do seu investimento</h2>
+          <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl text-primary uppercase">Entenda o ciclo completo do seu investimento</h2>
           <p className="mt-4 text-lg text-muted-foreground">
             Cada fundo da Aquila Fund FCR tem duração de 8 anos, com o capital levantado durante os primeiros dois anos e o período de desinvestimento ocorrendo nos últimos dois anos da vida do fundo.
           </p>

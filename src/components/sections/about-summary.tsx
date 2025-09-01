@@ -15,7 +15,7 @@ export function AboutSummary() {
               <h2 className="text-sm uppercase tracking-widest text-primary-foreground/60">
                   <Link href="/sobre">Sobre Nós</Link>
               </h2>
-              <h3 className="font-headline text-3xl md:text-4xl text-primary-foreground mt-2 uppercase">Seu capital, nossa expertise</h3>
+              <h3 className="font-headline text-3xl md:text-4xl lg:text-5xl text-primary-foreground mt-2 uppercase">Seu capital, nossa expertise</h3>
             </AnimatedSection>
             <AnimatedSection delay={0.1}>
               <div className="mt-6 space-y-4 text-primary-foreground/80 prose prose-lg max-w-none">
