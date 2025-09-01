@@ -11,7 +11,7 @@ export function ContactSummary() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
                 <AnimatedSection>
-                 <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl text-primary uppercase">Pronto para investir em Portugal?</h2>
+                 <h2 className="font-headline text-3xl md:text-4xl lg:text-4xl text-primary uppercase">Pronto para investir em Portugal?</h2>
                 </AnimatedSection>
                  <AnimatedSection delay={0.1}>
                  <p className="mt-4 text-lg text-muted-foreground max-w-lg">

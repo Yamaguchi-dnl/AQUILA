@@ -17,7 +17,7 @@ export function TeamSummary({ isPage = false }: TeamSummaryProps) {
     <section id="equipa" className={cn(isPage ? "bg-background" : "bg-card")}>
       <div className="container">
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl text-primary uppercase">Liderança Experiente</h2>
+          <h2 className="font-headline text-3xl md:text-4xl lg:text-4xl text-primary uppercase">Liderança Experiente</h2>
           <p className="mt-4 text-lg text-muted-foreground">
             Nossa equipe é composta por especialistas com décadas de experiência no mercado financeiro global, dedicados a maximizar o potencial dos seus investimentos.
           </p>
