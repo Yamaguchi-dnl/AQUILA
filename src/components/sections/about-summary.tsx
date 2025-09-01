@@ -10,6 +10,18 @@ export function AboutSummary() {
       <div className="container relative z-20 pt-16 pb-24">
         <StatsCard />
         <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center mt-24">
+          <div className="hidden md:block">
+            <AnimatedSection delay={0.1}>
+            <Image 
+                src="https://picsum.photos/600/400"
+                alt="Escritório moderno"
+                width={600}
+                height={400}
+                className="rounded-lg object-cover shadow-xl"
+                data-ai-hint="modern office"
+            />
+            </AnimatedSection>
+          </div>
           <div>
             <AnimatedSection>
               <h2 className="text-sm uppercase tracking-widest text-primary-foreground/60">
@@ -34,18 +46,6 @@ export function AboutSummary() {
               <Button asChild size="lg" className="mt-8" variant="secondary">
                 <Link href="/contato">FALE COM UM ESPECIALISTA!</Link>
               </Button>
-            </AnimatedSection>
-          </div>
-          <div className="hidden md:block">
-            <AnimatedSection delay={0.1}>
-            <Image 
-                src="https://picsum.photos/600/400"
-                alt="Escritório moderno"
-                width={600}
-                height={400}
-                className="rounded-lg object-cover shadow-xl"
-                data-ai-hint="modern office"
-            />
             </AnimatedSection>
           </div>
         </div>
