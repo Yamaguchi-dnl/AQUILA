@@ -1,8 +1,9 @@
+
 "use client";
 
 import { Globe, ShieldCheck, TrendingUp, Handshake, Sun, Euro } from "lucide-react";
 import { AnimatedSection } from "../shared/animated-section";
-import { BenefitsCarousel } from "../shared/benefits-carousel";
+import { Card, CardContent } from "@/components/ui/card";
 
 const benefits = [
     { 
@@ -40,14 +41,24 @@ const benefits = [
 export function WhyPortugal() {
   return (
     <section id="why-portugal" className="bg-gradient-to-r from-black to-zinc-900 text-primary-foreground overflow-hidden">
-      <div className="container">
-        <AnimatedSection>
-        <div className="text-center max-w-3xl mx-auto">
-          <h2 className="font-headline text-3xl md:text-4xl text-primary-foreground uppercase">Por que investir em Portugal?</h2>
-        </div>
+      <div className="container grid md:grid-cols-3 gap-12 items-center">
+        <AnimatedSection className="md:col-span-1">
+          <h2 className="font-headline text-4xl md:text-5xl text-primary-foreground uppercase">Por que investir em Portugal?</h2>
         </AnimatedSection>
-        <div className="mt-12">
-            <BenefitsCarousel items={benefits} />
+        <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {benefits.slice(0, 6).map((benefit, index) => (
+                <AnimatedSection key={index} delay={0.1 * (index + 1)}>
+                    <Card className="bg-primary-foreground/5 border-primary-foreground/10 text-primary-foreground h-full text-center hover:bg-primary-foreground/10 transition-colors">
+                        <CardContent className="p-6">
+                            <div className="mx-auto mb-4 inline-block rounded-full bg-primary-foreground/10 p-3">
+                                <benefit.icon className="h-7 w-7" />
+                            </div>
+                            <h3 className="text-lg font-bold font-headline">{benefit.title}</h3>
+                            <p className="mt-2 text-sm text-primary-foreground/70">{benefit.description}</p>
+                        </CardContent>
+                    </Card>
+                </AnimatedSection>
+            ))}
         </div>
       </div>
     </section>
