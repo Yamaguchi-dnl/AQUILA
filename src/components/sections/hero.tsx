@@ -10,7 +10,7 @@ export function Hero() {
       <div className="container z-10 grid md:grid-cols-2 gap-8 items-center">
         <div className="max-w-2xl order-last md:order-first">
             <AnimatedSection delay={0.1}>
-                <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl tracking-tight text-foreground">
+                <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl tracking-tight text-foreground uppercase">
                     Investimentos <span className="text-primary">Inteligentes</span> <span className="block">para o seu Futuro</span>
                 </h1>
             </AnimatedSection>
