@@ -6,22 +6,22 @@ const strategySteps = [
     {
         icon: Lightbulb,
         title: "Origem de negócios",
-        description: "Nossa expertise e nossa vasta rede de relacionamentos nos permitem identificar mercados relevantes e oportunidades atraentes de investimentos."
+        description: "Identificamos mercados e oportunidades de investimento através de nossa expertise e vasta rede de contatos."
     },
     {
         icon: Target,
         title: "Seleção e Due Diligence",
-        description: "Realizamos uma análise rigorosa e rápida das perspectivas de aquisição para alcançar acordos de compra e venda vinculativos em tempo hábil."
+        description: "Análise rigorosa e ágil para garantir os melhores acordos de aquisição e venda."
     },
     {
         icon: TrendingUp,
         title: "Criação de valor",
-        description: "Implementamos estratégias sólidas em cada subfundo para otimizar o valor dos ativos e potencializar o retorno dos investimentos."
+        description: "Otimizamos o valor dos ativos com estratégias sólidas para potencializar o retorno de cada subfundo."
     },
     {
         icon: Award,
         title: "Exit",
-        description: "Possuímos habilidades comprovadas em transações e um histórico de múltiplas saídas bem-sucedidas, garantindo que o momento certo para a venda seja identificado e executado."
+        description: "Histórico de saídas bem-sucedidas, garantindo a execução no momento certo para maximizar o retorno."
     }
 ];
 
