@@ -61,7 +61,7 @@ export function Hero() {
                         alt="Detalhe de investimento 2"
                         width={200}
                         height={180}
-                        className="absolute -bottom-4 -right-16 rounded-2xl shadow-2xl object-cover rotate-2"
+                        className="absolute -bottom-4 -right-16 rounded-2xl shadow-2xl object-cover rotate-3"
                         data-ai-hint="investment chart"
                     />
                 </AnimatedSection>
