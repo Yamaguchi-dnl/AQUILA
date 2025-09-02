@@ -37,7 +37,7 @@ export default function FundosPage() {
                         <div className="lg:col-span-2">
                              <h2 className="font-headline text-3xl md:text-4xl text-primary uppercase">{fund.nome}</h2>
                              {fund.detalhes.elegibilidadeGoldenVisa && <Badge variant="destructive" className="mt-2">Elegível para Golden Visa</Badge>}
-                             <h3 className="mt-2 text-xl text-muted-foreground">{fund.subtitulo}</h3>
+                             <h3 className="mt-2 text-xl text-muted-foreground font-headline">{fund.subtitulo}</h3>
                              <div className="mt-6 prose prose-lg max-w-none text-muted-foreground" dangerouslySetInnerHTML={{ __html: fund.descricaoHtml }} />
                         </div>
                         <div>

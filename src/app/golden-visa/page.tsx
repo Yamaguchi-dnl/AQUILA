@@ -62,7 +62,7 @@ export default function GoldenVisaPage() {
                                         {index + 1}
                                     </div>
                                     <div className="ml-6">
-                                        <h4 className="font-semibold text-lg text-foreground">{step.title}</h4>
+                                        <h4 className="font-semibold text-lg text-foreground font-headline">{step.title}</h4>
                                         <p className="text-muted-foreground mt-1">{step.description}</p>
                                     </div>
                                 </div>
