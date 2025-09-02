@@ -34,15 +34,39 @@ export function Hero() {
             </AnimatedSection>
         </div>
         <div className="order-first md:order-last flex justify-center">
-          <Image 
-              src="https://ik.imagekit.io/leosmc2zb/3493.jpg?updatedAt=1756315204824"
-              alt="Paisagem de Lisboa, Portugal"
-              width={400}
-              height={500}
-              className="rounded-lg object-cover aspect-[4/6]"
-              data-ai-hint="lisbon portugal"
-              priority
-            />
+          <AnimatedSection delay={0.2} className="hidden lg:block">
+            <div className="relative h-[500px] w-[400px]">
+                <Image 
+                    src="https://ik.imagekit.io/leosmc2zb/3493.jpg?updatedAt=1756315204824"
+                    alt="Paisagem de Lisboa, Portugal"
+                    width={400}
+                    height={500}
+                    className="rounded-3xl object-cover h-full w-full"
+                    data-ai-hint="lisbon portugal"
+                    priority
+                />
+                <AnimatedSection delay={0.4}>
+                    <Image 
+                        src="https://picsum.photos/200/180"
+                        alt="Detalhe de investimento 1"
+                        width={200}
+                        height={180}
+                        className="absolute top-0 -left-12 rounded-2xl shadow-2xl object-cover"
+                        data-ai-hint="investment detail"
+                    />
+                </AnimatedSection>
+                <AnimatedSection delay={0.6}>
+                    <Image 
+                        src="https://picsum.photos/200/180?grayscale"
+                        alt="Detalhe de investimento 2"
+                        width={200}
+                        height={180}
+                        className="absolute -bottom-8 -right-12 rounded-2xl shadow-2xl object-cover"
+                        data-ai-hint="investment chart"
+                    />
+                </AnimatedSection>
+            </div>
+          </AnimatedSection>
         </div>
       </div>
     </section>
