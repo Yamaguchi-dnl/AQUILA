@@ -1,8 +1,11 @@
+
+"use client";
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowRight, PlayCircle } from 'lucide-react';
 import { AnimatedSection } from '../shared/animated-section';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 export function Hero() {
   return (
@@ -39,7 +42,6 @@ export function Hero() {
             </AnimatedSection>
         </div>
         <div className="order-first md:order-last flex justify-center">
-          <AnimatedSection delay={0.2} className="hidden lg:block">
             <div className="relative h-[500px] w-[400px]">
                 <Image 
                     src="https://ik.imagekit.io/leosmc2zb/3493.jpg?updatedAt=1756315204824"
@@ -50,7 +52,11 @@ export function Hero() {
                     data-ai-hint="lisbon portugal"
                     priority
                 />
-                <AnimatedSection delay={0.4}>
+                 <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.4, duration: 0.5 }}
+                  >
                     <Image 
                         src="https://picsum.photos/180/160"
                         alt="Detalhe de investimento 1"
@@ -59,8 +65,12 @@ export function Hero() {
                         className="absolute -top-4 -left-16 rounded-2xl shadow-2xl object-cover z-30"
                         data-ai-hint="investment detail"
                     />
-                </AnimatedSection>
-                <AnimatedSection delay={0.6}>
+                </motion.div>
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.6, duration: 0.5 }}
+                >
                     <Image 
                         src="https://picsum.photos/180/160?grayscale"
                         alt="Detalhe de investimento 2"
@@ -69,9 +79,8 @@ export function Hero() {
                         className="absolute -bottom-4 -right-16 rounded-2xl shadow-2xl object-cover z-20"
                         data-ai-hint="investment chart"
                     />
-                </AnimatedSection>
+                </motion.div>
             </div>
-          </AnimatedSection>
         </div>
       </div>
     </section>
