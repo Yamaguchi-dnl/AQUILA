@@ -64,12 +64,12 @@ export function Hero() {
                     transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
                 >
                     <Image 
-                        src="https://picsum.photos/180/160"
-                        alt="Detalhe de investimento 1"
+                        src="https://ik.imagekit.io/leosmc2zb/beautiful-shot-portuguese-flag-waving-calm-bright-sky.jpg"
+                        alt="Bandeira de Portugal"
                         width={180}
                         height={160}
                         className="absolute -top-4 -left-16 rounded-2xl shadow-2xl object-cover z-30"
-                        data-ai-hint="investment detail"
+                        data-ai-hint="portugal flag"
                     />
                 </motion.div>
                 <motion.div
