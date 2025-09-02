@@ -70,7 +70,7 @@ export function InvestmentStrategy() {
                         data-ai-hint="portugal coastline"
                     />
                     <Image 
-                        src="https://ik.imagekit.io/leosmc2zb/golden-visa-card.png?updatedAt=1722345678901"
+                        src="https://ik.imagekit.io/leosmc2zb/golden-visa-card.png"
                         alt="Cartão Golden Visa"
                         width={250}
                         height={160}
