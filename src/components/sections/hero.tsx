@@ -36,12 +36,12 @@ export function Hero() {
         <AnimatedSection delay={0.2}>
           <div className="order-first md:order-last">
             <Image 
-              src="https://ik.imagekit.io/leosmc2zb/AQUILA%20FOUND%20HERO(1).png"
-              alt="Imagem da Hero Section Aquila"
+              src="https://ik.imagekit.io/leosmc2zb/3550%20(1).jpg?updatedAt=1756312096783"
+              alt="Paisagem de Portugal"
               width={600}
               height={600}
-              className="rounded-lg object-contain"
-              data-ai-hint="abstract investment growth"
+              className="rounded-lg object-cover aspect-square"
+              data-ai-hint="portugal landscape"
             />
           </div>
         </AnimatedSection>
