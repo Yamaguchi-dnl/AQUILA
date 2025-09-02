@@ -7,18 +7,18 @@ import Image from "next/image";
 const processSteps = [
     {
         number: "1",
-        title: "Consulta inicial",
-        description: "Nossa equipe realiza uma análise completa do seu perfil de investidor e objetivos financeiros para recomendar o fundo mais adequado."
+        title: "Origem e Seleção",
+        description: "Nossa expertise e vasta rede de relacionamentos nos permitem identificar mercados relevantes, realizar uma análise rigorosa e selecionar as melhores oportunidades de investimento."
     },
     {
         number: "2",
-        title: "Documentação e compliance",
-        description: "Cuidamos de toda a documentação necessária, incluindo verificações KYC e AML, garantindo total conformidade regulatória."
+        title: "Criação de valor",
+        description: "Implementamos estratégias sólidas em cada subfundo para otimizar o valor dos ativos e potencializar o retorno dos investimentos."
     },
     {
         number: "3",
-        title: "Investimento e acompanhamento",
-        description: "Após o investimento, você recebe relatórios regulares e tem acesso ao nosso portal para acompanhar a performance em tempo real."
+        title: "Exit (Saída)",
+        description: "Possuímos habilidades comprovadas em transações e um histórico de múltiplas saídas bem-sucedidas, garantindo a execução no momento certo para a venda."
     }
 ];
 
@@ -27,14 +27,13 @@ export function InvestmentStrategy() {
     <section id="investment-strategy" className="bg-primary text-primary-foreground relative">
        <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(30%_40%_at_5%_5%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%),radial-gradient(30%_40%_at_95%_95%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)]"
+        className="absolute inset-0 bg-[radial-gradient(30%_40%_at_5%_95%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%),radial-gradient(30%_40%_at_95%_5%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)]"
       />
       <div className="container relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
                 <AnimatedSection>
-                    <h2 className="font-headline text-3xl md:text-4xl text-primary-foreground uppercase">Processo simples e eficiente</h2>
-                    <p className="mt-4 text-primary-foreground/80 max-w-lg">Transformamos o investimento internacional numa experiência transparente e segura, com acompanhamento personalizado em cada etapa.</p>
+                    <h2 className="font-headline text-3xl md:text-4xl text-primary-foreground uppercase">Estratégia de investimento: o caminho para o sucesso</h2>
                 </AnimatedSection>
                 
                 <AnimatedSection delay={0.1}>
@@ -46,7 +45,7 @@ export function InvestmentStrategy() {
                                         {step.number}
                                     </div>
                                     <div>
-                                        <h3 className="font-semibold text-lg text-primary-foreground">{step.title}</h3>
+                                        <h3 className="font-semibold text-lg text-primary-foreground font-headline">{step.title}</h3>
                                         <p className="text-primary-foreground/70 mt-1">{step.description}</p>
                                     </div>
                                 </CardContent>
