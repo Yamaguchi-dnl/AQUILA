@@ -50,7 +50,7 @@ export function InvestmentStrategy() {
                                         {step.number}
                                     </div>
                                     <div>
-                                        <h3 className="font-semibold text-lg text-primary-foreground font-headline">{step.title}</h3>
+                                        <h3 className="font-headline text-lg text-primary-foreground">{step.title}</h3>
                                         <p className="text-primary-foreground/70 mt-1">{step.description}</p>
                                     </div>
                                 </CardContent>
@@ -60,14 +60,24 @@ export function InvestmentStrategy() {
                 </AnimatedSection>
             </div>
             <AnimatedSection delay={0.2} className="hidden lg:block">
-                <Image 
-                    src="https://picsum.photos/600/800"
-                    alt="Paisagem de Portugal"
-                    width={600}
-                    height={800}
-                    className="rounded-3xl object-cover h-[600px] w-full"
-                    data-ai-hint="portugal coastline"
-                />
+                <div className="relative">
+                    <Image 
+                        src="https://picsum.photos/600/800"
+                        alt="Paisagem de Portugal"
+                        width={600}
+                        height={800}
+                        className="rounded-3xl object-cover h-[600px] w-full"
+                        data-ai-hint="portugal coastline"
+                    />
+                    <Image 
+                        src="https://ik.imagekit.io/leosmc2zb/golden-visa-card.png?updatedAt=1722345678901"
+                        alt="Cartão Golden Visa"
+                        width={250}
+                        height={160}
+                        className="absolute -bottom-8 -left-12 rounded-2xl shadow-2xl object-cover"
+                        data-ai-hint="visa card"
+                    />
+                </div>
             </AnimatedSection>
         </div>
       </div>
