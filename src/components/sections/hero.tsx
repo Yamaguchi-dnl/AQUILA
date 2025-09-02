@@ -33,15 +33,17 @@ export function Hero() {
                 </div>
             </AnimatedSection>
         </div>
-        <Image 
-            src="https://ik.imagekit.io/leosmc2zb/3493.jpg?updatedAt=1756315204824"
-            alt="Paisagem de Lisboa, Portugal"
-            width={400}
-            height={600}
-            className="rounded-lg object-cover aspect-[4/6] order-first md:order-last"
-            data-ai-hint="lisbon portugal"
-            priority
-          />
+        <div className="flex justify-end order-first md:order-last">
+          <Image 
+              src="https://ik.imagekit.io/leosmc2zb/3493.jpg?updatedAt=1756315204824"
+              alt="Paisagem de Lisboa, Portugal"
+              width={400}
+              height={600}
+              className="rounded-lg object-cover aspect-[4/6]"
+              data-ai-hint="lisbon portugal"
+              priority
+            />
+        </div>
       </div>
     </section>
   );
