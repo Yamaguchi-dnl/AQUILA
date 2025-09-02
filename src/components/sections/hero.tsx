@@ -76,7 +76,7 @@ export function Hero() {
                     initial={{ opacity: 0, x: 50, y: 50 }}
                     animate={{ opacity: 1, x: 0, y: 0 }}
                     transition={{ duration: 0.7, delay: 0.7, ease: "easeOut" }}
-                    whileHover={{ scale: 1.1 }}
+                    whileHover={{ scale: 1.2 }}
                 >
                     <Image 
                         src="https://ik.imagekit.io/leosmc2zb/60913.jpg"
