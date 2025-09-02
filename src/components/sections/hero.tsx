@@ -33,7 +33,7 @@ export function Hero() {
                 </div>
             </AnimatedSection>
         </div>
-        <div className="flex justify-end order-first md:order-last">
+        <div className="order-first md:order-last flex justify-center md:justify-end">
           <Image 
               src="https://ik.imagekit.io/leosmc2zb/3493.jpg?updatedAt=1756315204824"
               alt="Paisagem de Lisboa, Portugal"
