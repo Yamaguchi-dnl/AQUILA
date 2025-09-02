@@ -16,11 +16,11 @@ export function FundSummaryCard({ fund }: FundSummaryCardProps) {
         <Card className="overflow-hidden h-full flex flex-col transition-all duration-300 hover:shadow-xl border border-transparent hover:border-primary">
             <div className="relative overflow-hidden">
                 <Image 
-                    src={`https://picsum.photos/600/350?random=${fund.slug}`}
+                    src={fund.imagemResumo || `https://picsum.photos/600/350?random=${fund.slug}`}
                     alt={`Imagem do fundo ${fund.nome}`}
                     width={600}
                     height={350}
-                    className="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="w-full h-56 object-cover transition-transform duration-300"
                     data-ai-hint="investment theme"
                 />
                 {fund.detalhes.elegibilidadeGoldenVisa && (

@@ -2,6 +2,7 @@ export type Fund = {
   slug: string;
   nome: string;
   subtitulo: string;
+  imagemResumo?: string;
   descricaoHtml: string;
   detalhes: {
     tipo: string;
