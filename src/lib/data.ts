@@ -26,6 +26,7 @@ export const fundsData: Fund[] = [
     slug: 'aquila-wheels',
     nome: 'Aquila Wheels',
     subtitulo: 'O Aquila Wheels é um fundo de investimento inovador que transforma a paixão por carros clássicos e icônicos em uma estratégia financeira sólida e rentável.',
+    imagemResumo: 'https://ik.imagekit.io/leosmc2zb/8203.jpg',
     descricaoHtml: `<p>O Aquila Wheels é um fundo de investimento inovador que transforma a paixão por carros clássicos e icônicos em uma estratégia financeira sólida e rentável. Focado na aquisição e gestão de veículos de alto valor, o fundo aproveita a valorização histórica desse mercado, que na última década, valorizou impressionantes 193%.</p><p>A Aquila combina conhecimento de mercado, análise de dados e parcerias estratégicas globais para selecionar veículos com maior potencial de valorização. Além disso, o fundo é 100% elegível ao Golden Visa português, permitindo que investidores obtenham residência europeia por meio de um ativo tangível e exclusivo.</p>`,
     detalhes: {
       tipo: 'Fundo de capital de risco fechado',
