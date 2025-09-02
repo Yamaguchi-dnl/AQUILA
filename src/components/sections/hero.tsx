@@ -51,7 +51,7 @@ export function Hero() {
                         alt="Detalhe de investimento 1"
                         width={200}
                         height={180}
-                        className="absolute -top-8 -left-16 rounded-2xl shadow-2xl object-cover z-30"
+                        className="absolute -top-4 -left-16 rounded-2xl shadow-2xl object-cover z-30"
                         data-ai-hint="investment detail"
                     />
                 </AnimatedSection>
