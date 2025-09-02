@@ -69,14 +69,16 @@ export function InvestmentStrategy() {
                         className="rounded-3xl object-cover h-[600px] w-full"
                         data-ai-hint="portugal coastline"
                     />
-                    <Image 
-                        src="https://picsum.photos/250/160"
-                        alt="Cartão Golden Visa"
-                        width={250}
-                        height={160}
-                        className="absolute -bottom-8 -left-12 rounded-2xl shadow-2xl object-cover"
-                        data-ai-hint="visa card"
-                    />
+                    <AnimatedSection delay={0.4}>
+                        <Image 
+                            src="https://picsum.photos/250/160"
+                            alt="Cartão Golden Visa"
+                            width={250}
+                            height={160}
+                            className="absolute -bottom-8 -left-12 rounded-2xl shadow-2xl object-cover"
+                            data-ai-hint="visa card"
+                        />
+                    </AnimatedSection>
                 </div>
             </AnimatedSection>
         </div>
