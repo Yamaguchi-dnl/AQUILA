@@ -7,6 +7,11 @@ import Image from 'next/image';
 export function Hero() {
   return (
     <section className="w-full bg-card z-10 relative overflow-hidden">
+       <div className="bg-animation">
+            <div id='stars'></div>
+            <div id='stars2'></div>
+            <div id='stars3'></div>
+        </div>
         <div className="container z-10 grid md:grid-cols-2 gap-8 items-center pt-16 pb-16">
         <div className="max-w-2xl order-last md:order-first">
             <AnimatedSection delay={0.1}>

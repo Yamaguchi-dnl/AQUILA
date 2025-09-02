@@ -99,3 +99,74 @@
     font-weight: 400;
   }
 }
+
+/* Star Animation */
+.bg-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+@keyframes animStar {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
+}
+
+#stars, #stars2, #stars3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  animation-name: animStar;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#stars {
+  animation-duration: 50s;
+  box-shadow: 117px 1613px hsl(var(--foreground)) , 1488px 635px hsl(var(--foreground)) , 944px 914px hsl(var(--foreground)) , 647px 277px hsl(var(--foreground)) , 1792px 1205px hsl(var(--foreground)) , 656px 1517px hsl(var(--foreground)) , 820px 1839px hsl(var(--foreground)) , 1153px 1400px hsl(var(--foreground)) , 870px 13px hsl(var(--foreground)) , 550px 702px hsl(var(--foreground));
+}
+
+#stars2 {
+  animation-duration: 100s;
+  width: 2px;
+  height: 2px;
+  box-shadow: 1117px 1306px hsl(var(--foreground)) , 1078px 1783px hsl(var(--foreground)) , 1179px 1085px hsl(var(--foreground)) , 1145px 920px hsl(var(--foreground)) , 422px 1233px hsl(var(--foreground)) , 387px 98px hsl(var(--foreground)) , 1153px 637px hsl(var(--foreground)) , 1084px 782px hsl(var(--foreground)) , 476px 453px hsl(var(--foreground)) , 926px 1306px hsl(var(--foreground));
+}
+
+#stars3 {
+  animation-duration: 150s;
+  width: 3px;
+  height: 3px;
+  box-shadow: 940px 1360px hsl(var(--foreground)) , 1071px 539px hsl(var(--foreground)) , 1710px 1414px hsl(var(--foreground)) , 836px 299px hsl(var(--foreground)) , 1944px 1420px hsl(var(--foreground)) , 253px 1449px hsl(var(--foreground)) , 1257px 1250px hsl(var(--foreground)) , 1588px 1830px hsl(var(--foreground)) , 1077px 1204px hsl(var(--foreground)) , 273px 1081px hsl(var(--foreground));
+}
+
+#stars:after, #stars2:after, #stars3:after {
+  content: " ";
+  position: absolute;
+  top: 2000px;
+  width: inherit;
+  height: inherit;
+  background: transparent;
+}
+
+#stars:after {
+  box-shadow: 117px 1613px hsl(var(--foreground)) , 1488px 635px hsl(var(--foreground)) , 944px 914px hsl(var(--foreground)) , 647px 277px hsl(var(--foreground)) , 1792px 1205px hsl(var(--foreground)) , 656px 1517px hsl(var(--foreground)) , 820px 1839px hsl(var(--foreground)) , 1153px 1400px hsl(var(--foreground)) , 870px 13px hsl(var(--foreground)) , 550px 702px hsl(var(--foreground));
+}
+
+#stars2:after {
+ box-shadow: 1117px 1306px hsl(var(--foreground)) , 1078px 1783px hsl(var(--foreground)) , 1179px 1085px hsl(var(--foreground)) , 1145px 920px hsl(var(--foreground)) , 422px 1233px hsl(var(--foreground)) , 387px 98px hsl(var(--foreground)) , 1153px 637px hsl(var(--foreground)) , 1084px 782px hsl(var(--foreground)) , 476px 453px hsl(var(--foreground)) , 926px 1306px hsl(var(--foreground));
+}
+
+#stars3:after {
+ box-shadow: 940px 1360px hsl(var(--foreground)) , 1071px 539px hsl(var(--foreground)) , 1710px 1414px hsl(var(--foreground)) , 836px 299px hsl(var(--foreground)) , 1944px 1420px hsl(var(--foreground)) , 253px 1449px hsl(var(--foreground)) , 1257px 1250px hsl(var(--foreground)) , 1588px 1830px hsl(var(--foreground)) , 1077px 1204px hsl(var(--foreground)) , 273px 1081px hsl(var(--foreground));
+}
