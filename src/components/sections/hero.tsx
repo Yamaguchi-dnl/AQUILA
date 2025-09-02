@@ -36,12 +36,12 @@ export function Hero() {
         </div>
         <div className="order-first md:order-last flex justify-center">
           <AnimatedSection delay={0.2} className="hidden lg:block">
-            <div className="relative h-[450px] w-[360px]">
+            <div className="relative h-[500px] w-[400px]">
                 <Image 
                     src="https://ik.imagekit.io/leosmc2zb/3493.jpg?updatedAt=1756315204824"
                     alt="Paisagem de Lisboa, Portugal"
-                    width={360}
-                    height={450}
+                    width={400}
+                    height={500}
                     className="rounded-3xl object-cover h-full w-full relative z-10"
                     data-ai-hint="lisbon portugal"
                     priority
