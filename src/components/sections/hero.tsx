@@ -41,7 +41,7 @@ export function Hero() {
                     alt="Paisagem de Lisboa, Portugal"
                     width={400}
                     height={500}
-                    className="rounded-3xl object-cover h-full w-full rotate-1"
+                    className="rounded-3xl object-cover h-full w-full rotate-1 relative z-10"
                     data-ai-hint="lisbon portugal"
                     priority
                 />
@@ -51,7 +51,7 @@ export function Hero() {
                         alt="Detalhe de investimento 1"
                         width={200}
                         height={180}
-                        className="absolute top-8 -left-16 rounded-2xl shadow-2xl object-cover"
+                        className="absolute top-8 -left-16 rounded-2xl shadow-2xl object-cover z-20"
                         data-ai-hint="investment detail"
                     />
                 </AnimatedSection>
