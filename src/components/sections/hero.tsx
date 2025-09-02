@@ -39,7 +39,7 @@ export function Hero() {
               alt="Paisagem de Lisboa, Portugal"
               width={400}
               height={600}
-              className="rounded-lg object-cover aspect-[4/6] md:ml-auto md:mr-8"
+              className="rounded-lg object-cover aspect-[4/6] md:ml-auto md:mr-16"
               data-ai-hint="lisbon portugal"
               priority
             />
