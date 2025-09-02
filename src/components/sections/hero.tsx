@@ -44,9 +44,9 @@ export function Hero() {
         <div className="order-first md:order-last flex justify-center">
             <div className="relative h-[500px] w-[400px]">
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
+                    initial={{ opacity: 0, scale: 0.9, y: 50 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
                     className="relative w-full h-full"
                 >
                     <Image 
@@ -59,9 +59,9 @@ export function Hero() {
                     />
                 </motion.div>
                 <motion.div
-                    initial={{ opacity: 0, x: -100 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
+                    initial={{ opacity: 0, x: -50, y: -50 }}
+                    animate={{ opacity: 1, x: 0, y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
                 >
                     <Image 
                         src="https://picsum.photos/180/160"
@@ -73,9 +73,9 @@ export function Hero() {
                     />
                 </motion.div>
                 <motion.div
-                    initial={{ opacity: 0, x: 100 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.6 }}
+                    initial={{ opacity: 0, x: 50, y: 50 }}
+                    animate={{ opacity: 1, x: 0, y: 0 }}
+                    transition={{ duration: 0.7, delay: 0.7, ease: "easeOut" }}
                 >
                     <Image 
                         src="https://ik.imagekit.io/leosmc2zb/60913.jpg"
