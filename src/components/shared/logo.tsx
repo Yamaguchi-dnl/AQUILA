@@ -4,15 +4,19 @@ import Image from 'next/image';
 
 type LogoProps = {
     className?: string;
+    variant?: 'dark' | 'light';
 }
 
-export function Logo({ className }: LogoProps) {
-  const logoUrl = "https://ik.imagekit.io/leosmc2zb/logo.png?updatedAt=1756308765013";
+export function Logo({ className, variant = 'dark' }: LogoProps) {
+  const logos = {
+    dark: "https://ik.imagekit.io/leosmc2zb/logo.png?updatedAt=1756308765013",
+    light: "https://ik.imagekit.io/leosmc2zb/logo-branca.png?updatedAt=1756480287959"
+  }
   
   return (
     <Link href="/" className={cn("transition-opacity hover:opacity-80", className)}>
       <Image 
-        src={logoUrl}
+        src={logos[variant]}
         alt="Áquila Fund FCR Logo"
         width={140}
         height={32}
