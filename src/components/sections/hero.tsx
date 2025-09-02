@@ -35,32 +35,32 @@ export function Hero() {
         </div>
         <div className="order-first md:order-last flex justify-center">
           <AnimatedSection delay={0.2} className="hidden lg:block">
-            <div className="relative h-[500px] w-[400px]">
+            <div className="relative h-[450px] w-[360px]">
                 <Image 
                     src="https://ik.imagekit.io/leosmc2zb/3493.jpg?updatedAt=1756315204824"
                     alt="Paisagem de Lisboa, Portugal"
-                    width={400}
-                    height={500}
+                    width={360}
+                    height={450}
                     className="rounded-3xl object-cover h-full w-full relative z-10"
                     data-ai-hint="lisbon portugal"
                     priority
                 />
                 <AnimatedSection delay={0.4}>
                     <Image 
-                        src="https://picsum.photos/200/180"
+                        src="https://picsum.photos/180/160"
                         alt="Detalhe de investimento 1"
-                        width={200}
-                        height={180}
+                        width={180}
+                        height={160}
                         className="absolute -top-4 -left-16 rounded-2xl shadow-2xl object-cover z-30"
                         data-ai-hint="investment detail"
                     />
                 </AnimatedSection>
                 <AnimatedSection delay={0.6}>
                     <Image 
-                        src="https://picsum.photos/200/180?grayscale"
+                        src="https://picsum.photos/180/160?grayscale"
                         alt="Detalhe de investimento 2"
-                        width={200}
-                        height={180}
+                        width={180}
+                        height={160}
                         className="absolute -bottom-4 -right-16 rounded-2xl shadow-2xl object-cover z-20"
                         data-ai-hint="investment chart"
                     />
