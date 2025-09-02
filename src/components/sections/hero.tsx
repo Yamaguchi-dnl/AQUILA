@@ -78,7 +78,7 @@ export function Hero() {
                     transition={{ duration: 0.5, delay: 0.6 }}
                 >
                     <Image 
-                        src="https://picsum.photos/180/160"
+                        src="https://ik.imagekit.io/leosmc2zb/60913.jpg"
                         alt="Detalhe de investimento"
                         width={180}
                         height={160}
