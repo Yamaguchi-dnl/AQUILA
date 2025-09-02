@@ -10,7 +10,7 @@ type LogoProps = {
 export function Logo({ className, variant = 'dark' }: LogoProps) {
   const logos = {
     dark: "https://ik.imagekit.io/leosmc2zb/logo.png?updatedAt=1756308765013",
-    light: "https://ik.imagekit.io/leosmc2zb/logo-branca.png?updatedAt=1756480287959"
+    light: "https://ik.imagekit.io/leosmc2zb/logo%202.png?updatedAt=1756315684014"
   }
   
   return (
