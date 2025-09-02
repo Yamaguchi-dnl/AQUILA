@@ -7,8 +7,8 @@ import Image from 'next/image';
 
 export function Hero() {
   return (
-    <section className="w-full bg-card z-10 pt-48 pb-16 md:py-20">
-      <div className="container z-10 grid md:grid-cols-2 gap-8 items-center">
+    <section className="w-full bg-card z-10">
+      <div className="container z-10 grid md:grid-cols-2 gap-8 items-center pt-40 pb-16 md:pt-48">
         <div className="max-w-2xl order-last md:order-first">
             <AnimatedSection delay={0.1}>
                 <h1 className="font-headline text-3xl sm:text-4xl lg:text-5xl xl:text-6xl tracking-tight text-foreground uppercase">
@@ -42,7 +42,7 @@ export function Hero() {
                     alt="Paisagem de Lisboa, Portugal"
                     width={360}
                     height={450}
-                    className="rounded-3xl object-cover h-full w-full relative z-10"
+                    className="rounded-3xl object-cover h-full w-full relative z-10 rotate-3"
                     data-ai-hint="lisbon portugal"
                     priority
                 />
