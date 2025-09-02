@@ -92,4 +92,7 @@
   section {
     @apply w-full py-16 md:py-24 lg:py-28; /* Increased padding for more breathing room */
   }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-headline);
+  }
 }
