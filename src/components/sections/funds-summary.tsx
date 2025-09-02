@@ -1,4 +1,3 @@
-
 import { fundsData } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";

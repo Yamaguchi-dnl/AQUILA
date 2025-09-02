@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import type { Fund } from "@/lib/types";
 import Image from "next/image";
