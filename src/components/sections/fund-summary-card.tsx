@@ -20,7 +20,7 @@ export function FundSummaryCard({ fund }: FundSummaryCardProps) {
                     alt={`Imagem do fundo ${fund.nome}`}
                     width={600}
                     height={350}
-                    className="w-full h-56 object-cover object-top transition-transform duration-300"
+                    className="w-full h-56 object-cover object-bottom transition-transform duration-300"
                     data-ai-hint="investment theme"
                 />
                 {fund.detalhes.elegibilidadeGoldenVisa && (
