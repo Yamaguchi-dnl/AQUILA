@@ -65,7 +65,7 @@ export const fundsData: Fund[] = [
       'Alto potencial de retorno — retorno mínimo estimado de 50% ao final do 8º ano.',
     ],
     hoteis: [
-      { nome: 'Valverde Lisboa Hotel & Garden', localizacao: 'Centro de Lisboa', imagem: 'https://picsum.photos/600/400?random=1', dataAiHint: 'luxury hotel garden' },
+      { nome: 'Valverde Lisboa Hotel & Garden', localizacao: 'Centro de Lisboa', imagem: 'https://ik.imagekit.io/leosmc2zb/L08zbS8tME0zWnJTbS9TTzdTbk1qbm0vZlpGRFNuLVNOWkZaS01qYVM3U1pNbXhnejY2UXR6dGRrcg.webp', dataAiHint: 'luxury hotel garden' },
       { nome: 'Valverde Sintra Palácio de Seteais', localizacao: 'Sintra, Lisboa', imagem: 'https://picsum.photos/600/400?random=2', dataAiHint: 'historic palace hotel' },
       { nome: 'Valverde Santar Hotel & SPA', localizacao: 'Santar, Viseu', imagem: 'https://picsum.photos/600/400?random=3', dataAiHint: 'hotel spa interior' },
       { nome: 'Hotel Intercontinental Estoril', localizacao: 'Cascais', imagem: 'https://picsum.photos/600/400?random=4', dataAiHint: 'coastal hotel view' },
