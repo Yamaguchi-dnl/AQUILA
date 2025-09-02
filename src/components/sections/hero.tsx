@@ -34,11 +34,11 @@ export function Hero() {
             </AnimatedSection>
         </div>
         <Image 
-            src="https://ik.imagekit.io/leosmc2zb/o-que-fazer-em-lisboa-portugal-2.jpeg?updatedAt=1756307374786"
+            src="https://ik.imagekit.io/leosmc2zb/3493.jpg?updatedAt=1756315204824"
             alt="Paisagem de Lisboa, Portugal"
-            width={600}
-            height={600}
-            className="rounded-lg object-cover aspect-square order-first md:order-last"
+            width={400}
+            height={700}
+            className="rounded-lg object-cover aspect-[4/7] order-first md:order-last"
             data-ai-hint="lisbon portugal"
             priority
           />
