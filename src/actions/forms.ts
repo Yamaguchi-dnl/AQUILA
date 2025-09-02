@@ -26,8 +26,8 @@ export async function submitContactForm(prevState: any, formData: FormData) {
       return { message: "Erro de validação. Por favor, verifique os campos.", success: false };
     }
     
-    // Simulate saving to Firestore & sending email
-    console.log("Saving lead to Firestore:", validatedFields.data);
+    // Simulate saving to Supabase & sending email
+    console.log("Saving lead to Supabase:", validatedFields.data);
     
     return { message: "Sua mensagem foi enviada. Entraremos em contato em breve.", success: true };
   } catch (e) {
@@ -59,8 +59,8 @@ export async function submitJobApplication(prevState: any, formData: FormData) {
             return { message: "Erro de validação. Por favor, verifique os campos.", success: false };
         }
         
-        // Simulate uploading CV to Storage and saving to Firestore
-        console.log("Uploading CV and saving application to Firestore:", validatedFields.data.nome);
+        // Simulate uploading CV to Storage and saving to Supabase
+        console.log("Uploading CV and saving application to Supabase:", validatedFields.data.nome);
         
         return { message: "Sua candidatura foi enviada com sucesso. Obrigado!", success: true };
     } catch (e) {
@@ -82,7 +82,7 @@ export async function submitInterestForm(values: z.infer<typeof interestFormSche
             return { message: "Dados inválidos.", success: false };
         }
         
-        // Simulate saving to Firestore
+        // Simulate saving to Supabase
         console.log("Registering interest:", validatedFields.data);
 
         return { message: "Interesse registrado com sucesso!", success: true };
