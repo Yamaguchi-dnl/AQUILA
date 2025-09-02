@@ -25,7 +25,7 @@ export function GoldenVisaSummary() {
                     </h2>
                     </AnimatedSection>
                     <AnimatedSection delay={0.1}>
-                    <p className="mt-4 text-lg text-primary-foreground/90 max-w-lg">
+                    <p className="mt-4 text-base md:text-lg text-primary-foreground/90 max-w-lg">
                         O Golden Visa é o seu passaporte para a União Europeia. Ao investir em nossos fundos elegíveis, você e sua família garantem o direito de residir em Portugal, com acesso a todos os benefícios de um cidadão europeu, como educação e saúde de qualidade.
                     </p>
                     </AnimatedSection>
