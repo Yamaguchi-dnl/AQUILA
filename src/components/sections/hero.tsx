@@ -42,19 +42,25 @@ export function Hero() {
         </div>
         <div className="order-first md:order-last flex justify-center">
             <div className="relative h-[500px] w-[400px]">
-                <Image 
-                    src="https://ik.imagekit.io/leosmc2zb/3493.jpg?updatedAt=1756315204824"
-                    alt="Paisagem de Lisboa, Portugal"
-                    width={400}
-                    height={500}
-                    className="rounded-3xl object-cover h-full w-full relative z-10"
-                    data-ai-hint="lisbon portugal"
-                    priority
-                />
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.7, delay: 0.2 }}
+                >
+                    <Image 
+                        src="https://ik.imagekit.io/leosmc2zb/3493.jpg?updatedAt=1756315204824"
+                        alt="Paisagem de Lisboa, Portugal"
+                        width={400}
+                        height={500}
+                        className="rounded-3xl object-cover h-full w-full relative z-10"
+                        data-ai-hint="lisbon portugal"
+                        priority
+                    />
+                </motion.div>
                  <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.4, duration: 0.5 }}
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.6 }}
                   >
                     <Image 
                         src="https://picsum.photos/180/160"
@@ -66,9 +72,9 @@ export function Hero() {
                     />
                 </motion.div>
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.6, duration: 0.5 }}
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.8 }}
                 >
                     <Image 
                         src="https://picsum.photos/180/160?grayscale"
