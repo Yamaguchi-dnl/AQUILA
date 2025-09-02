@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 export function Hero() {
   return (
-    <section className="w-full bg-card z-10 py-16 md:py-20">
+    <section className="w-full bg-card z-10 pt-32 pb-16 md:py-20">
       <div className="container z-10 grid md:grid-cols-2 gap-8 items-center">
         <div className="max-w-2xl order-last md:order-first">
             <AnimatedSection delay={0.1}>
