@@ -33,7 +33,7 @@ export function InvestmentStrategy() {
     <section id="investment-strategy" className="bg-primary text-primary-foreground relative">
        <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(30%_40%_at_95%_95%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%),radial-gradient(30%_40%_at_5%_5%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)]"
+        className="absolute inset-0 bg-[radial-gradient(30%_40%_at_95%_5%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%),radial-gradient(30%_40%_at_5%_95%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)]"
       />
       <div className="container relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -45,7 +45,7 @@ export function InvestmentStrategy() {
                 <AnimatedSection delay={0.1}>
                     <div className="mt-8 space-y-4">
                         {processSteps.map((step) => (
-                            <Card key={step.number} className="bg-primary-foreground/5 border-primary-foreground/10">
+                            <Card key={step.number} className="bg-primary-foreground/5 border-primary-foreground/10 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
                                 <CardContent className="p-6 flex items-start gap-6">
                                     <div className="flex-shrink-0 w-10 h-10 bg-secondary text-secondary-foreground rounded-full flex items-center justify-center font-bold text-lg">
                                         {step.number}
