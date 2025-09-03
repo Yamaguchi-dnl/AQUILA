@@ -156,7 +156,7 @@ export const teamData: TeamMember[] = [
     nome: 'Tânia Marreiros Silva',
     cargo: 'Head of Legal & Compliance',
     bioHtml: '<p>Tânia garante que todas as operações da Aquila estejam em conformidade com as mais rigorosas regulamentações financeiras. Sua experiência jurídica é vital para a segurança e transparência dos investimentos.</p>',
-    foto: 'https://picsum.photos/400/400?random=15',
+    foto: 'https://ik.imagekit.io/leosmc2zb/Tania-Marreiros-Silva-251x300.jpg',
     dataAiHint: 'female professional glasses',
     ordem: 6,
   },
