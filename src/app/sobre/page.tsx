@@ -28,7 +28,7 @@ export default function SobrePage() {
         subtitle="Construindo um legado de confiança, transparência e excelência."
       />
 
-      <section className="bg-background">
+      <section className="bg-primary text-primary-foreground">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <AnimatedSection>
@@ -44,12 +44,12 @@ export default function SobrePage() {
             <div className="space-y-8">
                <AnimatedSection delay={0.1}>
                     <div className="flex items-start gap-4">
-                        <div className="flex-shrink-0 bg-primary/10 text-primary rounded-lg p-3">
+                        <div className="flex-shrink-0 bg-primary-foreground/10 text-primary-foreground rounded-lg p-3">
                            <Target className="h-6 w-6" />
                         </div>
                         <div>
-                           <h3 className="text-xl font-headline font-bold text-primary">Nossa Missão</h3>
-                           <p className="mt-2 text-muted-foreground">
+                           <h3 className="text-xl font-headline font-bold text-primary-foreground">Nossa Missão</h3>
+                           <p className="mt-2 text-primary-foreground/80">
                             Guiar nossos clientes através do complexo cenário de investimentos, transformando desafios em oportunidades e aspirações em conquistas, com segurança e rentabilidade.
                            </p>
                         </div>
@@ -57,12 +57,12 @@ export default function SobrePage() {
                </AnimatedSection>
                <AnimatedSection delay={0.2}>
                    <div className="flex items-start gap-4">
-                        <div className="flex-shrink-0 bg-primary/10 text-primary rounded-lg p-3">
+                        <div className="flex-shrink-0 bg-primary-foreground/10 text-primary-foreground rounded-lg p-3">
                            <TrendingUp className="h-6 w-6" />
                         </div>
                         <div>
-                           <h3 className="text-xl font-headline font-bold text-primary">Nossa Visão</h3>
-                            <p className="mt-2 text-muted-foreground">
+                           <h3 className="text-xl font-headline font-bold text-primary-foreground">Nossa Visão</h3>
+                            <p className="mt-2 text-primary-foreground/80">
                             Ser a plataforma de investimentos de referência em Portugal, reconhecida pela inovação, transparência e pela criação de valor sustentável para investidores de alta renda.
                            </p>
                         </div>
@@ -70,12 +70,12 @@ export default function SobrePage() {
                </AnimatedSection>
                  <AnimatedSection delay={0.3}>
                    <div className="flex items-start gap-4">
-                        <div className="flex-shrink-0 bg-primary/10 text-primary rounded-lg p-3">
+                        <div className="flex-shrink-0 bg-primary-foreground/10 text-primary-foreground rounded-lg p-3">
                            <Handshake className="h-6 w-6" />
                         </div>
                         <div>
-                           <h3 className="text-xl font-headline font-bold text-primary">Nossos Valores</h3>
-                            <p className="mt-2 text-muted-foreground">
+                           <h3 className="text-xl font-headline font-bold text-primary-foreground">Nossos Valores</h3>
+                            <p className="mt-2 text-primary-foreground/80">
                             Confiança, Excelência, Inovação e um profundo compromisso com os resultados e a satisfação de nossos clientes e parceiros.
                            </p>
                         </div>
