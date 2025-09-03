@@ -26,7 +26,7 @@ export default function SobrePage() {
     <>
       <section className="bg-primary text-primary-foreground pt-16">
         <div className="container">
-          <div className="text-center mb-16 pt-16">
+          <div className="text-center mb-16 pt-24">
             <h1 className="font-headline text-4xl md:text-5xl text-primary-foreground uppercase">
               Sobre a Aquila Fund FCR
             </h1>
