@@ -26,17 +26,6 @@ const FundDetail = ({ label, value, isPrimary }: { label: string; value: string 
 export default function FundosPage() {
   return (
     <>
-      <div className="bg-background pt-24 md:pt-32">
-        <div className="container">
-            <div className="text-center max-w-4xl mx-auto">
-                <h1 className="font-headline text-4xl md:text-5xl text-primary uppercase">Nossos Fundos</h1>
-                <p className="mt-4 text-lg text-muted-foreground">
-                    Na Aquila Fund FCR, oferecemos um portfólio diversificado de fundos de investimento, estruturados para atender às necessidades de investidores que buscam oportunidades no promissor mercado português.
-                </p>
-            </div>
-        </div>
-      </div>
-      
       <div className="space-y-0">
       {fundsData.map((fund, index) => {
           const isPrimarySection = index % 2 === 1;
@@ -56,7 +45,7 @@ export default function FundosPage() {
                 />
               )}
               <div className="container relative z-10">
-                  <div className="grid lg:grid-cols-3 gap-8 lg:gap-16">
+                  <div className="grid lg:grid-cols-3 gap-8 lg:gap-16 items-center">
                       <div className="lg:col-span-2">
                             <h2 className={cn("font-headline text-3xl md:text-4xl uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>{fund.nome}</h2>
                             {fund.detalhes.elegibilidadeGoldenVisa && <Badge variant="destructive" className="mt-2">Elegível para Golden Visa</Badge>}
@@ -64,7 +53,7 @@ export default function FundosPage() {
                             <div className={cn("mt-6 prose prose-lg max-w-none", isPrimarySection ? "text-primary-foreground/80" : "text-muted-foreground")} dangerouslySetInnerHTML={{ __html: fund.descricaoHtml }} />
                       </div>
                       <div>
-                          <Card className={cn(isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
+                          <Card className={cn("shadow-lg", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
                               <CardHeader><CardTitle className={cn("font-headline", isPrimarySection && "text-primary-foreground")}>Detalhes do Fundo</CardTitle></CardHeader>
                               <CardContent>
                                   <dl>
@@ -104,10 +93,20 @@ export default function FundosPage() {
                                   <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                                       {fund.hoteis.map((hotel, i) => (
                                           <Card key={`${hotel.nome}-${hotel.imagem.v}`} className={cn("overflow-hidden", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
-                                              <Image src={`${hotel.imagem.src}?v=${hotel.imagem.v}`} alt={hotel.nome} width={600} height={400} className="w-full h-48 object-cover" data-ai-hint={hotel.dataAiHint} />
+                                              <Image 
+                                                src={`${hotel.imagem.src}?v=${hotel.imagem.v}`} 
+                                                alt={hotel.nome} 
+                                                width={600} 
+                                                height={400} 
+                                                className={cn(
+                                                    "w-full h-48 object-cover",
+                                                    hotel.nome.includes('Seteais') && 'object-bottom'
+                                                )} 
+                                                data-ai-hint={hotel.dataAiHint} 
+                                               />
                                               <CardContent className="p-4">
-                                                  <p className="font-semibold text-foreground">{hotel.nome}</p>
-                                                  <p className="text-sm text-muted-foreground">{hotel.localizacao}</p>
+                                                  <p className={cn("font-semibold", isPrimarySection ? "text-primary-foreground" : "text-foreground")}>{hotel.nome}</p>
+                                                  <p className={cn("text-sm", isPrimarySection ? "text-primary-foreground/80" : "text-muted-foreground")}>{hotel.localizacao}</p>
                                               </CardContent>
                                           </Card>
                                       ))}
