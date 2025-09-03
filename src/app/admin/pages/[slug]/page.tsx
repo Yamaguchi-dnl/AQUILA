@@ -13,7 +13,6 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { useToast } from '@/hooks/use-toast';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
-import { deleteBlock } from '@/actions/admin';
 
 type Page = {
     id: string;
@@ -28,14 +27,14 @@ type Block = {
     title: string | null;
     content: string | null;
     image_url: string | null;
-}
+};
 
 export default function AdminSinglePage() {
     const supabase = createClient();
     const params = useParams();
     const { toast } = useToast();
     
-    const slug = use(params)?.slug as string;
+    const slug = use(params).slug as string;
 
     const [page, setPage] = useState<Page | null>(null);
     const [blocks, setBlocks] = useState<Block[]>([]);
@@ -97,24 +96,17 @@ export default function AdminSinglePage() {
 
     const handleDeleteBlock = async (blockId: string) => {
         try {
-            const blockToDelete = blocks.find(b => b.id === blockId);
-            let imagePath: string | null = null;
-            if (blockToDelete?.image_url) {
-                try {
-                   imagePath = new URL(blockToDelete.image_url).pathname.split('/site-images/')[1];
-                } catch(e) {
-                    console.error("Invalid image URL, cannot extract path", blockToDelete.image_url)
-                }
-            }
+             const response = await fetch(`/api/admin/blocks?id=${blockId}&pageSlug=${page!.slug}`, {
+                method: 'DELETE',
+            });
+            const result = await response.json();
 
-            const result = await deleteBlock(blockId, imagePath, page!.slug);
-
-            if (result.success) {
-                toast({ title: 'Sucesso', description: result.message });
-                fetchData(); // This re-fetches data, no need for revalidatePath on server
-            } else {
+            if (!response.ok) {
                 throw new Error(result.message);
             }
+
+            toast({ title: 'Sucesso', description: result.message });
+            fetchData();
         } catch (error: any) {
             toast({ variant: 'destructive', title: 'Erro', description: error.message });
         }

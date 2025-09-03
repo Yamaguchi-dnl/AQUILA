@@ -30,7 +30,6 @@ import { Textarea } from '@/components/ui/textarea';
 import Image from 'next/image';
 import { Loader2 } from 'lucide-react';
 import { Label } from '../ui/label';
-import { updateBlock } from '@/actions/admin';
 
 type Block = {
   id: string;
@@ -137,14 +136,14 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, on
                 const newUrl = await handleImageUpload(imageFile);
                 if (newUrl) {
                     imageUrl = newUrl;
-                } else {
+                } else if (imageFile) {
                     // Stop submission if upload fails
                     setIsSubmitting(false);
                     return; 
                 }
             }
-
-            const result = await updateBlock({
+            
+            const blockData = {
                 id: block?.id,
                 page_id: pageId,
                 order_index: block?.order_index ?? lastOrderIndex + 1,
@@ -152,16 +151,24 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, on
                 title: values.title,
                 content: values.content,
                 image_url: imageUrl,
-                pageSlug: pageSlug,
+            };
+
+            const response = await fetch('/api/admin/blocks', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ blockData, pageSlug }),
             });
 
-            if (result.success) {
-                toast({ title: 'Sucesso!', description: result.message });
-                onSuccess();
-                setIsOpen(false);
-            } else {
-                throw new Error(result.message);
+            const result = await response.json();
+
+            if (!response.ok) {
+                throw new Error(result.message || 'Falha ao salvar o bloco.');
             }
+            
+            toast({ title: 'Sucesso!', description: result.message });
+            onSuccess();
+            setIsOpen(false);
+
         } catch (error: any) {
             console.error("Error submitting form:", error);
             toast({ variant: 'destructive', title: 'Erro ao salvar', description: error.message });
