@@ -12,17 +12,16 @@ export function AboutSummary() {
         className="absolute inset-0 bg-[radial-gradient(30%_40%_at_5%_5%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%),radial-gradient(30%_40%_at_95%_95%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)]"
       />
       <div className="container relative z-20 pt-16 pb-24">
-        <StatsCard />
-        <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center mt-24">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
           <div className="order-last md:order-first">
             <AnimatedSection delay={0.1}>
             <Image 
-                src="https://picsum.photos/600/400"
-                alt="Escritório moderno"
+                src="https://ik.imagekit.io/leosmc2zb/4036.jpg"
+                alt="Escritório moderno em Lisboa"
                 width={600}
                 height={400}
                 className="rounded-lg object-cover shadow-xl"
-                data-ai-hint="modern office"
+                data-ai-hint="modern office lisbon"
             />
             </AnimatedSection>
           </div>
@@ -32,9 +31,12 @@ export function AboutSummary() {
                   <Link href="/sobre">QUEM SOMOS</Link>
               </h2>
               <h3 className="font-headline text-3xl md:text-4xl text-primary-foreground mt-2 uppercase">Seu capital, nossa expertise</h3>
+              <div className="mt-8">
+                <StatsCard />
+              </div>
             </AnimatedSection>
             <AnimatedSection delay={0.1}>
-              <div className="mt-6 space-y-4 text-primary-foreground/80 prose prose-lg max-w-none">
+              <div className="mt-8 space-y-4 text-primary-foreground/80 prose prose-lg max-w-none">
                 <p>
                   A Aquila Fund FCR é uma plataforma de investimentos portuguesa, com quatro fundos de investimento totalmente independentes e registrados na Comissão do Mercado de Valores Mobiliários (CMVM).
                 </p>
