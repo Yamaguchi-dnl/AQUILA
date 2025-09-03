@@ -103,7 +103,7 @@ export default function SobrePage() {
                     {historyItems.map((item, index) => (
                         <AnimatedSection key={index} delay={index * 0.1}>
                         <div className="relative pl-12">
-                            <div className="absolute left-0 top-0 flex h-9 w-9 items-center justify-center rounded-full bg-primary text-primary-foreground ring-8 ring-card font-bold text-lg">
+                            <div className="absolute left-0 top-0 flex items-center justify-center rounded-md bg-primary text-primary-foreground ring-8 ring-card font-bold text-lg px-3 h-9">
                                 {item.year}
                             </div>
                             <div className="pl-4">
