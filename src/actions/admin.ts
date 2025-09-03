@@ -25,13 +25,13 @@ export async function updateBlock(data: BlockData) {
     }
     
     // Check if user is admin
-    const { data: userData } = await supabase
+    const { data: userData, error: userError } = await supabase
         .from('users')
         .select('is_admin')
         .eq('id', user.id)
         .single();
     
-    if (!userData?.is_admin) {
+    if (userError || !userData?.is_admin) {
         return { success: false, message: 'Não autorizado' };
     }
 
@@ -39,6 +39,7 @@ export async function updateBlock(data: BlockData) {
 
     const dataToUpsert = {
         ...blockData,
+        updated_at: new Date().toISOString(), // Manually set updated_at
         updated_by: user.id,
     };
 
@@ -78,13 +79,13 @@ export async function deleteBlock(blockId: string, imagePath: string | null, pag
         return { success: false, message: 'Não autenticado' };
     }
     
-    const { data: userData } = await supabase
+    const { data: userData, error: userError } = await supabase
         .from('users')
         .select('is_admin')
         .eq('id', user.id)
         .single();
     
-    if (!userData?.is_admin) {
+    if (userError || !userData?.is_admin) {
         return { success: false, message: 'Não autorizado' };
     }
 

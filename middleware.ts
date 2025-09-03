@@ -1,9 +1,9 @@
-import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 import { updateSession } from '@/lib/supabase/middleware'
 
 export async function middleware(request: NextRequest) {
-  const { supabase, response } = await updateSession(request)
+  // updateSession vai ler e atualizar o cookie de sessão
+  const { response, supabase } = await updateSession(request)
 
   const {
     data: { session },
@@ -42,7 +42,7 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-
+  // Retorna a resposta (com o cookie atualizado) para continuar a requisição
   return response
 }
 
