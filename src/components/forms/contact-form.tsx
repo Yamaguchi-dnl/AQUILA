@@ -77,11 +77,6 @@ export function ContactForm({ isSummary = false }: ContactFormProps) {
         toast({
           title: "Mensagem Enviada!",
           description: state.message,
-          action: (
-             <Button variant="outline" size="sm" onClick={() => router.push('/calculadora-perfil')}>
-                Fazer Análise de Perfil
-             </Button>
-          )
         });
         form.reset();
       } else {

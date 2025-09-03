@@ -15,7 +15,6 @@ export const navItems: NavItem[] = [
     subItems: [
       { href: '/fundos', label: 'Fundos de Investimento', description: 'Explore nosso portfólio de fundos.' },
       { href: '/golden-visa', label: 'Golden Visa', description: 'Seu passaporte para a Europa.' },
-      { href: '/calculadora-perfil', label: 'Calculadora de Perfil', description: 'Descubra seu perfil de investidor.' },
     ]
   },
   { href: '/contato', label: 'Contato' },

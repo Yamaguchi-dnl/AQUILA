@@ -11,7 +11,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/golden-visa',
     '/trabalhe-conosco',
     '/contato',
-    '/calculadora-perfil',
   ].map((route) => ({
     url: `${domain}${route}`,
     lastModified: new Date(),
