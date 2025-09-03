@@ -38,10 +38,10 @@ export function FundSummaryCard({ fund }: FundSummaryCardProps) {
                     {fund.detalhes.investimentoInicial && <Badge variant="outline" className="border-blue-500 bg-blue-50 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300">{fund.detalhes.investimentoInicial}</Badge>}
                 </div>
 
-                <p className="text-muted-foreground">{fund.subtitulo}</p>
+                <p className="text-muted-foreground flex-grow">{fund.subtitulo}</p>
 
                 {fund.beneficios.length > 0 && (
-                    <ul className="my-6 space-y-3 flex-grow">
+                    <ul className="my-6 space-y-3">
                        {fund.beneficios.slice(0, 3).map((beneficio, index) => (
                             <li key={index} className="flex items-center gap-3">
                                 <CheckCircle2 className="h-5 w-5 text-primary shrink-0" />
