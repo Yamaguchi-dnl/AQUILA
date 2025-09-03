@@ -148,7 +148,7 @@ export const teamData: TeamMember[] = [
     nome: 'Michael Maxwell',
     cargo: 'Head of Hospitality',
     bioHtml: '<p>Michael tem uma carreira internacional em gestão hoteleira de luxo. Ele supervisiona o fundo Aquila Hotel Invest, focando na expansão do portfólio e na maximização do retorno através de uma gestão de excelência.</p>',
-    foto: 'https://picsum.photos/400/400?random=14',
+    foto: 'https://ik.imagekit.io/leosmc2zb/Michael-Maxwell-251x300.jpg',
     dataAiHint: 'professional man suit',
     ordem: 5,
   },
