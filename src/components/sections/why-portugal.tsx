@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Globe, ShieldCheck, TrendingUp, Handshake, Sun, Euro } from "lucide-react";
@@ -46,7 +47,7 @@ const benefits = [
 
 export function WhyPortugal() {
   return (
-    <section id="why-portugal" className="bg-black text-primary-foreground overflow-hidden relative">
+    <section id="why-portugal" className="bg-primary text-primary-foreground overflow-hidden relative">
        <div
         aria-hidden="true"
         className="absolute inset-0 bg-[radial-gradient(30%_40%_at_95%_5%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%),radial-gradient(30%_40%_at_5%_95%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)]"
