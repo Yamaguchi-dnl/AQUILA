@@ -14,10 +14,12 @@ import { Label } from "@/components/ui/label";
 import { signIn } from "@/actions/auth";
 import { useActionState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { AlertCircle } from "lucide-react";
 
 export default function LoginPage() {
     const { toast } = useToast();
-    const [state, formAction] = useActionState(signIn, null);
+    const [state, formAction, isPending] = useActionState(signIn, null);
 
     useEffect(() => {
         if (state?.error) {
@@ -57,8 +59,15 @@ export default function LoginPage() {
               </div>
               <Input id="password" name="password" type="password" required />
             </div>
-            <Button type="submit" className="w-full">
-              Login
+             {state?.error && (
+              <Alert variant="destructive">
+                <AlertCircle className="h-4 w-4" />
+                <AlertTitle>Erro</AlertTitle>
+                <AlertDescription>{state.error}</AlertDescription>
+              </Alert>
+            )}
+            <Button type="submit" className="w-full" disabled={isPending}>
+              {isPending ? "Entrando..." : "Login"}
             </Button>
           </form>
         </CardContent>
