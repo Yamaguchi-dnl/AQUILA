@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { TeamSummary } from "@/components/sections/team-summary";
 import { AnimatedSection } from "@/components/shared/animated-section";
@@ -21,11 +21,13 @@ const historyItems = [
 export default function SobrePage() {
   return (
     <>
-       <section className="bg-background pt-32 pb-16 md:pt-40 md:pb-24">
+       <PageHeader
+        title="Sobre a Aquila Fund FCR"
+        subtitle="Construindo um legado de confiança, transparência e excelência."
+       />
+       <section className="bg-background">
         <div className="container grid lg:grid-cols-2 gap-12 items-center">
             <AnimatedSection>
-                 <h1 className="font-headline text-4xl md:text-5xl text-primary uppercase">Sobre a Aquila Fund FCR</h1>
-                 <p className="mt-4 max-w-2xl text-lg text-muted-foreground">Construindo um legado de confiança, transparência e excelência.</p>
                 <div className="mt-6 space-y-4 text-base text-muted-foreground text-justify">
                     <p>A Aquila Fund FCR nasceu há dois anos com a visão de ser uma <strong>plataforma de investimentos diferenciada</strong>, focada em oferecer <strong>soluções inovadoras para investidores de alta renda</strong>. Desde o início, temos nos dedicado a construir um legado de <strong>confiança, transparência e excelência</strong> no mercado financeiro português.</p>
                     <p>Nossa jornada é marcada pela busca incessante por oportunidades que gerem <strong>valor real e sustentável</strong> para nossos clientes, sempre com um olhar atento às dinâmicas do mercado global e às necessidades específicas de cada investidor.</p>
@@ -45,28 +47,28 @@ export default function SobrePage() {
         </div>
        </section>
 
-       <section className="bg-card">
+       <section className="bg-primary text-primary-foreground">
         <div className="container">
            <div className="max-w-4xl mx-auto">
              <AnimatedSection className="text-center mb-12">
-               <h2 className="font-headline text-3xl md:text-4xl text-primary uppercase">Nossa História</h2>
-               <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+               <h2 className="font-headline text-3xl md:text-4xl text-primary-foreground uppercase">Nossa História</h2>
+               <p className="mt-4 text-lg text-primary-foreground/80 max-w-3xl mx-auto">
                    Uma jornada de crescimento e sucesso, marcada pela busca incessante por oportunidades que geram valor real e sustentável para nossos clientes.
                </p>
             </AnimatedSection>
              <div className="relative">
                 {/* The vertical line */}
-                <div className="absolute left-[34px] top-4 h-full w-0.5 bg-border -translate-x-1/2" aria-hidden="true"></div>
+                <div className="absolute left-[34px] top-4 h-full w-0.5 bg-primary-foreground/20 -translate-x-1/2" aria-hidden="true"></div>
                 
                 <div className="space-y-8">
                     {historyItems.map((item, index) => (
                         <AnimatedSection key={index} delay={index * 0.1}>
                         <div className="relative flex items-start gap-8">
-                            <div className="flex-shrink-0 flex items-center justify-center rounded-md bg-primary text-primary-foreground ring-8 ring-card font-bold text-lg px-3 h-9 z-10">
+                            <div className="flex-shrink-0 flex items-center justify-center rounded-md bg-primary-foreground text-primary ring-8 ring-primary font-bold text-lg px-3 h-9 z-10">
                                 {item.year}
                             </div>
                             <div>
-                                <p className="text-muted-foreground text-base">{item.event}</p>
+                                <p className="text-primary-foreground/90 text-base">{item.event}</p>
                             </div>
                         </div>
                         </AnimatedSection>
