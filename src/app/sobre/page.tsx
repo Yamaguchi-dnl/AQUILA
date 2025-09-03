@@ -21,8 +21,13 @@ const historyItems = [
 export default function SobrePage() {
   return (
     <>
-       <section className="bg-background pt-24 md:pt-32">
-        <div className="container">
+       <section className="bg-background pt-24 md:pt-32 relative overflow-hidden">
+        <div className="bg-animation z-0">
+            <div id='stars'></div>
+            <div id='stars2'></div>
+            <div id='stars3'></div>
+        </div>
+        <div className="container relative z-10">
             <AnimatedSection>
                 <div className="text-center">
                     <p className="text-sm uppercase tracking-widest text-muted-foreground font-headline">Nossa Essência</p>
