@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import { TeamSummary } from "@/components/sections/team-summary";
 import { AnimatedSection } from "@/components/shared/animated-section";
@@ -26,7 +26,7 @@ export default function SobrePage() {
             <AnimatedSection>
                  <h1 className="font-headline text-4xl md:text-5xl text-primary uppercase">Sobre a Aquila Fund FCR</h1>
                  <p className="mt-4 max-w-2xl text-lg text-muted-foreground">Construindo um legado de confiança, transparência e excelência.</p>
-                <div className="mt-6 space-y-4 text-lg text-muted-foreground">
+                <div className="mt-6 space-y-4 text-lg text-muted-foreground text-justify">
                     <p>A Aquila Fund FCR nasceu há dois anos com a visão de ser uma <strong>plataforma de investimentos diferenciada</strong>, focada em oferecer <strong>soluções inovadoras para investidores de alta renda</strong>. Desde o início, temos nos dedicado a construir um legado de <strong>confiança, transparência e excelência</strong> no mercado financeiro português.</p>
                     <p>Nossa jornada é marcada pela busca incessante por oportunidades que gerem <strong>valor real e sustentável</strong> para nossos clientes, sempre com um olhar atento às dinâmicas do mercado global e às necessidades específicas de cada investidor.</p>
                     <p>Nossa missão é guiar nossos clientes através do complexo cenário de investimentos, transformando <strong>desafios em oportunidades e aspirações em conquistas</strong>. Com uma equipe de especialistas altamente qualificados e uma abordagem personalizada, construímos <strong>relacionamentos duradouros baseados na confiança e no compromisso com resultados</strong>.</p>
