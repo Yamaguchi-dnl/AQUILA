@@ -1,12 +1,9 @@
 
 
-import { PageHeader } from "@/components/shared/page-header";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import Image from "next/image";
+import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { TeamSummary } from "@/components/sections/team-summary";
-import { Target, TrendingUp, Handshake, Users } from "lucide-react";
 import { AnimatedSection } from "@/components/shared/animated-section";
 
 export const metadata = {
@@ -99,7 +96,7 @@ export default function SobrePage() {
             <AnimatedSection delay={0.1}>
             <Card className="flex flex-col h-full hover:border-primary transition-colors">
                 <CardHeader>
-                    <CardTitle className="text-2xl font-headline">FundBox</CardTitle>
+                    <h3 className="text-2xl font-headline card-title">FundBox</h3>
                 </CardHeader>
                 <CardContent className="prose max-w-none text-muted-foreground flex-grow">
                     <p>Nossos fundos são geridos pela FundBox, empresa de investimento independente líder em Portugal que gera ativamente cerca de €420 milhões em ativos sob gestão. A FundBox oferece estruturação e execução de transações de primeira classe, livre de qualquer agenda conflitante, e com envolvimento ativo de executivos seniores ao longo de todo o processo de investimento.</p>
@@ -109,7 +106,7 @@ export default function SobrePage() {
              <AnimatedSection delay={0.2}>
              <Card className="flex flex-col h-full hover:border-primary transition-colors">
                 <CardHeader>
-                    <CardTitle className="text-2xl font-headline">BTG Pactual</CardTitle>
+                    <h3 className="text-2xl font-headline card-title">BTG Pactual</h3>
                 </CardHeader>
                 <CardContent className="prose max-w-none text-muted-foreground flex-grow">
                     <p>Para facilitar o acesso aos nossos fundos, estabelecemos uma parceria exclusiva com o BTG Pactual. Nossos clientes podem investir mantendo seus ativos no Brasil como garantia, sem a necessidade de transferir capital para o exterior, ideal para quem busca diversificação internacional sem desmobilizar seus investimentos atuais.</p>
