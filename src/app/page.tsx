@@ -16,11 +16,11 @@ export default function Home() {
         <SectionLink topColor="hsl(var(--card))" bottomColor="hsl(var(--primary))" height={160} variant="quebrada" />
       </div>
       <AboutSummary />
-      <InvestmentStrategy />
       <FundsSummary />
       <WhyPortugal />
       <GoldenVisaSummary />
       <InvestmentCycle />
+      <InvestmentStrategy />
       <ContactSummary />
     </>
   );
