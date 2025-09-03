@@ -11,11 +11,7 @@ const timelineData = {
 
 export function InvestmentCycle() {
   return (
-    <section id="investment-cycle" className="bg-primary text-primary-foreground relative">
-       <div
-        aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(30%_40%_at_95%_5%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%),radial-gradient(30%_40%_at_5%_95%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)]"
-      />
+    <section id="investment-cycle" className="bg-transparent text-primary-foreground relative py-16 md:py-24 lg:py-28 pb-0">
       <div className="container relative z-10">
         <AnimatedSection>
         <div className="text-center max-w-3xl mx-auto">

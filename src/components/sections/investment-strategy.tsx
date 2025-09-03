@@ -30,7 +30,7 @@ const processSteps = [
 
 export function InvestmentStrategy() {
   return (
-    <section id="investment-strategy" className="bg-primary text-primary-foreground relative">
+    <section id="investment-strategy" className="bg-transparent text-primary-foreground relative py-16 md:py-24 lg:py-28 pt-0">
       <div className="container relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>

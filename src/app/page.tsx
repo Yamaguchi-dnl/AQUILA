@@ -19,9 +19,15 @@ export default function Home() {
       <FundsSummary />
       <WhyPortugal />
       <GoldenVisaSummary />
-      <InvestmentCycle />
-      <InvestmentStrategy />
-      <ContactSummary />
+      <div className='relative bg-primary'>
+        <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-[radial-gradient(30%_40%_at_95%_95%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%),radial-gradient(30%_40%_at_5%_5%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)]"
+        />
+        <InvestmentCycle />
+        <InvestmentStrategy />
+        <ContactSummary />
+      </div>
     </>
   );
 }
