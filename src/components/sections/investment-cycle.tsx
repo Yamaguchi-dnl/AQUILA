@@ -17,12 +17,12 @@ const mobileTimelineData = [
     },
     {
         title: "Período de Investimento",
-        duration: "Anos 2-6",
+        duration: "Anos 2-7",
         description: "Alocação de capital e gestão ativa dos ativos para maximizar o valor."
     },
     {
         title: "Retenção e Desinvestimento",
-        duration: "Anos 6-8",
+        duration: "Anos 7-8",
         description: "Fase final de maturação e venda dos ativos para realizar os lucros."
     }
 ];
