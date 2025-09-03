@@ -1,4 +1,6 @@
 
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,8 +11,26 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { signIn } from "@/actions/auth";
+import { useFormState } from "react-dom";
+import { useEffect } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 export default function LoginPage() {
+    const { toast } = useToast();
+    const [state, formAction] = useFormState(signIn, null);
+
+    useEffect(() => {
+        if (state?.error) {
+            toast({
+                variant: "destructive",
+                title: "Erro de Login",
+                description: state.error,
+            });
+        }
+    }, [state, toast]);
+
+
   return (
     <main className="flex items-center justify-center min-h-screen bg-background">
       <Card className="mx-auto max-w-sm">
@@ -21,11 +41,12 @@ export default function LoginPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid gap-4">
+          <form action={formAction} className="grid gap-4">
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
+                name="email"
                 type="email"
                 placeholder="m@example.com"
                 required
@@ -35,12 +56,12 @@ export default function LoginPage() {
               <div className="flex items-center">
                 <Label htmlFor="password">Senha</Label>
               </div>
-              <Input id="password" type="password" required />
+              <Input id="password" name="password" type="password" required />
             </div>
             <Button type="submit" className="w-full">
               Login
             </Button>
-          </div>
+          </form>
         </CardContent>
       </Card>
     </main>
