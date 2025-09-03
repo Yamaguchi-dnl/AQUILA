@@ -2,7 +2,7 @@
 
 "use client";
 
-import { useState, useEffect, useCallback, use } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { useParams } from 'next/navigation';
 import { PageHeader } from '@/components/shared/page-header';
@@ -35,7 +35,7 @@ export default function AdminSinglePage() {
     const params = useParams();
     const { toast } = useToast();
     
-    const slug = use(params).slug as string;
+    const slug = params.slug as string;
 
     const [page, setPage] = useState<Page | null>(null);
     const [blocks, setBlocks] = useState<Block[]>([]);
