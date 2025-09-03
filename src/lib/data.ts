@@ -85,8 +85,8 @@ export const fundsData: Fund[] = [
       'Alto potencial de retorno — retorno mínimo estimado de 50% ao final do 8º ano.',
     ],
     hoteis: [
-      { nome: 'Valverde Lisboa Hotel & Garden', localizacao: 'Centro de Lisboa', imagem: { src: 'https://ik.imagekit.io/leosmc2zb/valverde-hotel-facade.jpg', v: 1 }, dataAiHint: 'luxury hotel facade' },
-      { nome: 'Valverde Sintra Palácio de Seteais', localizacao: 'Sintra, Lisboa', imagem: { src: 'https://picsum.photos/600/400?random=2', v: 1 }, dataAiHint: 'historic palace hotel' },
+      { nome: 'Valverde Lisboa Hotel & Garden', localizacao: 'Centro de Lisboa', imagem: { src: 'https://ik.imagekit.io/leosmc2zb/valverde-hotel-facade.jpg', v: 2 }, dataAiHint: 'luxury hotel facade' },
+      { nome: 'Valverde Sintra Palácio de Seteais', localizacao: 'Sintra, Lisboa', imagem: { src: 'https://ik.imagekit.io/leosmc2zb/L08zbS8tME0zWnJTbS9TTzdTbk1qbm0vZlpGRFNuLVNOWkZaS01qYVM3U1pNbXhnejY2UXR6dGRrcg.webp?updatedAt=1756822978399', v: 1 }, dataAiHint: 'historic palace hotel' },
       { nome: 'Valverde Santar Hotel & SPA', localizacao: 'Santar, Viseu', imagem: { src: 'https://picsum.photos/600/400?random=3', v: 1 }, dataAiHint: 'hotel spa interior' },
       { nome: 'Hotel Intercontinental Estoril', localizacao: 'Cascais', imagem: { src: 'https://picsum.photos/600/400?random=4', v: 1 }, dataAiHint: 'coastal hotel view' },
       { nome: 'Palácio Condes de Azevedo', localizacao: 'Centro do Porto', imagem: { src: 'https://picsum.photos/600/400?random=5', v: 1 }, dataAiHint: 'historic hotel facade' },
