@@ -18,7 +18,10 @@ export type Fund = {
   hoteis?: {
     nome: string;
     localizacao: string;
-    imagem: string;
+    imagem: {
+      src: string;
+      v: number;
+    };
     dataAiHint: string;
   }[];
   status: "ativo" | "em_breve";
