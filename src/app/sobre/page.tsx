@@ -37,10 +37,10 @@ export default function SobrePage() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <AnimatedSection>
               <Image 
-                src="https://picsum.photos/600/700"
+                src="https://picsum.photos/600/600"
                 alt="Escritório moderno da Aquila com vista para a cidade"
                 width={600}
-                height={700}
+                height={600}
                 className="rounded-xl object-cover w-full h-full shadow-lg"
                 data-ai-hint="modern office city view"
               />
