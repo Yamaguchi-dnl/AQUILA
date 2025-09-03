@@ -11,7 +11,7 @@ export function TeamMemberCard({ member }: TeamMemberCardProps) {
     <Card className="flex flex-col h-full text-center">
       <CardHeader className="items-center">
         <Image
-          src={member.foto}
+          src={`${member.foto.src}?v=${member.foto.v}`}
           alt={member.nome}
           width={128}
           height={128}

@@ -24,11 +24,16 @@ export type Fund = {
   status: "ativo" | "em_breve";
 };
 
+export type TeamMemberPhoto = {
+  src: string;
+  v: number;
+};
+
 export type TeamMember = {
   nome: string;
   cargo: string;
   bioHtml: string;
-  foto: string;
+  foto: TeamMemberPhoto;
   dataAiHint: string;
   ordem: number;
 };

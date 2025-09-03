@@ -27,7 +27,7 @@ export function TeamSummary({ isPage = false }: TeamSummaryProps) {
           {teamToShow.map((member) => (
             <div key={member.nome} className="flex flex-col items-center">
               <Avatar className="h-24 w-24 md:h-32 md:w-32 border-4 border-background">
-                <AvatarImage src={member.foto} alt={member.nome} data-ai-hint={member.dataAiHint} />
+                <AvatarImage src={`${member.foto.src}?v=${member.foto.v}`} alt={member.nome} data-ai-hint={member.dataAiHint} />
                 <AvatarFallback>{member.nome.charAt(0)}</AvatarFallback>
               </Avatar>
               <h3 className="mt-4 font-semibold text-lg text-foreground">{member.nome}</h3>
