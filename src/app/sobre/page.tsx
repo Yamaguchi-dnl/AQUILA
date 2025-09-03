@@ -4,7 +4,6 @@ import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { TeamSummary } from "@/components/sections/team-summary";
 import { AnimatedSection } from "@/components/shared/animated-section";
-import { PageHeader } from "@/components/shared/page-header";
 import Image from "next/image";
 
 export const metadata = {
@@ -22,13 +21,11 @@ const historyItems = [
 export default function SobrePage() {
   return (
     <>
-       <PageHeader
-        title="Sobre a Aquila Fund FCR"
-        subtitle="Construindo um legado de confiança, transparência e excelência."
-       />
-       <section className="bg-background">
+       <section className="bg-background pt-24 md:pt-32">
         <div className="container grid lg:grid-cols-2 gap-12 items-center">
             <AnimatedSection>
+                <h1 className="font-headline text-4xl md:text-5xl text-primary uppercase">Sobre a Aquila Fund FCR</h1>
+                <p className="mt-4 max-w-2xl text-lg text-muted-foreground">Construindo um legado de confiança, transparência e excelência.</p>
                 <div className="mt-6 space-y-4 text-base text-muted-foreground text-justify">
                     <p>A Aquila Fund FCR nasceu há dois anos com a visão de ser uma <strong>plataforma de investimentos diferenciada</strong>, focada em oferecer <strong>soluções inovadoras para investidores de alta renda</strong>. Desde o início, temos nos dedicado a construir um legado de <strong>confiança, transparência e excelência</strong> no mercado financeiro português.</p>
                     <p>Nossa jornada é marcada pela busca incessante por oportunidades que gerem <strong>valor real e sustentável</strong> para nossos clientes, sempre com um olhar atento às dinâmicas do mercado global e às necessidades específicas de cada investidor.</p>
