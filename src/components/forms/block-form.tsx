@@ -125,9 +125,13 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, on
 
             if (imageFile) {
                  if (block?.image_url) {
-                    const oldPath = new URL(block.image_url).pathname.split('/v1/object/public/site-images/')[1];
-                    if (oldPath) {
-                        await supabase.storage.from('site-images').remove([oldPath]);
+                    try {
+                        const oldPath = new URL(block.image_url).pathname.split('/site-images/')[1];
+                        if (oldPath) {
+                            await supabase.storage.from('site-images').remove([oldPath]);
+                        }
+                    } catch(e) {
+                         console.error("Could not process old image URL to delete it:", e);
                     }
                 }
                 const newUrl = await handleImageUpload(imageFile);
