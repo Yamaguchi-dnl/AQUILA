@@ -13,7 +13,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 10%;
 
-    --primary: 0 0% 0%; /* Black */
+    --primary: 206 100% 13%; /* Dark Blue */
     --primary-foreground: 0 0% 100%; /* White */
 
     --secondary: 0 0% 95%; /* Light Gray */
@@ -31,7 +31,7 @@
     --highlight: 0 0% 20%; /* Dark Gray for highlight */
 
     --border: 0 0% 90%;
-    --input: 0 0% 100%;
+    --input: 0 0% 85%;
     --ring: 0 0% 10%;
 
     --chart-1: 12 76% 61%;
@@ -39,6 +39,9 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
+
+    --timeline-bg: 210 100% 20%;
+    --timeline-fg: 210 100% 75%;
     
     --radius: 0.5rem;
   }
@@ -53,7 +56,7 @@
     --popover: 0 0% 0%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 0 0% 95%; /* Near White */
+    --primary: 210 100% 80%; /* Light Blue */
     --primary-foreground: 0 0% 0%; /* Black */
 
     --secondary: 0 0% 15%; /* Dark Gray */
@@ -79,6 +82,9 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+
+    --timeline-bg: 210 100% 20%;
+    --timeline-fg: 210 100% 75%;
   }
 }
 
