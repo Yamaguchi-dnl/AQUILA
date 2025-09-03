@@ -97,16 +97,16 @@ export default function SobrePage() {
            <div className="mt-12 max-w-4xl mx-auto">
              <div className="relative">
                 {/* The vertical line */}
-                <div className="absolute left-4 top-2 h-full w-0.5 bg-border" aria-hidden="true"></div>
+                <div className="absolute left-[34px] top-4 h-full w-0.5 bg-border -translate-x-1/2" aria-hidden="true"></div>
                 
-                <div className="space-y-12">
+                <div className="space-y-8">
                     {historyItems.map((item, index) => (
                         <AnimatedSection key={index} delay={index * 0.1}>
-                        <div className="relative pl-12">
-                            <div className="absolute left-0 top-0 flex items-center justify-center rounded-md bg-primary text-primary-foreground ring-8 ring-card font-bold text-lg px-3 h-9">
+                        <div className="relative flex items-start gap-8">
+                            <div className="flex-shrink-0 flex items-center justify-center rounded-md bg-primary text-primary-foreground ring-8 ring-card font-bold text-lg px-3 h-9 z-10">
                                 {item.year}
                             </div>
-                            <div className="pl-4">
+                            <div>
                                 <p className="text-muted-foreground text-base">{item.event}</p>
                             </div>
                         </div>
