@@ -14,9 +14,9 @@ export function AboutSummary() {
       <div className="container relative z-20 pt-16 pb-24">
         <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-stretch">
           <div className="order-last md:order-first">
-            <AnimatedSection delay={0.1}>
+            <AnimatedSection>
             <Image 
-                src="https://ik.imagekit.io/leosmc2zb/4036.jpg"
+                src="https://ik.imagekit.io/leosmc2zb/5573.jpg"
                 alt="Escritório moderno em Lisboa"
                 width={600}
                 height={500}
@@ -33,7 +33,7 @@ export function AboutSummary() {
               <h3 className="font-headline text-3xl md:text-4xl text-primary-foreground mt-2 uppercase">Seu capital, nossa expertise</h3>
               
             </AnimatedSection>
-            <AnimatedSection delay={0.1} className="flex-grow">
+            <AnimatedSection className="flex-grow">
               <div className="mt-8 space-y-4 text-primary-foreground/80 prose prose-lg max-w-none">
                 <p>
                   A Aquila Fund FCR é uma plataforma de investimentos portuguesa, com quatro fundos de investimento totalmente independentes e registrados na Comissão do Mercado de Valores Mobiliários (CMVM).
@@ -46,7 +46,7 @@ export function AboutSummary() {
                 </p>
               </div>
             </AnimatedSection>
-            <AnimatedSection delay={0.2} className="mt-8">
+            <AnimatedSection className="mt-8">
               <Button asChild size="lg" variant="secondary">
                 <Link href="/contato">FALE COM UM ESPECIALISTA!</Link>
               </Button>
