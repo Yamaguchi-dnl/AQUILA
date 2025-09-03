@@ -42,19 +42,22 @@ export function InvestmentStrategy() {
                 </AnimatedSection>
                 
                 <AnimatedSection delay={0.1}>
-                    <div className="mt-8 space-y-4">
-                        {processSteps.map((step) => (
-                            <Card key={step.number} className="bg-primary-foreground/5 border-primary-foreground/10 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
-                                <CardContent className="p-6 flex items-start gap-6">
-                                    <div className="flex-shrink-0 w-10 h-10 bg-secondary text-secondary-foreground rounded-full flex items-center justify-center font-bold text-lg">
-                                        {step.number}
-                                    </div>
-                                    <div>
-                                        <h3 className="font-headline text-lg text-primary-foreground">{step.title}</h3>
-                                        <p className="text-primary-foreground/70 mt-1">{step.description}</p>
-                                    </div>
-                                </CardContent>
-                            </Card>
+                    <div className="mt-12 relative">
+                        {processSteps.map((step, index) => (
+                           <div key={step.number} className="relative pl-16 pb-12 last:pb-0">
+                               {index !== processSteps.length - 1 && (
+                                <div className="absolute left-[30px] top-5 h-full w-px bg-primary-foreground/20" />
+                               )}
+                               <div className="absolute left-0 top-0 flex h-16 w-16 items-center justify-center rounded-full bg-secondary text-secondary-foreground ring-8 ring-primary font-bold text-xl z-10">
+                                   {step.number}
+                               </div>
+                               <Card className="ml-4 bg-primary-foreground/5 border-primary-foreground/10 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
+                                   <CardContent className="p-6">
+                                       <h3 className="font-headline text-xl text-primary-foreground">{step.title}</h3>
+                                       <p className="text-primary-foreground/70 mt-2">{step.description}</p>
+                                   </CardContent>
+                               </Card>
+                           </div>
                         ))}
                     </div>
                 </AnimatedSection>
