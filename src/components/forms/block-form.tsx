@@ -30,6 +30,7 @@ import { Textarea } from '@/components/ui/textarea';
 import Image from 'next/image';
 import { Loader2 } from 'lucide-react';
 import { Label } from '../ui/label';
+import { updateBlock } from '@/actions/admin';
 
 type Block = {
   id: string;
@@ -54,7 +55,6 @@ const formSchema = z.object({
   title: z.string().min(1, "O título é obrigatório."),
   block_type: z.string().min(1, "O tipo do bloco é obrigatório."),
   content: z.string().optional(),
-  image_url: z.string().optional(),
   image_file: z.any().optional(),
 });
 
@@ -62,6 +62,7 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, on
     const supabase = createClient();
     const { toast } = useToast();
     const [isUploading, setIsUploading] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -69,31 +70,29 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, on
             title: '',
             block_type: 'texto',
             content: '',
-            image_url: '',
         },
     });
 
-    const { isSubmitting } = form.formState;
-
     useEffect(() => {
-        if (block) {
-            form.reset({
-                title: block.title || '',
-                block_type: block.block_type || 'texto',
-                content: block.content || '',
-                image_url: block.image_url || '',
-            });
-        } else {
-            form.reset({
-                title: '',
-                block_type: 'texto',
-                content: '',
-                image_url: '',
-                image_file: null,
-            });
+        if (isOpen) {
+            if (block) {
+                form.reset({
+                    title: block.title || '',
+                    block_type: block.block_type || 'texto',
+                    content: block.content || '',
+                    image_file: null,
+                });
+            } else {
+                form.reset({
+                    title: '',
+                    block_type: 'texto',
+                    content: '',
+                    image_file: null,
+                });
+            }
         }
     }, [block, form, isOpen]);
-
+    
     const handleImageUpload = async (file: File): Promise<string | null> => {
         if (!file) return null;
         setIsUploading(true);
@@ -119,25 +118,29 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, on
     };
     
     async function onSubmit(values: z.infer<typeof formSchema>) {
+        setIsSubmitting(true);
         try {
-            let imageUrl = block?.image_url || '';
+            let imageUrl = block?.image_url || undefined;
+            const imageFile = values.image_file?.[0];
 
-            if (values.image_file && values.image_file[0]) {
-                if (block?.image_url) {
+            if (imageFile) {
+                 if (block?.image_url) {
                     const oldPath = new URL(block.image_url).pathname.split('/v1/object/public/site-images/')[1];
                     if (oldPath) {
                         await supabase.storage.from('site-images').remove([oldPath]);
                     }
                 }
-                const newUrl = await handleImageUpload(values.image_file[0]);
+                const newUrl = await handleImageUpload(imageFile);
                 if (newUrl) {
                     imageUrl = newUrl;
+                } else {
+                    // Stop submission if upload fails
+                    setIsSubmitting(false);
+                    return; 
                 }
             }
 
-            const { data: { user } } = await supabase.auth.getUser();
-
-            const dataToUpsert = {
+            const result = await updateBlock({
                 id: block?.id,
                 page_id: pageId,
                 order_index: block?.order_index ?? lastOrderIndex + 1,
@@ -145,27 +148,21 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, on
                 title: values.title,
                 content: values.content,
                 image_url: imageUrl,
-                updated_by: user?.id,
-            };
-            
-            // If we are creating a new block, we don't include the id
-            if (!block) {
-                // @ts-ignore
-                delete dataToUpsert.id;
+                pageSlug: pageSlug,
+            });
+
+            if (result.success) {
+                toast({ title: 'Sucesso!', description: result.message });
+                onSuccess();
+                setIsOpen(false);
+            } else {
+                throw new Error(result.message);
             }
-
-            const { error } = await supabase
-                .from('blocks')
-                .upsert(dataToUpsert, { onConflict: 'id' });
-
-            if (error) throw error;
-
-            toast({ title: 'Sucesso!', description: `Bloco ${block ? 'atualizado' : 'criado'} com sucesso.` });
-            onSuccess();
-            setIsOpen(false);
         } catch (error: any) {
             console.error("Error submitting form:", error);
             toast({ variant: 'destructive', title: 'Erro ao salvar', description: error.message });
+        } finally {
+            setIsSubmitting(false);
         }
     }
 
@@ -253,4 +250,3 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, on
         </Dialog>
     );
 }
-    

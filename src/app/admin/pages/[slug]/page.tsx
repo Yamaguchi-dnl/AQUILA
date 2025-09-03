@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import { useState, useEffect, useCallback, use } from 'react';
@@ -14,6 +13,7 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { useToast } from '@/hooks/use-toast';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
+import { deleteBlock } from '@/actions/admin';
 
 type Page = {
     id: string;
@@ -98,19 +98,23 @@ export default function AdminSinglePage() {
     const handleDeleteBlock = async (blockId: string) => {
         try {
             const blockToDelete = blocks.find(b => b.id === blockId);
+            let imagePath: string | null = null;
             if (blockToDelete?.image_url) {
-                const path = new URL(blockToDelete.image_url).pathname.split('/site-images/')[1];
-                 const { error: storageError } = await supabase.storage.from('site-images').remove([path]);
-                 if (storageError) {
-                     console.error("Could not delete image from storage:", storageError.message);
-                 }
+                try {
+                   imagePath = new URL(blockToDelete.image_url).pathname.split('/site-images/')[1];
+                } catch(e) {
+                    console.error("Invalid image URL, cannot extract path", blockToDelete.image_url)
+                }
             }
 
-            const { error } = await supabase.from('blocks').delete().eq('id', blockId);
-            if (error) throw error;
-            
-            toast({ title: 'Sucesso', description: 'Bloco excluído.' });
-            fetchData();
+            const result = await deleteBlock(blockId, imagePath, page!.slug);
+
+            if (result.success) {
+                toast({ title: 'Sucesso', description: result.message });
+                fetchData(); // This re-fetches data, no need for revalidatePath on server
+            } else {
+                throw new Error(result.message);
+            }
         } catch (error: any) {
             toast({ variant: 'destructive', title: 'Erro', description: error.message });
         }
