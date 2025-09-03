@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import Link from "next/link";
@@ -47,7 +48,7 @@ export default function SobrePage() {
         </div>
        </section>
 
-       <section className="bg-primary text-primary-foreground">
+       <section className="bg-primary text-primary-foreground rounded-t-3xl">
         <div className="container">
            <div className="max-w-4xl mx-auto">
              <AnimatedSection className="text-center mb-12">
