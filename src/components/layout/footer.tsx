@@ -34,7 +34,7 @@ export function Footer() {
                     </Link>
                 </Button>
                 <Button asChild variant="ghost" className="text-primary-foreground hover:bg-primary-foreground/10 hover:text-white" size="icon">
-                    <Link href="https://www.linkedin.com/company/aquila-fcr/" target="_blank" aria-label="LinkedIn">
+                    <Link href="https://www'linkedin.com/company/aquila-fcr/" target="_blank" aria-label="LinkedIn">
                         <Linkedin className="h-5 w-5" />
                     </Link>
                 </Button>
