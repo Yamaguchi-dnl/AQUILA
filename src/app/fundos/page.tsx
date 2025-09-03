@@ -1,4 +1,5 @@
 
+
 import { fundsData } from "@/lib/data";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle, Clock } from "lucide-react";
@@ -102,7 +103,7 @@ export default function FundosPage() {
                                   <h4 className={cn("text-2xl font-headline text-center uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>Hotéis Sob Gestão</h4>
                                   <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                                       {fund.hoteis.map((hotel, i) => (
-                                          <Card key={i} className={cn("overflow-hidden", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
+                                          <Card key={`${hotel.nome}-${hotel.imagem.v}`} className={cn("overflow-hidden", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
                                               <Image src={`${hotel.imagem.src}?v=${hotel.imagem.v}`} alt={hotel.nome} width={600} height={400} className="w-full h-48 object-cover" data-ai-hint={hotel.dataAiHint} />
                                               <CardContent className="p-4">
                                                   <p className="font-semibold text-foreground">{hotel.nome}</p>
