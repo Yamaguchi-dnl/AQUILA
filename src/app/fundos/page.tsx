@@ -1,4 +1,3 @@
-import { PageHeader } from "@/components/shared/page-header";
 import { fundsData } from "@/lib/data";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle, Clock } from "lucide-react";
@@ -24,15 +23,17 @@ const FundDetail = ({ label, value }: { label: string; value: string | undefined
 export default function FundosPage() {
   return (
     <>
-      <PageHeader
-        title="Nossos Fundos"
-        subtitle="Na Aquila Fund FCR, oferecemos um portfólio diversificado de fundos de investimento, estruturados para atender às necessidades de investidores que buscam oportunidades no promissor mercado português."
-      />
+      <div className="bg-background pt-32">
+        <div className="container pb-12 md:pb-24 space-y-24">
+            <div className="text-center max-w-4xl mx-auto">
+                <h1 className="font-headline text-4xl md:text-5xl text-primary uppercase">Nossos Fundos</h1>
+                <p className="mt-4 text-lg text-muted-foreground">
+                    Na Aquila Fund FCR, oferecemos um portfólio diversificado de fundos de investimento, estruturados para atender às necessidades de investidores que buscam oportunidades no promissor mercado português.
+                </p>
+            </div>
 
-      <div className="bg-background">
-        <div className="container py-12 md:py-24 space-y-24">
             {fundsData.map((fund, index) => (
-                <section id={fund.slug} key={fund.slug} className="scroll-mt-20">
+                <section id={fund.slug} key={fund.slug} className="scroll-mt-20 pt-12">
                     <div className="grid lg:grid-cols-3 gap-8 lg:gap-16">
                         <div className="lg:col-span-2">
                              <h2 className="font-headline text-3xl md:text-4xl text-primary uppercase">{fund.nome}</h2>
