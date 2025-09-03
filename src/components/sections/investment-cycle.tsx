@@ -65,11 +65,11 @@ export function InvestmentCycle() {
 
                 {/* Phase Blocks - Second Row */}
                 <div className="grid grid-cols-9 mt-4">
-                    <div className="col-start-1 col-span-6 bg-timeline-bg p-3 rounded text-center">
+                    <div className="col-start-1 col-span-7 bg-timeline-bg p-3 rounded text-center">
                         <p className="font-semibold text-primary-foreground">Investimento</p>
                         <p className="text-sm text-primary-foreground/80">Período de 6 anos</p>
                     </div>
-                    <div className="col-start-7 col-span-2 bg-timeline-bg p-3 rounded text-center ml-2">
+                    <div className="col-start-8 col-span-2 bg-timeline-bg p-3 rounded text-center ml-2">
                         <p className="font-semibold text-primary-foreground">Retenção e Desinvestimento</p>
                         <p className="text-sm text-primary-foreground/80">Período 2 anos</p>
                     </div>
