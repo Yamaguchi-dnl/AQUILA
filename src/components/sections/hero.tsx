@@ -17,8 +17,13 @@ export function Hero() {
         </div>
         <div className="container z-10 grid md:grid-cols-2 gap-8 items-center pt-16 pb-16">
         <div className="max-w-2xl order-last md:order-first">
+             <AnimatedSection>
+                 <h2 className="text-sm uppercase tracking-widest text-muted-foreground font-headline">
+                    Aquila Fund FCR
+                  </h2>
+            </AnimatedSection>
             <AnimatedSection delay={0.1}>
-                <h1 className="font-headline text-3xl sm:text-4xl lg:text-5xl xl:text-6xl tracking-tight text-foreground uppercase">
+                <h1 className="font-headline text-3xl sm:text-4xl lg:text-5xl xl:text-6xl tracking-tight text-foreground uppercase mt-4">
                     Investimentos <span className="text-primary">Inteligentes</span> <span className="block">para o seu Futuro</span>
                 </h1>
             </AnimatedSection>
