@@ -32,9 +32,10 @@ export default function SobrePage() {
             </AnimatedSection>
             <div className="mt-12 grid lg:grid-cols-2 gap-12 items-center">
                 <AnimatedSection>
-                    <div className="space-y-4 text-base text-muted-foreground text-justify">
-                        <p>A Aquila Fund FCR nasceu com a visão de ser uma <strong>plataforma de investimentos diferenciada</strong>, focada em oferecer <strong>soluções inovadoras para investidores de alta renda</strong>. Desde o início, temos nos dedicado a construir um legado de <strong>confiança, transparência e excelência</strong> no mercado financeiro português.</p>
+                    <div class="space-y-4 text-base text-muted-foreground text-justify">
+                        <p>A Aquila Fund FCR nasceu há dois anos com a visão de ser uma <strong>plataforma de investimentos diferenciada</strong>, focada em oferecer <strong>soluções inovadoras para investidores de alta renda</strong>. Desde o início, temos nos dedicado a construir um legado de <strong>confiança, transparência e excelência</strong> no mercado financeiro português.</p>
                         <p>Nossa jornada é marcada pela busca incessante por oportunidades que gerem <strong>valor real e sustentável</strong> para nossos clientes, sempre com um olhar atento às dinâmicas do mercado global e às necessidades específicas de cada investidor.</p>
+                        <p>Nossa missão é guiar nossos clientes através do complexo cenário de investimentos, transformando desafios em oportunidades e aspirações em conquistas. Com uma equipe de especialistas altamente qualificados e uma abordagem personalizada, construímos relacionamentos duradouros baseados na confiança e no compromisso com resultados.</p>
                     </div>
                 </AnimatedSection>
                 <AnimatedSection delay={0.1}>
