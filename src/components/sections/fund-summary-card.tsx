@@ -22,7 +22,7 @@ export function FundSummaryCard({ fund }: FundSummaryCardProps) {
                     height={350}
                     className={cn(
                         "w-full h-56 object-cover",
-                        fund.slug === 'aquila-real-estate' ? 'object-top' : 'object-bottom'
+                        fund.slug === 'aquila-real-estate' ? 'object-center' : 'object-bottom'
                     )}
                     data-ai-hint="investment theme"
                 />
