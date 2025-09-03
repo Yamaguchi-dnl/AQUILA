@@ -22,7 +22,7 @@ export default function SobrePage() {
   return (
     <>
        <section className="bg-background pt-24 md:pt-32 relative overflow-hidden">
-        <div className="bg-animation z-0">
+        <div className="bg-animation z-0 hidden md:block">
             <div id='stars'></div>
             <div id='stars2'></div>
             <div id='stars3'></div>
@@ -45,7 +45,7 @@ export default function SobrePage() {
                 </AnimatedSection>
                 <AnimatedSection delay={0.1}>
                      <Image
-                        src="https://ik.imagekit.io/leosmc2zb/5573.jpg"
+                        src="https://ik.imagekit.io/leosmc2zb/Luis-Assis-Teixeira-251x300.jpg"
                         alt="Escritório moderno com vista para a cidade"
                         width={600}
                         height={400}

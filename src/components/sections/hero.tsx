@@ -10,7 +10,7 @@ import { motion } from 'framer-motion';
 export function Hero() {
   return (
     <section className="w-full bg-card relative overflow-hidden pt-16">
-       <div className="bg-animation z-0">
+       <div className="bg-animation z-0 hidden md:block">
             <div id='stars'></div>
             <div id='stars2'></div>
             <div id='stars3'></div>
