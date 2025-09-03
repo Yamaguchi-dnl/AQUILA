@@ -1,11 +1,10 @@
 
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useActionState } from 'react';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { createClient } from '@/lib/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from "@/components/ui/button";
 import {
@@ -30,6 +29,7 @@ import { Textarea } from '@/components/ui/textarea';
 import Image from 'next/image';
 import { Loader2 } from 'lucide-react';
 import { Label } from '../ui/label';
+import { saveBlock } from '@/actions/admin';
 
 type Block = {
   id: string;
@@ -51,17 +51,25 @@ type BlockFormDialogProps = {
 };
 
 const formSchema = z.object({
+  id: z.string().optional(),
+  page_id: z.string(),
+  pageSlug: z.string(),
+  order_index: z.number(),
   title: z.string().min(1, "O título é obrigatório."),
   block_type: z.string().min(1, "O tipo do bloco é obrigatório."),
   content: z.string().optional(),
   image_file: z.any().optional(),
+  current_image_url: z.string().optional(),
 });
 
+const initialState = {
+  message: "",
+  success: false,
+};
+
 export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, onSuccess, lastOrderIndex }: BlockFormDialogProps) {
-    const supabase = createClient();
     const { toast } = useToast();
-    const [isUploading, setIsUploading] = useState(false);
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [state, formAction] = useActionState(saveBlock, initialState);
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -71,114 +79,37 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, on
             content: '',
         },
     });
+    
+    const { isSubmitting } = form.formState;
 
     useEffect(() => {
         if (isOpen) {
-            if (block) {
-                form.reset({
-                    title: block.title || '',
-                    block_type: block.block_type || 'texto',
-                    content: block.content || '',
-                    image_file: null,
-                });
-            } else {
-                form.reset({
-                    title: '',
-                    block_type: 'texto',
-                    content: '',
-                    image_file: null,
-                });
-            }
-        }
-    }, [block, form, isOpen]);
-    
-    const handleImageUpload = async (file: File): Promise<string | null> => {
-        if (!file) return null;
-        setIsUploading(true);
-        try {
-            const filePath = `${pageSlug}/${Date.now()}-${file.name}`;
-            const { data, error } = await supabase.storage
-                .from('site-images')
-                .upload(filePath, file);
-
-            if (error) throw error;
-            
-            const { data: { publicUrl } } = supabase.storage
-                .from('site-images')
-                .getPublicUrl(data.path);
-
-            return publicUrl;
-        } catch (error: any) {
-            toast({ variant: 'destructive', title: 'Erro no Upload', description: error.message });
-            return null;
-        } finally {
-            setIsUploading(false);
-        }
-    };
-    
-    async function onSubmit(values: z.infer<typeof formSchema>) {
-        setIsSubmitting(true);
-        try {
-            let imageUrl = block?.image_url || undefined;
-            const imageFile = values.image_file?.[0];
-
-            if (imageFile) {
-                 // Delete the old image if it exists
-                 if (block?.image_url) {
-                    try {
-                        const oldPath = new URL(block.image_url).pathname.split('/site-images/')[1];
-                        if (oldPath) {
-                            await supabase.storage.from('site-images').remove([oldPath]);
-                        }
-                    } catch(e) {
-                         // Log the error but don't block the process
-                         console.error("Could not process old image URL to delete it:", e);
-                    }
-                }
-                const newUrl = await handleImageUpload(imageFile);
-                if (newUrl) {
-                    imageUrl = newUrl;
-                } else if (imageFile) {
-                    // Stop submission if upload was initiated but failed
-                    setIsSubmitting(false);
-                    return; 
-                }
-            }
-            
-            const blockData = {
+            form.reset({
                 id: block?.id,
                 page_id: pageId,
+                pageSlug: pageSlug,
                 order_index: block?.order_index ?? lastOrderIndex + 1,
-                block_type: values.block_type,
-                title: values.title,
-                content: values.content,
-                image_url: imageUrl,
-            };
-
-            const response = await fetch('/api/admin/blocks', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ blockData, pageSlug }),
+                title: block?.title || '',
+                block_type: block?.block_type || 'texto',
+                content: block?.content || '',
+                image_file: undefined,
+                current_image_url: block?.image_url || undefined,
             });
-
-            const result = await response.json();
-
-            if (!response.ok) {
-                throw new Error(result.message || 'Falha ao salvar o bloco.');
-            }
-            
-            toast({ title: 'Sucesso!', description: result.message });
-            onSuccess();
-            setIsOpen(false);
-
-        } catch (error: any) {
-            console.error("Error submitting form:", error);
-            toast({ variant: 'destructive', title: 'Erro ao salvar', description: error.message });
-        } finally {
-            setIsSubmitting(false);
         }
-    }
+    }, [block, pageId, pageSlug, lastOrderIndex, isOpen, form]);
 
+    useEffect(() => {
+        if (state.message) {
+            if (state.success) {
+                toast({ title: 'Sucesso!', description: state.message });
+                onSuccess();
+                setIsOpen(false);
+            } else {
+                toast({ variant: 'destructive', title: 'Erro ao salvar', description: state.message });
+            }
+        }
+    }, [state, toast, onSuccess, setIsOpen]);
+    
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogContent className="sm:max-w-[600px]">
@@ -189,7 +120,18 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, on
                     </DialogDescription>
                 </DialogHeader>
                 <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                    <form 
+                        action={(formData) => {
+                            // Attach hidden fields to formData
+                            formData.append('id', block?.id || '');
+                            formData.append('page_id', pageId);
+                            formData.append('pageSlug', pageSlug);
+                            formData.append('order_index', (block?.order_index ?? lastOrderIndex + 1).toString());
+                            formData.append('current_image_url', block?.image_url || '');
+                            formAction(formData);
+                        }}
+                        className="space-y-4"
+                    >
                         <FormField
                             control={form.control}
                             name="title"
@@ -241,7 +183,7 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, on
                                         <Input 
                                             type="file" 
                                             accept="image/*"
-                                            onChange={(e) => onChange(e.target.files)}
+                                            onChange={(e) => onChange(e.target.files?.[0])}
                                             {...rest}
                                          />
                                     </FormControl>
@@ -252,8 +194,8 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, on
 
                         <DialogFooter>
                             <Button type="button" variant="secondary" onClick={() => setIsOpen(false)}>Cancelar</Button>
-                            <Button type="submit" disabled={isSubmitting || isUploading}>
-                                {(isSubmitting || isUploading) && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                            <Button type="submit" disabled={isSubmitting}>
+                                {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                                 Salvar
                             </Button>
                         </DialogFooter>
