@@ -52,9 +52,9 @@ export function InvestmentStrategy() {
                                    {step.number}
                                </div>
                                <Card className="ml-4 bg-primary-foreground/5 border-primary-foreground/10 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
-                                   <CardContent className="p-6">
-                                       <h3 className="font-headline text-xl text-primary-foreground">{step.title}</h3>
-                                       <p className="text-primary-foreground/70 mt-2">{step.description}</p>
+                                   <CardContent className="p-4">
+                                       <h3 className="font-headline text-lg text-primary-foreground">{step.title}</h3>
+                                       <p className="text-primary-foreground/70 mt-2 text-sm">{step.description}</p>
                                    </CardContent>
                                </Card>
                            </div>
