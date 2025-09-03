@@ -20,6 +20,7 @@ const fontHeadline = DM_Sans({
 
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://aquila-vantage-app.com'),
   title: {
     default: 'Aquila Fund FCR - Investimentos de Valor em Portugal',
     template: '%s | Aquila Fund FCR',
