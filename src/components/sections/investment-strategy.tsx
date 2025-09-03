@@ -71,12 +71,12 @@ export function InvestmentStrategy() {
                     />
                     <AnimatedSection delay={0.4}>
                         <Image 
-                            src="https://picsum.photos/250/160"
-                            alt="Cartão Golden Visa"
+                            src="https://ik.imagekit.io/leosmc2zb/golden-visa-portugal-nacionalidade-portuguesa.jpeg"
+                            alt="Passaporte e documentos Golden Visa"
                             width={250}
                             height={160}
                             className="absolute -bottom-8 -left-12 rounded-2xl shadow-2xl object-cover"
-                            data-ai-hint="visa card"
+                            data-ai-hint="passport document"
                         />
                     </AnimatedSection>
                 </div>
