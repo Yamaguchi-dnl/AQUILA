@@ -2,6 +2,7 @@
 "use client";
 
 import { useEffect } from 'react';
+import { useFormState } from 'react-dom';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -29,6 +30,7 @@ import { Textarea } from '@/components/ui/textarea';
 import Image from 'next/image';
 import { Loader2 } from 'lucide-react';
 import { Label } from '../ui/label';
+import { saveBlock } from '@/actions/admin';
 
 type Block = {
   id: string;
@@ -65,8 +67,14 @@ const formSchema = z.object({
     ).optional(),
 });
 
+const initialState = {
+  message: null,
+  success: false,
+};
+
 export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, onSuccess, lastOrderIndex }: BlockFormDialogProps) {
     const { toast } = useToast();
+    const [state, formAction] = useFormState(saveBlock, initialState);
     
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -80,6 +88,7 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, on
     
     const { isSubmitting } = form.formState;
 
+    // Reset form when dialog opens or block changes
     useEffect(() => {
         if (isOpen) {
             form.reset({
@@ -91,47 +100,21 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, on
         }
     }, [block, isOpen, form]);
 
-    async function onSubmit(values: z.infer<typeof formSchema>) {
-        const formData = new FormData();
-        
-        // Append all form data
-        formData.append('title', values.title);
-        formData.append('block_type', values.block_type);
-        formData.append('content', values.content || '');
-        formData.append('page_id', pageId);
-        formData.append('pageSlug', pageSlug);
-        formData.append('order_index', (block?.order_index ?? lastOrderIndex + 1).toString());
-
-        if (block?.id) {
-            formData.append('id', block.id);
-        }
-        if (block?.image_url) {
-            formData.append('current_image_url', block.image_url);
-        }
-
-        if (values.image_file && values.image_file[0]) {
-            formData.append('image_file', values.image_file[0]);
-        }
-
-        try {
-            const response = await fetch('/api/admin/blocks', {
-                method: 'POST',
-                body: formData,
-            });
-            const result = await response.json();
-
-            if (!response.ok) {
-                throw new Error(result.message || 'Falha ao salvar o bloco.');
+    // Handle Server Action response
+    useEffect(() => {
+        if (state.message) {
+            if (state.success) {
+                toast({ title: 'Sucesso!', description: state.message });
+                onSuccess();
+                setIsOpen(false);
+            } else {
+                toast({ variant: 'destructive', title: 'Erro ao salvar', description: state.message });
             }
-            
-            toast({ title: 'Sucesso!', description: result.message });
-            onSuccess();
-            setIsOpen(false);
-        } catch (error: any) {
-            toast({ variant: 'destructive', title: 'Erro ao salvar', description: error.message });
         }
-    }
-    
+    }, [state, toast, onSuccess, setIsOpen]);
+
+    const fileRef = form.register("image_file");
+
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogContent className="sm:max-w-[600px]">
@@ -141,8 +124,17 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, on
                         Preencha as informações abaixo para gerenciar o conteúdo.
                     </DialogDescription>
                 </DialogHeader>
-                <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                {/* Use a real form element that calls the action */}
+                <form action={formAction} className="space-y-4">
+                    {/* Hidden fields to pass necessary IDs and metadata */}
+                    <input type="hidden" name="page_id" value={pageId} />
+                    <input type="hidden" name="pageSlug" value={pageSlug} />
+                    <input type="hidden" name="order_index" value={(block?.order_index ?? lastOrderIndex + 1).toString()} />
+                    {block?.id && <input type="hidden" name="id" value={block.id} />}
+                    {block?.image_url && <input type="hidden" name="current_image_url" value={block.image_url} />}
+                    
+                    {/* We use Form from react-hook-form for validation state, but the form itself is a standard form */}
+                    <Form {...form}>
                         <FormField
                             control={form.control}
                             name="title"
@@ -194,23 +186,22 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, on
                                         <Input 
                                             type="file" 
                                             accept="image/*"
-                                            {...form.register("image_file")}
+                                            {...fileRef}
                                          />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
                             )}
                         />
-
-                        <DialogFooter>
-                            <Button type="button" variant="secondary" onClick={() => setIsOpen(false)}>Cancelar</Button>
-                            <Button type="submit" disabled={isSubmitting}>
-                                {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                                Salvar
-                            </Button>
-                        </DialogFooter>
-                    </form>
-                </Form>
+                    </Form>
+                    <DialogFooter>
+                        <Button type="button" variant="secondary" onClick={() => setIsOpen(false)}>Cancelar</Button>
+                        <Button type="submit" aria-disabled={isSubmitting}>
+                            {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                            Salvar
+                        </Button>
+                    </DialogFooter>
+                </form>
             </DialogContent>
         </Dialog>
     );

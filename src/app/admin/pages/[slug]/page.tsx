@@ -13,6 +13,7 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { useToast } from '@/hooks/use-toast';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
+import { deleteBlock } from '@/actions/admin';
 
 type Page = {
     id: string;
@@ -34,7 +35,6 @@ export default function AdminSinglePage() {
     const params = useParams();
     const { toast } = useToast();
     
-    // Correctly extract slug from params using the hook.
     const slug = params.slug as string;
 
     const [page, setPage] = useState<Page | null>(null);
@@ -95,21 +95,14 @@ export default function AdminSinglePage() {
         setIsFormOpen(true);
     };
 
-    const handleDeleteBlock = async (blockId: string) => {
-        try {
-             const response = await fetch(`/api/admin/blocks?id=${blockId}&pageSlug=${page!.slug}`, {
-                method: 'DELETE',
-            });
-            const result = await response.json();
-
-            if (!response.ok) {
-                throw new Error(result.message);
-            }
-
+    const handleDelete = async (blockId: string) => {
+        if (!page?.slug) return;
+        const result = await deleteBlock(blockId, page.slug);
+        if (result.success) {
             toast({ title: 'Sucesso', description: result.message });
             fetchData();
-        } catch (error: any) {
-            toast({ variant: 'destructive', title: 'Erro', description: error.message });
+        } else {
+            toast({ variant: 'destructive', title: 'Erro', description: result.message });
         }
     };
     
@@ -174,7 +167,7 @@ export default function AdminSinglePage() {
                                             </AlertDialogHeader>
                                             <AlertDialogFooter>
                                                 <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                                                <AlertDialogAction onClick={() => handleDeleteBlock(block.id)}>Confirmar</AlertDialogAction>
+                                                <AlertDialogAction onClick={() => handleDelete(block.id)}>Confirmar</AlertDialogAction>
                                             </AlertDialogFooter>
                                         </AlertDialogContent>
                                     </AlertDialog>
