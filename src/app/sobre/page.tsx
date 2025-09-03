@@ -35,17 +35,21 @@ export default function SobrePage() {
             </p>
           </div>
           <div className="max-w-3xl mx-auto">
-            <div className="space-y-4 text-lg text-center text-primary-foreground/80">
-               <AnimatedSection delay={0.1}>
-                    <p>A Aquila Fund FCR nasceu há dois anos com a visão de ser uma plataforma de investimentos diferenciada, focada em oferecer soluções inovadoras para investidores de alta renda. Desde o início, temos nos dedicado a construir um legado de confiança, transparência e excelência no mercado financeiro português.</p>
-               </AnimatedSection>
-               <AnimatedSection delay={0.2}>
-                   <p>Nossa jornada é marcada pela busca incessante por oportunidades que gerem valor real e sustentável para nossos clientes, sempre com um olhar atento às dinâmicas do mercado global e às necessidades específicas de cada investidor.</p>
-               </AnimatedSection>
-                 <AnimatedSection delay={0.3}>
-                   <p>Nossa missão é guiar nossos clientes através do complexo cenário de investimentos, transformando desafios em oportunidades e aspirações em conquistas. Com uma equipe de especialistas altamente qualificados e uma abordagem personalizada, construímos relacionamentos duradouros baseados na confiança e no compromisso com resultados.</p>
-               </AnimatedSection>
-            </div>
+            <Card className="bg-card/10 border-primary-foreground/20 backdrop-blur-sm">
+                <CardContent className="p-8">
+                     <div className="space-y-4 text-lg text-center text-primary-foreground/80">
+                       <AnimatedSection delay={0.1}>
+                            <p>A Aquila Fund FCR nasceu há dois anos com a visão de ser uma plataforma de investimentos diferenciada, focada em oferecer soluções inovadoras para investidores de alta renda. Desde o início, temos nos dedicado a construir um legado de confiança, transparência e excelência no mercado financeiro português.</p>
+                       </AnimatedSection>
+                       <AnimatedSection delay={0.2}>
+                           <p>Nossa jornada é marcada pela busca incessante por oportunidades que gerem valor real e sustentável para nossos clientes, sempre com um olhar atento às dinâmicas do mercado global e às necessidades específicas de cada investidor.</p>
+                       </AnimatedSection>
+                         <AnimatedSection delay={0.3}>
+                           <p>Nossa missão é guiar nossos clientes através do complexo cenário de investimentos, transformando desafios em oportunidades e aspirações em conquistas. Com uma equipe de especialistas altamente qualificados e uma abordagem personalizada, construímos relacionamentos duradouros baseados na confiança e no compromisso com resultados.</p>
+                       </AnimatedSection>
+                    </div>
+                </CardContent>
+            </Card>
           </div>
         </div>
       </section>
