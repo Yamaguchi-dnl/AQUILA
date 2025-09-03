@@ -1,7 +1,7 @@
 
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import Link from "next/link";
 import { TeamSummary } from "@/components/sections/team-summary";
 import { AnimatedSection } from "@/components/shared/animated-section";
