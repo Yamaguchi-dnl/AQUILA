@@ -58,9 +58,9 @@ const formSchema = z.object({
   content: z.string().optional(),
   image_file: z
     .any()
-    .refine((file) => !file || file?.[0]?.size <= MAX_FILE_SIZE, `Tamanho máximo da imagem é 5MB.`)
+    .refine((files) => !files || files.length === 0 || files?.[0]?.size <= MAX_FILE_SIZE, `Tamanho máximo da imagem é 5MB.`)
     .refine(
-      (file) => !file || !file[0] || ACCEPTED_IMAGE_TYPES.includes(file?.[0]?.type),
+      (files) => !files || files.length === 0 || ACCEPTED_IMAGE_TYPES.includes(files?.[0]?.type),
       "Apenas os formatos .jpg, .jpeg, .png e .webp são aceitos."
     ).optional(),
 });

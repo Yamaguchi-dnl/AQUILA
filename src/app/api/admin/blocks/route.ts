@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
 
         const pageSlug = formData.get('pageSlug') as string;
         const image_file = formData.get('image_file') as File | null;
-        const current_image_url = formData.get('current_image_url') as string | undefined;
+        const current_image_url = formData.get('current_image_url') as string | null;
 
         if (!pageSlug) {
              return NextResponse.json({ message: 'Slug da página ausente.' }, { status: 400 });
