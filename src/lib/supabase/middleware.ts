@@ -33,5 +33,5 @@ export async function updateSession(request: NextRequest) {
   // This will refresh the session if expired
   await supabase.auth.getUser()
 
-  return { supabase, response }
+  return response
 }

@@ -37,7 +37,7 @@ export async function updateBlock(data: BlockData) {
 
     const { pageSlug, ...blockData } = data;
 
-    const dataToUpsert = {
+    const dataToUpsert: any = {
         ...blockData,
         updated_at: new Date().toISOString(), // Manually set updated_at
         updated_by: user.id,
@@ -45,7 +45,6 @@ export async function updateBlock(data: BlockData) {
 
     // If we are creating a new block, we don't include the id
     if (!data.id) {
-        // @ts-ignore
         delete dataToUpsert.id;
     }
 
