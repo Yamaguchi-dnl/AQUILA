@@ -31,9 +31,7 @@ export function AboutSummary() {
                   <Link href="/sobre">QUEM SOMOS</Link>
               </h2>
               <h3 className="font-headline text-3xl md:text-4xl text-primary-foreground mt-2 uppercase">Seu capital, nossa expertise</h3>
-              <div className="mt-8">
-                <StatsCard />
-              </div>
+              
             </AnimatedSection>
             <AnimatedSection delay={0.1}>
               <div className="mt-8 space-y-4 text-primary-foreground/80 prose prose-lg max-w-none">
@@ -55,6 +53,10 @@ export function AboutSummary() {
             </AnimatedSection>
           </div>
         </div>
+
+        <AnimatedSection delay={0.2} className="mt-20">
+            <StatsCard />
+        </AnimatedSection>
       </div>
     </section>
   );
