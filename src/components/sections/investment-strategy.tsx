@@ -72,8 +72,7 @@ export function InvestmentStrategy() {
                         height={800}
                         className="rounded-3xl object-cover h-[600px] w-full"
                         data-ai-hint="portugal lisbon"
-                        priority
-                        quality={100}
+                        unoptimized={true}
                     />
                     <AnimatedSection delay={0.4}>
                         <Image 
