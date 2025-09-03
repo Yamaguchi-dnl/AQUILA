@@ -47,52 +47,43 @@ export function Hero() {
             </AnimatedSection>
         </div>
         <div className="flex justify-center items-center order-first md:order-last">
-            <div className="relative h-[300px] w-[250px] md:h-[500px] md:w-[400px]">
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9, y: 50 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-                    className="relative w-full h-full"
-                >
+             <motion.div
+                initial={{ opacity: 0, scale: 0.9, y: 50 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+                className="relative h-[300px] w-[250px] md:h-[500px] md:w-[400px]"
+            >
+                <div className="relative w-full h-full z-10">
                     <Image 
                         src="https://ik.imagekit.io/leosmc2zb/3493.jpg?updatedAt=1756315204824"
                         alt="Paisagem de Lisboa, Portugal"
                         fill
-                        className="rounded-3xl object-cover relative z-10"
+                        className="rounded-3xl object-cover"
                         data-ai-hint="lisbon portugal"
                         priority
                     />
-                </motion.div>
-                <motion.div
-                    initial={{ opacity: 0, x: -50, y: -50 }}
-                    animate={{ opacity: 1, x: 0, y: 0 }}
-                    transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
-                >
+                </div>
+                <div className="absolute -top-4 -left-12 md:-left-16 z-30">
                     <Image 
                         src="https://ik.imagekit.io/leosmc2zb/beautiful-shot-portuguese-flag-waving-calm-bright-sky.jpg"
                         alt="Bandeira de Portugal"
                         width={180}
                         height={160}
-                        className="absolute -top-4 -left-12 md:-left-16 w-[100px] h-auto md:w-[180px] md:h-[160px] rounded-2xl shadow-2xl object-cover z-30"
+                        className="w-[100px] h-auto md:w-[180px] md:h-[160px] rounded-2xl shadow-2xl object-cover"
                         data-ai-hint="portugal flag"
                     />
-                </motion.div>
-                <motion.div
-                    initial={{ opacity: 0, x: 50, y: 50 }}
-                    animate={{ opacity: 1, x: 0, y: 0 }}
-                    transition={{ duration: 0.7, delay: 0.7, ease: "easeOut" }}
-                    whileHover={{ scale: 1.2 }}
-                >
-                    <Image 
+                </div>
+                <div className="absolute -bottom-4 -right-12 md:-right-16 z-20">
+                     <Image 
                         src="https://ik.imagekit.io/leosmc2zb/60913.jpg"
                         alt="Detalhe de investimento"
                         width={180}
                         height={160}
-                        className="absolute -bottom-4 -right-12 md:-right-16 w-[100px] h-auto md:w-[180px] md:h-[160px] rounded-2xl shadow-2xl object-cover z-20"
+                        className="w-[100px] h-auto md:w-[180px] md:h-[160px] rounded-2xl shadow-2xl object-cover"
                         data-ai-hint="investment chart"
                     />
-                </motion.div>
-            </div>
+                </div>
+            </motion.div>
         </div>
       </div>
     </section>
