@@ -25,7 +25,8 @@ export default function SobrePage() {
         <div className="container">
             <AnimatedSection>
                 <div className="text-center">
-                    <h1 className="font-headline text-4xl md:text-5xl text-primary uppercase">Sobre a Aquila Fund FCR</h1>
+                    <p className="text-sm uppercase tracking-widest text-muted-foreground font-headline">Nossa Essência</p>
+                    <h1 className="font-headline text-4xl md:text-5xl text-primary uppercase mt-2">Sobre a Aquila Fund FCR</h1>
                     <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">Construindo um legado de confiança, transparência e excelência.</p>
                 </div>
             </AnimatedSection>
