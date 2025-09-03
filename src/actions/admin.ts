@@ -22,48 +22,54 @@ export async function saveBlock(prevState: any, formData: FormData) {
 
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) {
-        return { message: 'Não autenticado.', success: false, errors: null };
+        return { message: 'Não autenticado.', success: false };
     }
     
-    // Check for admin privileges in user_metadata
-    if (user.user_metadata?.is_admin !== true) {
-        return { message: 'Não autorizado.', success: false, errors: null };
+    // Explicitly check for admin privileges from the database
+    const { data: adminUser, error: adminError } = await supabase
+        .from('users')
+        .select('is_admin')
+        .eq('id', user.id)
+        .single();
+
+    if (adminError || !adminUser || adminUser.is_admin !== true) {
+        return { message: 'Não autorizado.', success: false };
+    }
+
+    const validatedBlock = blockSchema.safeParse({
+        id: formData.get('id') as string || undefined,
+        page_id: formData.get('page_id') as string,
+        order_index: formData.get('order_index') as string,
+        title: formData.get('title') as string,
+        block_type: formData.get('block_type') as string,
+        content: formData.get('content') as string || undefined,
+    });
+
+    if (!validatedBlock.success) {
+        return { 
+            message: 'Dados do bloco inválidos.', 
+            success: false, 
+            errors: validatedBlock.error.flatten().fieldErrors 
+        };
     }
 
     try {
-        const validatedBlock = blockSchema.safeParse({
-            id: formData.get('id') as string | undefined,
-            page_id: formData.get('page_id') as string,
-            order_index: formData.get('order_index') as string,
-            title: formData.get('title') as string,
-            block_type: formData.get('block_type') as string,
-            content: formData.get('content') as string | undefined,
-        });
-
-        if (!validatedBlock.success) {
-            return { 
-                message: 'Dados do bloco inválidos.', 
-                success: false, 
-                errors: validatedBlock.error.flatten().fieldErrors 
-            };
-        }
-
         const pageSlug = formData.get('pageSlug') as string;
         const image_file = formData.get('image_file') as File | null;
         const current_image_url = formData.get('current_image_url') as string | null;
 
         if (!pageSlug) {
-             return { message: 'Slug da página ausente.', success: false, errors: null };
+             return { message: 'Slug da página ausente.', success: false };
         }
         
         let imageUrl = current_image_url;
 
         if (image_file && image_file.size > 0) {
             if (image_file.size > MAX_FILE_SIZE) {
-                 return { message: 'Tamanho máximo da imagem é 5MB.', success: false, errors: null };
+                 return { message: 'Tamanho máximo da imagem é 5MB.', success: false };
             }
             if (!ACCEPTED_IMAGE_TYPES.includes(image_file.type)) {
-                 return { message: 'Apenas os formatos .jpg, .jpeg, .png e .webp são aceitos.', success: false, errors: null };
+                 return { message: 'Apenas os formatos .jpg, .jpeg, .png e .webp são aceitos.', success: false };
             }
             
             if (imageUrl) {
@@ -81,7 +87,7 @@ export async function saveBlock(prevState: any, formData: FormData) {
                 .upload(filePath, image_file);
 
             if (uploadError) {
-                return { message: `Falha no upload da imagem: ${uploadError.message}`, success: false, errors: null };
+                return { message: `Falha no upload da imagem: ${uploadError.message}`, success: false };
             }
 
             const { data: { publicUrl } } = supabase.storage
@@ -90,7 +96,7 @@ export async function saveBlock(prevState: any, formData: FormData) {
             imageUrl = publicUrl;
         }
         
-        const dataToUpsert = {
+        const dataToUpsert: any = {
             ...validatedBlock.data,
             image_url: imageUrl,
             updated_at: new Date().toISOString(),
@@ -98,7 +104,6 @@ export async function saveBlock(prevState: any, formData: FormData) {
         };
         
         if (!dataToUpsert.id) {
-            // @ts-ignore
             delete dataToUpsert.id;
         }
 
@@ -106,17 +111,17 @@ export async function saveBlock(prevState: any, formData: FormData) {
 
         if (dbError) {
              console.error('Erro do Supabase:', dbError);
-             return { message: dbError.message, success: false, errors: null };
+             return { message: dbError.message, success: false };
         }
 
         revalidatePath(`/admin/pages/${pageSlug}`);
         revalidatePath(`/${pageSlug === 'home' ? '' : pageSlug }`);
         
-        return { message: `Bloco ${dataToUpsert.id ? 'atualizado' : 'criado'} com sucesso.`, success: true, errors: null };
+        return { message: `Bloco ${dataToUpsert.id ? 'atualizado' : 'criado'} com sucesso.`, success: true };
 
     } catch (error: any) {
         console.error("Erro na Server Action:", error);
-        return { message: error.message || 'Ocorreu um erro inesperado no servidor.', success: false, errors: null };
+        return { message: error.message || 'Ocorreu um erro inesperado no servidor.', success: false };
     }
 }
 
@@ -124,12 +129,18 @@ export async function deleteBlock(blockId: string, pageSlug: string) {
     const supabase = createClient();
     
     const { data: { user } } = await supabase.auth.getUser();
-
     if (!user) {
         return { message: 'Não autenticado', success: false };
     }
     
-    if (user.user_metadata?.is_admin !== true) {
+    // Explicitly check for admin privileges from the database
+    const { data: adminUser, error: adminError } = await supabase
+        .from('users')
+        .select('is_admin')
+        .eq('id', user.id)
+        .single();
+
+    if (adminError || !adminUser || adminUser.is_admin !== true) {
         return { message: 'Não autorizado', success: false };
     }
     
@@ -144,7 +155,7 @@ export async function deleteBlock(blockId: string, pageSlug: string) {
             .eq('id', blockId)
             .single();
         
-        if (findError && findError.code !== 'PGRST116') {
+        if (findError && findError.code !== 'PGRST116') { // Ignore "no rows found" error
              throw findError;
         }
 
