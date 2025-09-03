@@ -1,14 +1,24 @@
+
 import { PageHeader } from "@/components/shared/page-header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
 import { TeamSummary } from "@/components/sections/team-summary";
+import { Target, TrendingUp, Handshake, Users } from "lucide-react";
+import { AnimatedSection } from "@/components/shared/animated-section";
 
 export const metadata = {
   title: "Sobre a Aquila Fund FCR",
   description: "Conheça a história, missão e os parceiros estratégicos da Aquila Fund FCR, sua plataforma de investimentos de valor em Portugal.",
 };
+
+const historyItems = [
+    { year: "2022", event: "Fundação da Aquila Fund FCR com a visão de criar uma plataforma de investimentos inovadora." },
+    { year: "2023", event: "Lançamento dos fundos pioneiros, Aquila Wheels e Aquila Hotel Invest, ambos elegíveis para o Golden Visa." },
+    { year: "2024", event: "Expansão do portfólio com o Aquila Real Estate e consolidação de parcerias estratégicas com líderes de mercado." },
+    { year: "Futuro", event: "Continuar a crescer, inovar e gerar valor sustentável para nossos investidores, com novos fundos como o Aquila Agro." },
+];
 
 export default function SobrePage() {
   return (
@@ -20,56 +30,124 @@ export default function SobrePage() {
 
       <section className="bg-background">
         <div className="container">
-          <div className="grid md:grid-cols-3 gap-8 md:gap-12">
-            <div className="md:col-span-2 prose prose-lg max-w-none text-muted-foreground">
-              <p>
-                A Aquila Fund FCR nasceu há dois anos com a visão de ser uma plataforma de investimentos diferenciada, focada em oferecer soluções inovadoras para investidores de alta renda. Desde o início, temos nos dedicado a construir um legado de confiança, transparência e excelência no mercado financeiro português.
-              </p>
-              <p>
-                Nossa jornada é marcada pela busca incessante por oportunidades que gerem valor real e sustentável para nossos clientes, sempre com um olhar atento às dinâmicas do mercado global e às necessidades específicas de cada investidor.
-              </p>
-              <p>
-                Nossa missão é guiar nossos clientes através do complexo cenário de investimentos, transformando desafios em oportunidades e aspirações em conquistas. Com uma equipe de especialistas altamente qualificados e uma abordagem personalizada, construímos relacionamentos duradouros baseados na confiança e no compromisso com resultados.
-              </p>
-            </div>
-            <div className="md:col-span-1">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <AnimatedSection>
               <Image 
-                src="https://picsum.photos/400/500"
-                alt="Escritório moderno da Aquila"
-                width={400}
-                height={500}
-                className="rounded-lg object-cover w-full h-full"
-                data-ai-hint="modern office interior"
+                src="https://picsum.photos/600/700"
+                alt="Escritório moderno da Aquila com vista para a cidade"
+                width={600}
+                height={700}
+                className="rounded-xl object-cover w-full h-full shadow-lg"
+                data-ai-hint="modern office city view"
               />
+            </AnimatedSection>
+            <div className="space-y-8">
+               <AnimatedSection delay={0.1}>
+                    <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0 bg-primary/10 text-primary rounded-lg p-3">
+                           <Target className="h-6 w-6" />
+                        </div>
+                        <div>
+                           <h3 className="text-xl font-headline font-bold text-primary">Nossa Missão</h3>
+                           <p className="mt-2 text-muted-foreground">
+                            Guiar nossos clientes através do complexo cenário de investimentos, transformando desafios em oportunidades e aspirações em conquistas, com segurança e rentabilidade.
+                           </p>
+                        </div>
+                    </div>
+               </AnimatedSection>
+               <AnimatedSection delay={0.2}>
+                   <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0 bg-primary/10 text-primary rounded-lg p-3">
+                           <TrendingUp className="h-6 w-6" />
+                        </div>
+                        <div>
+                           <h3 className="text-xl font-headline font-bold text-primary">Nossa Visão</h3>
+                            <p className="mt-2 text-muted-foreground">
+                            Ser a plataforma de investimentos de referência em Portugal, reconhecida pela inovação, transparência e pela criação de valor sustentável para investidores de alta renda.
+                           </p>
+                        </div>
+                    </div>
+               </AnimatedSection>
+                 <AnimatedSection delay={0.3}>
+                   <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0 bg-primary/10 text-primary rounded-lg p-3">
+                           <Handshake className="h-6 w-6" />
+                        </div>
+                        <div>
+                           <h3 className="text-xl font-headline font-bold text-primary">Nossos Valores</h3>
+                            <p className="mt-2 text-muted-foreground">
+                            Confiança, Excelência, Inovação e um profundo compromisso com os resultados e a satisfação de nossos clientes e parceiros.
+                           </p>
+                        </div>
+                    </div>
+               </AnimatedSection>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-card">
+       <section className="bg-card">
+        <div className="container">
+           <AnimatedSection className="text-center">
+            <h2 className="font-headline text-3xl md:text-4xl text-primary uppercase">Nossa História</h2>
+            <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+                Uma jornada de crescimento e sucesso, marcada pela busca incessante por oportunidades que geram valor real e sustentável para nossos clientes.
+            </p>
+           </AnimatedSection>
+           <div className="mt-12 max-w-4xl mx-auto">
+             <div className="relative">
+                {/* The vertical line */}
+                <div className="absolute left-4 top-2 h-full w-0.5 bg-border" aria-hidden="true"></div>
+                
+                <div className="space-y-12">
+                    {historyItems.map((item, index) => (
+                        <AnimatedSection key={index} delay={index * 0.1}>
+                        <div className="relative pl-12">
+                            <div className="absolute left-0 top-0 flex h-9 w-9 items-center justify-center rounded-full bg-primary text-primary-foreground ring-8 ring-card font-bold text-lg">
+                                {item.year}
+                            </div>
+                            <div className="pl-4">
+                                <p className="text-muted-foreground text-base">{item.event}</p>
+                            </div>
+                        </div>
+                        </AnimatedSection>
+                    ))}
+                </div>
+            </div>
+           </div>
+        </div>
+      </section>
+
+      <section className="bg-background">
         <div className="container text-center">
-            <h2 className="font-headline text-3xl md:text-4xl lg:text-[2.75rem] lg:leading-[1.1] text-primary uppercase">Nossos Parceiros</h2>
+            <AnimatedSection>
+            <h2 className="font-headline text-3xl md:text-4xl text-primary uppercase">Nossos Parceiros Estratégicos</h2>
             <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
                 Colaboramos com líderes de mercado para oferecer estrutura, segurança e as melhores oportunidades para nossos investidores.
             </p>
+            </AnimatedSection>
         </div>
-        <div className="container mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card>
+        <div className="container mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+            <AnimatedSection delay={0.1}>
+            <Card className="flex flex-col h-full hover:border-primary transition-colors">
                 <CardHeader>
                     <CardTitle className="text-2xl font-headline">FundBox</CardTitle>
                 </CardHeader>
-                <CardContent className="prose max-w-none text-muted-foreground">
-                    <p>Nossos fundos são geridos pela FundBox, empresa de investimento independente líder em Portugal que gera ativamente cerca de €420 milhões em ativos sob gestão (AUM) através de dois gestores de fundos regulados, especializados em fundos imobiliários, classes de investimento alternativo e investimentos em private equity (FundBox SCR). A FundBox oferece estruturação e execução de transações de primeira classe, livre de qualquer agenda conflitante, e com envolvimento ativo de executivos seniores ao longo de todo o processo de investimento.</p>
+                <CardContent className="prose max-w-none text-muted-foreground flex-grow">
+                    <p>Nossos fundos são geridos pela FundBox, empresa de investimento independente líder em Portugal que gera ativamente cerca de €420 milhões em ativos sob gestão. A FundBox oferece estruturação e execução de transações de primeira classe, livre de qualquer agenda conflitante, e com envolvimento ativo de executivos seniores ao longo de todo o processo de investimento.</p>
                 </CardContent>
             </Card>
-             <Card>
+            </AnimatedSection>
+             <AnimatedSection delay={0.2}>
+             <Card className="flex flex-col h-full hover:border-primary transition-colors">
                 <CardHeader>
                     <CardTitle className="text-2xl font-headline">BTG Pactual</CardTitle>
                 </CardHeader>
-                <CardContent className="prose max-w-none text-muted-foreground">
-                    <p>Para facilitar ainda mais o seu acesso aos nossos fundos, estabelecemos uma parceria exclusiva com o BTG Pactual. Isso significa que nossos clientes podem investir nos fundos Aquila mantendo seus ativos no Brasil como garantia, sem a necessidade de transferir capital para o exterior. Essa solução é ideal para quem busca diversificação internacional e as oportunidades de crescimento que nossos fundos oferecem, sem desmobilizar seus investimentos atuais no Brasil.</p>
+                <CardContent className="prose max-w-none text-muted-foreground flex-grow">
+                    <p>Para facilitar o acesso aos nossos fundos, estabelecemos uma parceria exclusiva com o BTG Pactual. Nossos clientes podem investir mantendo seus ativos no Brasil como garantia, sem a necessidade de transferir capital para o exterior, ideal para quem busca diversificação internacional sem desmobilizar seus investimentos atuais.</p>
                 </CardContent>
             </Card>
+            </AnimatedSection>
         </div>
         <div className="container text-center mt-12">
              <Button asChild size="lg">
