@@ -44,11 +44,17 @@ export default function FundosPage() {
               id={fund.slug} 
               key={fund.slug} 
               className={cn(
-                  "scroll-mt-20 py-16 md:py-24",
+                  "scroll-mt-20 py-16 md:py-24 relative",
                   isPrimarySection ? "bg-primary text-primary-foreground" : "bg-background text-foreground",
               )}
           >
-              <div className="container">
+              {isPrimarySection && (
+                <div
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-[radial-gradient(30%_40%_at_95%_95%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%),radial-gradient(30%_40%_at_5%_5%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)]"
+                />
+              )}
+              <div className="container relative z-10">
                   <div className="grid lg:grid-cols-3 gap-8 lg:gap-16">
                       <div className="lg:col-span-2">
                             <h2 className={cn("font-headline text-3xl md:text-4xl uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>{fund.nome}</h2>
