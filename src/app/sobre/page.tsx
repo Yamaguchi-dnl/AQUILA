@@ -45,7 +45,7 @@ export default function SobrePage() {
                 </AnimatedSection>
                 <AnimatedSection delay={0.1}>
                      <Image
-                        src="https://ik.imagekit.io/leosmc2zb/Luis-Assis-Teixeira-251x300.jpg"
+                        src="https://ik.imagekit.io/leosmc2zb/5573.jpg"
                         alt="Escritório moderno com vista para a cidade"
                         width={600}
                         height={400}
@@ -73,7 +73,7 @@ export default function SobrePage() {
                     <h3 className="text-2xl font-headline card-title text-primary-foreground">FundBox</h3>
                 </CardHeader>
                 <CardContent className="prose max-w-none text-primary-foreground/80 flex-grow">
-                    <p>Nossos fundos são geridos pela FundBox, empresa de investimento independente líder em Portugal que gera ativamente cerca de €420 milhões em ativos sob gestão. A FundBox oferece estruturação e execução de transações de primeira classe, livre de qualquer agenda conflitante, e com envolvimento ativo de executivos seniores ao longo de todo o processo de investimento.</p>
+                    <p>Nossos fundos são geridos pela FundBox, empresa de investimento independente líder em Portugal que gera ativamente cerca de €420 milhões em ativos sob gestão. A FundBox oferece estruturação e execução de transações de primeira classe, livre de qualquer agenda conflitante, e com envolvimento ativo de executivos senhores ao longo de todo o processo de investimento.</p>
                 </CardContent>
             </Card>
             </AnimatedSection>
