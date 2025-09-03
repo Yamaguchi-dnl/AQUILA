@@ -25,13 +25,8 @@ export async function saveBlock(prevState: any, formData: FormData) {
         return { message: 'Não autenticado.', success: false, errors: null };
     }
     
-    const { data: userData, error: userError } = await supabase
-        .from('users')
-        .select('is_admin')
-        .eq('id', user.id)
-        .single();
-    
-    if (userError || !userData?.is_admin) {
+    // Check for admin privileges in user_metadata
+    if (user.user_metadata?.is_admin !== true) {
         return { message: 'Não autorizado.', success: false, errors: null };
     }
 
@@ -134,13 +129,7 @@ export async function deleteBlock(blockId: string, pageSlug: string) {
         return { message: 'Não autenticado', success: false };
     }
     
-    const { data: userData, error: userError } = await supabase
-        .from('users')
-        .select('is_admin')
-        .eq('id', user.id)
-        .single();
-    
-    if (userError || !userData?.is_admin) {
+    if (user.user_metadata?.is_admin !== true) {
         return { message: 'Não autorizado', success: false };
     }
     

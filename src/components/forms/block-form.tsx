@@ -1,8 +1,7 @@
 
 "use client";
 
-import { useEffect, useRef, useState } from 'react';
-import { useActionState } from 'react';
+import { useEffect, useRef, useState, useTransition } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from "@/components/ui/button";
 import {
@@ -39,42 +38,32 @@ type BlockFormDialogProps = {
   lastOrderIndex: number;
 };
 
-const initialState = {
-  message: null,
-  success: false,
-  errors: null,
-};
-
 export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, onSuccess, lastOrderIndex }: BlockFormDialogProps) {
     const { toast } = useToast();
-    const [state, formAction, isPending] = useActionState(saveBlock, initialState);
     const formRef = useRef<HTMLFormElement>(null);
+    const [isPending, startTransition] = useTransition();
 
-    useEffect(() => {
-        if (state.message) {
-            if (state.success) {
-                toast({ title: 'Sucesso!', description: state.message });
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        const formData = new FormData(event.currentTarget);
+
+        startTransition(async () => {
+            const result = await saveBlock(null, formData);
+
+            if (result.success) {
+                toast({ title: 'Sucesso!', description: result.message });
                 onSuccess();
                 setIsOpen(false);
             } else {
-                toast({ variant: 'destructive', title: 'Erro ao salvar', description: state.message });
+                toast({ variant: 'destructive', title: 'Erro ao salvar', description: result.message });
             }
-        }
-    }, [state, toast, onSuccess, setIsOpen]);
+        });
+    };
 
     // Reset form fields when dialog opens or block changes
     useEffect(() => {
       if (isOpen) {
         formRef.current?.reset();
-        if (block) {
-          // You might need to manually set values if reset doesn't work as expected with default values
-          const form = formRef.current;
-          if(form) {
-            (form.elements.namedItem('title') as HTMLInputElement).value = block.title || '';
-            (form.elements.namedItem('block_type') as HTMLInputElement).value = block.block_type || 'texto';
-            (form.elements.namedItem('content') as HTMLTextAreaElement).value = block.content || '';
-          }
-        }
       }
     }, [isOpen, block]);
 
@@ -87,7 +76,7 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, on
                         Preencha as informações abaixo para gerenciar o conteúdo.
                     </DialogDescription>
                 </DialogHeader>
-                <form ref={formRef} action={formAction} className="space-y-4">
+                <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
                     <input type="hidden" name="page_id" value={pageId} />
                     <input type="hidden" name="pageSlug" value={pageSlug} />
                     <input type="hidden" name="order_index" value={(block?.order_index ?? lastOrderIndex + 1).toString()} />
