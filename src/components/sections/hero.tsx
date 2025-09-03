@@ -9,13 +9,13 @@ import { motion } from 'framer-motion';
 
 export function Hero() {
   return (
-    <section className="w-full bg-card z-10 relative overflow-hidden pt-16">
-       <div className="bg-animation">
+    <section className="w-full bg-card relative overflow-hidden pt-16">
+       <div className="bg-animation z-0">
             <div id='stars'></div>
             <div id='stars2'></div>
             <div id='stars3'></div>
         </div>
-        <div className="container z-10 grid md:grid-cols-2 gap-8 items-center pt-16 pb-16">
+        <div className="container relative z-10 grid md:grid-cols-2 gap-8 items-center pt-16 pb-16">
         <div className="max-w-2xl order-last md:order-first">
              <AnimatedSection>
                  <h2 className="text-sm uppercase tracking-widest text-muted-foreground font-headline">
