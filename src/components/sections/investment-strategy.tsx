@@ -44,11 +44,11 @@ export function InvestmentStrategy() {
                 <AnimatedSection delay={0.1}>
                     <div className="mt-12 relative">
                         {processSteps.map((step, index) => (
-                           <div key={step.number} className="relative pl-16 pb-12 last:pb-0">
+                           <div key={step.number} className="relative pl-14 pb-10 last:pb-0">
                                {index !== processSteps.length - 1 && (
-                                <div className="absolute left-[30px] top-5 h-full w-px bg-primary-foreground/20" />
+                                <div className="absolute left-[22px] top-5 h-full w-px bg-primary-foreground/20" />
                                )}
-                               <div className="absolute left-0 top-0 flex h-16 w-16 items-center justify-center rounded-full bg-secondary text-secondary-foreground ring-8 ring-primary font-bold text-xl z-10">
+                               <div className="absolute left-0 top-0 flex h-12 w-12 items-center justify-center rounded-full bg-secondary text-secondary-foreground ring-4 ring-primary font-bold text-lg z-10">
                                    {step.number}
                                </div>
                                <Card className="ml-4 bg-primary-foreground/5 border-primary-foreground/10 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
