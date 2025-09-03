@@ -65,12 +65,12 @@ export function InvestmentStrategy() {
             <AnimatedSection delay={0.2} className="hidden lg:block">
                 <div className="relative">
                     <Image 
-                        src="https://picsum.photos/600/800"
+                        src="https://ik.imagekit.io/leosmc2zb/3550%20(1).jpg?updatedAt=1756312096783"
                         alt="Paisagem de Portugal"
                         width={600}
                         height={800}
                         className="rounded-3xl object-cover h-[600px] w-full"
-                        data-ai-hint="portugal coastline"
+                        data-ai-hint="portugal lisbon"
                     />
                     <AnimatedSection delay={0.4}>
                         <Image 
