@@ -1,8 +1,8 @@
 
 "use client";
 
-import { useEffect, useRef } from 'react';
-import { useFormState } from 'react-dom';
+import { useEffect, useRef, useState } from 'react';
+import { useActionState } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from "@/components/ui/button";
 import {
@@ -47,9 +47,8 @@ const initialState = {
 
 export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, onSuccess, lastOrderIndex }: BlockFormDialogProps) {
     const { toast } = useToast();
-    const [state, formAction] = useFormState(saveBlock, initialState);
+    const [state, formAction, isPending] = useActionState(saveBlock, initialState);
     const formRef = useRef<HTMLFormElement>(null);
-    const [pending, setPending] = useState(false);
 
     useEffect(() => {
         if (state.message) {
@@ -61,8 +60,6 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, on
                 toast({ variant: 'destructive', title: 'Erro ao salvar', description: state.message });
             }
         }
-        // Reset pending state regardless of outcome
-        setPending(false);
     }, [state, toast, onSuccess, setIsOpen]);
 
     // Reset form fields when dialog opens or block changes
@@ -81,11 +78,6 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, on
       }
     }, [isOpen, block]);
 
-    const handleFormAction = (formData: FormData) => {
-        setPending(true);
-        formAction(formData);
-    }
-    
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogContent className="sm:max-w-[600px]">
@@ -95,7 +87,7 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, on
                         Preencha as informações abaixo para gerenciar o conteúdo.
                     </DialogDescription>
                 </DialogHeader>
-                <form ref={formRef} action={handleFormAction} className="space-y-4">
+                <form ref={formRef} action={formAction} className="space-y-4">
                     <input type="hidden" name="page_id" value={pageId} />
                     <input type="hidden" name="pageSlug" value={pageSlug} />
                     <input type="hidden" name="order_index" value={(block?.order_index ?? lastOrderIndex + 1).toString()} />
@@ -130,9 +122,9 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, on
                     </div>
 
                     <DialogFooter>
-                        <Button type="button" variant="secondary" onClick={() => setIsOpen(false)} disabled={pending}>Cancelar</Button>
-                        <Button type="submit" disabled={pending}>
-                            {pending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                        <Button type="button" variant="secondary" onClick={() => setIsOpen(false)} disabled={isPending}>Cancelar</Button>
+                        <Button type="submit" disabled={isPending}>
+                            {isPending && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                             Salvar
                         </Button>
                     </DialogFooter>
