@@ -123,6 +123,7 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, on
             const imageFile = values.image_file?.[0];
 
             if (imageFile) {
+                 // Delete the old image if it exists
                  if (block?.image_url) {
                     try {
                         const oldPath = new URL(block.image_url).pathname.split('/site-images/')[1];
@@ -130,6 +131,7 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, on
                             await supabase.storage.from('site-images').remove([oldPath]);
                         }
                     } catch(e) {
+                         // Log the error but don't block the process
                          console.error("Could not process old image URL to delete it:", e);
                     }
                 }
@@ -137,7 +139,7 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, on
                 if (newUrl) {
                     imageUrl = newUrl;
                 } else if (imageFile) {
-                    // Stop submission if upload fails
+                    // Stop submission if upload was initiated but failed
                     setIsSubmitting(false);
                     return; 
                 }

@@ -31,6 +31,7 @@ export async function POST(request: Request) {
             updated_by: user.id,
         };
         
+        // If it's a new block, remove the ID so Supabase can generate one.
         if (!blockData.id) {
             delete dataToUpsert.id;
         }
@@ -44,8 +45,10 @@ export async function POST(request: Request) {
             throw new Error(error.message);
         }
 
+        // Revalidate the path to show the updated content
         if (pageSlug) {
            revalidatePath(`/admin/pages/${pageSlug}`);
+           revalidatePath(`/${pageSlug === 'home' ? '' : pageSlug }`); // Revalidate public page
         }
         
         return NextResponse.json({ message: `Bloco ${blockData.id ? 'atualizado' : 'criado'} com sucesso.` });
@@ -92,6 +95,7 @@ export async function DELETE(request: Request) {
         
         if (findError) throw findError;
 
+        // If block has an image, try to delete it from storage
         if (block?.image_url) {
             try {
                 const imagePath = new URL(block.image_url).pathname.split('/site-images/')[1];
@@ -99,15 +103,18 @@ export async function DELETE(request: Request) {
                     await supabase.storage.from('site-images').remove([imagePath]);
                 }
             } catch (e) {
+                 // Log the error but don't block the request if image deletion fails
                  console.error("Could not remove image from storage:", e);
             }
         }
         
+        // Delete the block from the database
         const { error: dbError } = await supabase.from('blocks').delete().eq('id', blockId);
         if (dbError) throw dbError;
         
         if (pageSlug) {
             revalidatePath(`/admin/pages/${pageSlug}`);
+            revalidatePath(`/${pageSlug === 'home' ? '' : pageSlug }`); // Revalidate public page
         }
 
         return NextResponse.json({ message: 'Bloco excluído.' });
