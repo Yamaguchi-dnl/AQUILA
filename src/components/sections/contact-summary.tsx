@@ -7,8 +7,8 @@ import { AnimatedSection } from "../shared/animated-section";
 
 export function ContactSummary() {
   return (
-    <section id="contato" className="bg-card rounded-t-3xl -mt-8 relative z-10 shadow-2xl">
-      <div className="container pt-8 pb-16 md:py-24 lg:py-28">
+    <section id="contato" className="bg-card rounded-t-3xl -mt-8 md:-mt-16 relative z-10 shadow-2xl">
+      <div className="container pt-12 pb-16 md:py-24 lg:py-28">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
                 <AnimatedSection>
