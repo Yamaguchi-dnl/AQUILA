@@ -1,17 +1,18 @@
 
 "use client";
 
-import { useState, useEffect, useCallback, use } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import { usePathname, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import { PageHeader } from '@/components/shared/page-header';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
-import { Loader2, PlusCircle, Trash2, GripVertical, Edit } from 'lucide-react';
+import { Loader2, PlusCircle, Trash2, Edit } from 'lucide-react';
 import { BlockFormDialog } from '@/components/forms/block-form';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { useToast } from '@/hooks/use-toast';
 import Image from 'next/image';
+import { Badge } from '@/components/ui/badge';
 
 type Page = {
     id: string;
@@ -22,15 +23,18 @@ type Page = {
 type Block = {
     id: string;
     order_index: number;
+    block_type: string;
     title: string | null;
     content: string | null;
     image_url: string | null;
 }
 
-export default function AdminSinglePage({ params }: { params: { slug: string }}) {
+export default function AdminSinglePage() {
     const supabase = createClient();
-    const router = useRouter();
+    const params = useParams();
     const { toast } = useToast();
+    
+    const slug = params.slug as string;
 
     const [page, setPage] = useState<Page | null>(null);
     const [blocks, setBlocks] = useState<Block[]>([]);
@@ -38,10 +42,9 @@ export default function AdminSinglePage({ params }: { params: { slug: string }})
     const [isFormOpen, setIsFormOpen] = useState(false);
     const [selectedBlock, setSelectedBlock] = useState<Block | null>(null);
     
-    const { slug } = params;
-
     const fetchData = useCallback(async () => {
         setLoading(true);
+        if (!slug) return;
         try {
             const { data: pageData, error: pageError } = await supabase
                 .from('pages')
@@ -58,7 +61,7 @@ export default function AdminSinglePage({ params }: { params: { slug: string }})
                 setPage(pageData);
                 const { data: blocksData, error: blocksError } = await supabase
                     .from('blocks')
-                    .select('id, order_index, title, content, image_url')
+                    .select('id, order_index, block_type, title, content, image_url')
                     .eq('page_id', pageData.id)
                     .order('order_index', { ascending: true });
 
@@ -78,7 +81,6 @@ export default function AdminSinglePage({ params }: { params: { slug: string }})
     }, [slug, supabase, toast]);
 
     useEffect(() => {
-        if (!slug) return;
         fetchData();
     }, [slug, fetchData]);
 
@@ -94,7 +96,6 @@ export default function AdminSinglePage({ params }: { params: { slug: string }})
 
     const handleDeleteBlock = async (blockId: string) => {
         try {
-            // First delete the image from storage if it exists
             const blockToDelete = blocks.find(b => b.id === blockId);
             if (blockToDelete?.image_url) {
                 const path = new URL(blockToDelete.image_url).pathname.split('/site-images/')[1];
@@ -135,7 +136,10 @@ export default function AdminSinglePage({ params }: { params: { slug: string }})
                         {blocks.map(block => (
                             <Card key={block.id} className="relative group">
                                 <CardHeader>
-                                    <CardTitle>{block.title || "Bloco sem título"}</CardTitle>
+                                    <div className="flex justify-between items-start">
+                                        <CardTitle>{block.title || "Bloco sem título"}</CardTitle>
+                                        <Badge variant="outline">{block.block_type}</Badge>
+                                    </div>
                                 </CardHeader>
                                 <CardContent className="grid md:grid-cols-3 gap-6">
                                     <div className="md:col-span-2 space-y-2">
@@ -194,6 +198,7 @@ export default function AdminSinglePage({ params }: { params: { slug: string }})
                 isOpen={isFormOpen}
                 setIsOpen={setIsFormOpen}
                 pageId={page.id}
+                pageSlug={page.slug}
                 block={selectedBlock}
                 onSuccess={fetchData}
                 lastOrderIndex={blocks.length > 0 ? Math.max(...blocks.map(b => b.order_index)) : 0}
@@ -201,3 +206,5 @@ export default function AdminSinglePage({ params }: { params: { slug: string }})
         </>
     );
 }
+
+    

@@ -2,7 +2,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { createClient } from '@/lib/supabase/client';
@@ -26,13 +26,15 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea';
+import { Textarea } from '@/components/ui/textarea';
 import Image from 'next/image';
-import { Loader2, Upload } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
+import { Label } from '../ui/label';
 
 type Block = {
   id: string;
   order_index: number;
+  block_type: string;
   title: string | null;
   content: string | null;
   image_url: string | null;
@@ -42,6 +44,7 @@ type BlockFormDialogProps = {
   isOpen: boolean;
   setIsOpen: (open: boolean) => void;
   pageId: string;
+  pageSlug: string;
   block: Block | null;
   onSuccess: () => void;
   lastOrderIndex: number;
@@ -49,12 +52,13 @@ type BlockFormDialogProps = {
 
 const formSchema = z.object({
   title: z.string().min(1, "O título é obrigatório."),
+  block_type: z.string().min(1, "O tipo do bloco é obrigatório."),
   content: z.string().optional(),
   image_url: z.string().optional(),
   image_file: z.any().optional(),
 });
 
-export function BlockFormDialog({ isOpen, setIsOpen, pageId, block, onSuccess, lastOrderIndex }: BlockFormDialogProps) {
+export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, onSuccess, lastOrderIndex }: BlockFormDialogProps) {
     const supabase = createClient();
     const { toast } = useToast();
     const [isUploading, setIsUploading] = useState(false);
@@ -63,6 +67,7 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, block, onSuccess, l
         resolver: zodResolver(formSchema),
         defaultValues: {
             title: '',
+            block_type: 'texto',
             content: '',
             image_url: '',
         },
@@ -74,12 +79,14 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, block, onSuccess, l
         if (block) {
             form.reset({
                 title: block.title || '',
+                block_type: block.block_type || 'texto',
                 content: block.content || '',
                 image_url: block.image_url || '',
             });
         } else {
             form.reset({
                 title: '',
+                block_type: 'texto',
                 content: '',
                 image_url: '',
                 image_file: null,
@@ -91,10 +98,10 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, block, onSuccess, l
         if (!file) return null;
         setIsUploading(true);
         try {
-            const fileName = `${Date.now()}-${file.name}`;
+            const filePath = `${pageSlug}/${Date.now()}-${file.name}`;
             const { data, error } = await supabase.storage
                 .from('site-images')
-                .upload(fileName, file);
+                .upload(filePath, file);
 
             if (error) throw error;
             
@@ -116,10 +123,11 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, block, onSuccess, l
             let imageUrl = block?.image_url || '';
 
             if (values.image_file && values.image_file[0]) {
-                 // Delete old image if it exists and we are uploading a new one
                 if (block?.image_url) {
-                    const oldPath = new URL(block.image_url).pathname.split('/site-images/')[1];
-                    await supabase.storage.from('site-images').remove([oldPath]);
+                    const oldPath = new URL(block.image_url).pathname.split('/v1/object/public/site-images/')[1];
+                    if (oldPath) {
+                        await supabase.storage.from('site-images').remove([oldPath]);
+                    }
                 }
                 const newUrl = await handleImageUpload(values.image_file[0]);
                 if (newUrl) {
@@ -133,11 +141,11 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, block, onSuccess, l
                 id: block?.id,
                 page_id: pageId,
                 order_index: block?.order_index ?? lastOrderIndex + 1,
+                block_type: values.block_type,
                 title: values.title,
                 content: values.content,
                 image_url: imageUrl,
                 updated_by: user?.id,
-                updated_at: new Date().toISOString(),
             };
             
             // If we are creating a new block, we don't include the id
@@ -148,7 +156,7 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, block, onSuccess, l
 
             const { error } = await supabase
                 .from('blocks')
-                .upsert(dataToUpsert);
+                .upsert(dataToUpsert, { onConflict: 'id' });
 
             if (error) throw error;
 
@@ -156,6 +164,7 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, block, onSuccess, l
             onSuccess();
             setIsOpen(false);
         } catch (error: any) {
+            console.error("Error submitting form:", error);
             toast({ variant: 'destructive', title: 'Erro ao salvar', description: error.message });
         }
     }
@@ -182,6 +191,17 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, block, onSuccess, l
                                 </FormItem>
                             )}
                         />
+                        <FormField
+                            control={form.control}
+                            name="block_type"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Tipo do Bloco</FormLabel>
+                                    <FormControl><Input {...field} placeholder="Ex: hero, texto, card, etc."/></FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
                          <FormField
                             control={form.control}
                             name="content"
@@ -196,7 +216,7 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, block, onSuccess, l
 
                         {block?.image_url && (
                             <div className="space-y-2">
-                                <FormLabel>Imagem Atual</FormLabel>
+                                <Label>Imagem Atual</Label>
                                 <Image src={block.image_url} alt="Imagem atual" width={200} height={100} className="rounded-md object-cover" />
                             </div>
                         )}
@@ -233,4 +253,4 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, block, onSuccess, l
         </Dialog>
     );
 }
-
+    
