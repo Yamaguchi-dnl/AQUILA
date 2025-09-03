@@ -10,12 +10,7 @@ export const navItems: NavItem[] = [
       { href: '/trabalhe-conosco', label: 'Trabalhe Conosco', description: 'Faça parte da nossa equipe de talentos.' },
     ]
   },
-  {
-    label: 'Investimentos',
-    subItems: [
-      { href: '/fundos', label: 'Fundos de Investimento', description: 'Explore nosso portfólio de fundos.' },
-    ]
-  },
+  { href: '/fundos', label: 'Investimentos' },
   { href: '/golden-visa', label: 'Golden Visa' },
   { href: '/contato', label: 'Contato' },
 ];
