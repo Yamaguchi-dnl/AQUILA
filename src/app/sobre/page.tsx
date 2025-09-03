@@ -50,13 +50,13 @@ export default function SobrePage() {
 
        <section className="bg-card">
         <div className="container">
-           <AnimatedSection className="text-center">
+          <AnimatedSection className="text-center mb-12">
             <h2 className="font-headline text-3xl md:text-4xl text-primary uppercase">Nossa História</h2>
             <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
                 Uma jornada de crescimento e sucesso, marcada pela busca incessante por oportunidades que geram valor real e sustentável para nossos clientes.
             </p>
            </AnimatedSection>
-           <div className="mt-12 max-w-4xl mx-auto">
+           <div className="max-w-4xl mx-auto">
              <div className="relative">
                 {/* The vertical line */}
                 <div className="absolute left-[34px] top-4 h-full w-0.5 bg-border -translate-x-1/2" aria-hidden="true"></div>
