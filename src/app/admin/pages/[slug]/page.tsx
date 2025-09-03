@@ -34,7 +34,7 @@ export default function AdminSinglePage() {
     const params = useParams();
     const { toast } = useToast();
     
-    // Correctly extract slug from params. The hook ensures it's ready for client-side use.
+    // Correctly extract slug from params using the hook.
     const slug = params.slug as string;
 
     const [page, setPage] = useState<Page | null>(null);
@@ -204,3 +204,5 @@ export default function AdminSinglePage() {
         </>
     );
 }
+
+    
