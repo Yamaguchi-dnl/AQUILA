@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { TeamMember } from "@/lib/types";
+import { cn } from "@/lib/utils";
 
 type TeamMemberCardProps = {
   member: TeamMember;
@@ -8,7 +9,7 @@ type TeamMemberCardProps = {
 
 export function TeamMemberCard({ member }: TeamMemberCardProps) {
   return (
-    <Card className="flex flex-col h-full text-center">
+    <Card className="flex flex-col h-full text-center transition-all duration-300 hover:scale-105 hover:shadow-xl">
       <CardHeader className="items-center">
         <Image
           src={`${member.foto.src}?v=${member.foto.v}`}
