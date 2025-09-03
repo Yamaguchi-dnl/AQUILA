@@ -12,13 +12,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { signIn } from "@/actions/auth";
-import { useFormState } from "react-dom";
-import { useEffect } from "react";
+import { useActionState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 
 export default function LoginPage() {
     const { toast } = useToast();
-    const [state, formAction] = useFormState(signIn, null);
+    const [state, formAction] = useActionState(signIn, null);
 
     useEffect(() => {
         if (state?.error) {
