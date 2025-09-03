@@ -22,7 +22,7 @@ export function FundsSummary() {
         </div>
         </AnimatedSection>
 
-        <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
           {activeFunds.map((fund, index) => (
             <AnimatedSection key={fund.slug} delay={index * 0.1}>
               <FundSummaryCard fund={fund} />

@@ -13,7 +13,7 @@ type FundSummaryCardProps = {
 
 export function FundSummaryCard({ fund }: FundSummaryCardProps) {
     return (
-        <Card className="overflow-hidden h-full flex flex-col transition-all duration-300 hover:shadow-xl border border-transparent hover:border-primary">
+        <Card className="overflow-hidden flex flex-col transition-all duration-300 hover:shadow-xl border border-transparent hover:border-primary h-full">
             <div className="relative overflow-hidden">
                 <Image 
                     src={fund.imagemResumo || `https://picsum.photos/600/350?random=${fund.slug}`}
