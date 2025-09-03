@@ -16,7 +16,7 @@ export function Hero() {
             <div id='stars3'></div>
         </div>
         <div className="container z-10 grid md:grid-cols-2 gap-8 items-center pt-16 pb-16">
-        <div className="max-w-2xl">
+        <div className="max-w-2xl order-last md:order-first">
              <AnimatedSection>
                  <h2 className="text-sm uppercase tracking-widest text-muted-foreground font-headline">
                     Aquila Fund FCR
@@ -46,8 +46,8 @@ export function Hero() {
                 </div>
             </AnimatedSection>
         </div>
-        <div className="flex justify-center items-center">
-            <div className="relative h-[400px] w-full md:h-[500px] md:w-[400px]">
+        <div className="flex justify-center items-center order-first md:order-last">
+            <div className="relative h-[300px] w-[250px] md:h-[500px] md:w-[400px]">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9, y: 50 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -67,14 +67,13 @@ export function Hero() {
                     initial={{ opacity: 0, x: -50, y: -50 }}
                     animate={{ opacity: 1, x: 0, y: 0 }}
                     transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
-                     className="hidden md:block"
                 >
                     <Image 
                         src="https://ik.imagekit.io/leosmc2zb/beautiful-shot-portuguese-flag-waving-calm-bright-sky.jpg"
                         alt="Bandeira de Portugal"
                         width={180}
                         height={160}
-                        className="absolute -top-4 -left-16 rounded-2xl shadow-2xl object-cover z-30"
+                        className="absolute -top-4 -left-12 md:-left-16 w-[100px] h-auto md:w-[180px] md:h-[160px] rounded-2xl shadow-2xl object-cover z-30"
                         data-ai-hint="portugal flag"
                     />
                 </motion.div>
@@ -83,14 +82,13 @@ export function Hero() {
                     animate={{ opacity: 1, x: 0, y: 0 }}
                     transition={{ duration: 0.7, delay: 0.7, ease: "easeOut" }}
                     whileHover={{ scale: 1.2 }}
-                     className="hidden md:block"
                 >
                     <Image 
                         src="https://ik.imagekit.io/leosmc2zb/60913.jpg"
                         alt="Detalhe de investimento"
                         width={180}
                         height={160}
-                        className="absolute -bottom-4 -right-16 rounded-2xl shadow-2xl object-cover z-20"
+                        className="absolute -bottom-4 -right-12 md:-right-16 w-[100px] h-auto md:w-[180px] md:h-[160px] rounded-2xl shadow-2xl object-cover z-20"
                         data-ai-hint="investment chart"
                     />
                 </motion.div>
