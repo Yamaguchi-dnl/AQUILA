@@ -45,7 +45,7 @@ export function ContactSummary() {
                  </AnimatedSection>
             </div>
             <AnimatedSection delay={0.1}>
-            <div className="bg-background p-8 rounded-lg shadow-lg">
+            <div className="bg-background p-8 rounded-lg shadow-lg transition-all duration-300 border border-transparent hover:border-primary">
                  <h3 className="text-xl font-bold text-foreground mb-4 font-headline">Fale com um especialista</h3>
                  <ContactForm isSummary={true} />
             </div>
