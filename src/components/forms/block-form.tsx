@@ -60,7 +60,7 @@ const formSchema = z.object({
     .any()
     .refine((file) => !file || file?.[0]?.size <= MAX_FILE_SIZE, `Tamanho máximo da imagem é 5MB.`)
     .refine(
-      (file) => !file || ACCEPTED_IMAGE_TYPES.includes(file?.[0]?.type),
+      (file) => !file || !file[0] || ACCEPTED_IMAGE_TYPES.includes(file?.[0]?.type),
       "Apenas os formatos .jpg, .jpeg, .png e .webp são aceitos."
     ).optional(),
 });
@@ -94,18 +94,20 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, on
     async function onSubmit(values: z.infer<typeof formSchema>) {
         const formData = new FormData();
         
-        const blockData = {
-            id: block?.id,
-            page_id: pageId,
-            order_index: block?.order_index ?? lastOrderIndex + 1,
-            title: values.title,
-            block_type: values.block_type,
-            content: values.content,
-            current_image_url: block?.image_url || undefined,
-        };
-
-        formData.append('blockData', JSON.stringify(blockData));
+        // Append all form data
+        formData.append('title', values.title);
+        formData.append('block_type', values.block_type);
+        formData.append('content', values.content || '');
+        formData.append('page_id', pageId);
         formData.append('pageSlug', pageSlug);
+        formData.append('order_index', (block?.order_index ?? lastOrderIndex + 1).toString());
+
+        if (block?.id) {
+            formData.append('id', block.id);
+        }
+        if (block?.image_url) {
+            formData.append('current_image_url', block.image_url);
+        }
 
         if (values.image_file && values.image_file[0]) {
             formData.append('image_file', values.image_file[0]);

@@ -14,7 +14,6 @@ const blockSchema = z.object({
   title: z.string().min(1, "O título é obrigatório."),
   block_type: z.string().min(1, "O tipo do bloco é obrigatório."),
   content: z.string().optional(),
-  current_image_url: z.string().url().optional(),
 });
 
 export async function POST(request: NextRequest) {
@@ -39,22 +38,31 @@ export async function POST(request: NextRequest) {
 
     try {
         const formData = await request.formData();
-        const blockDataString = formData.get('blockData') as string;
+        
+        const blockPayload = {
+            id: formData.get('id') as string | undefined,
+            page_id: formData.get('page_id') as string,
+            order_index: formData.get('order_index') as string,
+            title: formData.get('title') as string,
+            block_type: formData.get('block_type') as string,
+            content: formData.get('content') as string | undefined,
+        };
+
         const pageSlug = formData.get('pageSlug') as string;
         const image_file = formData.get('image_file') as File | null;
-        
-        if (!blockDataString || !pageSlug) {
-            return NextResponse.json({ message: 'Dados do bloco ou slug da página ausentes.' }, { status: 400 });
-        }
+        const current_image_url = formData.get('current_image_url') as string | undefined;
 
-        const parsedBlockData = JSON.parse(blockDataString);
-        const validatedBlock = blockSchema.safeParse(parsedBlockData);
+        if (!pageSlug) {
+             return NextResponse.json({ message: 'Slug da página ausente.' }, { status: 400 });
+        }
+        
+        const validatedBlock = blockSchema.safeParse(blockPayload);
         
         if (!validatedBlock.success) {
             return NextResponse.json({ message: 'Dados do bloco inválidos.', errors: validatedBlock.error.flatten().fieldErrors }, { status: 400 });
         }
 
-        let imageUrl = validatedBlock.data.current_image_url;
+        let imageUrl = current_image_url;
 
         // 3. Handle image upload if a file is present
         if (image_file && image_file.size > 0) {
@@ -90,7 +98,7 @@ export async function POST(request: NextRequest) {
         }
         
         // 4. Prepare data for Supabase upsert
-        const { current_image_url, ...dataToUpsert } = {
+        const dataToUpsert = {
             ...validatedBlock.data,
             image_url: imageUrl,
             updated_at: new Date().toISOString(),
@@ -98,6 +106,7 @@ export async function POST(request: NextRequest) {
         };
         
         if (!dataToUpsert.id) {
+            // @ts-ignore
             delete dataToUpsert.id; // Let Supabase generate a new ID
         }
 
