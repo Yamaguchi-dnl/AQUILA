@@ -25,7 +25,6 @@ export async function saveBlock(prevState: any, formData: FormData) {
         return { message: 'Não autenticado.', success: false };
     }
     
-    // Explicitly check for admin privileges from the database
     const { data: adminUser, error: adminError } = await supabase
         .from('users')
         .select('is_admin')
@@ -133,7 +132,6 @@ export async function deleteBlock(blockId: string, pageSlug: string) {
         return { message: 'Não autenticado', success: false };
     }
     
-    // Explicitly check for admin privileges from the database
     const { data: adminUser, error: adminError } = await supabase
         .from('users')
         .select('is_admin')
