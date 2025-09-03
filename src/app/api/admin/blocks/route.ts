@@ -2,13 +2,11 @@
 import { createClient } from '@/lib/supabase/server';
 import { revalidatePath } from 'next/cache';
 import { NextResponse, type NextRequest } from 'next/server';
-import { cookies } from 'next/headers';
 
 // POST (Create/Update a block) - This logic is now handled by a Server Action in /src/actions/admin.ts
 // The endpoint is kept to avoid breaking changes if it was used elsewhere, but new forms should use the action.
 export async function POST(request: NextRequest) {
-    const cookieStore = cookies();
-    const supabase = createClient(cookieStore);
+    const supabase = createClient();
 
     const { data: { user } } = await supabase.auth.getUser();
 
@@ -65,8 +63,7 @@ export async function POST(request: NextRequest) {
 
 // DELETE a block
 export async function DELETE(request: NextRequest) {
-    const cookieStore = cookies();
-    const supabase = createClient(cookieStore);
+    const supabase = createClient();
     
     const { data: { user } } = await supabase.auth.getUser();
 

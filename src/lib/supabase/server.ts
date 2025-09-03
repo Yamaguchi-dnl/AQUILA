@@ -1,9 +1,8 @@
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
-import { cookies as nextCookies } from 'next/headers'
-import type { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/cookies';
+import { cookies } from 'next/headers'
 
-export function createClient(cookieStore?: ReadonlyRequestCookies) {
-  const store = cookieStore || nextCookies();
+export function createClient() {
+  const cookieStore = cookies()
 
   return createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -11,26 +10,24 @@ export function createClient(cookieStore?: ReadonlyRequestCookies) {
     {
       cookies: {
         get(name: string) {
-          return store.get(name)?.value
+          return cookieStore.get(name)?.value
         },
         set(name: string, value: string, options: CookieOptions) {
           try {
-            // O tipo `store` pode ser `ReadonlyRequestCookies` que não tem o método `set`
-            // Por isso, usamos o `nextCookies()` diretamente aqui, que tem.
-            nextCookies().set({ name, value, ...options })
+            cookieStore.set({ name, value, ...options })
           } catch (error) {
-            // O `set` foi chamado de um Server Component.
-            // Isso pode ser ignorado se você tiver um middleware atualizando as sessões.
+            // The `set` method was called from a Server Component.
+            // This can be ignored if you have middleware refreshing
+            // user sessions.
           }
         },
         remove(name: string, options: CookieOptions) {
           try {
-             // O tipo `store` pode ser `ReadonlyRequestCookies` que não tem o método `delete`
-            // Por isso, usamos o `nextCookies()` diretamente aqui, que tem.
-            nextCookies().set({ name, value: '', ...options })
+            cookieStore.set({ name, value: '', ...options })
           } catch (error) {
-            // O `delete` foi chamado de um Server Component.
-            // Isso pode ser ignorado se você tiver um middleware atualizando as sessões.
+            // The `delete` method was called from a Server Component.
+            // This can be ignored if you have middleware refreshing
+            // user sessions.
           }
         },
       },
