@@ -1,3 +1,4 @@
+
 import { ContactForm } from "../forms/contact-form";
 import Link from "next/link";
 import { Instagram, Linkedin } from "lucide-react";
@@ -6,7 +7,7 @@ import { AnimatedSection } from "../shared/animated-section";
 
 export function ContactSummary() {
   return (
-    <section id="contato" className="bg-card rounded-t-3xl -mt-16 relative z-10 shadow-2xl">
+    <section id="contato" className="bg-card rounded-t-3xl -mt-12 relative z-10 shadow-2xl">
       <div className="container pt-24 pb-16 md:py-24 lg:py-28">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
