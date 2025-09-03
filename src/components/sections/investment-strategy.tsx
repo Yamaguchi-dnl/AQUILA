@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
@@ -29,7 +30,7 @@ const processSteps = [
 
 export function InvestmentStrategy() {
   return (
-    <section id="investment-strategy" className="bg-primary text-primary-foreground relative">
+    <section id="investment-strategy" className="bg-primary text-primary-foreground relative pb-16">
        <div
         aria-hidden="true"
         className="absolute inset-0 bg-[radial-gradient(30%_40%_at_95%_5%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%),radial-gradient(30%_40%_at_5%_95%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)]"
@@ -42,7 +43,7 @@ export function InvestmentStrategy() {
                 </AnimatedSection>
                 
                 <AnimatedSection delay={0.1}>
-                    <div className="mt-12 relative">
+                    <div className="mt-8 relative">
                         {processSteps.map((step, index) => (
                            <div key={step.number} className="relative pl-14 pb-10 last:pb-0">
                                {index !== processSteps.length - 1 && (
@@ -71,6 +72,8 @@ export function InvestmentStrategy() {
                         height={800}
                         className="rounded-3xl object-cover h-[600px] w-full"
                         data-ai-hint="portugal lisbon"
+                        priority
+                        quality={100}
                     />
                     <AnimatedSection delay={0.4}>
                         <Image 
