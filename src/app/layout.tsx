@@ -10,12 +10,14 @@ import { cn } from '@/lib/utils';
 const fontSans = Inter({
   subsets: ['latin'],
   variable: '--font-sans',
+  display: 'swap',
 });
 
 const fontHeadline = DM_Sans({
   subsets: ['latin'],
   weight: ['300', '400', '500', '700'],
   variable: '--font-headline',
+  display: 'swap',
 });
 
 
