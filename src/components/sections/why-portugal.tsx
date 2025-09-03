@@ -61,7 +61,12 @@ export function WhyPortugal() {
         >
           <AnimatedSection>
             <div className="flex justify-between items-center mb-8">
-              <h2 className="font-headline text-3xl md:text-4xl lg:text-[2.75rem] lg:leading-[1.1] text-primary-foreground uppercase">Por que investir<br/>em Portugal?</h2>
+              <div>
+                <h2 className="text-sm uppercase tracking-widest text-primary-foreground/60 font-headline">
+                    OPORTUNIDADES
+                </h2>
+                <h3 className="font-headline text-3xl md:text-4xl lg:text-[2.75rem] lg:leading-[1.1] text-primary-foreground uppercase mt-2">Por que investir<br/>em Portugal?</h3>
+              </div>
               <div className="flex gap-2">
                   <CarouselPrevious className="static -translate-y-0 text-primary-foreground bg-primary-foreground/10 hover:bg-primary-foreground/20 border-primary-foreground/20" />
                   <CarouselNext className="static -translate-y-0 text-primary-foreground bg-primary-foreground/10 hover:bg-primary-foreground/20 border-primary-foreground/20" />

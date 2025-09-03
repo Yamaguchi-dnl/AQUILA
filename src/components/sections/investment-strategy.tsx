@@ -39,7 +39,10 @@ export function InvestmentStrategy() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
                 <AnimatedSection>
-                    <h2 className="font-headline text-3xl md:text-4xl text-primary-foreground uppercase">Estratégia de investimento: o caminho para o sucesso</h2>
+                    <h2 className="text-sm uppercase tracking-widest text-primary-foreground/60 font-headline">
+                        NOSSA ABORDAGEM
+                    </h2>
+                    <h3 className="font-headline text-3xl md:text-4xl text-primary-foreground uppercase mt-2">Estratégia de investimento: o caminho para o sucesso</h3>
                 </AnimatedSection>
                 
                 <AnimatedSection delay={0.1}>

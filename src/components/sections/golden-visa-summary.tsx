@@ -20,9 +20,12 @@ export function GoldenVisaSummary() {
             <div className="relative z-10 grid md:grid-cols-2 gap-8 items-center">
                 <div className="text-primary-foreground">
                     <AnimatedSection>
-                    <h2 className="font-headline text-3xl md:text-4xl lg:text-[2.75rem] lg:leading-[1.1] uppercase">
-                        O caminho para Portugal com o Golden Visa
+                    <h2 className="text-sm uppercase tracking-widest text-primary-foreground/60 font-headline">
+                        RESIDÊNCIA EUROPEIA
                     </h2>
+                    <h3 className="font-headline text-3xl md:text-4xl lg:text-[2.75rem] lg:leading-[1.1] uppercase mt-2">
+                        O caminho para Portugal com o Golden Visa
+                    </h3>
                     </AnimatedSection>
                     <AnimatedSection delay={0.1}>
                     <p className="mt-4 text-base md:text-lg text-primary-foreground/90 max-w-lg">

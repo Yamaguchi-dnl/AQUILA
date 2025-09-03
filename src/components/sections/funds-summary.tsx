@@ -12,7 +12,10 @@ export function FundsSummary() {
       <div className="container">
         <AnimatedSection>
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="font-headline text-4xl text-primary uppercase">Nossos Fundos de Investimento</h2>
+           <h2 className="text-sm uppercase tracking-widest text-muted-foreground font-headline">
+              PORTFÓLIO
+          </h2>
+          <h3 className="font-headline text-4xl text-primary uppercase mt-2">Nossos Fundos de Investimento</h3>
           <p className="mt-4 text-lg text-muted-foreground">
             Soluções de investimento seguras e rentáveis para investidores que buscam diversificação, proteção patrimonial e acesso ao Golden Visa em Portugal.
           </p>
