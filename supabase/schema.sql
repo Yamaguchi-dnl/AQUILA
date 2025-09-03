@@ -1,186 +1,124 @@
--- Create custom user claims table
-CREATE TABLE IF NOT EXISTS public.user_claims (
-    id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
-    claim TEXT NOT NULL,
-    value JSONB NOT NULL,
-    created_at TIMESTAMPTZ DEFAULT NOW(),
-    updated_at TIMESTAMPTZ DEFAULT NOW()
+-- Apaga tabelas existentes para garantir um estado limpo
+DROP TABLE IF EXISTS "blocks";
+DROP TABLE IF EXISTS "pages";
+DROP TABLE IF EXISTS "users";
+
+-- Cria a tabela de usuários customizada
+CREATE TABLE "users" (
+    "id" uuid NOT NULL PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
+    "email" text,
+    "is_admin" boolean DEFAULT false
 );
 
--- Function to get a specific user claim
-CREATE OR REPLACE FUNCTION public.get_claim(uid UUID, claim TEXT)
-RETURNS JSONB
-LANGUAGE plpgsql
-SECURITY DEFINER
-SET search_path = public
-AS $$
-  DECLARE
-    claim_value JSONB;
-  BEGIN
-    SELECT value INTO claim_value FROM public.user_claims WHERE id = uid AND public.user_claims.claim = get_claim.claim;
-    RETURN claim_value;
-  END;
+-- Função para popular a tabela de usuários automaticamente
+create function public.handle_new_user()
+returns trigger
+language plpgsql
+security definer set search_path = public
+as $$
+begin
+  insert into public.users (id, email)
+  values (new.id, new.email);
+  return new;
+end;
 $$;
 
--- Function to get all claims for a user
-CREATE OR REPLACE FUNCTION public.get_claims(uid UUID)
-RETURNS JSONB
-LANGUAGE plpgsql
-SECURITY DEFINER
-SET search_path = public
-AS $$
-  DECLARE
-    claims JSONB;
-  BEGIN
-    SELECT jsonb_object_agg(claim, value) INTO claims FROM public.user_claims WHERE id = uid;
-    RETURN claims;
-  END;
-$$;
+-- Trigger para executar a função quando um novo usuário se registra no Auth
+create trigger on_auth_user_created
+  after insert on auth.users
+  for each row execute procedure public.handle_new_user();
 
--- Function to set a user claim
-CREATE OR REPLACE FUNCTION public.set_claim(uid UUID, claim TEXT, value JSONB)
-RETURNS TEXT
-LANGUAGE plpgsql
-SECURITY DEFINER
-SET search_path = public
-AS $$
-  BEGIN
-    INSERT INTO public.user_claims (id, claim, value)
-    VALUES (uid, claim, value)
-    ON CONFLICT (id, claim) DO UPDATE SET value = excluded.value;
-    RETURN 'Claim set';
-  END;
-$$;
-
--- Function to check if the current user is an admin
-CREATE OR REPLACE FUNCTION public.is_admin()
-RETURNS BOOLEAN
-LANGUAGE plpgsql
-AS $$
-  BEGIN
-    RETURN (SELECT public.get_claim(auth.uid(), 'is_admin')) = 'true'::jsonb;
-  END;
-$$;
-
--- Create users table for public profile data
-CREATE TABLE IF NOT EXISTS public.users (
-  id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
-  email TEXT,
-  is_admin BOOLEAN DEFAULT FALSE,
-  updated_at TIMESTAMPTZ DEFAULT NOW()
+-- Cria a tabela de páginas
+CREATE TABLE "pages" (
+    "id" uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    "slug" text UNIQUE NOT NULL,
+    "title" text,
+    "description" text,
+    "created_at" timestamptz DEFAULT now(),
+    "updated_at" timestamptz DEFAULT now(),
+    "updated_by" uuid REFERENCES public.users(id)
 );
 
--- Function to sync public.users with auth.users
-CREATE OR REPLACE FUNCTION public.handle_new_user()
-RETURNS TRIGGER
-LANGUAGE plpgsql
-SECURITY DEFINER
-SET search_path = public
-AS $$
-  BEGIN
-    INSERT INTO public.users (id, email)
-    VALUES (new.id, new.email);
-    RETURN new;
-  END;
-$$;
-
--- Trigger to call handle_new_user on new user creation
-CREATE TRIGGER on_auth_user_created
-  AFTER INSERT ON auth.users
-  FOR EACH ROW EXECUTE PROCEDURE public.handle_new_user();
-
--- Create Pages table
-CREATE TABLE IF NOT EXISTS public.pages (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    slug TEXT UNIQUE NOT NULL,
-    title TEXT,
-    description TEXT,
-    created_at TIMESTAMPTZ DEFAULT NOW(),
-    updated_at TIMESTAMPTZ DEFAULT NOW()
+-- Cria a tabela de blocos de conteúdo
+CREATE TABLE "blocks" (
+    "id" uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    "page_id" uuid NOT NULL REFERENCES pages(id) ON DELETE CASCADE,
+    "order_index" integer NOT NULL,
+    "block_type" text NOT NULL,
+    "title" text,
+    "content" text,
+    "image_url" text,
+    "created_at" timestamptz DEFAULT now(),
+    "updated_at" timestamptz DEFAULT now(),
+    "updated_by" uuid REFERENCES public.users(id)
 );
 
--- Create Blocks table
-CREATE TABLE IF NOT EXISTS public.blocks (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    page_id UUID REFERENCES public.pages(id) ON DELETE CASCADE,
-    order_index INTEGER NOT NULL,
-    block_type TEXT NOT NULL,
-    title TEXT,
-    content TEXT,
-    image_url TEXT,
-    updated_by UUID REFERENCES auth.users(id),
-    created_at TIMESTAMPTZ DEFAULT NOW(),
-    updated_at TIMESTAMPTZ DEFAULT NOW()
-);
+-- Habilita RLS para as tabelas
+ALTER TABLE pages ENABLE ROW LEVEL SECURITY;
+ALTER TABLE blocks ENABLE ROW LEVEL SECURITY;
+ALTER TABLE users ENABLE ROW LEVEL SECURITY;
 
--- Enable Row Level Security (RLS)
-ALTER TABLE public.pages ENABLE ROW LEVEL SECURITY;
-ALTER TABLE public.blocks ENABLE ROW LEVEL SECURITY;
-ALTER TABLE public.users ENABLE ROW LEVEL SECURITY;
-
--- Drop existing policies to prevent conflicts
-DROP POLICY IF EXISTS "Allow all access to admins" ON public.pages;
-DROP POLICY IF EXISTS "Allow read access to everyone" ON public.pages;
-DROP POLICY IF EXISTS "Allow all access to admins" ON public.blocks;
-DROP POLICY IF EXISTS "Allow read access to everyone" ON public.blocks;
-DROP POLICY IF EXISTS "Allow individual read access" ON public.users;
+-- Remove políticas antigas se existirem, para evitar conflitos
+DROP POLICY IF EXISTS "Allow read access for all users" ON public.pages;
+DROP POLICY IF EXISTS "Allow admin full access" ON public.pages;
+DROP POLICY IF EXISTS "Allow read access for all users" ON public.blocks;
+DROP POLICY IF EXISTS "Allow admin full access" ON public.blocks;
+DROP POLICY IF EXISTS "Allow users to view their own data" ON public.users;
+DROP POLICY IF EXISTS "Allow admin full access to users" ON public.users;
 
 
--- RLS Policies for `pages` table
-CREATE POLICY "Allow all access to admins"
-ON public.pages FOR ALL
-USING (public.is_admin())
-WITH CHECK (public.is_admin());
-
-CREATE POLICY "Allow read access to everyone"
-ON public.pages FOR SELECT
-USING (true);
-
-
--- RLS Policies for `blocks` table
-CREATE POLICY "Allow all access to admins"
-ON public.blocks FOR ALL
-USING (public.is_admin())
-WITH CHECK (public.is_admin());
-
-CREATE POLICY "Allow read access to everyone"
-ON public.blocks FOR SELECT
-USING (true);
-
--- RLS Policies for `users` table
-CREATE POLICY "Allow individual read access"
-ON public.users FOR SELECT
-USING (auth.uid() = id OR public.is_admin());
-
-
--- Seed initial data if tables are empty
-DO $$
-DECLARE
-    home_page_id UUID;
-    sobre_page_id UUID;
-    fundos_page_id UUID;
-    gv_page_id UUID;
-    contato_page_id UUID;
+-- Função auxiliar para checar se o usuário é admin
+CREATE OR REPLACE FUNCTION is_admin()
+RETURNS boolean AS $$
 BEGIN
-    -- Seed Pages
-    IF NOT EXISTS (SELECT 1 FROM public.pages) THEN
-        INSERT INTO public.pages (slug, title, description) VALUES
-        ('home', 'Página Inicial', 'Página principal do site Aquila Fund FCR.') RETURNING id INTO home_page_id;
+  RETURN (
+    SELECT is_admin
+    FROM public.users
+    WHERE id = auth.uid()
+  );
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
 
-        INSERT INTO public.pages (slug, title, description) VALUES
-        ('sobre', 'Sobre Nós', 'Conteúdo da página sobre a empresa.') RETURNING id INTO sobre_page_id;
 
-        INSERT INTO public.pages (slug, title, description) VALUES
-        ('fundos', 'Nossos Fundos', 'Detalhes sobre os fundos de investimento.') RETURNING id INTO fundos_page_id;
+-- POLÍTICAS PARA A TABELA 'pages'
+-- 1. Qualquer pessoa pode visualizar as páginas.
+CREATE POLICY "Allow read access for all users" ON public.pages
+FOR SELECT USING (true);
 
-        INSERT INTO public.pages (slug, title, description) VALUES
-        ('golden-visa', 'Golden Visa', 'Informações sobre o programa Golden Visa.') RETURNING id INTO gv_page_id;
+-- 2. Apenas administradores podem inserir, atualizar e deletar páginas.
+CREATE POLICY "Allow admin full access" ON public.pages
+FOR ALL USING (is_admin()) WITH CHECK (is_admin());
 
-        INSERT INTO public.pages (slug, title, description) VALUES
-        ('contato', 'Contato', 'Informações de contato e formulário.') RETURNING id INTO contato_page_id;
-    END IF;
 
-    -- Seed Blocks for Home Page
-    -- This part is left empty to avoid overwriting user content on subsequent runs.
-    -- Admin can add blocks via the CMS.
-END $$;
+-- POLÍTICAS PARA A TABELA 'blocks'
+-- 1. Qualquer pessoa pode visualizar os blocos.
+CREATE POLICY "Allow read access for all users" ON public.blocks
+FOR SELECT USING (true);
+
+-- 2. Apenas administradores podem inserir, atualizar e deletar blocos.
+CREATE POLICY "Allow admin full access" ON public.blocks
+FOR ALL USING (is_admin()) WITH CHECK (is_admin());
+
+
+-- POLÍTICAS PARA A TABELA 'users'
+-- 1. Usuários podem ver seus próprios dados
+CREATE POLICY "Allow users to view their own data" ON public.users
+FOR SELECT USING (auth.uid() = id);
+
+-- 2. Admins podem ver todos os usuários
+CREATE POLICY "Allow admin to view all users" ON public.users
+FOR SELECT USING (is_admin());
+
+
+-- Insere dados iniciais
+-- (Isso deve ser executado após um usuário admin ser criado manualmente ou via script)
+-- INSERT INTO public.users (id, email, is_admin) VALUES ('your-admin-user-uuid', 'admin@example.com', true);
+
+INSERT INTO public.pages (slug, title, description) VALUES
+('home', 'Página Inicial', 'A página principal do site.'),
+('sobre', 'Sobre Nós', 'Conheça nossa história e missão.'),
+('fundos', 'Investimentos', 'Explore nossos fundos de investimento.'),
+('golden-visa', 'Golden Visa', 'Descubra como obter seu Golden Visa.'),
+('equipa', 'Nossa Equipa', 'Conheça a nossa equipa de especialistas.'),
+('trabalhe-conosco', 'Trabalhe Conosco', 'Vagas abertas na Aquila.'),
+('contato', 'Contato', 'Fale conosco.');
