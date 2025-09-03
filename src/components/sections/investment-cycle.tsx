@@ -27,6 +27,13 @@ export function InvestmentCycle() {
         <AnimatedSection delay={0.1}>
         <div className="mt-20">
             <div className="relative">
+                {/* Phase Blocks - First Row */}
+                <div className="grid grid-cols-9 mb-4">
+                    <div className="col-start-1 col-span-2 bg-timeline-fg/20 p-2 rounded text-center">
+                        <p className="font-semibold text-primary-foreground">Período de Inscrição</p>
+                    </div>
+                </div>
+
                 {/* Year Markers */}
                 <div className="grid grid-cols-9 text-center text-timeline-fg">
                     {timelineData.years.map(year => (
@@ -37,30 +44,16 @@ export function InvestmentCycle() {
                     ))}
                 </div>
 
-                {/* Phase Blocks */}
-                <div className="relative mt-4 h-48">
-                   <div className="absolute top-0 w-full">
-                       <div className="grid grid-cols-9">
-                           {/* Phase 1 */}
-                           <div className="col-start-1 col-span-2 bg-timeline-fg/20 p-2 rounded text-center">
-                               <p className="font-semibold text-primary-foreground">Período de Inscrição</p>
-                           </div>
-                       </div>
-                   </div>
-                   <div className="absolute top-16 w-full">
-                       <div className="grid grid-cols-9">
-                           {/* Phase 2 */}
-                           <div className="col-start-1 col-span-6 bg-timeline-bg p-3 rounded text-center">
-                               <p className="font-semibold text-primary-foreground">Investimento</p>
-                               <p className="text-sm text-primary-foreground/80">Período de 6 anos</p>
-                           </div>
-                            {/* Phase 3 */}
-                           <div className="col-start-7 col-span-2 bg-timeline-bg p-3 rounded text-center ml-2">
-                               <p className="font-semibold text-primary-foreground">Retenção e Desinvestimento</p>
-                               <p className="text-sm text-primary-foreground/80">Período 2 anos</p>
-                           </div>
-                       </div>
-                   </div>
+                {/* Phase Blocks - Second Row */}
+                <div className="grid grid-cols-9 mt-4">
+                    <div className="col-start-1 col-span-6 bg-timeline-bg p-3 rounded text-center">
+                        <p className="font-semibold text-primary-foreground">Investimento</p>
+                        <p className="text-sm text-primary-foreground/80">Período de 6 anos</p>
+                    </div>
+                    <div className="col-start-7 col-span-2 bg-timeline-bg p-3 rounded text-center ml-2">
+                        <p className="font-semibold text-primary-foreground">Retenção e Desinvestimento</p>
+                        <p className="text-sm text-primary-foreground/80">Período 2 anos</p>
+                    </div>
                 </div>
             </div>
         </div>
