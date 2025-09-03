@@ -34,6 +34,7 @@ export default function AdminSinglePage() {
     const params = useParams();
     const { toast } = useToast();
     
+    // Correctly extract slug from params. The hook ensures it's ready for client-side use.
     const slug = params.slug as string;
 
     const [page, setPage] = useState<Page | null>(null);
@@ -43,8 +44,8 @@ export default function AdminSinglePage() {
     const [selectedBlock, setSelectedBlock] = useState<Block | null>(null);
     
     const fetchData = useCallback(async () => {
-        setLoading(true);
         if (!slug) return;
+        setLoading(true);
         try {
             const { data: pageData, error: pageError } = await supabase
                 .from('pages')
@@ -82,7 +83,7 @@ export default function AdminSinglePage() {
 
     useEffect(() => {
         fetchData();
-    }, [slug, fetchData]);
+    }, [fetchData]);
 
     const handleAddBlock = () => {
         setSelectedBlock(null);
@@ -202,3 +203,4 @@ export default function AdminSinglePage() {
             />
         </>
     );
+}
