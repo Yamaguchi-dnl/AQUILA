@@ -79,6 +79,7 @@ export const fundsData: Fund[] = [
     slug: 'aquila-real-estate',
     nome: 'Aquila Real State',
     subtitulo: 'O Aquila Real State é um fundo focado em ativos imobiliários de alto valor, localizados em áreas privilegiadas e no mercado de residências assinadas.',
+    imagemResumo: 'https://ik.imagekit.io/leosmc2zb/147.jpg',
     descricaoHtml: `<p>Com uma dimensão de €60 milhões, o Aquila Real Estate se especializa em ativos imobiliários localizados em áreas privilegiadas e/ou no mercado de residências de marca. Essa estrategia visa proporcionar retornos moderados ajustados ao risco, minimizando a exposição ao risco para nossos investidores.</p><p>O fundo aloca 60% do seu capital em propriedades que geram renda e valorização, com investimentos garantidos por ativos imobiliários. Além disso, até 40% do capital será investido no International Hospitality Fund.</p>`,
     detalhes: {
       tipo: 'Fundo de capital de risco fechado',
