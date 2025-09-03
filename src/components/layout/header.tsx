@@ -27,19 +27,17 @@ export function Header() {
 
   // Prevent mismatch by delaying client-specific rendering
   if (!isMounted) {
-    // Render a default state on the server and initial client render
     return (
         <header className="fixed top-0 z-50 w-full transition-colors duration-300 bg-card/80 backdrop-blur-sm border-b">
             <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
                 <Logo />
-                 <nav className="hidden md:flex items-center absolute left-1/2 -translate-x-1/2" />
                  <div className="flex items-center justify-end gap-2">
                     <Button asChild className="hidden sm:flex" variant={'default'}>
                         <Link href="/contato">Fale com um especialista</Link>
                     </Button>
                      <Sheet>
                         <SheetTrigger asChild>
-                        <Button variant="outline" size="icon" className="md:hidden">
+                        <Button variant="ghost" size="icon" className="md:hidden">
                             <Menu className="h-4 w-4" />
                             <span className="sr-only">Toggle navigation menu</span>
                         </Button>

@@ -79,8 +79,7 @@ export function InvestmentCycle() {
 
         {/* Mobile Timeline */}
         <div className="mt-16 block md:hidden">
-            <div className="relative">
-                {/* The vertical line */}
+            <div className="relative flow-root">
                 <div className="absolute left-5 top-2 h-full w-px bg-primary-foreground/20" aria-hidden="true"></div>
                 
                 <div className="space-y-12">

@@ -75,6 +75,7 @@ export function Hero() {
                         height={160}
                         className="w-[100px] h-auto md:w-[180px] md:h-[160px] rounded-2xl shadow-2xl object-cover"
                         data-ai-hint="portugal flag"
+                        priority
                     />
                 </motion.div>
                 <motion.div
@@ -90,6 +91,7 @@ export function Hero() {
                         height={160}
                         className="w-[100px] h-auto md:w-[180px] md:h-[160px] rounded-2xl shadow-2xl object-cover"
                         data-ai-hint="investment chart"
+                        priority
                     />
                 </motion.div>
             </motion.div>
