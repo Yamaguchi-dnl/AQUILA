@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -26,6 +26,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { submitInterestForm } from "@/actions/forms";
+import { type VariantProps } from "class-variance-authority";
 
 const formSchema = z.object({
   nome: z.string().min(2, { message: "O nome é obrigatório." }),
@@ -35,9 +36,10 @@ const formSchema = z.object({
 
 type InterestFormDialogProps = {
   fundName: string;
+  buttonVariant?: VariantProps<typeof buttonVariants>["variant"];
 };
 
-export function InterestFormDialog({ fundName }: InterestFormDialogProps) {
+export function InterestFormDialog({ fundName, buttonVariant = "default" }: InterestFormDialogProps) {
   const [isOpen, setIsOpen] = useState(false);
   const { toast } = useToast();
 
@@ -88,7 +90,7 @@ export function InterestFormDialog({ fundName }: InterestFormDialogProps) {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button variant="default" className="w-full">Quero ser avisado</Button>
+        <Button variant={buttonVariant} className="w-full">Quero ser avisado</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
