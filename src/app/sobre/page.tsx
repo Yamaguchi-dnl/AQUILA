@@ -68,7 +68,7 @@ export default function SobrePage() {
         </div>
         <div className="container mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
             <AnimatedSection delay={0.1}>
-            <Card className="flex flex-col h-full bg-card/10 border-primary-foreground/20 text-primary-foreground">
+            <Card className="flex flex-col h-full bg-card/10 border-primary-foreground/20 text-primary-foreground transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
                 <CardHeader>
                     <h3 className="text-2xl font-headline card-title text-primary-foreground">FundBox</h3>
                 </CardHeader>
@@ -78,7 +78,7 @@ export default function SobrePage() {
             </Card>
             </AnimatedSection>
              <AnimatedSection delay={0.2}>
-             <Card className="flex flex-col h-full bg-card/10 border-primary-foreground/20 text-primary-foreground">
+             <Card className="flex flex-col h-full bg-card/10 border-primary-foreground/20 text-primary-foreground transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
                 <CardHeader>
                     <h3 className="text-2xl font-headline card-title text-primary-foreground">BTG Pactual</h3>
                 </CardHeader>
