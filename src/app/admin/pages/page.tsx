@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -19,8 +20,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
-
-// TODO: Create form to add/edit pages
 
 type Page = {
   id: string;
@@ -58,7 +57,6 @@ export default function AdminPagesList() {
 
   const handleDeletePage = async (pageId: string) => {
     try {
-      // First, delete all blocks associated with the page
       const { error: blocksError } = await supabase
         .from('blocks')
         .delete()
@@ -66,7 +64,6 @@ export default function AdminPagesList() {
       
       if (blocksError) throw blocksError;
 
-      // Then, delete the page itself
       const { error: pageError } = await supabase
         .from('pages')
         .delete()
@@ -75,7 +72,7 @@ export default function AdminPagesList() {
       if (pageError) throw pageError;
 
       toast({ title: 'Sucesso', description: 'Página e seus blocos foram excluídos.' });
-      fetchPages(); // Refresh the list
+      fetchPages();
     } catch (error: any) {
         toast({ variant: 'destructive', title: 'Erro ao excluir', description: error.message });
     }

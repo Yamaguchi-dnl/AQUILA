@@ -1,48 +1,16 @@
+
 "use client"
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { createClient } from "@/lib/supabase/client";
-import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, LayoutDashboard, FileText, LogOut, Loader2 } from "lucide-react";
+import { Menu, LayoutDashboard, FileText, LogOut } from "lucide-react";
 import { Logo } from "@/components/shared/logo";
 import { cn } from "@/lib/utils";
 
-type Page = {
-    slug: string;
-    title: string | null;
-}
-
-async function fetchPages(): Promise<Page[]> {
-    const supabase = createClient();
-    const { data, error } = await supabase
-        .from('pages')
-        .select('slug, title')
-        .order('title', { ascending: true });
-
-    if (error) {
-        console.error("Error fetching pages:", error);
-        return [];
-    }
-    return data;
-}
-
 export function AdminSidebar() {
     const pathname = usePathname();
-    const [pages, setPages] = useState<Page[]>([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const getPages = async () => {
-            setLoading(true);
-            const pagesData = await fetchPages();
-            setPages(pagesData);
-            setLoading(false);
-        };
-        getPages();
-    }, []);
 
     const navLinks = [
         { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
