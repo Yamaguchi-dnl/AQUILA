@@ -29,7 +29,7 @@ const mobileTimelineData = [
 
 export function InvestmentCycle() {
   return (
-    <section id="investment-cycle" className="bg-transparent text-primary-foreground relative py-16 md:py-24 lg:py-28 pb-0">
+    <section id="investment-cycle" className="bg-transparent text-primary-foreground relative pt-16 md:pt-24 lg:pt-28">
       <div className="container relative z-10">
         <AnimatedSection>
         <div className="text-center max-w-3xl mx-auto">
