@@ -24,6 +24,10 @@ export function Header() {
   useEffect(() => {
     setIsMounted(true);
   }, []);
+  
+  if (pathname.startsWith('/admin')) {
+      return null;
+  }
 
   // Prevent mismatch by delaying client-specific rendering
   if (!isMounted) {
