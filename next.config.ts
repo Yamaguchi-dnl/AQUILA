@@ -27,6 +27,12 @@ const nextConfig: NextConfig = {
         hostname: 'ik.imagekit.io',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.nacionalidadeportuguesa.com.br',
+        port: '',
+        pathname: '/**',
       }
     ],
   },

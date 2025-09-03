@@ -10,9 +10,9 @@ export function GoldenVisaSummary() {
       <div className="container">
         <div className="relative rounded-lg overflow-hidden p-8 md:p-12 min-h-[400px] flex items-center">
             <Image 
-                src="https://ik.imagekit.io/leosmc2zb/3550%20(1).jpg?updatedAt=1756312096783"
-                alt="Paisagem de Portugal"
-                data-ai-hint="portugal landscape"
+                src="https://ik.imagekit.io/leosmc2zb/golden-visa-portugal-nacionalidade-portuguesa.jpeg"
+                alt="Golden Visa Portugal"
+                data-ai-hint="passport document"
                 fill
                 className="object-cover"
             />
