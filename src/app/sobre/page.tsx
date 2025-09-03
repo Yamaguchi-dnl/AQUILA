@@ -34,17 +34,7 @@ export default function SobrePage() {
               Construindo um legado de confiança, transparência e excelência.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <AnimatedSection>
-              <Image 
-                src="https://picsum.photos/600/600"
-                alt="Escritório moderno da Aquila com vista para a cidade"
-                width={600}
-                height={600}
-                className="rounded-xl object-cover w-full h-full shadow-lg"
-                data-ai-hint="modern office city view"
-              />
-            </AnimatedSection>
+          <div className="max-w-3xl mx-auto">
             <div className="space-y-4 text-lg text-primary-foreground/80">
                <AnimatedSection delay={0.1}>
                     <p>A Aquila Fund FCR nasceu há dois anos com a visão de ser uma plataforma de investimentos diferenciada, focada em oferecer soluções inovadoras para investidores de alta renda. Desde o início, temos nos dedicado a construir um legado de confiança, transparência e excelência no mercado financeiro português.</p>
