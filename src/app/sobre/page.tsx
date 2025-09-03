@@ -1,4 +1,5 @@
 
+
 import { PageHeader } from "@/components/shared/page-header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -23,13 +24,16 @@ const historyItems = [
 export default function SobrePage() {
   return (
     <>
-      <PageHeader
-        title="Sobre a Aquila Fund FCR"
-        subtitle="Construindo um legado de confiança, transparência e excelência."
-      />
-
-      <section className="bg-primary text-primary-foreground">
+      <section className="bg-primary text-primary-foreground pt-16">
         <div className="container">
+          <div className="text-center mb-16">
+            <h1 className="font-headline text-4xl md:text-5xl text-primary-foreground uppercase">
+              Sobre a Aquila Fund FCR
+            </h1>
+            <p className="mt-4 max-w-2xl mx-auto text-lg text-primary-foreground/80">
+              Construindo um legado de confiança, transparência e excelência.
+            </p>
+          </div>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <AnimatedSection>
               <Image 
