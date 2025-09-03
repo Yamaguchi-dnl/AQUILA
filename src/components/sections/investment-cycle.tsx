@@ -9,6 +9,24 @@ const timelineData = {
     ]
 };
 
+const mobileTimelineData = [
+    {
+        title: "Período de Inscrição",
+        duration: "Anos 0-2",
+        description: "Fase inicial para entrada de novos investidores no fundo."
+    },
+    {
+        title: "Período de Investimento",
+        duration: "Anos 2-6",
+        description: "Alocação de capital e gestão ativa dos ativos para maximizar o valor."
+    },
+    {
+        title: "Retenção e Desinvestimento",
+        duration: "Anos 6-8",
+        description: "Fase final de maturação e venda dos ativos para realizar os lucros."
+    }
+];
+
 export function InvestmentCycle() {
   return (
     <section id="investment-cycle" className="bg-transparent text-primary-foreground relative py-16 md:py-24 lg:py-28 pb-0">
@@ -25,7 +43,8 @@ export function InvestmentCycle() {
         </div>
         </AnimatedSection>
         <AnimatedSection delay={0.1}>
-        <div className="mt-20">
+        {/* Desktop Timeline */}
+        <div className="mt-20 hidden md:block">
             <div className="relative">
                 {/* Phase Blocks - First Row */}
                 <div className="grid grid-cols-9 mb-4">
@@ -54,6 +73,29 @@ export function InvestmentCycle() {
                         <p className="font-semibold text-primary-foreground">Retenção e Desinvestimento</p>
                         <p className="text-sm text-primary-foreground/80">Período 2 anos</p>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        {/* Mobile Timeline */}
+        <div className="mt-16 block md:hidden">
+            <div className="relative">
+                {/* The vertical line */}
+                <div className="absolute left-5 top-2 h-full w-px bg-primary-foreground/20" aria-hidden="true"></div>
+                
+                <div className="space-y-12">
+                    {mobileTimelineData.map((item, index) => (
+                        <div key={index} className="relative pl-12">
+                            <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-secondary-foreground ring-4 ring-primary font-bold text-lg">
+                                {index + 1}
+                            </div>
+                            <div className="ml-4">
+                                <h4 className="font-headline text-lg text-primary-foreground">{item.title}</h4>
+                                <p className="text-sm text-primary-foreground/60 mb-2">{item.duration}</p>
+                                <p className="text-primary-foreground/80 text-sm">{item.description}</p>
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
