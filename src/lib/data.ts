@@ -140,7 +140,7 @@ export const teamData: TeamMember[] = [
     nome: 'Luiz Godinho Lopes',
     cargo: 'Head of Alternative Investments',
     bioHtml: '<p>Apaixonado por ativos não convencionais, Luiz é a força motriz por trás do Aquila Wheels. Sua expertise em mercados de nicho e bens de luxo permite à Aquila explorar novas fronteiras de rentabilidade.</p>',
-    foto: 'https://picsum.photos/400/400?random=13',
+    foto: 'https://ik.imagekit.io/leosmc2zb/Captura-de-Tela-2024-07-27-as-11.47.20-e1723138867854-300x300.png',
     dataAiHint: 'male professional glasses',
     ordem: 4,
   },
