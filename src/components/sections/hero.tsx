@@ -37,17 +37,16 @@ export function Hero() {
                     <Button asChild size="lg" className="w-full sm:w-auto">
                         <Link href="/contato">Começar Investimento <ArrowRight className="ml-2" /></Link>
                     </Button>
-                    <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
-                        <Link href="/#fundos">
-                            <PlayCircle className="mr-2" />
-                            Ver Apresentação
-                        </Link>
-                    </Button>
                 </div>
             </AnimatedSection>
         </div>
         <div className="flex justify-center items-center order-first md:order-last">
-             <div className="relative h-[300px] w-[250px] md:h-[500px] md:w-[400px]">
+             <motion.div
+                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
+                className="relative h-[300px] w-[250px] md:h-[500px] md:w-[400px]"
+             >
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9, y: 50 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -93,7 +92,7 @@ export function Hero() {
                         data-ai-hint="investment chart"
                     />
                 </motion.div>
-            </div>
+            </motion.div>
         </div>
       </div>
     </section>
