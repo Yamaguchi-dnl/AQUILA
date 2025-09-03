@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useEffect, useActionState } from 'react';
+import { useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -29,7 +29,6 @@ import { Textarea } from '@/components/ui/textarea';
 import Image from 'next/image';
 import { Loader2 } from 'lucide-react';
 import { Label } from '../ui/label';
-import { saveBlock } from '@/actions/admin';
 
 type Block = {
   id: string;
@@ -50,33 +49,32 @@ type BlockFormDialogProps = {
   lastOrderIndex: number;
 };
 
+const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
+
 const formSchema = z.object({
-  id: z.string().optional(),
-  page_id: z.string(),
-  pageSlug: z.string(),
-  order_index: z.number(),
   title: z.string().min(1, "O título é obrigatório."),
   block_type: z.string().min(1, "O tipo do bloco é obrigatório."),
   content: z.string().optional(),
-  image_file: z.any().optional(),
-  current_image_url: z.string().optional(),
+  image_file: z
+    .any()
+    .refine((file) => !file || file?.[0]?.size <= MAX_FILE_SIZE, `Tamanho máximo da imagem é 5MB.`)
+    .refine(
+      (file) => !file || ACCEPTED_IMAGE_TYPES.includes(file?.[0]?.type),
+      "Apenas os formatos .jpg, .jpeg, .png e .webp são aceitos."
+    ).optional(),
 });
-
-const initialState = {
-  message: "",
-  success: false,
-};
 
 export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, onSuccess, lastOrderIndex }: BlockFormDialogProps) {
     const { toast } = useToast();
-    const [state, formAction] = useActionState(saveBlock, initialState);
-
+    
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             title: '',
             block_type: 'texto',
             content: '',
+            image_file: undefined,
         },
     });
     
@@ -85,30 +83,52 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, on
     useEffect(() => {
         if (isOpen) {
             form.reset({
-                id: block?.id,
-                page_id: pageId,
-                pageSlug: pageSlug,
-                order_index: block?.order_index ?? lastOrderIndex + 1,
                 title: block?.title || '',
                 block_type: block?.block_type || 'texto',
                 content: block?.content || '',
                 image_file: undefined,
-                current_image_url: block?.image_url || undefined,
             });
         }
-    }, [block, pageId, pageSlug, lastOrderIndex, isOpen, form]);
+    }, [block, isOpen, form]);
 
-    useEffect(() => {
-        if (state.message) {
-            if (state.success) {
-                toast({ title: 'Sucesso!', description: state.message });
-                onSuccess();
-                setIsOpen(false);
-            } else {
-                toast({ variant: 'destructive', title: 'Erro ao salvar', description: state.message });
-            }
+    async function onSubmit(values: z.infer<typeof formSchema>) {
+        const formData = new FormData();
+        
+        const blockData = {
+            id: block?.id,
+            page_id: pageId,
+            order_index: block?.order_index ?? lastOrderIndex + 1,
+            title: values.title,
+            block_type: values.block_type,
+            content: values.content,
+            current_image_url: block?.image_url || undefined,
+        };
+
+        formData.append('blockData', JSON.stringify(blockData));
+        formData.append('pageSlug', pageSlug);
+
+        if (values.image_file && values.image_file[0]) {
+            formData.append('image_file', values.image_file[0]);
         }
-    }, [state, toast, onSuccess, setIsOpen]);
+
+        try {
+            const response = await fetch('/api/admin/blocks', {
+                method: 'POST',
+                body: formData,
+            });
+            const result = await response.json();
+
+            if (!response.ok) {
+                throw new Error(result.message || 'Falha ao salvar o bloco.');
+            }
+            
+            toast({ title: 'Sucesso!', description: result.message });
+            onSuccess();
+            setIsOpen(false);
+        } catch (error: any) {
+            toast({ variant: 'destructive', title: 'Erro ao salvar', description: error.message });
+        }
+    }
     
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -120,18 +140,7 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, on
                     </DialogDescription>
                 </DialogHeader>
                 <Form {...form}>
-                    <form 
-                        action={(formData) => {
-                            // Attach hidden fields to formData
-                            formData.append('id', block?.id || '');
-                            formData.append('page_id', pageId);
-                            formData.append('pageSlug', pageSlug);
-                            formData.append('order_index', (block?.order_index ?? lastOrderIndex + 1).toString());
-                            formData.append('current_image_url', block?.image_url || '');
-                            formAction(formData);
-                        }}
-                        className="space-y-4"
-                    >
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                         <FormField
                             control={form.control}
                             name="title"
@@ -176,15 +185,14 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, on
                         <FormField
                             control={form.control}
                             name="image_file"
-                            render={({ field: { onChange, value, ...rest } }) => (
+                            render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>{block?.image_url ? 'Substituir Imagem' : 'Carregar Imagem'}</FormLabel>
                                     <FormControl>
                                         <Input 
                                             type="file" 
                                             accept="image/*"
-                                            onChange={(e) => onChange(e.target.files?.[0])}
-                                            {...rest}
+                                            {...form.register("image_file")}
                                          />
                                     </FormControl>
                                     <FormMessage />
