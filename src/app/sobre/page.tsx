@@ -1,10 +1,10 @@
-
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import Link from "next/link";
 import { TeamSummary } from "@/components/sections/team-summary";
 import { AnimatedSection } from "@/components/shared/animated-section";
+import { PageHeader } from "@/components/shared/page-header";
+import Image from "next/image";
 
 export const metadata = {
   title: "Sobre a Aquila Fund FCR",
@@ -21,35 +21,32 @@ const historyItems = [
 export default function SobrePage() {
   return (
     <>
-      <section className="bg-primary text-primary-foreground pt-16">
-        <div className="container">
-          <div className="text-center mb-16 pt-24">
-            <h1 className="font-headline text-4xl md:text-5xl text-primary-foreground uppercase">
-              Sobre a Aquila Fund FCR
-            </h1>
-            <p className="mt-4 max-w-2xl mx-auto text-lg text-primary-foreground/80">
-              Construindo um legado de confiança, transparência e excelência.
-            </p>
-          </div>
-          <div className="max-w-3xl mx-auto">
-            <Card className="bg-card/10 border-primary-foreground/20 backdrop-blur-sm">
-                <CardContent className="p-8">
-                     <div className="space-y-4 text-lg text-center text-primary-foreground/80">
-                       <AnimatedSection delay={0.1}>
-                            <p>A Aquila Fund FCR nasceu há dois anos com a visão de ser uma <strong>plataforma de investimentos diferenciada</strong>, focada em oferecer <strong>soluções inovadoras para investidores de alta renda</strong>. Desde o início, temos nos dedicado a construir um legado de <strong>confiança, transparência e excelência</strong> no mercado financeiro português.</p>
-                       </AnimatedSection>
-                       <AnimatedSection delay={0.2}>
-                           <p>Nossa jornada é marcada pela busca incessante por oportunidades que gerem <strong>valor real e sustentável</strong> para nossos clientes, sempre com um olhar atento às dinâmicas do mercado global e às necessidades específicas de cada investidor.</p>
-                       </AnimatedSection>
-                         <AnimatedSection delay={0.3}>
-                           <p>Nossa missão é guiar nossos clientes através do complexo cenário de investimentos, transformando <strong>desafios em oportunidades e aspirações em conquistas</strong>. Com uma equipe de especialistas altamente qualificados e uma abordagem personalizada, construímos <strong>relacionamentos duradouros baseados na confiança e no compromisso com resultados</strong>.</p>
-                       </AnimatedSection>
-                    </div>
-                </CardContent>
-            </Card>
-          </div>
+      <PageHeader 
+        title="Sobre a Aquila Fund FCR"
+        subtitle="Construindo um legado de confiança, transparência e excelência."
+      />
+
+       <section className="bg-background">
+        <div className="container grid lg:grid-cols-2 gap-12 items-center">
+            <AnimatedSection>
+                <div className="space-y-4 text-lg text-muted-foreground">
+                    <p>A Aquila Fund FCR nasceu há dois anos com a visão de ser uma <strong>plataforma de investimentos diferenciada</strong>, focada em oferecer <strong>soluções inovadoras para investidores de alta renda</strong>. Desde o início, temos nos dedicado a construir um legado de <strong>confiança, transparência e excelência</strong> no mercado financeiro português.</p>
+                    <p>Nossa jornada é marcada pela busca incessante por oportunidades que gerem <strong>valor real e sustentável</strong> para nossos clientes, sempre com um olhar atento às dinâmicas do mercado global e às necessidades específicas de cada investidor.</p>
+                    <p>Nossa missão é guiar nossos clientes através do complexo cenário de investimentos, transformando <strong>desafios em oportunidades e aspirações em conquistas</strong>. Com uma equipe de especialistas altamente qualificados e uma abordagem personalizada, construímos <strong>relacionamentos duradouros baseados na confiança e no compromisso com resultados</strong>.</p>
+                </div>
+            </AnimatedSection>
+            <AnimatedSection delay={0.1}>
+                 <Image
+                    src="https://ik.imagekit.io/leosmc2zb/5573.jpg"
+                    alt="Escritório moderno com vista para a cidade"
+                    width={600}
+                    height={400}
+                    className="rounded-lg shadow-lg"
+                    data-ai-hint="modern office city"
+                />
+            </AnimatedSection>
         </div>
-      </section>
+       </section>
 
        <section className="bg-card">
         <div className="container">
