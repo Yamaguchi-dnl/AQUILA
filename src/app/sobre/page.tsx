@@ -35,7 +35,7 @@ export default function SobrePage() {
             </p>
           </div>
           <div className="max-w-3xl mx-auto">
-            <div className="space-y-4 text-lg text-primary-foreground/80">
+            <div className="space-y-4 text-lg text-center text-primary-foreground/80">
                <AnimatedSection delay={0.1}>
                     <p>A Aquila Fund FCR nasceu há dois anos com a visão de ser uma plataforma de investimentos diferenciada, focada em oferecer soluções inovadoras para investidores de alta renda. Desde o início, temos nos dedicado a construir um legado de confiança, transparência e excelência no mercado financeiro português.</p>
                </AnimatedSection>
