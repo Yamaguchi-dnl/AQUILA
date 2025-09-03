@@ -1,11 +1,14 @@
 
 import { createClient } from '@/lib/supabase/server';
 import { revalidatePath } from 'next/cache';
-import { NextResponse } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
+import { cookies } from 'next/headers';
 
 // POST (Create/Update a block)
-export async function POST(request: Request) {
-    const supabase = createClient();
+export async function POST(request: NextRequest) {
+    const cookieStore = cookies();
+    const supabase = createClient(cookieStore);
+
     const { data: { user } } = await supabase.auth.getUser();
 
     if (!user) {
@@ -60,8 +63,10 @@ export async function POST(request: Request) {
 
 
 // DELETE a block
-export async function DELETE(request: Request) {
-    const supabase = createClient();
+export async function DELETE(request: NextRequest) {
+    const cookieStore = cookies();
+    const supabase = createClient(cookieStore);
+    
     const { data: { user } } = await supabase.auth.getUser();
 
     if (!user) {
