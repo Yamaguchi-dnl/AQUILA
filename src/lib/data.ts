@@ -116,7 +116,7 @@ export const teamData: TeamMember[] = [
     nome: 'Luís Assis Teixeira',
     cargo: 'CEO & Founder',
     bioHtml: '<p>Com mais de 20 anos de experiência no mercado financeiro, Luís é especialista em gestão de ativos e private equity. Liderou operações em bancos de investimento globais antes de fundar a Aquila para oferecer soluções de investimento mais alinhadas com as necessidades dos investidores de alta renda.</p>',
-    foto: 'https://picsum.photos/400/400?random=10',
+    foto: 'https://ik.imagekit.io/leosmc2zb/Luis-Assis-Teixeira-251x300.jpg',
     dataAiHint: 'male executive portrait',
     ordem: 1,
   },
