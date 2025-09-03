@@ -1,135 +1,186 @@
--- Drop existing tables if they exist to start fresh
-DROP TABLE IF EXISTS "blocks";
-DROP TABLE IF EXISTS "pages";
-
--- Create the pages table
-CREATE TABLE pages (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  slug TEXT UNIQUE NOT NULL,
-  title TEXT NOT NULL,
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+-- Create custom user claims table
+CREATE TABLE IF NOT EXISTS public.user_claims (
+    id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
+    claim TEXT NOT NULL,
+    value JSONB NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- Create the blocks table
-CREATE TABLE blocks (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  page_id UUID NOT NULL REFERENCES pages(id) ON DELETE CASCADE,
-  order_index INT NOT NULL,
-  block_type TEXT NOT NULL,
-  title TEXT,
-  content TEXT,
-  image_url TEXT,
-  updated_by UUID REFERENCES auth.users(id),
-  updated_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+-- Function to get a specific user claim
+CREATE OR REPLACE FUNCTION public.get_claim(uid UUID, claim TEXT)
+RETURNS JSONB
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = public
+AS $$
+  DECLARE
+    claim_value JSONB;
+  BEGIN
+    SELECT value INTO claim_value FROM public.user_claims WHERE id = uid AND public.user_claims.claim = get_claim.claim;
+    RETURN claim_value;
+  END;
+$$;
+
+-- Function to get all claims for a user
+CREATE OR REPLACE FUNCTION public.get_claims(uid UUID)
+RETURNS JSONB
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = public
+AS $$
+  DECLARE
+    claims JSONB;
+  BEGIN
+    SELECT jsonb_object_agg(claim, value) INTO claims FROM public.user_claims WHERE id = uid;
+    RETURN claims;
+  END;
+$$;
+
+-- Function to set a user claim
+CREATE OR REPLACE FUNCTION public.set_claim(uid UUID, claim TEXT, value JSONB)
+RETURNS TEXT
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = public
+AS $$
+  BEGIN
+    INSERT INTO public.user_claims (id, claim, value)
+    VALUES (uid, claim, value)
+    ON CONFLICT (id, claim) DO UPDATE SET value = excluded.value;
+    RETURN 'Claim set';
+  END;
+$$;
+
+-- Function to check if the current user is an admin
+CREATE OR REPLACE FUNCTION public.is_admin()
+RETURNS BOOLEAN
+LANGUAGE plpgsql
+AS $$
+  BEGIN
+    RETURN (SELECT public.get_claim(auth.uid(), 'is_admin')) = 'true'::jsonb;
+  END;
+$$;
+
+-- Create users table for public profile data
+CREATE TABLE IF NOT EXISTS public.users (
+  id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
+  email TEXT,
+  is_admin BOOLEAN DEFAULT FALSE,
+  updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- Add a column to track the last editor on a page for the dashboard
--- Note: This seems redundant with updated_at. Considering removing if not used.
-ALTER TABLE blocks
-ADD COLUMN updated_at_proxy timestamptz DEFAULT now();
+-- Function to sync public.users with auth.users
+CREATE OR REPLACE FUNCTION public.handle_new_user()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = public
+AS $$
+  BEGIN
+    INSERT INTO public.users (id, email)
+    VALUES (new.id, new.email);
+    RETURN new;
+  END;
+$$;
 
--- Create a function to update the proxy column
-CREATE OR REPLACE FUNCTION update_updated_at_proxy()
-RETURNS TRIGGER AS $$
-BEGIN
-    NEW.updated_at_proxy = now();
-    RETURN NEW;
-END;
-$$ language 'plpgsql';
+-- Trigger to call handle_new_user on new user creation
+CREATE TRIGGER on_auth_user_created
+  AFTER INSERT ON auth.users
+  FOR EACH ROW EXECUTE PROCEDURE public.handle_new_user();
 
--- Create a trigger to automatically update the proxy column
-CREATE TRIGGER on_block_update
-  BEFORE UPDATE ON blocks
-  FOR EACH ROW
-  EXECUTE PROCEDURE update_updated_at_proxy();
+-- Create Pages table
+CREATE TABLE IF NOT EXISTS public.pages (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    slug TEXT UNIQUE NOT NULL,
+    title TEXT,
+    description TEXT,
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    updated_at TIMESTAMPTZ DEFAULT NOW()
+);
 
+-- Create Blocks table
+CREATE TABLE IF NOT EXISTS public.blocks (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    page_id UUID REFERENCES public.pages(id) ON DELETE CASCADE,
+    order_index INTEGER NOT NULL,
+    block_type TEXT NOT NULL,
+    title TEXT,
+    content TEXT,
+    image_url TEXT,
+    updated_by UUID REFERENCES auth.users(id),
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    updated_at TIMESTAMPTZ DEFAULT NOW()
+);
 
--- Seed initial data
+-- Enable Row Level Security (RLS)
+ALTER TABLE public.pages ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.blocks ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.users ENABLE ROW LEVEL SECURITY;
 
--- Insert pages
-INSERT INTO pages (slug, title) VALUES
-('home', 'Página Inicial'),
-('sobre', 'Sobre Nós'),
-('golden-visa', 'Golden Visa'),
-('contato', 'Contato');
-
--- Home Page Blocks
-INSERT INTO blocks (page_id, order_index, block_type, title, content, image_url) VALUES
-((SELECT id FROM pages WHERE slug = 'home'), 1, 'hero', 'Investimentos Inteligentes para o seu Futuro', 'Acesse fundos de investimento portugueses exclusivos com elegibilidade ao Golden Visa. Estratégias comprovadas em mercados especializados com gestão profissional e transparente.', 'https://ik.imagekit.io/leosmc2zb/3493.jpg?updatedAt=1756315204824'),
-((SELECT id FROM pages WHERE slug = 'home'), 2, 'about-summary', 'Seu capital, nossa expertise', '<p>A Aquila Fund FCR é uma plataforma de investimentos portuguesa, com quatro fundos de investimento totalmente independentes e registrados na Comissão do Mercado de Valores Mobiliários (CMVM).</p><p>Com uma equipe experiente e altamente qualificada, oferecemos soluções seguras e rentáveis para investidores brasileiros, através de nossos fundos - Wheels, Agro, Hotel Invest e Real State.</p><p>Com estas soluções, você diversifica seu portfólio, ganha acesso facilitado ao passaporte europeu e protege seu patrimônio em um mercado estável e repleto de oportunidades.</p>', 'https://ik.imagekit.io/leosmc2zb/5573.jpg'),
-((SELECT id FROM pages WHERE slug = 'home'), 3, 'funds-summary', 'Nossos Fundos de Investimento', 'Soluções de investimento seguras e rentáveis para investidores que buscam diversificação, proteção patrimonial e acesso ao Golden Visa em Portugal.', NULL),
-((SELECT id FROM pages WHERE slug = 'home'), 4, 'why-portugal', 'Por que investir em Portugal?', NULL, NULL),
-((SELECT id FROM pages WHERE slug = 'home'), 5, 'golden-visa-summary', 'O caminho para Portugal com o Golden Visa', 'O Golden Visa é o seu passaporte para a União Europeia. Ao investir em nossos fundos elegíveis, você e sua família garantem o direito de residir em Portugal, com acesso a todos os benefícios de um cidadão europeu, como educação e saúde de qualidade.', 'https://ik.imagekit.io/leosmc2zb/golden-visa-portugal-nacionalidade-portuguesa.jpeg'),
-((SELECT id FROM pages WHERE slug = 'home'), 6, 'investment-cycle', 'Entenda o ciclo completo do seu investimento', 'Cada fundo da Aquila Fund FCR tem duração de 8 anos, com o capital levantado durante os primeiros dois anos e o período de desinvestimento ocorrendo nos últimos dois anos da vida do fundo.', NULL),
-((SELECT id FROM pages WHERE slug = 'home'), 7, 'investment-strategy', 'Estratégia de investimento: o caminho para o sucesso', NULL, 'https://ik.imagekit.io/leosmc2zb/3550%20(1).jpg?updatedAt=1756312096783'),
-((SELECT id FROM pages WHERE slug = 'home'), 8, 'contact-summary', 'Pronto para investir em Portugal?', 'Preencha o formulário abaixo para agendar uma reunião com nossa equipe e conhecer as oportunidades de diversificação global de investimento com foco em Golden Visa. Estamos prontos para ajudar a alcançar seus objetivos financeiros em Portugal.', NULL);
-
-
--- About Page Blocks
-INSERT INTO blocks (page_id, order_index, block_type, title, content, image_url) VALUES
-((SELECT id FROM pages WHERE slug = 'sobre'), 1, 'hero', 'Sobre a Aquila Fund FCR', 'Construindo um legado de confiança, transparência e excelência.', NULL),
-((SELECT id FROM pages WHERE slug = 'sobre'), 2, 'texto', 'Nossa Essência', '<p>A Aquila Fund FCR nasceu há dois anos com a visão de ser uma <strong>plataforma de investimentos diferenciada</strong>, focada em oferecer <strong>soluções inovadoras para investidores de alta renda</strong>. Desde o início, temos nos dedicado a construir um legado de <strong>confiança, transparência e excelência</strong> no mercado financeiro português.</p><p>Nossa jornada é marcada pela busca incessante por oportunidades que gerem <strong>valor real e sustentável</strong> para nossos clientes, sempre com um olhar atento às dinâmicas do mercado global e às necessidades específicas de cada investidor.</p><p>Nossa missão é guiar nossos clientes através do complexo cenário de investimentos, transformando desafios em oportunidades e aspirações em conquistas. Com uma equipe de especialistas altamente qualificados e uma abordagem personalizada, construímos relacionamentos duradouros baseados na confiança e no compromisso com resultados.</p>', 'https://ik.imagekit.io/leosmc2zb/5573.jpg'),
-((SELECT id FROM pages WHERE slug = 'sobre'), 3, 'parceiros', 'Nossos Parceiros Estratégicos', 'Colaboramos com líderes de mercado para oferecer estrutura, segurança e as melhores oportunidades para nossos investidores.', NULL);
+-- Drop existing policies to prevent conflicts
+DROP POLICY IF EXISTS "Allow all access to admins" ON public.pages;
+DROP POLICY IF EXISTS "Allow read access to everyone" ON public.pages;
+DROP POLICY IF EXISTS "Allow all access to admins" ON public.blocks;
+DROP POLICY IF EXISTS "Allow read access to everyone" ON public.blocks;
+DROP POLICY IF EXISTS "Allow individual read access" ON public.users;
 
 
--- Golden Visa Page Blocks
-INSERT INTO blocks (page_id, order_index, block_type, title, content, image_url) VALUES
-((SELECT id FROM pages WHERE slug = 'golden-visa'), 1, 'hero', 'Golden Visa Portugal', 'Seu passaporte para a Europa através de investimentos de valor.', NULL),
-((SELECT id FROM pages WHERE slug = 'golden-visa'), 2, 'beneficios', 'Benefícios de um Futuro Europeu', 'O programa Golden Visa de Portugal é um dos mais procurados do mundo, oferecendo um caminho claro para a residência e cidadania europeia em troca de um investimento qualificado no país.', NULL),
-((SELECT id FROM pages WHERE slug = 'golden-visa'), 3, 'fundos-elegiveis', 'Fundos Elegíveis para Golden Visa', 'Invista em ativos de alta performance enquanto garante seu futuro na Europa. Conheça nossos fundos qualificados para o programa.', NULL),
-((SELECT id FROM pages WHERE slug = 'golden-visa'), 4, 'faq', 'Perguntas Frequentes', NULL, NULL);
+-- RLS Policies for `pages` table
+CREATE POLICY "Allow all access to admins"
+ON public.pages FOR ALL
+USING (public.is_admin())
+WITH CHECK (public.is_admin());
 
--- Enable RLS
-ALTER TABLE pages ENABLE ROW LEVEL SECURITY;
-ALTER TABLE blocks ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Allow read access to everyone"
+ON public.pages FOR SELECT
+USING (true);
 
--- Function to check if a user is an admin
--- This function assumes you have a table named 'users' with 'id' and 'is_admin' columns.
-CREATE OR REPLACE FUNCTION is_admin(user_id UUID)
-RETURNS BOOLEAN AS $$
+
+-- RLS Policies for `blocks` table
+CREATE POLICY "Allow all access to admins"
+ON public.blocks FOR ALL
+USING (public.is_admin())
+WITH CHECK (public.is_admin());
+
+CREATE POLICY "Allow read access to everyone"
+ON public.blocks FOR SELECT
+USING (true);
+
+-- RLS Policies for `users` table
+CREATE POLICY "Allow individual read access"
+ON public.users FOR SELECT
+USING (auth.uid() = id OR public.is_admin());
+
+
+-- Seed initial data if tables are empty
+DO $$
 DECLARE
-  is_admin_result BOOLEAN;
+    home_page_id UUID;
+    sobre_page_id UUID;
+    fundos_page_id UUID;
+    gv_page_id UUID;
+    contato_page_id UUID;
 BEGIN
-  SELECT is_admin INTO is_admin_result FROM public.users WHERE id = user_id;
-  RETURN COALESCE(is_admin_result, FALSE);
-END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+    -- Seed Pages
+    IF NOT EXISTS (SELECT 1 FROM public.pages) THEN
+        INSERT INTO public.pages (slug, title, description) VALUES
+        ('home', 'Página Inicial', 'Página principal do site Aquila Fund FCR.') RETURNING id INTO home_page_id;
 
+        INSERT INTO public.pages (slug, title, description) VALUES
+        ('sobre', 'Sobre Nós', 'Conteúdo da página sobre a empresa.') RETURNING id INTO sobre_page_id;
 
--- Policies for 'pages' table
-DROP POLICY IF EXISTS "Read access for everyone" ON pages;
-CREATE POLICY "Read access for everyone" ON pages
-FOR SELECT USING (true);
+        INSERT INTO public.pages (slug, title, description) VALUES
+        ('fundos', 'Nossos Fundos', 'Detalhes sobre os fundos de investimento.') RETURNING id INTO fundos_page_id;
 
-DROP POLICY IF EXISTS "Admin full access for pages" ON pages;
-CREATE POLICY "Admin full access for pages" ON pages
-FOR ALL USING (is_admin(auth.uid()))
-WITH CHECK (is_admin(auth.uid()));
+        INSERT INTO public.pages (slug, title, description) VALUES
+        ('golden-visa', 'Golden Visa', 'Informações sobre o programa Golden Visa.') RETURNING id INTO gv_page_id;
 
+        INSERT INTO public.pages (slug, title, description) VALUES
+        ('contato', 'Contato', 'Informações de contato e formulário.') RETURNING id INTO contato_page_id;
+    END IF;
 
--- Policies for 'blocks' table
-DROP POLICY IF EXISTS "Read access for everyone" ON blocks;
-CREATE POLICY "Read access for everyone" ON blocks
-FOR SELECT USING (true);
-
-DROP POLICY IF EXISTS "Admin full access for blocks" ON blocks;
-CREATE POLICY "Admin full access for blocks" ON blocks
-FOR ALL USING (is_admin(auth.uid()))
-WITH CHECK (is_admin(auth.uid()));
-
--- Function to set the updated_by field automatically
-CREATE OR REPLACE FUNCTION set_updated_by()
-RETURNS TRIGGER AS $$
-BEGIN
-  NEW.updated_by = auth.uid();
-  NEW.updated_at = now(); -- Also update the timestamp
-  RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
-
--- Trigger to call the function before insert or update on blocks
-DROP TRIGGER IF EXISTS on_block_change ON blocks;
-CREATE TRIGGER on_block_change
-  BEFORE INSERT OR UPDATE ON blocks
-  FOR EACH ROW
-  EXECUTE PROCEDURE set_updated_by();
+    -- Seed Blocks for Home Page
+    -- This part is left empty to avoid overwriting user content on subsequent runs.
+    -- Admin can add blocks via the CMS.
+END $$;

@@ -46,6 +46,7 @@ export function AdminSidebar() {
 
     const navLinks = [
         { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
+        { href: '/admin/pages', label: 'Páginas', icon: FileText },
     ];
     
     const renderNavLinks = () => (
@@ -63,28 +64,6 @@ export function AdminSidebar() {
                     {link.label}
                 </Link>
             ))}
-            
-            <div className="px-3 py-2 text-xs font-semibold text-muted-foreground tracking-wider uppercase">Páginas</div>
-
-            {loading ? (
-                <div className="flex items-center justify-center py-4">
-                    <Loader2 className="h-5 w-5 animate-spin text-muted-foreground" />
-                </div>
-            ) : (
-                pages.map(page => (
-                     <Link
-                        key={page.slug}
-                        href={`/admin/pages/${page.slug}`}
-                        className={cn(
-                            "flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary",
-                            pathname === `/admin/pages/${page.slug}` && "bg-muted text-primary"
-                        )}
-                    >
-                        <FileText className="h-4 w-4" />
-                        {page.title || page.slug}
-                    </Link>
-                ))
-            )}
         </nav>
     );
 
