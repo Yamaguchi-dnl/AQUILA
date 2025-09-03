@@ -12,20 +12,20 @@ export function AboutSummary() {
         className="absolute inset-0 bg-[radial-gradient(30%_40%_at_5%_5%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%),radial-gradient(30%_40%_at_95%_95%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)]"
       />
       <div className="container relative z-20 pt-16 pb-24">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-stretch">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
           <div className="order-last md:order-first">
-            <AnimatedSection delay={0.1} className="h-full">
+            <AnimatedSection delay={0.1}>
             <Image 
                 src="https://ik.imagekit.io/leosmc2zb/4036.jpg"
                 alt="Escritório moderno em Lisboa"
                 width={600}
-                height={400}
-                className="rounded-lg object-cover shadow-xl h-full w-full"
+                height={550}
+                className="rounded-lg object-cover shadow-xl w-full"
                 data-ai-hint="modern office lisbon"
             />
             </AnimatedSection>
           </div>
-           <div className="order-first md:order-last flex flex-col">
+           <div className="order-first md:order-last">
             <AnimatedSection>
               <h2 className="text-sm uppercase tracking-widest text-primary-foreground/60 font-headline">
                   <Link href="/sobre">QUEM SOMOS</Link>
@@ -46,7 +46,7 @@ export function AboutSummary() {
                 </p>
               </div>
             </AnimatedSection>
-            <AnimatedSection delay={0.2} className="mt-auto">
+            <AnimatedSection delay={0.2}>
               <Button asChild size="lg" className="mt-8" variant="secondary">
                 <Link href="/contato">FALE COM UM ESPECIALISTA!</Link>
               </Button>
