@@ -132,7 +132,7 @@ export const teamData: TeamMember[] = [
     nome: 'Pedro Mendes Leal',
     cargo: 'Head of Real Estate',
     bioHtml: '<p>Pedro lidera a divisão imobiliária, trazendo uma vasta experiência em desenvolvimento e gestão de ativos de grande escala em Portugal. Sua visão estratégica é fundamental para o sucesso do fundo Aquila Real Estate.</p>',
-    foto: 'https://picsum.photos/400/400?random=12',
+    foto: 'https://ik.imagekit.io/leosmc2zb/Captura-de-Tela-2024-07-27-as-11.47.14-e1723138903909-300x300.png',
     dataAiHint: 'male professional smiling',
     ordem: 3,
   },
