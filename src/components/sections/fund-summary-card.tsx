@@ -5,6 +5,7 @@ import { Badge } from "../ui/badge";
 import { CheckCircle2 } from "lucide-react";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 type FundSummaryCardProps = {
     fund: Fund;
@@ -19,7 +20,10 @@ export function FundSummaryCard({ fund }: FundSummaryCardProps) {
                     alt={`Imagem do fundo ${fund.nome}`}
                     width={600}
                     height={350}
-                    className="w-full h-56 object-cover object-bottom"
+                    className={cn(
+                        "w-full h-56 object-cover",
+                        fund.slug === 'aquila-real-estate' ? 'object-top' : 'object-bottom'
+                    )}
                     data-ai-hint="investment theme"
                 />
                 {fund.detalhes.elegibilidadeGoldenVisa && (
