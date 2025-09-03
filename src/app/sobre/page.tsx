@@ -52,38 +52,6 @@ export default function SobrePage() {
         </div>
        </section>
 
-       <section className="bg-primary text-primary-foreground rounded-t-3xl">
-        <div className="container">
-           <div className="max-w-4xl mx-auto">
-             <AnimatedSection className="text-center mb-12">
-               <h2 className="font-headline text-3xl md:text-4xl text-primary-foreground uppercase">Nossa História</h2>
-               <p className="mt-4 text-lg text-primary-foreground/80 max-w-3xl mx-auto">
-                   Uma jornada de crescimento e sucesso, marcada pela busca incessante por oportunidades que geram valor real e sustentável para nossos clientes.
-               </p>
-            </AnimatedSection>
-             <div className="relative">
-                {/* The vertical line */}
-                <div className="absolute left-[34px] top-4 h-full w-0.5 bg-primary-foreground/20 -translate-x-1/2" aria-hidden="true"></div>
-                
-                <div className="space-y-8">
-                    {historyItems.map((item, index) => (
-                        <AnimatedSection key={index} delay={index * 0.1}>
-                        <div className="relative flex items-start gap-8">
-                            <div className="flex-shrink-0 flex items-center justify-center rounded-md bg-primary-foreground text-primary ring-8 ring-primary font-bold text-lg px-3 h-9 z-10">
-                                {item.year}
-                            </div>
-                            <div>
-                                <p className="text-primary-foreground/90 text-base">{item.event}</p>
-                            </div>
-                        </div>
-                        </AnimatedSection>
-                    ))}
-                </div>
-            </div>
-           </div>
-        </div>
-      </section>
-
       <section className="bg-background">
         <div className="container text-center">
             <AnimatedSection>
