@@ -1,4 +1,3 @@
-import { PageHeader } from "@/components/shared/page-header";
 import { TeamMemberCard } from "@/components/shared/team-member-card";
 import { teamData } from "@/lib/data";
 
@@ -10,13 +9,15 @@ export const metadata = {
 export default function EquipaPage() {
   return (
     <>
-      <PageHeader
-        title="Nossa Equipa"
-        subtitle="Especialistas dedicados a transformar desafios em oportunidades e aspirações em conquistas."
-      />
-      <section className="bg-background">
+      <section className="bg-background pt-32">
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+           <div className="text-center max-w-3xl mx-auto">
+                <h1 className="font-headline text-4xl md:text-5xl text-primary uppercase">Nossa Equipa</h1>
+                <p className="mt-4 text-lg text-muted-foreground">
+                    Especialistas dedicados a transformar desafios em oportunidades e aspirações em conquistas.
+                </p>
+            </div>
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamData.sort((a,b) => a.ordem - b.ordem).map((member) => (
               <TeamMemberCard key={member.nome} member={member} />
             ))}
