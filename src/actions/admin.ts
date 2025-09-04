@@ -3,20 +3,9 @@
 
 import { createClient } from '@/lib/supabase/server';
 import { revalidatePath } from 'next/cache';
-import { z } from 'zod';
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
-
-// Manter o schema para referência ou validação futura se necessário, mas não será usado na action por enquanto.
-const blockSchema = z.object({
-  id: z.string().optional(),
-  page_id: z.string(),
-  order_index: z.coerce.number(),
-  title: z.string().min(1, "O título é obrigatório."),
-  block_type: z.string().min(1, "O tipo do bloco é obrigatório."),
-  content: z.string().optional(),
-});
 
 export async function saveBlock(formData: FormData) {
     const supabase = createClient();
@@ -24,18 +13,12 @@ export async function saveBlock(formData: FormData) {
     try {
         const { data: { user } } = await supabase.auth.getUser();
         if (!user) {
-            return { success: false, message: 'Não autenticado.' };
+            // Este erro só deve acontecer se a sessão expirar no meio do processo.
+            return { success: false, message: 'Não autenticado. Por favor, faça login novamente.' };
         }
         
-        const { data: adminUser, error: adminError } = await supabase
-            .from('users')
-            .select('is_admin')
-            .eq('id', user.id)
-            .single();
-
-        if (adminError || !adminUser || adminUser.is_admin !== true) {
-            return { success: false, message: 'Não autorizado.' };
-        }
+        // A verificação de 'is_admin' agora é delegada às Políticas RLS do Supabase.
+        // O Supabase irá negar a escrita se o usuário não for um administrador.
 
         const rawData = {
             id: formData.get('id') as string || undefined,
@@ -107,7 +90,8 @@ export async function saveBlock(formData: FormData) {
 
         if (dbError) {
              console.error('Erro do Supabase:', dbError);
-             return { success: false, message: dbError.message };
+             // Mensagem de erro genérica para o usuário, o detalhe está no console.
+             return { success: false, message: 'Não autorizado para executar esta ação ou ocorreu um erro no banco de dados.' };
         }
 
         revalidatePath(`/admin/pages/${pageSlug}`);
@@ -129,15 +113,7 @@ export async function deleteBlock(blockId: string, pageSlug: string) {
         return { message: 'Não autenticado', success: false };
     }
     
-    const { data: adminUser, error: adminError } = await supabase
-        .from('users')
-        .select('is_admin')
-        .eq('id', user.id)
-        .single();
-
-    if (adminError || !adminUser || adminUser.is_admin !== true) {
-        return { message: 'Não autorizado', success: false };
-    }
+    // A verificação de admin é delegada às Políticas RLS do Supabase.
     
     if (!blockId) {
         return { message: 'ID do bloco é obrigatório', success: false };
@@ -166,7 +142,10 @@ export async function deleteBlock(blockId: string, pageSlug: string) {
         }
         
         const { error: dbError } = await supabase.from('blocks').delete().eq('id', blockId);
-        if (dbError) throw dbError;
+        if (dbError) {
+            console.error('Erro do Supabase:', dbError);
+            return { message: 'Não autorizado para executar esta ação ou ocorreu um erro no banco de dados.', success: false };
+        }
         
         if (pageSlug) {
             revalidatePath(`/admin/pages/${pageSlug}`);
