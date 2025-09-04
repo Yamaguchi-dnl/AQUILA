@@ -40,7 +40,7 @@ export default function GoldenVisaPage() {
                 subtitle="Seu passaporte para a Europa através de investimentos de valor."
             />
             
-            <section className="bg-primary text-primary-foreground">
+            <section className="bg-primary text-primary-foreground rounded-t-3xl">
                 <div className="container">
                     <div>
                         <h2 className="font-headline text-3xl text-primary-foreground uppercase">Benefícios de um Futuro Europeu</h2>
