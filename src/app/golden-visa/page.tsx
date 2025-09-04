@@ -46,28 +46,30 @@ export default function GoldenVisaPage() {
             
             <section className="bg-primary text-primary-foreground rounded-t-3xl md:-mt-20 relative z-10">
                 <div className="container">
-                    <AnimatedSection className="grid lg:grid-cols-2 gap-12 items-stretch">
-                        <div className="hidden lg:block">
-                            <Image 
-                                src="https://ik.imagekit.io/leosmc2zb/golden-visa-portugal-nacionalidade-portuguesa.jpeg"
-                                alt="Passaporte europeu sobre um mapa"
-                                width={600}
-                                height={400}
-                                className="rounded-lg shadow-xl h-full w-full object-cover"
-                                data-ai-hint="passport map"
-                            />
-                        </div>
-                        <div>
-                            <h2 className="font-headline text-3xl md:text-4xl text-primary-foreground uppercase">Benefícios de um Futuro Europeu</h2>
-                            <p className="mt-4 text-primary-foreground/80">O programa Golden Visa de Portugal é um dos mais procurados do mundo, oferecendo um caminho claro para a residência e cidadania europeia em troca de um investimento qualificado no país.</p>
-                            <ul className="mt-6 space-y-3">
-                               {benefits.map((benefit, i) => (
-                                   <li key={i} className="flex items-start">
-                                       <Check className="h-5 w-5 text-green-400 mr-3 mt-1 shrink-0" />
-                                       <span className="text-primary-foreground/90">{benefit}</span>
-                                   </li>
-                               ))}
-                            </ul>
+                    <AnimatedSection>
+                        <div className="grid lg:grid-cols-2 gap-12 items-stretch">
+                            <div className="hidden lg:block">
+                                <Image 
+                                    src="https://ik.imagekit.io/leosmc2zb/golden-visa-portugal-nacionalidade-portuguesa.jpeg"
+                                    alt="Passaporte europeu sobre um mapa"
+                                    width={600}
+                                    height={400}
+                                    className="rounded-lg shadow-xl h-full w-full object-cover"
+                                    data-ai-hint="passport map"
+                                />
+                            </div>
+                            <div>
+                                <h2 className="font-headline text-3xl md:text-4xl text-primary-foreground uppercase">Benefícios de um Futuro Europeu</h2>
+                                <p className="mt-4 text-primary-foreground/80">O programa Golden Visa de Portugal é um dos mais procurados do mundo, oferecendo um caminho claro para a residência e cidadania europeia em troca de um investimento qualificado no país.</p>
+                                <ul className="mt-6 space-y-3">
+                                   {benefits.map((benefit, i) => (
+                                       <li key={i} className="flex items-start">
+                                           <Check className="h-5 w-5 text-green-400 mr-3 mt-1 shrink-0" />
+                                           <span className="text-primary-foreground/90">{benefit}</span>
+                                       </li>
+                                   ))}
+                                </ul>
+                            </div>
                         </div>
                     </AnimatedSection>
                 </div>
@@ -209,5 +211,7 @@ export default function GoldenVisaPage() {
             </section>
         </>
     );
+
+    
 
     
