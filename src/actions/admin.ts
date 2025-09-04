@@ -13,6 +13,7 @@ export async function saveBlock(formData: FormData) {
     try {
         const { data: { user } } = await supabase.auth.getUser();
         if (!user) {
+            // A sessão do usuário não foi encontrada. Isso é um problema de autenticação.
             return { success: false, message: 'Não autenticado. Por favor, faça login novamente.' };
         }
         
@@ -75,7 +76,7 @@ export async function saveBlock(formData: FormData) {
             ...rawData,
             image_url: imageUrl,
             updated_at: new Date().toISOString(),
-            updated_by: user.id,
+            updated_by: user.id, // Apenas para registrar quem fez a alteração
         };
         
         if (!dataToUpsert.id) {
@@ -86,7 +87,8 @@ export async function saveBlock(formData: FormData) {
 
         if (dbError) {
              console.error('Erro do Supabase:', dbError);
-             return { success: false, message: 'Não autorizado para executar esta ação ou ocorreu um erro no banco de dados.' };
+             // Se o erro for de permissão, a mensagem virá do banco de dados.
+             return { success: false, message: `Erro no banco de dados: ${dbError.message}` };
         }
 
         revalidatePath(`/admin/pages/${pageSlug}`);
@@ -137,7 +139,7 @@ export async function deleteBlock(blockId: string, pageSlug: string) {
         const { error: dbError } = await supabase.from('blocks').delete().eq('id', blockId);
         if (dbError) {
             console.error('Erro do Supabase:', dbError);
-            return { message: 'Não autorizado para executar esta ação ou ocorreu um erro no banco de dados.', success: false };
+            return { message: `Erro no banco de dados: ${dbError.message}`, success: false };
         }
         
         if (pageSlug) {
