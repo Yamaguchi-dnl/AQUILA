@@ -67,15 +67,7 @@ export default function GoldenVisaPage() {
                         <div className="hidden md:grid grid-cols-5">
                             {processSteps.map((step, index) => (
                                 <div key={index} className="relative flex flex-col items-center">
-                                    {/* Horizontal Line Segment */}
-                                    <div 
-                                        className="absolute top-5 h-0.5 bg-primary-foreground/30"
-                                        style={{ 
-                                            left: index === 0 ? '50%' : '0', 
-                                            right: index === processSteps.length - 1 ? '50%' : '0',
-                                            width: index === 0 || index === processSteps.length - 1 ? '50%' : '100%'
-                                        }}
-                                    />
+                                    {/* Horizontal Line Segment - REMOVED */}
                                     
                                     {/* Vertical Connector and Card */}
                                     <div className={cn(
