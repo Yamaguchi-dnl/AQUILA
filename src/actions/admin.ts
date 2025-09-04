@@ -7,6 +7,17 @@ import { revalidatePath } from 'next/cache';
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
 
+// Helper function to map slugs to actual paths
+function getPublicPathFromSlug(slug: string): string {
+    const slugToPathMap: { [key: string]: string } = {
+        'home': '/',
+        'sobre': '/sobre',
+        'trabalhe-conosco': '/trabalhe-conosco',
+        // Adicione outros mapeamentos se necessário
+    };
+    return slugToPathMap[slug] || `/${slug}`;
+}
+
 export async function saveBlock(formData: FormData) {
     try {
         const supabase = createClientForAction();
@@ -89,8 +100,9 @@ export async function saveBlock(formData: FormData) {
              return { success: false, message: `Erro no banco de dados: ${dbError.message}` };
         }
 
+        const publicPath = getPublicPathFromSlug(pageSlug);
         revalidatePath(`/admin/pages/${pageSlug}`);
-        revalidatePath(`/${pageSlug === 'home' ? '' : pageSlug }`);
+        revalidatePath(publicPath);
         
         return { success: true, message: `Bloco ${dataToUpsert.id ? 'atualizado' : 'criado'} com sucesso.` };
 
@@ -141,8 +153,9 @@ export async function deleteBlock(blockId: string, pageSlug: string) {
         }
         
         if (pageSlug) {
+            const publicPath = getPublicPathFromSlug(pageSlug);
             revalidatePath(`/admin/pages/${pageSlug}`);
-            revalidatePath(`/${pageSlug === 'home' ? '' : pageSlug }`);
+            revalidatePath(publicPath);
         }
 
         return { message: 'Bloco excluído.', success: true };
