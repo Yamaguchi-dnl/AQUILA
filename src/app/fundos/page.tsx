@@ -63,7 +63,7 @@ export default function FundosPage() {
                             <div className={cn("mt-6 prose prose-lg max-w-none", isPrimarySection ? "text-primary-foreground/80" : "text-muted-foreground")} dangerouslySetInnerHTML={{ __html: fund.descricaoHtml }} />
                       </div>
                       <div>
-                          <Card className={cn("shadow-lg", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
+                          <Card className={cn("shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
                               <CardHeader><CardTitle className={cn("font-headline", isPrimarySection && "text-primary-foreground")}>Detalhes do Fundo</CardTitle></CardHeader>
                               <CardContent>
                                   <dl>
@@ -86,7 +86,7 @@ export default function FundosPage() {
                                   <h4 className={cn("text-2xl font-headline text-center uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>Benefícios</h4>
                                   <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                                       {fund.beneficios.map((beneficio, i) => (
-                                          <Card key={i} className={cn("bg-card", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
+                                          <Card key={i} className={cn("bg-card transition-all duration-300 hover:scale-[1.02] hover:shadow-xl", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
                                               <CardContent className="p-6 flex items-center gap-4 text-center justify-center">
                                                   <CheckCircle className="h-8 w-8 text-green-600 shrink-0" />
                                                   <p className={cn(isPrimarySection ? "text-primary-foreground" : "text-foreground")}>{beneficio}</p>
@@ -109,7 +109,7 @@ export default function FundosPage() {
                                               imageUrl = 'https://ik.imagekit.io/leosmc2zb/62159451.jpg';
                                           }
                                           return (
-                                          <Card key={`${hotel.nome}-${hotel.imagem.v}`} className={cn("overflow-hidden", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
+                                          <Card key={`${hotel.nome}-${hotel.imagem.v}`} className={cn("overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-xl", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
                                               <Image 
                                                 src={imageUrl} 
                                                 alt={hotel.nome} 
@@ -140,7 +140,7 @@ export default function FundosPage() {
                       </>
                   ) : (
                         <div className="text-center mt-16">
-                          <Card className={cn("max-w-2xl mx-auto p-8", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
+                          <Card className={cn("max-w-2xl mx-auto p-8 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
                               <Clock className="mx-auto h-12 w-12 text-primary" />
                               <h4 className={cn("mt-4 text-2xl font-headline uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>Em Breve</h4>
                               <p className={cn("mt-2", isPrimarySection ? "text-primary-foreground/80" : "text-muted-foreground")}>Este fundo está em fase final de estruturação.</p>
