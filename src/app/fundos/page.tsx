@@ -29,7 +29,7 @@ export default function FundosPage() {
   return (
     <>
         <section className="relative bg-cover bg-center bg-no-repeat py-32 md:py-48" style={{backgroundImage: "url('https://ik.imagekit.io/leosmc2zb/298985.jpg')"}}>
-            <div className="absolute inset-0 bg-primary/80" />
+            <div className="absolute inset-0 bg-primary/90" />
             <div className="container relative z-10">
                 <div className="text-center">
                     <p className="text-sm uppercase tracking-widest text-primary-foreground/80 font-headline">Conheça as oportunidades</p>
@@ -97,7 +97,7 @@ export default function FundosPage() {
                                 <AnimatedSection>
                                     <h4 className={cn("text-2xl font-headline text-center uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>Benefícios</h4>
                                 </AnimatedSection>
-                                <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                                <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
                                     {fund.beneficios.map((beneficio, i) => (
                                         <AnimatedSection key={i} delay={i * 0.1}>
                                             <Card className={cn("h-full text-center", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
