@@ -42,7 +42,7 @@ export default function FundosPage() {
               key={fund.slug} 
               className={cn(
                   "scroll-mt-20 py-16 md:py-24 relative",
-                  isPrimarySection ? "bg-primary text-primary-foreground" : "bg-background text-foreground",
+                  isPrimarySection ? "bg-primary text-primary-foreground rounded-t-3xl" : "bg-background text-foreground",
               )}
           >
               {isPrimarySection && (
