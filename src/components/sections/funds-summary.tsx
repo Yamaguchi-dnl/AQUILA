@@ -4,8 +4,18 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { AnimatedSection } from "../shared/animated-section";
 import { FundSummaryCard } from "./fund-summary-card";
+import type { Block } from "@/lib/data-loader";
 
-export function FundsSummary() {
+type Props = {
+  block: Block | null;
+}
+
+const defaultContent = {
+    title: 'Nossos Fundos de Investimento',
+    content: 'Soluções de investimento seguras e rentáveis para investidores que buscam diversificação, proteção patrimonial e acesso ao Golden Visa em Portugal.',
+}
+
+export function FundsSummary({ block }: Props) {
     const activeFunds = fundsData.filter(f => f.status === 'ativo');
     
   return (
@@ -16,9 +26,9 @@ export function FundsSummary() {
            <h2 className="text-sm uppercase tracking-widest text-muted-foreground font-headline">
               PORTFÓLIO
           </h2>
-          <h3 className="font-headline text-4xl text-primary uppercase mt-2">Nossos Fundos de Investimento</h3>
+          <h3 className="font-headline text-4xl text-primary uppercase mt-2">{block?.title || defaultContent.title}</h3>
           <p className="mt-4 text-lg text-muted-foreground">
-            Soluções de investimento seguras e rentáveis para investidores que buscam diversificação, proteção patrimonial e acesso ao Golden Visa em Portugal.
+            {block?.content || defaultContent.content}
           </p>
         </div>
         </AnimatedSection>

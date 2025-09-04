@@ -4,6 +4,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { AnimatedSection } from "../shared/animated-section";
 import Image from "next/image";
+import type { Block } from "@/lib/data-loader";
 
 const processSteps = [
     {
@@ -28,7 +29,15 @@ const processSteps = [
     }
 ];
 
-export function InvestmentStrategy() {
+type Props = {
+  block: Block | null;
+}
+
+const defaultContent = {
+    title: 'Estratégia de investimento: o caminho para o sucesso',
+}
+
+export function InvestmentStrategy({ block }: Props) {
   return (
     <section id="investment-strategy" className="bg-transparent text-primary-foreground relative pt-0 md:pt-16 lg:pt-28 pb-16 md:pb-24 lg:pb-28">
       <div className="container relative z-10">
@@ -38,7 +47,7 @@ export function InvestmentStrategy() {
                     <h2 className="text-sm uppercase tracking-widest text-primary-foreground/60 font-headline">
                         NOSSA ABORDAGEM
                     </h2>
-                    <h3 className="font-headline text-4xl text-primary-foreground uppercase mt-2">Estratégia de investimento: o caminho para o sucesso</h3>
+                    <h3 className="font-headline text-4xl text-primary-foreground uppercase mt-2">{block?.title || defaultContent.title}</h3>
                 </AnimatedSection>
                 
                 <AnimatedSection delay={0.1}>

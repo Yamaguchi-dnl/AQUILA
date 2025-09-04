@@ -5,6 +5,7 @@ import Link from "next/link";
 import { TeamSummary } from "@/components/sections/team-summary";
 import { AnimatedSection } from "@/components/shared/animated-section";
 import Image from "next/image";
+import { getPageContentBySlug, findBlock } from '@/lib/data-loader';
 
 export const metadata = {
   title: "Sobre a Aquila Fund FCR",
@@ -18,7 +19,13 @@ const historyItems = [
     { year: "Futuro", event: "Continuar a crescer, inovar e gerar valor sustentável para nossos investidores, com novos fundos como o Aquila Agro." },
 ];
 
-export default function SobrePage() {
+export default async function SobrePage() {
+  const blocks = await getPageContentBySlug('sobre');
+  const heroBlock = findBlock(blocks, 'sobre-hero');
+  const partnersBlock = findBlock(blocks, 'sobre-partners');
+  const fundboxBlock = findBlock(blocks, 'partner-fundbox');
+  const btgBlock = findBlock(blocks, 'partner-btg');
+
   return (
     <>
        <section className="bg-background pt-32 md:pt-40 relative overflow-hidden">
@@ -31,21 +38,20 @@ export default function SobrePage() {
             <AnimatedSection>
                 <div className="text-center">
                     <p className="text-sm uppercase tracking-widest text-muted-foreground font-headline">Nossa Essência</p>
-                    <h1 className="font-headline text-4xl md:text-5xl text-primary uppercase mt-2">Sobre a Aquila Fund FCR</h1>
-                    <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">Construindo um legado de confiança, transparência e excelência.</p>
+                    <h1 className="font-headline text-4xl md:text-5xl text-primary uppercase mt-2">{heroBlock?.title || 'Sobre a Aquila Fund FCR'}</h1>
+                    <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">{heroBlock?.content || 'Construindo um legado de confiança, transparência e excelência.'}</p>
                 </div>
             </AnimatedSection>
             <div className="mt-12 grid lg:grid-cols-2 gap-12 items-center">
                 <AnimatedSection>
-                    <div className="space-y-4 text-base text-muted-foreground text-justify">
-                        <p>A Aquila Fund FCR nasceu há dois anos com a visão de ser uma <strong>plataforma de investimentos diferenciada</strong>, focada em oferecer <strong>soluções inovadoras para investidores de alta renda</strong>. Desde o início, temos nos dedicado a construir um legado de <strong>confiança, transparência e excelência</strong> no mercado financeiro português.</p>
-                        <p>Nossa jornada é marcada pela busca incessante por oportunidades que gerem <strong>valor real e sustentável</strong> para nossos clientes, sempre com um olhar atento às dinâmicas do mercado global e às necessidades específicas de cada investidor.</p>
-                        <p>Nossa missão é guiar nossos clientes através do complexo cenário de investimentos, transformando desafios em oportunidades e aspirações em conquistas. Com uma equipe de especialistas altamente qualificados e uma abordagem personalizada, construímos relacionamentos duradouros baseados na confiança e no compromisso com resultados.</p>
-                    </div>
+                    <div 
+                      className="space-y-4 text-base text-muted-foreground text-justify prose lg:prose-lg max-w-none"
+                      dangerouslySetInnerHTML={{ __html: heroBlock?.sub_content || '' }}
+                    />
                 </AnimatedSection>
                 <AnimatedSection delay={0.1}>
                      <Image
-                        src="https://ik.imagekit.io/leosmc2zb/5573.jpg"
+                        src={heroBlock?.image_url || "https://ik.imagekit.io/leosmc2zb/5573.jpg"}
                         alt="Escritório moderno com vista para a cidade"
                         width={600}
                         height={400}
@@ -60,9 +66,9 @@ export default function SobrePage() {
       <section className="bg-primary text-primary-foreground rounded-t-3xl">
         <div className="container text-center">
             <AnimatedSection>
-            <h2 className="font-headline text-4xl uppercase">Nossos Parceiros Estratégicos</h2>
+            <h2 className="font-headline text-4xl uppercase">{partnersBlock?.title || 'Nossos Parceiros Estratégicos'}</h2>
             <p className="mt-4 text-lg text-primary-foreground/80 max-w-3xl mx-auto">
-                Colaboramos com líderes de mercado para oferecer estrutura, segurança e as melhores oportunidades para nossos investidores.
+                {partnersBlock?.content || 'Colaboramos com líderes de mercado para oferecer estrutura, segurança e as melhores oportunidades para nossos investidores.'}
             </p>
             </AnimatedSection>
         </div>
@@ -70,21 +76,17 @@ export default function SobrePage() {
             <AnimatedSection delay={0.1}>
             <Card className="flex flex-col h-full bg-card/10 border-primary-foreground/20 text-primary-foreground transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
                 <CardHeader>
-                    <h3 className="text-2xl font-headline card-title text-primary-foreground">FundBox</h3>
+                    <h3 className="text-2xl font-headline card-title text-primary-foreground">{fundboxBlock?.title || 'FundBox'}</h3>
                 </CardHeader>
-                <CardContent className="prose max-w-none text-primary-foreground/80 flex-grow">
-                    <p>Nossos fundos são geridos pela FundBox, empresa de investimento independente líder em Portugal que gera ativamente cerca de €420 milhões em ativos sob gestão. A FundBox oferece estruturação e execução de transações de primeira classe, livre de qualquer agenda conflitante, e com envolvimento ativo de executivos senhores ao longo de todo o processo de investimento.</p>
-                </CardContent>
+                <CardContent className="prose max-w-none text-primary-foreground/80 flex-grow" dangerouslySetInnerHTML={{ __html: fundboxBlock?.content || '' }} />
             </Card>
             </AnimatedSection>
              <AnimatedSection delay={0.2}>
              <Card className="flex flex-col h-full bg-card/10 border-primary-foreground/20 text-primary-foreground transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
                 <CardHeader>
-                    <h3 className="text-2xl font-headline card-title text-primary-foreground">BTG Pactual</h3>
+                    <h3 className="text-2xl font-headline card-title text-primary-foreground">{btgBlock?.title || 'BTG Pactual'}</h3>
                 </CardHeader>
-                <CardContent className="prose max-w-none text-primary-foreground/80 flex-grow">
-                    <p>Para facilitar o acesso aos nossos fundos, estabelecemos uma parceria exclusiva com o BTG Pactual. Nossos clientes podem investir mantendo seus ativos no Brasil como garantia, sem a necessidade de transferir capital para o exterior, ideal para quem busca diversificação internacional sem desmobilizar seus investimentos atuais.</p>
-                </CardContent>
+                <CardContent className="prose max-w-none text-primary-foreground/80 flex-grow" dangerouslySetInnerHTML={{ __html: btgBlock?.content || ''}} />
             </Card>
             </AnimatedSection>
         </div>

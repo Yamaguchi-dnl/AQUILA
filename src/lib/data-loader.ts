@@ -7,6 +7,7 @@ export type Block = {
     title: string | null;
     content: string | null;
     image_url: string | null;
+    sub_content?: string | null; // Added for blocks with more complex content
 };
 
 export async function getPageContentBySlug(slug: string): Promise<Block[]> {
@@ -25,7 +26,7 @@ export async function getPageContentBySlug(slug: string): Promise<Block[]> {
     
     const { data: blocksData, error: blocksError } = await supabase
         .from('blocks')
-        .select('id, order_index, block_type, title, content, image_url')
+        .select('id, order_index, block_type, title, content, image_url, sub_content')
         .eq('page_id', pageData.id)
         .order('order_index', { ascending: true });
 

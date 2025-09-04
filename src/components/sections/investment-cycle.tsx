@@ -1,5 +1,6 @@
 
 import { AnimatedSection } from "../shared/animated-section";
+import type { Block } from "@/lib/data-loader";
 
 const timelineData = {
     years: Array.from({ length: 9 }, (_, i) => i),
@@ -28,7 +29,16 @@ const mobileTimelineData = [
     }
 ];
 
-export function InvestmentCycle() {
+type Props = {
+  block: Block | null;
+}
+
+const defaultContent = {
+    title: 'Entenda o ciclo completo do seu investimento',
+    content: 'Cada fundo da Aquila Fund FCR tem duração de 8 anos, com o capital levantado durante os primeiros dois anos e o período de desinvestimento ocorrendo nos últimos dois anos da vida do fundo.',
+}
+
+export function InvestmentCycle({ block }: Props) {
   return (
     <section id="investment-cycle" className="bg-transparent text-primary-foreground relative pt-16 md:pt-24 lg:pt-28">
       <div className="container relative z-10">
@@ -37,9 +47,9 @@ export function InvestmentCycle() {
           <h2 className="text-sm uppercase tracking-widest text-primary-foreground/60 font-headline">
             COMO FUNCIONA
           </h2>
-          <h3 className="font-headline text-4xl text-primary-foreground uppercase mt-2">Entenda o ciclo completo do seu investimento</h3>
+          <h3 className="font-headline text-4xl text-primary-foreground uppercase mt-2">{block?.title || defaultContent.title}</h3>
           <p className="mt-4 text-lg text-primary-foreground/80">
-            Cada fundo da Aquila Fund FCR tem duração de 8 anos, com o capital levantado durante os primeiros dois anos e o período de desinvestimento ocorrendo nos últimos dois anos da vida do fundo.
+            {block?.content || defaultContent.content}
           </p>
         </div>
         </AnimatedSection>

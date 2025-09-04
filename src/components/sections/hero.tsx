@@ -6,8 +6,18 @@ import { ArrowRight, PlayCircle } from 'lucide-react';
 import { AnimatedSection } from '../shared/animated-section';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import type { Block } from "@/lib/data-loader";
 
-export function Hero() {
+type Props = {
+  block: Block | null;
+}
+
+const defaultContent = {
+    title: 'Investimentos <span class="text-primary">Inteligentes</span> <span class="block">para o seu Futuro</span>',
+    content: 'Acesse fundos de investimento portugueses exclusivos com elegibilidade ao Golden Visa. Estratégias comprovadas em mercados especializados com gestão profissional e transparente.',
+}
+
+export function Hero({ block }: Props) {
   return (
     <section className="w-full bg-background relative overflow-hidden pt-32 md:pt-40">
        <div className="bg-animation z-0 hidden md:block">
@@ -23,13 +33,14 @@ export function Hero() {
                   </h2>
             </AnimatedSection>
             <AnimatedSection delay={0.1}>
-                <h1 className="font-headline text-3xl sm:text-4xl lg:text-5xl xl:text-6xl tracking-tight text-foreground uppercase mt-4">
-                    Investimentos <span className="text-primary">Inteligentes</span> <span className="block">para o seu Futuro</span>
-                </h1>
+                <h1 
+                  className="font-headline text-3xl sm:text-4xl lg:text-5xl xl:text-6xl tracking-tight text-foreground uppercase mt-4"
+                  dangerouslySetInnerHTML={{ __html: block?.title || defaultContent.title }}
+                />
             </AnimatedSection>
             <AnimatedSection delay={0.2}>
                 <p className="mt-6 text-lg text-muted-foreground">
-                Acesse fundos de investimento portugueses exclusivos com elegibilidade ao Golden Visa. Estratégias comprovadas em mercados especializados com gestão profissional e transparente.
+                  {block?.content || defaultContent.content}
                 </p>
             </AnimatedSection>
             <AnimatedSection delay={0.3}>

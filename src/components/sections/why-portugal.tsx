@@ -11,6 +11,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
+import type { Block } from "@/lib/data-loader";
 
 const benefits = [
     { 
@@ -45,7 +46,15 @@ const benefits = [
     }
 ];
 
-export function WhyPortugal() {
+type Props = {
+  block: Block | null;
+}
+
+const defaultContent = {
+    title: 'Por que investir<br/>em Portugal?',
+}
+
+export function WhyPortugal({ block }: Props) {
   return (
     <section id="why-portugal" className="bg-primary text-primary-foreground overflow-hidden relative">
        <div
@@ -66,7 +75,10 @@ export function WhyPortugal() {
                 <h2 className="text-sm uppercase tracking-widest text-primary-foreground/60 font-headline">
                     OPORTUNIDADES
                 </h2>
-                <h3 className="font-headline text-4xl text-primary-foreground uppercase mt-2">Por que investir<br/>em Portugal?</h3>
+                <h3 
+                  className="font-headline text-4xl text-primary-foreground uppercase mt-2"
+                  dangerouslySetInnerHTML={{ __html: block?.title || defaultContent.title}}
+                />
               </div>
               <div className="flex gap-2">
                   <CarouselPrevious className="static -translate-y-0 text-primary-foreground bg-primary-foreground/10 hover:bg-primary-foreground/20 border-primary-foreground/20" />
