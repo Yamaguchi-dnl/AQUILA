@@ -28,7 +28,7 @@ const FundDetail = ({ label, value, isPrimary }: { label: string; value: string 
 export default function FundosPage() {
   return (
     <>
-        <section className="relative bg-primary py-32 md:py-40">
+        <section className="relative bg-primary pt-32 md:pt-40 pb-20 md:pb-24">
             <div className="container relative z-10">
                 <div className="text-center">
                     <p className="text-sm uppercase tracking-widest text-primary-foreground/80 font-headline">Conheça as oportunidades</p>
@@ -52,7 +52,7 @@ export default function FundosPage() {
                   "scroll-mt-20 py-16 md:py-24 relative",
                   isPrimarySection ? "bg-primary text-primary-foreground" : "bg-background text-foreground",
                   'rounded-t-3xl',
-                  index > 0 && 'md:-mt-16',
+                  'md:-mt-16',
                   fund.slug === 'aquila-real-estate' && 'z-10'
               )}
           >
