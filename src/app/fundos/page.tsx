@@ -11,6 +11,7 @@ import { Separator } from "@/components/ui/separator";
 import { InterestFormDialog } from "@/components/forms/interest-form";
 import { cn } from "@/lib/utils";
 import { PageHeader } from "@/components/shared/page-header";
+import { AnimatedSection } from "@/components/shared/animated-section";
 
 export const metadata = {
   title: "Fundos de Investimento",
@@ -27,10 +28,10 @@ const FundDetail = ({ label, value, isPrimary }: { label: string; value: string 
 export default function FundosPage() {
   return (
     <>
-      <PageHeader 
-        title="Nossos Fundos"
-        subtitle="Explore nosso portfólio de fundos de investimento em Portugal, incluindo opções elegíveis para o Golden Visa."
-      />
+        <PageHeader 
+            title="Nossos Fundos"
+            subtitle="Explore nosso portfólio de fundos de investimento em Portugal, incluindo opções elegíveis para o Golden Visa."
+        />
       <div className="space-y-0">
       {fundsData.map((fund, index) => {
           const isPrimarySection = index % 2 !== 0;
@@ -56,13 +57,13 @@ export default function FundosPage() {
               )}
               <div className="container relative z-10">
                   <div className="grid lg:grid-cols-3 gap-8 lg:gap-16 items-center">
-                      <div className={cn("lg:col-span-2", isReversed && "lg:order-last")}>
+                      <AnimatedSection className={cn("lg:col-span-2", isReversed && "lg:order-last")}>
                             <h2 className={cn("font-headline text-3xl md:text-4xl uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>{fund.nome}</h2>
                             {fund.detalhes.elegibilidadeGoldenVisa && <Badge variant="destructive" className="mt-2">Elegível para Golden Visa</Badge>}
                             <h3 className={cn("mt-2 text-xl font-headline", isPrimarySection ? "text-primary-foreground/80" : "text-muted-foreground")}>{fund.subtitulo}</h3>
                             <div className={cn("mt-6 prose prose-lg max-w-none", isPrimarySection ? "text-primary-foreground/80" : "text-muted-foreground")} dangerouslySetInnerHTML={{ __html: fund.descricaoHtml }} />
-                      </div>
-                      <div>
+                      </AnimatedSection>
+                      <AnimatedSection delay={0.1}>
                           <Card className={cn("shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
                               <CardHeader><CardTitle className={cn("font-headline", isPrimarySection && "text-primary-foreground")}>Detalhes do Fundo</CardTitle></CardHeader>
                               <CardContent>
@@ -76,22 +77,26 @@ export default function FundosPage() {
                                   </dl>
                               </CardContent>
                           </Card>
-                      </div>
+                      </AnimatedSection>
                   </div>
                   
                   {fund.status === 'ativo' ? (
                       <>
                           {fund.beneficios.length > 0 && (
                               <div className="mt-12">
+                                <AnimatedSection>
                                   <h4 className={cn("text-2xl font-headline text-center uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>Benefícios</h4>
+                                </AnimatedSection>
                                   <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                                       {fund.beneficios.map((beneficio, i) => (
-                                          <Card key={i} className={cn("bg-card transition-all duration-300 hover:scale-[1.02] hover:shadow-xl", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
-                                              <CardContent className="p-6 flex items-center gap-4 text-center justify-center">
-                                                  <CheckCircle className="h-8 w-8 text-green-600 shrink-0" />
-                                                  <p className={cn(isPrimarySection ? "text-primary-foreground" : "text-foreground")}>{beneficio}</p>
-                                              </CardContent>
-                                          </Card>
+                                          <AnimatedSection key={i} delay={i * 0.1}>
+                                            <Card className={cn("bg-card transition-all duration-300 hover:scale-[1.02] hover:shadow-xl h-full", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
+                                                <CardContent className="p-6 flex items-center gap-4 text-center justify-center">
+                                                    <CheckCircle className="h-8 w-8 text-green-600 shrink-0" />
+                                                    <p className={cn(isPrimarySection ? "text-primary-foreground" : "text-foreground")}>{beneficio}</p>
+                                                </CardContent>
+                                            </Card>
+                                          </AnimatedSection>
                                       ))}
                                   </div>
                               </div>
@@ -99,7 +104,9 @@ export default function FundosPage() {
 
                           {fund.hoteis && (
                               <div className="mt-12">
+                                <AnimatedSection>
                                   <h4 className={cn("text-2xl font-headline text-center uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>Hotéis Sob Gestão</h4>
+                                </AnimatedSection>
                                   <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                                       {fund.hoteis.map((hotel, i) => {
                                           let imageUrl = `${hotel.imagem.src}?v=${hotel.imagem.v}`;
@@ -109,37 +116,39 @@ export default function FundosPage() {
                                               imageUrl = 'https://ik.imagekit.io/leosmc2zb/62159451.jpg';
                                           }
                                           return (
-                                          <Card key={`${hotel.nome}-${hotel.imagem.v}`} className={cn("overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-xl", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
-                                              <Image 
-                                                src={imageUrl} 
-                                                alt={hotel.nome} 
-                                                width={600} 
-                                                height={400} 
-                                                className={cn(
-                                                    "w-full h-48 object-cover",
-                                                    hotel.nome.includes('Seteais') && 'object-bottom'
-                                                )} 
-                                                data-ai-hint={hotel.dataAiHint} 
-                                               />
-                                              <CardContent className="p-4">
-                                                  <p className={cn("font-semibold", isPrimarySection ? "text-primary-foreground" : "text-foreground")}>{hotel.nome}</p>
-                                                  <p className={cn("text-sm", isPrimarySection ? "text-primary-foreground/80" : "text-muted-foreground")}>{hotel.localizacao}</p>
-                                              </CardContent>
-                                          </Card>
+                                            <AnimatedSection key={`${hotel.nome}-${hotel.imagem.v}`} delay={i * 0.1}>
+                                                <Card className={cn("overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-xl h-full", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
+                                                    <Image 
+                                                        src={imageUrl} 
+                                                        alt={hotel.nome} 
+                                                        width={600} 
+                                                        height={400} 
+                                                        className={cn(
+                                                            "w-full h-48 object-cover",
+                                                            hotel.nome.includes('Seteais') && 'object-bottom'
+                                                        )} 
+                                                        data-ai-hint={hotel.dataAiHint} 
+                                                    />
+                                                    <CardContent className="p-4">
+                                                        <p className={cn("font-semibold", isPrimarySection ? "text-primary-foreground" : "text-foreground")}>{hotel.nome}</p>
+                                                        <p className={cn("text-sm", isPrimarySection ? "text-primary-foreground/80" : "text-muted-foreground")}>{hotel.localizacao}</p>
+                                                    </CardContent>
+                                                </Card>
+                                            </AnimatedSection>
                                           )
                                       })}
                                   </div>
                               </div>
                           )}
 
-                          <div className="text-center mt-16">
+                          <AnimatedSection className="text-center mt-16">
                               <Button asChild size="lg" variant={isPrimarySection ? "secondary" : "default"}>
                                   <Link href="/contato">Fale com um especialista sobre o {fund.nome}</Link>
                               </Button>
-                          </div>
+                          </AnimatedSection>
                       </>
                   ) : (
-                        <div className="text-center mt-16">
+                        <AnimatedSection className="text-center mt-16">
                           <Card className={cn("max-w-2xl mx-auto p-8 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
                               <Clock className="mx-auto h-12 w-12 text-primary" />
                               <h4 className={cn("mt-4 text-2xl font-headline uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>Em Breve</h4>
@@ -148,7 +157,7 @@ export default function FundosPage() {
                                   <InterestFormDialog fundName={fund.nome} buttonVariant={isPrimarySection ? "secondary" : "default"} />
                               </div>
                           </Card>
-                        </div>
+                        </AnimatedSection>
                   )}
               </div>
           </section>

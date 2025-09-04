@@ -1,5 +1,6 @@
 
 import { cn } from "@/lib/utils";
+import { AnimatedSection } from "./animated-section";
 
 type PageHeaderProps = {
   title: string;
@@ -12,6 +13,7 @@ export function PageHeader({ title, subtitle, className, children }: PageHeaderP
   return (
     <section className={cn("bg-card border-b pt-16 relative overflow-hidden", className)}>
        <div className="container pt-12 pb-8 md:pt-16 md:pb-10 relative">
+        <AnimatedSection>
         <div className="text-center">
             <h1 className="font-headline text-4xl md:text-5xl text-primary uppercase">
             {title}
@@ -22,6 +24,7 @@ export function PageHeader({ title, subtitle, className, children }: PageHeaderP
             </p>
             )}
         </div>
+        </AnimatedSection>
         {children && <div className="mt-6">{children}</div>}
       </div>
     </section>
