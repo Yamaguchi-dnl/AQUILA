@@ -4,8 +4,23 @@ import Link from "next/link";
 import Image from "next/image";
 import { AnimatedSection } from "../shared/animated-section";
 import { StatsCard } from "./stats-card";
+import type { Block } from "@/lib/data-loader";
 
-export function AboutSummary() {
+type AboutSummaryProps = {
+  block: Block | null;
+}
+
+const defaultContent = {
+  title: "Seu capital, nossa expertise",
+  content: `<p>A Aquila Fund FCR é uma plataforma de investimentos portuguesa, com quatro fundos de investimento totalmente independentes e registrados na Comissão do Mercado de Valores Mobiliários (CMVM).</p><p>Com uma equipe experiente e altamente qualificada, oferecemos soluções seguras e rentáveis para investidores brasileiros, através de nossos fundos - Wheels, Agro, Hotel Invest e Real State.</p><p>Com estas soluções, você diversifica seu portfólio, ganha acesso facilitado ao passaporte europeu e protege seu patrimônio em um mercado estável e repleto de oportunidades.</p>`,
+  image_url: "https://ik.imagekit.io/leosmc2zb/5573.jpg",
+}
+
+export function AboutSummary({ block }: AboutSummaryProps) {
+  const title = block?.title || defaultContent.title;
+  const content = block?.content || defaultContent.content;
+  const imageUrl = block?.image_url || defaultContent.image_url;
+
   return (
     <section id="sobre" className="bg-primary text-primary-foreground overflow-hidden relative">
        <div
@@ -17,7 +32,7 @@ export function AboutSummary() {
           <div className="order-last md:order-first">
             <AnimatedSection>
             <Image 
-                src="https://ik.imagekit.io/leosmc2zb/5573.jpg"
+                src={imageUrl}
                 alt="Escritório moderno em Lisboa"
                 width={600}
                 height={500}
@@ -31,21 +46,14 @@ export function AboutSummary() {
               <h2 className="text-sm uppercase tracking-widest text-primary-foreground/60 font-headline">
                   <Link href="/sobre">QUEM SOMOS</Link>
               </h2>
-              <h3 className="font-headline text-4xl text-primary-foreground mt-2 uppercase">Seu capital, nossa expertise</h3>
+              <h3 className="font-headline text-4xl text-primary-foreground mt-2 uppercase">{title}</h3>
               
             </AnimatedSection>
             <AnimatedSection className="flex-grow">
-              <div className="mt-8 space-y-4 text-primary-foreground/80 prose prose-lg max-w-none">
-                <p>
-                  A Aquila Fund FCR é uma plataforma de investimentos portuguesa, com quatro fundos de investimento totalmente independentes e registrados na Comissão do Mercado de Valores Mobiliários (CMVM).
-                </p>
-                <p>
-                  Com uma equipe experiente e altamente qualificada, oferecemos soluções seguras e rentáveis para investidores brasileiros, através de nossos fundos - Wheels, Agro, Hotel Invest e Real State.
-                </p>
-                <p>
-                  Com estas soluções, você diversifica seu portfólio, ganha acesso facilitado ao passaporte europeu e protege seu patrimônio em um mercado estável e repleto de oportunidades.
-                </p>
-              </div>
+              <div 
+                className="mt-8 space-y-4 text-primary-foreground/80 prose prose-lg max-w-none"
+                dangerouslySetInnerHTML={{ __html: content }}
+              />
             </AnimatedSection>
             <AnimatedSection className="mt-8">
               <Button asChild size="lg" variant="secondary">

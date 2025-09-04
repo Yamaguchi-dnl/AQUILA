@@ -7,15 +7,19 @@ import { ContactSummary } from '@/components/sections/contact-summary';
 import { Hero } from '@/components/sections/hero';
 import { InvestmentStrategy } from '@/components/sections/investment-strategy';
 import SectionLink from '@/components/shared/section-link';
+import { getPageContentBySlug, findBlock } from '@/lib/data-loader';
 
-export default function Home() {
+export default async function Home() {
+  const blocks = await getPageContentBySlug('home');
+  const aboutBlock = findBlock(blocks, 'about-summary');
+
   return (
     <>
       <Hero />
       <div className="hidden md:block -mt-20">
         <SectionLink topColor="hsl(var(--card))" bottomColor="hsl(var(--primary))" height={120} variant="quebrada" />
       </div>
-      <AboutSummary />
+      <AboutSummary block={aboutBlock} />
       <FundsSummary />
       <WhyPortugal />
       <GoldenVisaSummary />
