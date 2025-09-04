@@ -2,6 +2,7 @@ import { PageHeader } from "@/components/shared/page-header";
 import { ContactForm } from "@/components/forms/contact-form";
 import { Mail, Phone, MapPin } from "lucide-react";
 import Link from "next/link";
+import { AnimatedSection } from "@/components/shared/animated-section";
 
 export const metadata = {
   title: "Contato",
@@ -22,10 +23,10 @@ export default function ContatoPage() {
         title="Contato"
         subtitle="Estamos à sua disposição para qualquer esclarecimento."
       />
-      <section className="pt-0 md:pt-0 lg:pt-0 bg-primary text-primary-foreground rounded-t-3xl">
+      <section className="pt-0 md:pt-0 lg:pt-0 bg-primary text-primary-foreground rounded-t-3xl md:-mt-20">
         <div className="container py-16 md:py-24">
           <div className="grid lg:grid-cols-5 gap-12">
-            <div className="lg:col-span-2">
+            <AnimatedSection className="lg:col-span-2">
                 <h2 className="font-headline text-3xl text-primary-foreground font-bold">Informações de Contato</h2>
                 <p className="mt-4 text-primary-foreground/80">
                     Entre em contato conosco por telefone, e-mail ou visite nosso escritório.
@@ -46,14 +47,14 @@ export default function ContatoPage() {
                         </div>
                     ))}
                 </div>
-            </div>
-            <div className="lg:col-span-3">
+            </AnimatedSection>
+            <AnimatedSection className="lg:col-span-3" delay={0.1}>
               <div className="bg-card p-8 rounded-lg shadow-lg text-card-foreground">
                 <h2 className="text-2xl font-bold font-headline text-primary mb-2">Fale com um especialista</h2>
                 <p className="text-muted-foreground mb-6">Preencha o formulário e nossa equipe entrará em contato para uma consulta personalizada.</p>
                 <ContactForm />
               </div>
-            </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>

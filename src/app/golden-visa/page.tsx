@@ -8,6 +8,7 @@ import { FundCard } from "@/components/shared/fund-card";
 import { Check, ShieldAlert } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { AnimatedSection } from "@/components/shared/animated-section";
 
 export const metadata = {
   title: "Golden Visa Portugal",
@@ -42,9 +43,9 @@ export default function GoldenVisaPage() {
                 subtitle="Seu passaporte para a Europa através de investimentos de valor."
             />
             
-            <section className="bg-primary text-primary-foreground rounded-t-3xl">
+            <section className="bg-primary text-primary-foreground rounded-t-3xl md:-mt-20">
                 <div className="container">
-                    <div className="grid lg:grid-cols-2 gap-12 items-stretch">
+                    <AnimatedSection className="grid lg:grid-cols-2 gap-12 items-stretch">
                         <div className="hidden lg:block">
                             <Image 
                                 src="https://ik.imagekit.io/leosmc2zb/golden-visa-portugal-nacionalidade-portuguesa.jpeg"
@@ -67,13 +68,16 @@ export default function GoldenVisaPage() {
                                ))}
                             </ul>
                         </div>
-                    </div>
+                    </AnimatedSection>
                 </div>
             </section>
 
              <section className="bg-primary text-primary-foreground pt-0 pb-16 md:pb-24 lg:pb-28">
                 <div className="container">
+                     <AnimatedSection>
                      <h3 className="font-headline text-3xl md:text-4xl text-center uppercase text-primary-foreground">Etapas do Processo</h3>
+                     </AnimatedSection>
+                     <AnimatedSection delay={0.1}>
                      <div className="mt-12">
                         {/* --- Desktop Timeline --- */}
                         <div className="hidden md:grid grid-cols-5">
@@ -150,23 +154,29 @@ export default function GoldenVisaPage() {
                             </div>
                         </div>
                      </div>
+                     </AnimatedSection>
                 </div>
             </section>
             
             <section className="bg-background">
                 <div className="container">
-                    <div className="text-center max-w-3xl mx-auto">
+                    <AnimatedSection className="text-center max-w-3xl mx-auto">
                         <h2 className="font-headline text-4xl text-primary uppercase">Fundos Elegíveis para Golden Visa</h2>
                         <p className="mt-4 text-lg text-muted-foreground">Invista em ativos de alta performance enquanto garante seu futuro na Europa. Conheça nossos fundos qualificados para o programa.</p>
-                    </div>
+                    </AnimatedSection>
                     <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                        {eligibleFunds.map(fund => <FundCard key={fund.slug} fund={fund} />)}
+                        {eligibleFunds.map((fund, index) => (
+                            <AnimatedSection key={fund.slug} delay={index * 0.1}>
+                                <FundCard fund={fund} />
+                            </AnimatedSection>
+                        ))}
                     </div>
                 </div>
             </section>
 
             <section className="bg-background pt-0">
                 <div className="container">
+                    <AnimatedSection>
                     <Card className="max-w-4xl mx-auto p-8 md:p-12 shadow-xl">
                         <div className="text-center">
                             <h2 className="font-headline text-4xl text-primary uppercase">Perguntas Frequentes</h2>
@@ -193,6 +203,7 @@ export default function GoldenVisaPage() {
                             </div>
                         </div>
                     </Card>
+                    </AnimatedSection>
                 </div>
             </section>
         </>
