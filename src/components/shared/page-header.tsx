@@ -3,18 +3,24 @@ import { cn } from "@/lib/utils";
 import { AnimatedSection } from "./animated-section";
 
 type PageHeaderProps = {
+  pretitle?: string;
   title: string;
   subtitle?: string;
   className?: string;
   children?: React.ReactNode;
 };
 
-export function PageHeader({ title, subtitle, className, children }: PageHeaderProps) {
+export function PageHeader({ pretitle, title, subtitle, className, children }: PageHeaderProps) {
   return (
-    <section className={cn("bg-card border-b relative overflow-hidden", className)}>
+    <section className={cn("bg-card border-b relative overflow-hidden pt-24 md:pt-32", className)}>
        <div className="container py-12 md:py-10 relative">
         <AnimatedSection>
         <div className="text-center">
+            {pretitle && (
+                 <p className="text-sm uppercase tracking-widest text-muted-foreground font-headline mb-2">
+                    {pretitle}
+                </p>
+            )}
             <h1 className="font-headline text-4xl md:text-5xl text-primary uppercase">
             {title}
             </h1>
