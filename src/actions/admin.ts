@@ -8,10 +8,10 @@ const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
 
 export async function saveBlock(formData: FormData) {
-    const supabase = createClientForAction();
-
     try {
+        const supabase = createClientForAction();
         const { data: { user } } = await supabase.auth.getUser();
+
         if (!user) {
             return { success: false, message: 'Não autenticado. Por favor, faça login novamente.' };
         }
@@ -101,10 +101,10 @@ export async function saveBlock(formData: FormData) {
 }
 
 export async function deleteBlock(blockId: string, pageSlug: string) {
-    const supabase = createClientForAction();
-    
     try {
+        const supabase = createClientForAction();
         const { data: { user } } = await supabase.auth.getUser();
+
         if (!user) {
             return { message: 'Não autenticado', success: false };
         }

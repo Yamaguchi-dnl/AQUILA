@@ -57,6 +57,8 @@ export function createClientForAction() {
   )
 }
 
+// Esta função genérica pode ser removida se não for mais usada,
+// mas a mantemos por segurança caso alguma parte do código ainda a chame.
 export function createClient() {
   const cookieStore = cookies()
 
