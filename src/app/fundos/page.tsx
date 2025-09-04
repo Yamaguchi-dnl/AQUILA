@@ -43,8 +43,8 @@ export default function FundosPage() {
               className={cn(
                   "scroll-mt-20 py-16 md:py-24 relative",
                   isPrimarySection ? "bg-primary text-primary-foreground" : "bg-background text-foreground",
-                  (isPrimarySection || fund.slug === 'aquila-real-estate') && 'rounded-t-3xl',
-                  fund.slug === 'aquila-real-estate' && 'mt-0 md:-mt-16 z-10'
+                  isPrimarySection && 'rounded-t-3xl',
+                  fund.slug === 'aquila-real-estate' && 'rounded-t-3xl mt-0 md:-mt-16 z-10'
               )}
           >
               {isPrimarySection && (
