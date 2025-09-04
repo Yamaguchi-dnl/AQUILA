@@ -36,6 +36,7 @@ export default function GoldenVisaPage() {
     return (
         <>
             <PageHeader
+                pretitle="O seu caminho para a Europa"
                 title="Golden Visa Portugal"
                 subtitle="Seu passaporte para a Europa através de investimentos de valor."
             />
@@ -130,3 +131,5 @@ export default function GoldenVisaPage() {
         </>
     );
 }
+
+    
