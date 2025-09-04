@@ -13,7 +13,6 @@ export async function saveBlock(formData: FormData) {
     try {
         const { data: { user } } = await supabase.auth.getUser();
         if (!user) {
-            // A sessão do usuário não foi encontrada. Isso é um problema de autenticação.
             return { success: false, message: 'Não autenticado. Por favor, faça login novamente.' };
         }
         
@@ -76,7 +75,7 @@ export async function saveBlock(formData: FormData) {
             ...rawData,
             image_url: imageUrl,
             updated_at: new Date().toISOString(),
-            updated_by: user.id, // Apenas para registrar quem fez a alteração
+            updated_by: user.id,
         };
         
         if (!dataToUpsert.id) {
@@ -87,7 +86,6 @@ export async function saveBlock(formData: FormData) {
 
         if (dbError) {
              console.error('Erro do Supabase:', dbError);
-             // Se o erro for de permissão, a mensagem virá do banco de dados.
              return { success: false, message: `Erro no banco de dados: ${dbError.message}` };
         }
 
@@ -105,16 +103,16 @@ export async function saveBlock(formData: FormData) {
 export async function deleteBlock(blockId: string, pageSlug: string) {
     const supabase = createClientForAction();
     
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) {
-        return { message: 'Não autenticado', success: false };
-    }
-    
-    if (!blockId) {
-        return { message: 'ID do bloco é obrigatório', success: false };
-    }
-
     try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) {
+            return { message: 'Não autenticado', success: false };
+        }
+        
+        if (!blockId) {
+            return { message: 'ID do bloco é obrigatório', success: false };
+        }
+
         const { data: block, error: findError } = await supabase
             .from('blocks')
             .select('image_url')
