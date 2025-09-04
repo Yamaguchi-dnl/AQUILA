@@ -1,4 +1,4 @@
-import { createClient } from '@/lib/supabase/server';
+import { createClientForAction } from '@/lib/supabase/server';
 import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { Button } from "@/components/ui/button";
@@ -22,7 +22,7 @@ export default function LoginPage({
     'use server';
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
-    const supabase = createClient();
+    const supabase = createClientForAction();
 
     const { error } = await supabase.auth.signInWithPassword({
       email,

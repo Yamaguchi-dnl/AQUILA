@@ -1,12 +1,12 @@
 
 import { PageHeader } from "@/components/shared/page-header";
-import { createClient } from "@/lib/supabase/server";
+import { createClientForServerComponent } from "@/lib/supabase/server";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FileText, Cuboid, Clock } from "lucide-react";
 import { format } from "date-fns";
 
 async function getDashboardStats() {
-    const supabase = createClient();
+    const supabase = createClientForServerComponent();
 
     const { count: pageCount } = await supabase
         .from('pages')

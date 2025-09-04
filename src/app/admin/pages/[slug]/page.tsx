@@ -1,5 +1,5 @@
 
-import { createClient } from "@/lib/supabase/server";
+import { createClientForServerComponent } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 import { PageHeader } from "@/components/shared/page-header";
 import { PageEditor } from "@/components/admin/page-editor";
@@ -20,7 +20,7 @@ type Block = {
 };
 
 async function getPageData(slug: string) {
-    const supabase = createClient();
+    const supabase = createClientForServerComponent();
     
     const { data: pageData, error: pageError } = await supabase
         .from('pages')
@@ -70,4 +70,3 @@ export default async function AdminSinglePage({ params }: { params: { slug: stri
         </>
     );
 }
-

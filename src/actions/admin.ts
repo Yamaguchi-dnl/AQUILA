@@ -1,25 +1,21 @@
 
 'use server';
 
-import { createClient } from '@/lib/supabase/server';
+import { createClientForAction } from '@/lib/supabase/server';
 import { revalidatePath } from 'next/cache';
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
 
 export async function saveBlock(formData: FormData) {
-    const supabase = createClient();
+    const supabase = createClientForAction();
 
     try {
         const { data: { user } } = await supabase.auth.getUser();
         if (!user) {
-            // Este erro só deve acontecer se a sessão expirar no meio do processo.
             return { success: false, message: 'Não autenticado. Por favor, faça login novamente.' };
         }
         
-        // A verificação de 'is_admin' agora é delegada às Políticas RLS do Supabase.
-        // O Supabase irá negar a escrita se o usuário não for um administrador.
-
         const rawData = {
             id: formData.get('id') as string || undefined,
             page_id: formData.get('page_id') as string,
@@ -90,7 +86,6 @@ export async function saveBlock(formData: FormData) {
 
         if (dbError) {
              console.error('Erro do Supabase:', dbError);
-             // Mensagem de erro genérica para o usuário, o detalhe está no console.
              return { success: false, message: 'Não autorizado para executar esta ação ou ocorreu um erro no banco de dados.' };
         }
 
@@ -106,14 +101,12 @@ export async function saveBlock(formData: FormData) {
 }
 
 export async function deleteBlock(blockId: string, pageSlug: string) {
-    const supabase = createClient();
+    const supabase = createClientForAction();
     
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) {
         return { message: 'Não autenticado', success: false };
     }
-    
-    // A verificação de admin é delegada às Políticas RLS do Supabase.
     
     if (!blockId) {
         return { message: 'ID do bloco é obrigatório', success: false };
@@ -126,7 +119,7 @@ export async function deleteBlock(blockId: string, pageSlug: string) {
             .eq('id', blockId)
             .single();
         
-        if (findError && findError.code !== 'PGRST116') { // Ignore "no rows found" error
+        if (findError && findError.code !== 'PGRST116') { // Ignora erro "nenhuma linha encontrada"
              throw findError;
         }
 
@@ -137,7 +130,7 @@ export async function deleteBlock(blockId: string, pageSlug: string) {
                     await supabase.storage.from('site-images').remove([imagePath]);
                 }
             } catch (e) {
-                 console.error("Could not remove image from storage:", e);
+                 console.error("Não foi possível remover imagem do storage:", e);
             }
         }
         
@@ -154,7 +147,7 @@ export async function deleteBlock(blockId: string, pageSlug: string) {
 
         return { message: 'Bloco excluído.', success: true };
     } catch (error: any) {
-        console.error('Delete action error:', error);
+        console.error('Erro na ação de excluir:', error);
         return { message: error.message || 'Ocorreu um erro inesperado ao excluir.', success: false };
     }
 }

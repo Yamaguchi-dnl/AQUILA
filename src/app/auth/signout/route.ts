@@ -1,10 +1,10 @@
 
-import { createClient } from '@/lib/supabase/server';
+import { createClientForAction } from '@/lib/supabase/server';
 import { revalidatePath } from 'next/cache';
 import { type NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest) {
-  const supabase = createClient();
+  const supabase = createClientForAction();
 
   // Check if a user's session exists
   const {
