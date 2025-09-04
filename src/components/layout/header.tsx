@@ -32,8 +32,8 @@ export function Header() {
   // Prevent mismatch by delaying client-specific rendering
   if (!isMounted) {
     return (
-        <header className="fixed top-0 z-50 w-full transition-colors duration-300 bg-card/80 backdrop-blur-sm border-b">
-            <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
+        <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-screen-xl">
+            <div className="container flex h-16 max-w-screen-2xl items-center justify-between rounded-full bg-background/80 backdrop-blur-sm border shadow-md">
                 <Logo />
                  <div className="flex items-center justify-end gap-2">
                     <Button asChild className="hidden sm:flex" variant={'default'}>
@@ -54,8 +54,8 @@ export function Header() {
   }
 
   return (
-    <header className="fixed top-0 z-50 w-full transition-colors duration-300 bg-card/80 backdrop-blur-sm border-b">
-      <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
+     <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-screen-xl">
+      <div className="container flex h-16 max-w-screen-2xl items-center justify-between rounded-full bg-background/80 backdrop-blur-sm border shadow-md">
         <Logo />
         <nav className="hidden md:flex items-center absolute left-1/2 -translate-x-1/2">
           {navItems.map((item) =>
@@ -65,8 +65,8 @@ export function Header() {
                   <Button
                     variant="ghost"
                     className={cn(
-                      "text-sm font-medium transition-colors px-3 py-2 gap-1 hover:underline underline-offset-4 text-foreground/80 hover:text-primary",
-                      item.subItems.some((sub) => pathname.startsWith(sub.href)) && "text-primary"
+                      "text-sm font-medium transition-colors px-3 py-2 gap-1 hover:text-primary",
+                      item.subItems.some((sub) => pathname.startsWith(sub.href)) ? "text-primary" : "text-foreground/80"
                     )}
                   >
                     {item.label}
@@ -91,8 +91,8 @@ export function Header() {
                 key={item.href}
                 href={item.href!}
                 className={cn(
-                  "text-sm font-medium transition-colors px-3 py-2 hover:underline underline-offset-4 text-foreground/80 hover:text-primary",
-                  pathname === item.href && "text-primary"
+                  "text-sm font-medium transition-colors px-3 py-2 hover:text-primary",
+                  pathname === item.href ? "text-primary" : "text-foreground/80"
                 )}
               >
                 {item.label}

@@ -69,7 +69,7 @@ export default function RootLayout({
       <body className={cn("font-sans antialiased bg-background text-foreground", fontSans.variable, fontHeadline.variable)}>
         <div className="flex flex-col min-h-screen">
           <Header />
-          <main className="flex-grow pt-16">{children}</main>
+          <main className="flex-grow">{children}</main>
           <Footer />
         </div>
         <Toaster />
