@@ -1,7 +1,6 @@
 
-import { createClientForAction } from '@/lib/supabase/server';
-import { headers } from 'next/headers';
-import { redirect } from 'next/navigation';
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -12,30 +11,25 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { signIn } from "@/actions/auth";
+import { useActionState, useEffect } from "react";
+import { useToast } from "@/hooks/use-toast";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { AlertCircle } from "lucide-react";
 
-export default function LoginPage({
-  searchParams,
-}: {
-  searchParams: { message: string };
-}) {
+export default function LoginPage() {
+    const { toast } = useToast();
+    const [state, formAction, isPending] = useActionState(signIn, null);
 
-  const signIn = async (formData: FormData) => {
-    'use server';
-    const email = formData.get('email') as string;
-    const password = formData.get('password') as string;
-    const supabase = createClientForAction();
-
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-
-    if (error) {
-      return redirect(`/login?message=${error.message}`);
-    }
-
-    return redirect('/admin');
-  };
+    useEffect(() => {
+        if (state?.error) {
+            toast({
+                variant: "destructive",
+                title: "Erro de Login",
+                description: state.error,
+            });
+        }
+    }, [state, toast]);
 
   return (
     <main className="flex items-center justify-center min-h-screen bg-background">
@@ -47,7 +41,7 @@ export default function LoginPage({
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form action={signIn} className="grid gap-4">
+          <form action={formAction} className="grid gap-4">
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
               <Input
@@ -62,13 +56,15 @@ export default function LoginPage({
                 <Label htmlFor="password">Senha</Label>
               <Input id="password" name="password" type="password" required />
             </div>
-            {searchParams?.message && (
-              <p className="text-sm font-medium text-destructive text-center p-2 bg-destructive/10 rounded-md">
-                {searchParams.message}
-              </p>
+             {state?.error && (
+              <Alert variant="destructive">
+                <AlertCircle className="h-4 w-4" />
+                <AlertTitle>Erro</AlertTitle>
+                <AlertDescription>{state.error}</AlertDescription>
+              </Alert>
             )}
-            <Button type="submit" className="w-full">
-              Login
+            <Button type="submit" className="w-full" disabled={isPending}>
+              {isPending ? "Entrando..." : "Login"}
             </Button>
           </form>
         </CardContent>
