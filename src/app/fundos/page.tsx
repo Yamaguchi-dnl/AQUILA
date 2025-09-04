@@ -2,7 +2,7 @@
 
 import { fundsData } from "@/lib/data";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CheckCircle, Clock, Check } from "lucide-react";
+import { CheckCircle, Clock, Check, Star } from "lucide-react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -28,7 +28,7 @@ const FundDetail = ({ label, value, isPrimary }: { label: string; value: string 
 export default function FundosPage() {
   return (
     <>
-        <section className="relative bg-cover bg-center bg-no-repeat py-20 md:py-28" style={{backgroundImage: "url('https://picsum.photos/1920/400?grayscale&blur=2')"}}>
+        <section className="relative bg-cover bg-center bg-no-repeat py-20 md:py-28" style={{backgroundImage: "url('https://ik.imagekit.io/leosmc2zb/298985.jpg')"}}>
             <div className="absolute inset-0 bg-primary/70" />
             <div className="container relative z-10">
                 <div className="text-center">
