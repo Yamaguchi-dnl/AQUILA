@@ -19,7 +19,7 @@ export function FundCard({ fund }: FundCardProps) {
       <CardHeader>
         <div className="aspect-video relative mb-4">
              <Image 
-                src={`https://picsum.photos/400/225?random=${fund.slug}`} 
+                src={fund.imagemResumo || `https://picsum.photos/400/225?random=${fund.slug}`} 
                 alt={fund.nome}
                 fill
                 className="object-cover rounded-t-lg"
