@@ -21,7 +21,7 @@ const historyItems = [
 export default function SobrePage() {
   return (
     <>
-       <section className="bg-background pt-24 md:pt-32 relative overflow-hidden">
+       <section className="bg-background pt-8 md:pt-16 relative overflow-hidden">
         <div className="bg-animation z-0 hidden md:block">
             <div id='stars'></div>
             <div id='stars2'></div>

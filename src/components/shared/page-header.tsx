@@ -11,8 +11,8 @@ type PageHeaderProps = {
 
 export function PageHeader({ title, subtitle, className, children }: PageHeaderProps) {
   return (
-    <section className={cn("bg-card border-b pt-16 relative overflow-hidden", className)}>
-       <div className="container pt-12 pb-8 md:pt-16 md:pb-10 relative">
+    <section className={cn("bg-card border-b relative overflow-hidden", className)}>
+       <div className="container py-12 md:py-10 relative">
         <AnimatedSection>
         <div className="text-center">
             <h1 className="font-headline text-4xl md:text-5xl text-primary uppercase">

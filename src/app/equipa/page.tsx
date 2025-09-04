@@ -9,7 +9,7 @@ export const metadata = {
 export default function EquipaPage() {
   return (
     <>
-      <section className="bg-background pt-32">
+      <section className="bg-background pt-16">
         <div className="container">
            <div className="text-center max-w-3xl mx-auto">
                 <h1 className="font-headline text-4xl md:text-5xl text-primary uppercase">Nossa Equipa</h1>
