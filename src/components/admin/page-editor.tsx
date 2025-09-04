@@ -73,9 +73,6 @@ export function PageEditor({ initialPage, initialBlocks }: PageEditorProps) {
 
     return (
         <>
-            <div className="flex justify-end my-4">
-                <Button onClick={handleAddBlock}><PlusCircle className="mr-2 h-4 w-4" /> Adicionar Bloco</Button>
-            </div>
             <section className="py-8">
                  {blocks.length > 0 ? (
                     <div className="grid gap-6">
@@ -134,8 +131,7 @@ export function PageEditor({ initialPage, initialBlocks }: PageEditorProps) {
                 ) : (
                     <div className="text-center py-16 border-2 border-dashed rounded-lg">
                         <h3 className="text-xl font-semibold">Nenhum bloco de conteúdo</h3>
-                        <p className="text-muted-foreground mt-2">Clique em "Adicionar Bloco" para começar a construir esta página.</p>
-                        <Button onClick={handleAddBlock} className="mt-4"><PlusCircle className="mr-2 h-4 w-4" /> Adicionar Bloco</Button>
+                        <p className="text-muted-foreground mt-2">Esta página ainda não possui blocos de conteúdo.</p>
                     </div>
                 )}
             </section>
@@ -152,4 +148,3 @@ export function PageEditor({ initialPage, initialBlocks }: PageEditorProps) {
         </>
     );
 }
-

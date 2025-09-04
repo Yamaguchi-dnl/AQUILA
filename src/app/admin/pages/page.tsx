@@ -84,13 +84,7 @@ export default function AdminPagesList() {
 
   return (
     <>
-      <PageHeader title="Páginas do Site" subtitle="Gerencie as páginas e o conteúdo de cada uma.">
-        <div className="flex justify-end mt-4">
-          <Button disabled>
-            <PlusCircle className="mr-2 h-4 w-4" /> Adicionar Nova Página
-          </Button>
-        </div>
-      </PageHeader>
+      <PageHeader title="Páginas do Site" subtitle="Gerencie as páginas e o conteúdo de cada uma." />
       <section className="py-8">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {pages.map(page => (
