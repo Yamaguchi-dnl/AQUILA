@@ -1,4 +1,3 @@
-
 import { createClientForServerComponent } from "@/lib/supabase/server";
 
 export type Block = {
