@@ -28,7 +28,7 @@ const FundDetail = ({ label, value, isPrimary }: { label: string; value: string 
 export default function FundosPage() {
   return (
     <>
-        <section className="relative bg-cover bg-center bg-no-repeat py-20 md:py-28" style={{backgroundImage: "url('https://ik.imagekit.io/leosmc2zb/298985.jpg')"}}>
+        <section className="relative bg-cover bg-center bg-no-repeat py-28 md:py-40" style={{backgroundImage: "url('https://ik.imagekit.io/leosmc2zb/298985.jpg')"}}>
             <div className="absolute inset-0 bg-primary/70" />
             <div className="container relative z-10">
                 <div className="text-center">
