@@ -58,7 +58,12 @@ export default function FundosPage() {
               <div className="container relative z-10">
                   <div className="grid lg:grid-cols-3 gap-8 lg:gap-16 items-center">
                       <AnimatedSection className={cn("lg:col-span-2", isReversed && "lg:order-last")}>
-                            {fund.detalhes.elegibilidadeGoldenVisa && <Badge className="mb-2 bg-white/20 text-white backdrop-blur-sm border border-white/30">Elegível para Golden Visa</Badge>}
+                            {fund.detalhes.elegibilidadeGoldenVisa && (
+                                <>
+                                    {fund.slug === 'aquila-wheels' && <Badge variant="default" className="mb-2">Elegível para Golden Visa</Badge>}
+                                    {fund.slug === 'aquila-hotel-invest' && <Badge className="mb-2 bg-white/20 text-white backdrop-blur-sm border border-white/30">Elegível para Golden Visa</Badge>}
+                                </>
+                            )}
                             <h2 className={cn("font-headline text-3xl md:text-4xl uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>{fund.nome}</h2>
                             <p className={cn("mt-2 text-lg font-semibold", isPrimarySection ? "text-primary-foreground/90" : "text-foreground")}>{fund.subtitulo}</p>
                             <div className={cn("mt-6 prose prose-lg max-w-none", isPrimarySection ? "text-primary-foreground/80" : "text-muted-foreground")} dangerouslySetInnerHTML={{ __html: fund.descricaoHtml }} />
