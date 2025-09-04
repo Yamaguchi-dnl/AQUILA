@@ -52,9 +52,9 @@ export default function FundosPage() {
                   "scroll-mt-20 py-16 md:py-24 relative",
                   isPrimarySection ? "bg-primary text-primary-foreground" : "bg-background text-foreground",
                   'rounded-t-3xl',
-                  'md:-mt-20',
-                  fund.slug === 'aquila-real-estate' && 'z-10'
+                  'md:-mt-20'
               )}
+              style={{ zIndex: 10 - index }}
           >
               {isPrimarySection && (
                 <div
