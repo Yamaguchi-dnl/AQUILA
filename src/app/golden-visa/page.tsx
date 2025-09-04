@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { FundCard } from "@/components/shared/fund-card";
 import { Check, ShieldAlert } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export const metadata = {
   title: "Golden Visa Portugal",
@@ -63,27 +64,66 @@ export default function GoldenVisaPage() {
                      <h3 className="font-headline text-3xl md:text-4xl text-center uppercase text-primary-foreground">Etapas do Processo</h3>
                      <div className="mt-12">
                         {/* --- Desktop Timeline --- */}
-                        <div className="hidden md:grid grid-cols-5 items-start">
+                        <div className="hidden md:grid grid-cols-5">
                             {processSteps.map((step, index) => (
-                                <div key={index} className="relative flex flex-col items-center gap-4 text-center">
-                                    <div className="flex items-center justify-center w-full">
-                                        {/* Left line */}
-                                        <div className="flex-1 border-t-2 border-dashed border-primary-foreground/30" style={{ visibility: index === 0 ? 'hidden' : 'visible' }} />
+                                <div key={index} className="relative flex flex-col items-center">
+                                    {/* Horizontal Line Segment */}
+                                    <div 
+                                        className="absolute top-5 h-0.5 bg-primary-foreground/30"
+                                        style={{ 
+                                            left: index === 0 ? '50%' : '0', 
+                                            right: index === processSteps.length - 1 ? '50%' : '0',
+                                            width: index === 0 || index === processSteps.length - 1 ? '50%' : '100%'
+                                        }}
+                                    />
+                                    
+                                    {/* Vertical Connector and Card */}
+                                    <div className={cn(
+                                        "flex flex-col items-center w-full",
+                                        index % 2 === 0 ? "justify-end" : "justify-start"
+                                    )}>
+                                        {/* Card for odd items (top) */}
+                                        {index % 2 === 0 && (
+                                            <div className="order-1 mb-4">
+                                                <Card className="bg-card/10 border-primary-foreground/20 text-primary-foreground transition-all duration-300 hover:scale-[1.02] hover:shadow-xl w-[220px]">
+                                                    <CardHeader className="p-4">
+                                                        <h4 className="font-headline text-lg text-primary-foreground">{step.title}</h4>
+                                                    </CardHeader>
+                                                    <CardContent className="p-4 pt-0">
+                                                        <p className="text-primary-foreground/80 mt-2 text-sm">{step.description}</p>
+                                                    </CardContent>
+                                                </Card>
+                                            </div>
+                                        )}
+
+                                        {/* Vertical line */}
+                                        <div className="h-10 w-px bg-primary-foreground/30 order-2"></div>
+
                                         {/* Circle */}
-                                        <div className="mx-4 flex h-12 w-12 items-center justify-center rounded-full bg-secondary text-secondary-foreground ring-4 ring-primary font-bold text-lg z-10 shrink-0">
+                                        <div className="order-3 relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-secondary text-secondary-foreground ring-4 ring-primary font-bold text-lg shrink-0">
                                             {index + 1}
                                         </div>
-                                        {/* Right line */}
-                                        <div className="flex-1 border-t-2 border-dashed border-primary-foreground/30" style={{ visibility: index === processSteps.length - 1 ? 'hidden' : 'visible' }} />
+
+                                        {/* Vertical line for even items */}
+                                        <div className={cn(
+                                            "h-10 w-px bg-primary-foreground/30 order-4",
+                                            index % 2 !== 0 ? "block" : "hidden"
+                                        )}></div>
+
+                                         {/* Card for even items (bottom) */}
+                                        {index % 2 !== 0 && (
+                                            <div className="order-5 mt-4">
+                                                <Card className="bg-card/10 border-primary-foreground/20 text-primary-foreground transition-all duration-300 hover:scale-[1.02] hover:shadow-xl w-[220px]">
+                                                    <CardHeader className="p-4">
+                                                        <h4 className="font-headline text-lg text-primary-foreground">{step.title}</h4>
+                                                    </CardHeader>
+                                                    <CardContent className="p-4 pt-0">
+                                                        <p className="text-primary-foreground/80 mt-2 text-sm">{step.description}</p>
+                                                    </CardContent>
+                                                </Card>
+                                            </div>
+                                        )}
                                     </div>
-                                    <Card className="bg-card/10 border-primary-foreground/20 text-primary-foreground transition-all duration-300 hover:scale-[1.02] hover:shadow-xl h-full w-full">
-                                        <CardHeader className="p-4">
-                                            <h4 className="font-headline text-lg text-primary-foreground">{step.title}</h4>
-                                        </CardHeader>
-                                        <CardContent className="p-4 pt-0">
-                                            <p className="text-primary-foreground/80 mt-2 text-sm">{step.description}</p>
-                                        </CardContent>
-                                    </Card>
                                 </div>
                             ))}
                         </div>
