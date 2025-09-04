@@ -56,6 +56,9 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  icons: {
+    icon: '/icon.png',
+  }
 };
 
 export default function RootLayout({
@@ -65,9 +68,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-PT" suppressHydrationWarning>
-      <head>
-        <link rel="icon" href="/favicon.png" type="image/png" sizes="any" />
-      </head>
+      <head />
       <body className={cn("font-sans antialiased bg-background text-foreground", fontSans.variable, fontHeadline.variable)}>
         <div className="flex flex-col min-h-screen">
           <Header />
