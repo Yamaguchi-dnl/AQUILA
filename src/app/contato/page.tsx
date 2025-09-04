@@ -18,6 +18,7 @@ export default function ContatoPage() {
   return (
     <>
       <PageHeader
+        pretitle="FALE CONOSCO"
         title="Contato"
         subtitle="Estamos à sua disposição para qualquer esclarecimento."
       />
