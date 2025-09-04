@@ -1,17 +1,16 @@
 
-
-import { fundsData } from "@/lib/data";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CheckCircle, Clock, Check, Star } from "lucide-react";
+import { CheckCircle, Clock } from "lucide-react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Separator } from "@/components/ui/separator";
 import { InterestFormDialog } from "@/components/forms/interest-form";
 import { cn } from "@/lib/utils";
-import { PageHeader } from "@/components/shared/page-header";
 import { AnimatedSection } from "@/components/shared/animated-section";
+import { getPageContentBySlug, findBlock } from "@/lib/data-loader";
+import type { Fund } from "@/lib/types";
+import { fundsData } from "@/lib/data";
 
 export const metadata = {
   title: "Fundos de Investimento",
@@ -25,22 +24,36 @@ const FundDetail = ({ label, value, isPrimary }: { label: string; value: string 
     </div>
 );
 
-export default function FundosPage() {
+// Helper function to find fund data from static lib/data.ts
+const getFundStaticData = (slug: string): Fund | undefined => {
+    return fundsData.find(f => f.slug === slug);
+}
+
+export default async function FundosPage() {
+  const blocks = await getPageContentBySlug('fundos');
+
+  const headerBlock = findBlock(blocks, 'fundos-header');
+  const fundBlocks = blocks.filter(b => b.block_type.startsWith('fund-'));
+
   return (
     <>
         <section className="relative bg-primary pt-32 md:pt-40 pb-20 md:pb-24">
             <div className="container relative z-10">
                 <div className="text-center">
                     <p className="text-sm uppercase tracking-widest text-primary-foreground/80 font-headline">Conheça as oportunidades</p>
-                    <h1 className="font-headline text-4xl md:text-5xl text-primary-foreground uppercase mt-2">Nossos Fundos</h1>
+                    <h1 className="font-headline text-4xl md:text-5xl text-primary-foreground uppercase mt-2">{headerBlock?.title || 'Nossos Fundos'}</h1>
                     <p className="mt-4 mb-16 max-w-3xl mx-auto text-lg text-primary-foreground/90">
-                        Explore nosso portfólio de fundos de investimento em Portugal, incluindo opções elegíveis para o Golden Visa.
+                        {headerBlock?.content || 'Explore nosso portfólio de fundos de investimento em Portugal, incluindo opções elegíveis para o Golden Visa.'}
                     </p>
                 </div>
             </div>
         </section>
       <div className="space-y-0">
-      {fundsData.map((fund, index) => {
+      {fundBlocks.map((block, index) => {
+          const fundSlug = block.block_type.replace('fund-', '');
+          const fund = getFundStaticData(fundSlug);
+          if (!fund) return null;
+
           const isPrimarySection = index % 2 !== 0;
           const isReversed = index % 2 !== 0;
           
@@ -68,9 +81,9 @@ export default function FundosPage() {
                             {fund.detalhes.elegibilidadeGoldenVisa && (
                                 <Badge variant={fund.slug === 'aquila-wheels' ? 'default' : 'secondary'} className={cn("mb-2", fund.slug === 'aquila-hotel-invest' && 'bg-white/20 text-white backdrop-blur-sm border border-white/30')}>Elegível para Golden Visa</Badge>
                             )}
-                            <h2 className={cn("font-headline text-3xl md:text-4xl uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>{fund.nome}</h2>
-                            <p className={cn("mt-2 text-lg font-semibold", isPrimarySection ? "text-primary-foreground/90" : "text-foreground")}>{fund.subtitulo}</p>
-                            <div className={cn("mt-6 prose prose-lg max-w-none", isPrimarySection ? "text-primary-foreground/80" : "text-muted-foreground")} dangerouslySetInnerHTML={{ __html: fund.descricaoHtml }} />
+                            <h2 className={cn("font-headline text-3xl md:text-4xl uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>{block.title || fund.nome}</h2>
+                            <p className={cn("mt-2 text-lg font-semibold", isPrimarySection ? "text-primary-foreground/90" : "text-foreground")}>{block.content || fund.subtitulo}</p>
+                            <div className={cn("mt-6 prose prose-lg max-w-none", isPrimarySection ? "text-primary-foreground/80" : "text-muted-foreground")} dangerouslySetInnerHTML={{ __html: block.sub_content || fund.descricaoHtml }} />
                       </AnimatedSection>
                       <AnimatedSection delay={0.1}>
                           <Card className={cn("shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
