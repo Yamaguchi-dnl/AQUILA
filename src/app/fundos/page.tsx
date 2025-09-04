@@ -28,11 +28,12 @@ const FundDetail = ({ label, value, isPrimary }: { label: string; value: string 
 export default function FundosPage() {
   return (
     <>
-        <section className="relative bg-cover bg-center bg-no-repeat py-28 md:py-40" style={{backgroundImage: "url('https://ik.imagekit.io/leosmc2zb/298985.jpg')"}}>
+        <section className="relative bg-cover bg-center bg-no-repeat py-32 md:py-48" style={{backgroundImage: "url('https://ik.imagekit.io/leosmc2zb/298985.jpg')"}}>
             <div className="absolute inset-0 bg-primary/70" />
             <div className="container relative z-10">
                 <div className="text-center">
-                    <h1 className="font-headline text-4xl md:text-5xl text-primary-foreground uppercase">Nossos Fundos</h1>
+                    <p className="text-sm uppercase tracking-widest text-primary-foreground/80 font-headline">Conheça as oportunidades</p>
+                    <h1 className="font-headline text-4xl md:text-5xl text-primary-foreground uppercase mt-2">Nossos Fundos</h1>
                     <p className="mt-4 max-w-3xl mx-auto text-lg text-primary-foreground/90">
                         Explore nosso portfólio de fundos de investimento em Portugal, incluindo opções elegíveis para o Golden Visa.
                     </p>
