@@ -1,3 +1,4 @@
+
 import { PageHeader } from "@/components/shared/page-header";
 import { goldenVisaFaqs, fundsData } from "@/lib/data";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -39,16 +40,16 @@ export default function GoldenVisaPage() {
                 subtitle="Seu passaporte para a Europa através de investimentos de valor."
             />
             
-            <section className="bg-background">
+            <section className="bg-primary text-primary-foreground">
                 <div className="container">
                     <div>
-                        <h2 className="font-headline text-3xl text-primary uppercase">Benefícios de um Futuro Europeu</h2>
-                        <p className="mt-4 text-muted-foreground max-w-4xl">O programa Golden Visa de Portugal é um dos mais procurados do mundo, oferecendo um caminho claro para a residência e cidadania europeia em troca de um investimento qualificado no país.</p>
+                        <h2 className="font-headline text-3xl text-primary-foreground uppercase">Benefícios de um Futuro Europeu</h2>
+                        <p className="mt-4 text-primary-foreground/80 max-w-4xl">O programa Golden Visa de Portugal é um dos mais procurados do mundo, oferecendo um caminho claro para a residência e cidadania europeia em troca de um investimento qualificado no país.</p>
                         <ul className="mt-6 space-y-3 columns-1 md:columns-2 gap-x-8">
                            {benefits.map((benefit, i) => (
                                <li key={i} className="flex items-start mb-3 break-inside-avoid">
-                                   <Check className="h-5 w-5 text-green-600 mr-3 mt-1 shrink-0" />
-                                   <span>{benefit}</span>
+                                   <Check className="h-5 w-5 text-green-400 mr-3 mt-1 shrink-0" />
+                                   <span className="text-primary-foreground/90">{benefit}</span>
                                </li>
                            ))}
                         </ul>
