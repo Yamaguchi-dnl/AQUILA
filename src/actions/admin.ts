@@ -13,8 +13,65 @@ function getPublicPathFromSlug(slug: string): string {
         'home': '/',
         'sobre': '/sobre',
         'trabalhe-conosco': '/trabalhe-conosco',
+        'equipa': '/equipa',
+        'fundos': '/fundos',
+        'golden-visa': '/golden-visa',
     };
     return slugToPathMap[slug] || `/${slug}`;
+}
+
+
+export async function savePage(formData: FormData) {
+    const supabase = createClientForAction();
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!user) {
+        return { success: false, message: 'Não autenticado.' };
+    }
+
+    try {
+        const rawData = {
+            id: formData.get('id') as string | undefined,
+            title: formData.get('title') as string,
+            slug: (formData.get('slug') as string).toLowerCase().replace(/\s+/g, '-'),
+            description: formData.get('description') as string | undefined,
+        };
+
+        if (!rawData.title || !rawData.slug) {
+            return { success: false, message: 'Título e Slug são obrigatórios.' };
+        }
+        
+        // Check for duplicate slug
+        const query = supabase.from('pages').select('id').eq('slug', rawData.slug);
+        if (rawData.id) {
+            query.neq('id', rawData.id);
+        }
+        const { data: existingPage, error: slugError } = await query.single();
+
+        if (slugError && slugError.code !== 'PGRST116') { // Ignore "No rows found"
+            throw new Error(`Erro ao verificar slug: ${slugError.message}`);
+        }
+        if (existingPage) {
+            return { success: false, message: 'Este "slug" já está em uso por outra página.' };
+        }
+
+        const { error: dbError } = await supabase.from('pages').upsert(rawData);
+
+        if (dbError) {
+            throw new Error(`Erro no banco de dados: ${dbError.message}`);
+        }
+
+        revalidatePath('/admin/pages');
+        if (rawData.id) {
+            revalidatePath(`/admin/pages/${rawData.slug}`);
+        }
+
+        return { success: true, message: `Página ${rawData.id ? 'atualizada' : 'criada'} com sucesso.` };
+
+    } catch (error: any) {
+        console.error("Erro na Server Action (savePage):", error);
+        return { success: false, message: error.message || 'Ocorreu um erro inesperado.' };
+    }
 }
 
 

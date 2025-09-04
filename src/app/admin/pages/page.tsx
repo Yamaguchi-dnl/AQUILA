@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Loader2, PlusCircle, Edit, Trash2 } from 'lucide-react';
 import Link from 'next/link';
 import { useToast } from '@/hooks/use-toast';
+import { PageFormDialog } from '@/components/forms/page-form';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -34,6 +35,8 @@ export default function AdminPagesList() {
   const { toast } = useToast();
   const [pages, setPages] = useState<Page[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [selectedPage, setSelectedPage] = useState<Page | null>(null);
 
   const fetchPages = async () => {
     setLoading(true);
@@ -54,6 +57,16 @@ export default function AdminPagesList() {
   useEffect(() => {
     fetchPages();
   }, []);
+
+  const handleAddPage = () => {
+    setSelectedPage(null);
+    setIsFormOpen(true);
+  };
+  
+  const handleEditPage = (page: Page) => {
+      setSelectedPage(page);
+      setIsFormOpen(true);
+  };
 
   const handleDeletePage = async (pageId: string) => {
     try {
@@ -77,6 +90,11 @@ export default function AdminPagesList() {
         toast({ variant: 'destructive', title: 'Erro ao excluir', description: error.message });
     }
   };
+  
+  const handleSuccess = () => {
+      fetchPages();
+      setIsFormOpen(false);
+  }
 
   if (loading) {
     return <div className="flex justify-center items-center h-full"><Loader2 className="h-8 w-8 animate-spin" /></div>;
@@ -84,7 +102,12 @@ export default function AdminPagesList() {
 
   return (
     <>
-      <PageHeader title="Páginas do Site" subtitle="Gerencie as páginas e o conteúdo de cada uma." />
+      <PageHeader title="Páginas do Site" subtitle="Gerencie as páginas e o conteúdo de cada uma.">
+         <div className="text-center mt-4">
+            <Button onClick={handleAddPage}><PlusCircle className="mr-2 h-4 w-4" /> Adicionar Nova Página</Button>
+         </div>
+      </PageHeader>
+      
       <section className="py-8">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {pages.map(page => (
@@ -99,7 +122,7 @@ export default function AdminPagesList() {
               <CardContent className="flex justify-end gap-2">
                  <AlertDialog>
                     <AlertDialogTrigger asChild>
-                      <Button variant="destructive-outline" size="sm"><Trash2 className="h-4 w-4" /></Button>
+                      <Button variant="destructive-outline" size="icon"><Trash2 className="h-4 w-4" /></Button>
                     </AlertDialogTrigger>
                     <AlertDialogContent>
                       <AlertDialogHeader>
@@ -114,9 +137,10 @@ export default function AdminPagesList() {
                       </AlertDialogFooter>
                     </AlertDialogContent>
                   </AlertDialog>
-                <Button asChild variant="outline" size="sm">
+                  <Button variant="outline" size="sm" onClick={() => handleEditPage(page)}><Edit className="h-4 w-4 mr-2" />Editar</Button>
+                  <Button asChild variant="default" size="sm">
                   <Link href={`/admin/pages/${page.slug}`}>
-                    <Edit className="h-4 w-4 mr-2" /> Editar Conteúdo
+                     Editar Conteúdo
                   </Link>
                 </Button>
               </CardContent>
@@ -124,6 +148,13 @@ export default function AdminPagesList() {
           ))}
         </div>
       </section>
+
+      <PageFormDialog 
+        isOpen={isFormOpen}
+        setIsOpen={setIsFormOpen}
+        page={selectedPage}
+        onSuccess={handleSuccess}
+      />
     </>
   );
 }
