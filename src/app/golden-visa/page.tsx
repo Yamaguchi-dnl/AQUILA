@@ -43,7 +43,7 @@ export default function GoldenVisaPage() {
             <section className="bg-primary text-primary-foreground rounded-t-3xl">
                 <div className="container">
                     <div>
-                        <h2 className="font-headline text-3xl text-primary-foreground uppercase">Benefícios de um Futuro Europeu</h2>
+                        <h2 className="font-headline text-3xl md:text-4xl text-primary-foreground uppercase">Benefícios de um Futuro Europeu</h2>
                         <p className="mt-4 text-primary-foreground/80 max-w-4xl">O programa Golden Visa de Portugal é um dos mais procurados do mundo, oferecendo um caminho claro para a residência e cidadania europeia em troca de um investimento qualificado no país.</p>
                         <ul className="mt-6 space-y-3 columns-1 md:columns-2 gap-x-8">
                            {benefits.map((benefit, i) => (
