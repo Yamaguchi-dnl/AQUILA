@@ -40,7 +40,7 @@ export default function GoldenVisaPage() {
             />
             
             <section className="bg-background">
-                <div className="container grid md:grid-cols-2 gap-12 items-center">
+                <div className="container grid md:grid-cols-2 gap-12 items-start">
                     <div>
                         <h2 className="font-headline text-3xl text-primary uppercase">Benefícios de um Futuro Europeu</h2>
                         <p className="mt-4 text-muted-foreground">O programa Golden Visa de Portugal é um dos mais procurados do mundo, oferecendo um caminho claro para a residência e cidadania europeia em troca de um investimento qualificado no país.</p>
@@ -53,21 +53,21 @@ export default function GoldenVisaPage() {
                            ))}
                         </ul>
                     </div>
-                    <div className="bg-primary text-primary-foreground p-8 rounded-lg">
-                        <h3 className="font-headline text-2xl text-center uppercase">Etapas do Processo</h3>
+                    <div>
+                        <h3 className="font-headline text-2xl text-center uppercase text-primary">Etapas do Processo</h3>
                          <div className="relative mt-12">
                              {processSteps.map((step, index) => (
                                 <div key={index} className="relative pl-16 pb-12 last:pb-0">
                                    {index !== processSteps.length - 1 && (
-                                    <div className="absolute left-[22px] top-5 h-full w-px bg-primary-foreground/20" />
+                                    <div className="absolute left-[22px] top-5 h-full w-px bg-border" />
                                    )}
-                                   <div className="absolute left-0 top-0 flex h-12 w-12 items-center justify-center rounded-full bg-secondary text-secondary-foreground ring-4 ring-primary font-bold text-lg z-10">
+                                   <div className="absolute left-0 top-0 flex h-12 w-12 items-center justify-center rounded-full bg-secondary text-secondary-foreground ring-4 ring-background font-bold text-lg z-10">
                                        {index + 1}
                                    </div>
-                                   <Card className="ml-4 bg-primary-foreground/5 border-primary-foreground/10 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
+                                   <Card className="ml-4 bg-card border-border transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
                                        <CardContent className="p-4">
-                                           <h4 className="font-headline text-lg text-primary-foreground">{step.title}</h4>
-                                           <p className="text-primary-foreground/70 mt-2 text-sm">{step.description}</p>
+                                           <h4 className="font-headline text-lg text-foreground">{step.title}</h4>
+                                           <p className="text-muted-foreground mt-2 text-sm">{step.description}</p>
                                        </CardContent>
                                    </Card>
                                </div>
