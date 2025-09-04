@@ -100,9 +100,9 @@ export default function FundosPage() {
                                 <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
                                     {fund.beneficios.map((beneficio, i) => (
                                         <AnimatedSection key={i} delay={i * 0.1}>
-                                            <Card className={cn("h-full text-center", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
-                                                <CardContent className="p-6">
-                                                    <CheckCircle className="mx-auto h-8 w-8 text-green-500" />
+                                            <Card className={cn("text-center flex flex-col", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
+                                                <CardContent className="p-6 flex-grow flex flex-col items-center justify-center">
+                                                    <CheckCircle className="mx-auto h-8 w-8 text-green-500 shrink-0" />
                                                     <p className={cn("mt-4 font-medium", isPrimarySection ? "text-primary-foreground/90" : "text-muted-foreground")}>{beneficio}</p>
                                                 </CardContent>
                                             </Card>
