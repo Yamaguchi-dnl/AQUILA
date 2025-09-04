@@ -29,7 +29,7 @@ export default function FundosPage() {
   return (
     <>
         <section className="relative bg-cover bg-center bg-no-repeat py-32 md:py-48" style={{backgroundImage: "url('https://ik.imagekit.io/leosmc2zb/298985.jpg')"}}>
-            <div className="absolute inset-0 bg-primary/70" />
+            <div className="absolute inset-0 bg-primary/80" />
             <div className="container relative z-10">
                 <div className="text-center">
                     <p className="text-sm uppercase tracking-widest text-primary-foreground/80 font-headline">Conheça as oportunidades</p>
