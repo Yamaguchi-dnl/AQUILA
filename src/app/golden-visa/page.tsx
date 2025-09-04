@@ -46,6 +46,16 @@ export default function GoldenVisaPage() {
             <section className="bg-primary text-primary-foreground rounded-t-3xl">
                 <div className="container">
                     <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+                        <div className="hidden lg:block">
+                            <Image 
+                                src="https://ik.imagekit.io/leosmc2zb/golden-visa-portugal-nacionalidade-portuguesa.jpeg"
+                                alt="Passaporte europeu sobre um mapa"
+                                width={600}
+                                height={400}
+                                className="rounded-lg shadow-xl"
+                                data-ai-hint="passport map"
+                            />
+                        </div>
                         <div>
                             <h2 className="font-headline text-3xl md:text-4xl text-primary-foreground uppercase">Benefícios de um Futuro Europeu</h2>
                             <p className="mt-4 text-primary-foreground/80">O programa Golden Visa de Portugal é um dos mais procurados do mundo, oferecendo um caminho claro para a residência e cidadania europeia em troca de um investimento qualificado no país.</p>
@@ -57,16 +67,6 @@ export default function GoldenVisaPage() {
                                    </li>
                                ))}
                             </ul>
-                        </div>
-                        <div className="hidden lg:block">
-                            <Image 
-                                src="https://ik.imagekit.io/leosmc2zb/golden-visa-portugal-nacionalidade-portuguesa.jpeg"
-                                alt="Passaporte europeu sobre um mapa"
-                                width={600}
-                                height={400}
-                                className="rounded-lg shadow-xl"
-                                data-ai-hint="passport map"
-                            />
                         </div>
                     </div>
                 </div>
