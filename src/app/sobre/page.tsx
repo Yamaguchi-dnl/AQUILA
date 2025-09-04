@@ -60,7 +60,7 @@ export default function SobrePage() {
       <section className="bg-primary text-primary-foreground rounded-t-3xl">
         <div className="container text-center">
             <AnimatedSection>
-            <h2 className="font-headline text-3xl md:text-4xl uppercase">Nossos Parceiros Estratégicos</h2>
+            <h2 className="font-headline text-4xl uppercase">Nossos Parceiros Estratégicos</h2>
             <p className="mt-4 text-lg text-primary-foreground/80 max-w-3xl mx-auto">
                 Colaboramos com líderes de mercado para oferecer estrutura, segurança e as melhores oportunidades para nossos investidores.
             </p>

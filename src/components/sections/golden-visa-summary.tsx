@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,7 +21,7 @@ export function GoldenVisaSummary() {
             <div className="relative z-10 grid md:grid-cols-2 gap-8 items-center">
                 <div className="text-primary-foreground">
                     <AnimatedSection>
-                    <h3 className="font-headline text-3xl md:text-4xl lg:text-[2.75rem] lg:leading-[1.1] uppercase mt-2">
+                    <h3 className="font-headline text-4xl uppercase mt-2">
                         O caminho para Portugal com o Golden Visa
                     </h3>
                     </AnimatedSection>

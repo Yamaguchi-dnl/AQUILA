@@ -93,11 +93,8 @@ export default function FundosPage() {
                   {fund.status === 'ativo' ? (
                       <>
                           {fund.beneficios.length > 0 && (
-                                <div className="mt-12">
-                                <AnimatedSection>
-                                    <h4 className={cn("text-2xl font-headline text-center uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>Benefícios</h4>
-                                </AnimatedSection>
-                                <AnimatedSection delay={0.1}>
+                                <AnimatedSection className="mt-12">
+                                    <h4 className={cn("text-4xl font-headline text-center uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>Benefícios</h4>
                                     <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
                                         {fund.beneficios.map((beneficio, i) => (
                                             <Card key={i} className={cn("text-center flex flex-col", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
@@ -109,14 +106,12 @@ export default function FundosPage() {
                                         ))}
                                     </div>
                                 </AnimatedSection>
-                                </div>
                           )}
 
                           {fund.hoteis && (
                               <div className="mt-12">
                                 <AnimatedSection>
-                                  <h4 className={cn("text-2xl font-headline text-center uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>Hotéis Sob Gestão</h4>
-                                </AnimatedSection>
+                                  <h4 className={cn("text-4xl font-headline text-center uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>Hotéis Sob Gestão</h4>
                                   <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                                       {fund.hoteis.map((hotel, i) => {
                                           let imageUrl = `${hotel.imagem.src}?v=${hotel.imagem.v}`;
@@ -148,6 +143,7 @@ export default function FundosPage() {
                                           )
                                       })}
                                   </div>
+                                </AnimatedSection>
                               </div>
                           )}
 
@@ -161,7 +157,7 @@ export default function FundosPage() {
                         <AnimatedSection className="text-center mt-16">
                           <Card className={cn("max-w-2xl mx-auto p-8 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
                               <Clock className="mx-auto h-12 w-12 text-primary" />
-                              <h4 className={cn("mt-4 text-2xl font-headline uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>Em Breve</h4>
+                              <h4 className={cn("mt-4 text-4xl font-headline uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>Em Breve</h4>
                               <p className={cn("mt-2", isPrimarySection ? "text-primary-foreground/80" : "text-muted-foreground")}>Este fundo está em fase final de estruturação.</p>
                               <div className="mt-6">
                                   <InterestFormDialog fundName={fund.nome} buttonVariant={isPrimarySection ? "secondary" : "default"} buttonSize="lg" />
