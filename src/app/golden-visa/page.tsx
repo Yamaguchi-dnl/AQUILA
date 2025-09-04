@@ -165,7 +165,7 @@ export default function GoldenVisaPage() {
                 </div>
             </section>
 
-            <section className="bg-background">
+            <section className="bg-background pt-0">
                 <div className="container">
                     <Card className="max-w-4xl mx-auto p-8 md:p-12 shadow-xl">
                         <div className="text-center">
