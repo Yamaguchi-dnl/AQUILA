@@ -2,7 +2,7 @@
 
 import { fundsData } from "@/lib/data";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CheckCircle, Clock } from "lucide-react";
+import { CheckCircle, Clock, Check } from "lucide-react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -58,8 +58,8 @@ export default function FundosPage() {
               <div className="container relative z-10">
                   <div className="grid lg:grid-cols-3 gap-8 lg:gap-16 items-center">
                       <AnimatedSection className={cn("lg:col-span-2", isReversed && "lg:order-last")}>
+                            {fund.detalhes.elegibilidadeGoldenVisa && <Badge variant="destructive" className="mb-2">Elegível para Golden Visa</Badge>}
                             <h2 className={cn("font-headline text-3xl md:text-4xl uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>{fund.nome}</h2>
-                            {fund.detalhes.elegibilidadeGoldenVisa && <Badge variant="destructive" className="mt-2">Elegível para Golden Visa</Badge>}
                             <p className={cn("mt-2 text-lg font-semibold", isPrimarySection ? "text-primary-foreground/90" : "text-foreground")}>{fund.subtitulo}</p>
                             <div className={cn("mt-6 prose prose-lg max-w-none", isPrimarySection ? "text-primary-foreground/80" : "text-muted-foreground")} dangerouslySetInnerHTML={{ __html: fund.descricaoHtml }} />
                       </AnimatedSection>
@@ -83,23 +83,21 @@ export default function FundosPage() {
                   {fund.status === 'ativo' ? (
                       <>
                           {fund.beneficios.length > 0 && (
-                              <div className="mt-12">
+                                <div className="mt-12">
                                 <AnimatedSection>
-                                  <h4 className={cn("text-2xl font-headline text-center uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>Benefícios</h4>
+                                    <h4 className={cn("text-2xl font-headline text-center uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>Benefícios</h4>
                                 </AnimatedSection>
-                                  <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                                      {fund.beneficios.map((beneficio, i) => (
-                                          <AnimatedSection key={i} delay={i * 0.1}>
-                                            <Card className={cn("bg-card transition-all duration-300 hover:scale-[1.02] hover:shadow-xl h-full", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
-                                                <CardContent className="p-6 flex items-center gap-4 text-center justify-center">
-                                                    <CheckCircle className="h-8 w-8 text-green-600 shrink-0" />
-                                                    <p className={cn(isPrimarySection ? "text-primary-foreground" : "text-foreground")}>{beneficio}</p>
-                                                </CardContent>
-                                            </Card>
-                                          </AnimatedSection>
-                                      ))}
-                                  </div>
-                              </div>
+                                <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    {fund.beneficios.map((beneficio, i) => (
+                                        <AnimatedSection key={i} delay={i * 0.1}>
+                                            <div className="flex items-start gap-4">
+                                                <Check className="h-6 w-6 text-green-500 mt-1 shrink-0" />
+                                                <p className={cn("flex-1", isPrimarySection ? "text-primary-foreground/90" : "text-muted-foreground")}>{beneficio}</p>
+                                            </div>
+                                        </AnimatedSection>
+                                    ))}
+                                </div>
+                                </div>
                           )}
 
                           {fund.hoteis && (
