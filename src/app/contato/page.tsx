@@ -21,7 +21,7 @@ export default function ContatoPage() {
         title="Contato"
         subtitle="Estamos à sua disposição para qualquer esclarecimento."
       />
-      <section>
+      <section className="pt-0 md:pt-0 lg:pt-0">
         <div className="container">
           <div className="grid lg:grid-cols-5 gap-12">
             <div className="lg:col-span-2">
