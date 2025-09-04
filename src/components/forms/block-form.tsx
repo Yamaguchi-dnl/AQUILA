@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useEffect, useRef, useState, useTransition } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from "@/components/ui/button";
 import {
@@ -41,23 +41,23 @@ type BlockFormDialogProps = {
 export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, onSuccess, lastOrderIndex }: BlockFormDialogProps) {
     const { toast } = useToast();
     const formRef = useRef<HTMLFormElement>(null);
-    const [isPending, startTransition] = useTransition();
+    const [isPending, setIsPending] = useState(false);
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        setIsPending(true);
         const formData = new FormData(event.currentTarget);
         
-        startTransition(async () => {
-            const result = await saveBlock(null, formData);
+        const result = await saveBlock(formData);
 
-            if (result.success) {
-                toast({ title: 'Sucesso!', description: result.message });
-                onSuccess();
-                setIsOpen(false);
-            } else {
-                toast({ variant: 'destructive', title: 'Erro ao salvar', description: result.message || 'Ocorreu um erro desconhecido.' });
-            }
-        });
+        if (result.success) {
+            toast({ title: 'Sucesso!', description: result.message });
+            onSuccess();
+            setIsOpen(false);
+        } else {
+            toast({ variant: 'destructive', title: 'Erro ao salvar', description: result.message || 'Ocorreu um erro desconhecido.' });
+        }
+        setIsPending(false);
     };
 
     useEffect(() => {

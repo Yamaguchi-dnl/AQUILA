@@ -8,6 +8,7 @@ import { z } from 'zod';
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
 
+// Manter o schema para referência ou validação futura se necessário, mas não será usado na action por enquanto.
 const blockSchema = z.object({
   id: z.string().optional(),
   page_id: z.string(),
@@ -17,58 +18,54 @@ const blockSchema = z.object({
   content: z.string().optional(),
 });
 
-export async function saveBlock(prevState: any, formData: FormData) {
+export async function saveBlock(formData: FormData) {
     const supabase = createClient();
 
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) {
-        return { message: 'Não autenticado.', success: false };
-    }
-    
-    const { data: adminUser, error: adminError } = await supabase
-        .from('users')
-        .select('is_admin')
-        .eq('id', user.id)
-        .single();
-
-    if (adminError || !adminUser || adminUser.is_admin !== true) {
-        return { message: 'Não autorizado.', success: false };
-    }
-
-    const validatedBlock = blockSchema.safeParse({
-        id: formData.get('id') as string || undefined,
-        page_id: formData.get('page_id') as string,
-        order_index: formData.get('order_index') as string,
-        title: formData.get('title') as string,
-        block_type: formData.get('block_type') as string,
-        content: formData.get('content') as string || undefined,
-    });
-
-    if (!validatedBlock.success) {
-        return { 
-            message: 'Dados do bloco inválidos.', 
-            success: false, 
-            errors: validatedBlock.error.flatten().fieldErrors 
-        };
-    }
-
     try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) {
+            return { success: false, message: 'Não autenticado.' };
+        }
+        
+        const { data: adminUser, error: adminError } = await supabase
+            .from('users')
+            .select('is_admin')
+            .eq('id', user.id)
+            .single();
+
+        if (adminError || !adminUser || adminUser.is_admin !== true) {
+            return { success: false, message: 'Não autorizado.' };
+        }
+
+        const rawData = {
+            id: formData.get('id') as string || undefined,
+            page_id: formData.get('page_id') as string,
+            order_index: parseInt(formData.get('order_index') as string, 10),
+            title: formData.get('title') as string,
+            block_type: formData.get('block_type') as string,
+            content: formData.get('content') as string || undefined,
+        };
+
+        if (!rawData.page_id || !rawData.title || !rawData.block_type || isNaN(rawData.order_index)) {
+             return { success: false, message: 'Dados do bloco inválidos. Campos obrigatórios estão faltando.' };
+        }
+
         const pageSlug = formData.get('pageSlug') as string;
         const image_file = formData.get('image_file') as File | null;
         const current_image_url = formData.get('current_image_url') as string | null;
 
         if (!pageSlug) {
-             return { message: 'Slug da página ausente.', success: false };
+             return { success: false, message: 'Slug da página ausente.' };
         }
         
         let imageUrl = current_image_url;
 
         if (image_file && image_file.size > 0) {
             if (image_file.size > MAX_FILE_SIZE) {
-                 return { message: 'Tamanho máximo da imagem é 5MB.', success: false };
+                 return { success: false, message: 'Tamanho máximo da imagem é 5MB.' };
             }
             if (!ACCEPTED_IMAGE_TYPES.includes(image_file.type)) {
-                 return { message: 'Apenas os formatos .jpg, .jpeg, .png e .webp são aceitos.', success: false };
+                 return { success: false, message: 'Apenas os formatos .jpg, .jpeg, .png e .webp são aceitos.' };
             }
             
             if (imageUrl) {
@@ -86,7 +83,7 @@ export async function saveBlock(prevState: any, formData: FormData) {
                 .upload(filePath, image_file);
 
             if (uploadError) {
-                return { message: `Falha no upload da imagem: ${uploadError.message}`, success: false };
+                return { success: false, message: `Falha no upload da imagem: ${uploadError.message}` };
             }
 
             const { data: { publicUrl } } = supabase.storage
@@ -96,7 +93,7 @@ export async function saveBlock(prevState: any, formData: FormData) {
         }
         
         const dataToUpsert: any = {
-            ...validatedBlock.data,
+            ...rawData,
             image_url: imageUrl,
             updated_at: new Date().toISOString(),
             updated_by: user.id,
@@ -110,17 +107,17 @@ export async function saveBlock(prevState: any, formData: FormData) {
 
         if (dbError) {
              console.error('Erro do Supabase:', dbError);
-             return { message: dbError.message, success: false };
+             return { success: false, message: dbError.message };
         }
 
         revalidatePath(`/admin/pages/${pageSlug}`);
         revalidatePath(`/${pageSlug === 'home' ? '' : pageSlug }`);
         
-        return { message: `Bloco ${dataToUpsert.id ? 'atualizado' : 'criado'} com sucesso.`, success: true };
+        return { success: true, message: `Bloco ${dataToUpsert.id ? 'atualizado' : 'criado'} com sucesso.` };
 
     } catch (error: any) {
         console.error("Erro na Server Action:", error);
-        return { message: error.message || 'Ocorreu um erro inesperado no servidor.', success: false };
+        return { success: false, message: error.message || 'Ocorreu um erro inesperado no servidor.' };
     }
 }
 
