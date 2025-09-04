@@ -59,7 +59,7 @@ export default function GoldenVisaPage() {
 
             <section className="bg-primary text-primary-foreground">
                 <div className="container">
-                     <h3 className="font-headline text-3xl text-center uppercase text-primary-foreground">Etapas do Processo</h3>
+                     <h3 className="font-headline text-3xl md:text-4xl text-center uppercase text-primary-foreground">Etapas do Processo</h3>
                      <div className="relative mt-12">
                         <div className="absolute left-0 right-0 top-6 hidden h-px -translate-y-1/2 bg-primary-foreground/30 md:block" aria-hidden="true"></div>
                          <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
