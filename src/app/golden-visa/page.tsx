@@ -40,44 +40,46 @@ export default function GoldenVisaPage() {
             />
             
             <section className="bg-background">
-                <div className="container grid md:grid-cols-2 gap-12 items-start">
+                <div className="container">
                     <div>
                         <h2 className="font-headline text-3xl text-primary uppercase">Benefícios de um Futuro Europeu</h2>
-                        <p className="mt-4 text-muted-foreground">O programa Golden Visa de Portugal é um dos mais procurados do mundo, oferecendo um caminho claro para a residência e cidadania europeia em troca de um investimento qualificado no país.</p>
-                        <ul className="mt-6 space-y-3">
+                        <p className="mt-4 text-muted-foreground max-w-4xl">O programa Golden Visa de Portugal é um dos mais procurados do mundo, oferecendo um caminho claro para a residência e cidadania europeia em troca de um investimento qualificado no país.</p>
+                        <ul className="mt-6 space-y-3 columns-1 md:columns-2 gap-x-8">
                            {benefits.map((benefit, i) => (
-                               <li key={i} className="flex items-start">
+                               <li key={i} className="flex items-start mb-3 break-inside-avoid">
                                    <Check className="h-5 w-5 text-green-600 mr-3 mt-1 shrink-0" />
                                    <span>{benefit}</span>
                                </li>
                            ))}
                         </ul>
                     </div>
-                    <div>
-                        <h3 className="font-headline text-2xl text-center uppercase text-primary">Etapas do Processo</h3>
-                         <div className="relative mt-12">
-                             {processSteps.map((step, index) => (
-                                <div key={index} className="relative pl-16 pb-12 last:pb-0">
-                                   {index !== processSteps.length - 1 && (
-                                    <div className="absolute left-[22px] top-5 h-full w-px bg-border" />
-                                   )}
-                                   <div className="absolute left-0 top-0 flex h-12 w-12 items-center justify-center rounded-full bg-secondary text-secondary-foreground ring-4 ring-background font-bold text-lg z-10">
-                                       {index + 1}
-                                   </div>
-                                   <Card className="ml-4 bg-card border-border transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
-                                       <CardContent className="p-4">
-                                           <h4 className="font-headline text-lg text-foreground">{step.title}</h4>
-                                           <p className="text-muted-foreground mt-2 text-sm">{step.description}</p>
-                                       </CardContent>
-                                   </Card>
-                               </div>
-                            ))}
-                        </div>
+                </div>
+            </section>
+
+            <section className="bg-card">
+                <div className="container">
+                     <h3 className="font-headline text-3xl text-center uppercase text-primary">Etapas do Processo</h3>
+                     <div className="relative mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                         {processSteps.map((step, index) => (
+                            <div key={index} className="relative text-center">
+                               <Card className="bg-background border-border transition-all duration-300 hover:scale-[1.02] hover:shadow-xl h-full">
+                                   <CardHeader>
+                                        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary text-primary-foreground ring-4 ring-card font-bold text-lg z-10">
+                                           {index + 1}
+                                       </div>
+                                   </CardHeader>
+                                   <CardContent className="p-4 pt-0">
+                                       <h4 className="font-headline text-lg text-foreground">{step.title}</h4>
+                                       <p className="text-muted-foreground mt-2 text-sm">{step.description}</p>
+                                   </CardContent>
+                               </Card>
+                           </div>
+                        ))}
                     </div>
                 </div>
             </section>
             
-            <section className="bg-card">
+            <section className="bg-background">
                 <div className="container">
                     <div className="text-center max-w-3xl mx-auto">
                         <h2 className="font-headline text-3xl md:text-4xl text-primary uppercase">Fundos Elegíveis para Golden Visa</h2>
@@ -89,7 +91,7 @@ export default function GoldenVisaPage() {
                 </div>
             </section>
 
-            <section className="bg-background">
+            <section className="bg-card">
                 <div className="container max-w-4xl">
                      <div className="text-center">
                         <h2 className="font-headline text-3xl text-primary uppercase">Perguntas Frequentes</h2>
