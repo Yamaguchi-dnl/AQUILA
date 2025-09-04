@@ -53,19 +53,24 @@ export default function GoldenVisaPage() {
                            ))}
                         </ul>
                     </div>
-                    <div className="bg-card p-8 rounded-lg">
-                        <h3 className="font-headline text-2xl text-center text-primary uppercase">Etapas do Processo</h3>
-                         <div className="relative mt-8">
+                    <div className="bg-primary text-primary-foreground p-8 rounded-lg">
+                        <h3 className="font-headline text-2xl text-center uppercase">Etapas do Processo</h3>
+                         <div className="relative mt-12">
                              {processSteps.map((step, index) => (
-                                <div key={index} className="flex items-start mb-8 last:mb-0">
-                                    <div className="flex-shrink-0 w-10 h-10 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold text-lg z-10">
-                                        {index + 1}
-                                    </div>
-                                    <div className="ml-6">
-                                        <h4 className="font-semibold text-lg text-foreground font-headline">{step.title}</h4>
-                                        <p className="text-muted-foreground mt-1">{step.description}</p>
-                                    </div>
-                                </div>
+                                <div key={index} className="relative pl-16 pb-12 last:pb-0">
+                                   {index !== processSteps.length - 1 && (
+                                    <div className="absolute left-[22px] top-5 h-full w-px bg-primary-foreground/20" />
+                                   )}
+                                   <div className="absolute left-0 top-0 flex h-12 w-12 items-center justify-center rounded-full bg-secondary text-secondary-foreground ring-4 ring-primary font-bold text-lg z-10">
+                                       {index + 1}
+                                   </div>
+                                   <Card className="ml-4 bg-primary-foreground/5 border-primary-foreground/10 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
+                                       <CardContent className="p-4">
+                                           <h4 className="font-headline text-lg text-primary-foreground">{step.title}</h4>
+                                           <p className="text-primary-foreground/70 mt-2 text-sm">{step.description}</p>
+                                       </CardContent>
+                                   </Card>
+                               </div>
                             ))}
                         </div>
                     </div>
