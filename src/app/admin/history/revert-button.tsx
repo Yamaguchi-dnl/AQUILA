@@ -4,7 +4,7 @@
 import { useTransition } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
-import { HistoryRestore } from 'lucide-react';
+import { History } from 'lucide-react';
 import { revertBlockToVersion } from '@/actions/admin';
 import {
   AlertDialog,
@@ -42,7 +42,7 @@ export function RevertButton({ versionId, pageSlug }: RevertButtonProps) {
         <AlertDialog>
             <AlertDialogTrigger asChild>
                 <Button variant="outline" size="sm" disabled={isPending}>
-                    <HistoryRestore className="mr-2 h-4 w-4" />
+                    <History className="mr-2 h-4 w-4" />
                     Restaurar
                 </Button>
             </AlertDialogTrigger>
