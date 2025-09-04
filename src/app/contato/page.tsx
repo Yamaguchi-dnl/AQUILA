@@ -22,7 +22,7 @@ export default function ContatoPage() {
         title="Contato"
         subtitle="Estamos à sua disposição para qualquer esclarecimento."
       />
-      <section className="pt-0 md:pt-0 lg:pt-0 bg-primary text-primary-foreground">
+      <section className="pt-0 md:pt-0 lg:pt-0 bg-primary text-primary-foreground rounded-t-3xl">
         <div className="container py-16 md:py-24">
           <div className="grid lg:grid-cols-5 gap-12">
             <div className="lg:col-span-2">
