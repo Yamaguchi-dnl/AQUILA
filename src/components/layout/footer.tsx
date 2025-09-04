@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import { Logo } from "@/components/shared/logo";
 import { navItems } from "@/lib/data";
@@ -15,10 +16,10 @@ export function Footer() {
   const allNavLinks: NavItem[] = navItems.flatMap(item => item.subItems ? item.subItems.map(s => ({label: s.label, href: s.href})) : ({label: item.label, href: item.href!}));
 
   return (
-    <footer className="bg-primary text-primary-foreground/80 relative z-10">
+    <footer className="bg-primary text-primary-foreground/80 relative z-10 rounded-t-3xl">
        <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(30%_40%_at_5%_95%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%),radial-gradient(30%_40%_at_95%_5%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)]"
+        className="absolute inset-0 bg-[radial-gradient(30%_40%_at_5%_95%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%),radial-gradient(30%_40%_at_95%_5%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)] rounded-t-3xl"
       />
       <div className="container py-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -34,7 +35,7 @@ export function Footer() {
                     </Link>
                 </Button>
                 <Button asChild variant="ghost" className="text-primary-foreground hover:bg-primary-foreground/10 hover:text-white" size="icon">
-                    <Link href="https://www'linkedin.com/company/aquila-fcr/" target="_blank" aria-label="LinkedIn">
+                    <Link href="https://www.linkedin.com/company/aquila-fcr/" target="_blank" aria-label="LinkedIn">
                         <Linkedin className="h-5 w-5" />
                     </Link>
                 </Button>
