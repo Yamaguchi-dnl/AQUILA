@@ -44,9 +44,9 @@ export default function FundosPage() {
               className={cn(
                   "scroll-mt-20 py-16 md:py-24 relative",
                   isPrimarySection ? "bg-primary text-primary-foreground" : "bg-background text-foreground",
-                  isPrimarySection && 'rounded-t-3xl',
+                  (isPrimarySection || fund.slug === 'aquila-real-estate') && 'rounded-t-3xl',
                   fund.slug === 'aquila-hotel-invest' && 'md:-mt-16',
-                  fund.slug === 'aquila-real-estate' && 'rounded-t-3xl z-10'
+                  fund.slug === 'aquila-real-estate' && 'z-10'
               )}
           >
               {isPrimarySection && (
@@ -60,7 +60,7 @@ export default function FundosPage() {
                       <AnimatedSection className={cn("lg:col-span-2", isReversed && "lg:order-last")}>
                             <h2 className={cn("font-headline text-3xl md:text-4xl uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>{fund.nome}</h2>
                             {fund.detalhes.elegibilidadeGoldenVisa && <Badge variant="destructive" className="mt-2">Elegível para Golden Visa</Badge>}
-                            <h3 className={cn("mt-2 text-xl font-headline", isPrimarySection ? "text-primary-foreground/80" : "text-muted-foreground")}>{fund.subtitulo}</h3>
+                            <p className={cn("mt-2 text-lg font-semibold", isPrimarySection ? "text-primary-foreground/90" : "text-foreground")}>{fund.subtitulo}</p>
                             <div className={cn("mt-6 prose prose-lg max-w-none", isPrimarySection ? "text-primary-foreground/80" : "text-muted-foreground")} dangerouslySetInnerHTML={{ __html: fund.descricaoHtml }} />
                       </AnimatedSection>
                       <AnimatedSection delay={0.1}>
