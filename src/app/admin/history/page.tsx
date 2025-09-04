@@ -23,6 +23,7 @@ import { ptBR } from "date-fns/locale";
 async function getChangeHistory() {
     const supabase = createClientForServerComponent();
     
+    // Removida a junção com a tabela de usuários para corrigir o erro
     const { data, error } = await supabase
         .from('blocks')
         .select(`
@@ -33,9 +34,6 @@ async function getChangeHistory() {
             page:pages (
                 slug,
                 title
-            ),
-            user:users (
-                email
             )
         `)
         .order('updated_at', { ascending: false })
@@ -50,8 +48,6 @@ async function getChangeHistory() {
         ...item,
         // @ts-ignore
         pageTitle: item.page?.title || 'N/A',
-        // @ts-ignore
-        userEmail: item.user?.email || 'Sistema'
     }));
 }
 
@@ -78,7 +74,6 @@ export default async function HistoryPage() {
                                 <TableRow>
                                     <TableHead>Bloco</TableHead>
                                     <TableHead>Página</TableHead>
-                                    <TableHead>Usuário</TableHead>
                                     <TableHead className="text-right">Data</TableHead>
                                 </TableRow>
                             </TableHeader>
@@ -93,7 +88,6 @@ export default async function HistoryPage() {
                                             <TableCell>
                                                 <Badge variant="outline">{item.pageTitle}</Badge>
                                             </TableCell>
-                                            <TableCell>{item.userEmail}</TableCell>
                                             <TableCell className="text-right">
                                                 <div title={format(new Date(item.updated_at!), "dd/MM/yyyy 'às' HH:mm:ss")}>
                                                      {formatDistanceToNow(new Date(item.updated_at!), { addSuffix: true, locale: ptBR })}
@@ -103,7 +97,7 @@ export default async function HistoryPage() {
                                     ))
                                 ) : (
                                     <TableRow>
-                                        <TableCell colSpan={4} className="text-center">
+                                        <TableCell colSpan={3} className="text-center">
                                             Nenhum histórico de alterações encontrado.
                                         </TableCell>
                                     </TableRow>
