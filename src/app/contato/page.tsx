@@ -22,21 +22,21 @@ export default function ContatoPage() {
         title="Contato"
         subtitle="Estamos à sua disposição para qualquer esclarecimento."
       />
-      <section className="pt-0 md:pt-0 lg:pt-0">
-        <div className="container">
+      <section className="pt-0 md:pt-0 lg:pt-0 bg-primary text-primary-foreground">
+        <div className="container py-16 md:py-24">
           <div className="grid lg:grid-cols-5 gap-12">
             <div className="lg:col-span-2">
-                <h2 className="font-headline text-3xl text-primary font-bold">Informações de Contato</h2>
-                <p className="mt-4 text-muted-foreground">
+                <h2 className="font-headline text-3xl text-primary-foreground font-bold">Informações de Contato</h2>
+                <p className="mt-4 text-primary-foreground/80">
                     Entre em contato conosco por telefone, e-mail ou visite nosso escritório.
                 </p>
                 <div className="mt-8 space-y-6">
                     {contactDetails.map((detail, index) => (
                         <div key={index} className="flex items-start gap-4">
-                            <detail.icon className="h-6 w-6 text-primary mt-1 shrink-0" />
-                            <div className="whitespace-pre-line">
+                            <detail.icon className="h-6 w-6 text-primary-foreground mt-1 shrink-0" />
+                            <div className="whitespace-pre-line text-primary-foreground/90">
                                 {detail.href ? (
-                                    <Link href={detail.href} className="hover:text-primary transition-colors">
+                                    <Link href={detail.href} className="hover:text-white transition-colors">
                                         {detail.text}
                                     </Link>
                                 ) : (
@@ -48,8 +48,8 @@ export default function ContatoPage() {
                 </div>
             </div>
             <div className="lg:col-span-3">
-              <div className="bg-card p-8 rounded-lg shadow-lg">
-                <h2 className="text-2xl font-bold font-headline text-foreground mb-2">Fale com um especialista</h2>
+              <div className="bg-card p-8 rounded-lg shadow-lg text-card-foreground">
+                <h2 className="text-2xl font-bold font-headline text-primary mb-2">Fale com um especialista</h2>
                 <p className="text-muted-foreground mb-6">Preencha o formulário e nossa equipe entrará em contato para uma consulta personalizada.</p>
                 <ContactForm />
               </div>
