@@ -22,7 +22,7 @@ export function TeamMemberCard({ member }: TeamMemberCardProps) {
         <CardTitle className="pt-4 font-headline text-2xl">{member.nome}</CardTitle>
         <p className="text-sm font-medium text-primary">{member.cargo}</p>
       </CardHeader>
-      <CardContent className="text-sm text-muted-foreground text-left" dangerouslySetInnerHTML={{ __html: member.bioHtml }} />
+      <CardContent className="text-sm text-muted-foreground text-center" dangerouslySetInnerHTML={{ __html: member.bioHtml }} />
     </Card>
   );
 }
