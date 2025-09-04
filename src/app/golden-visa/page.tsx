@@ -1,3 +1,4 @@
+
 import { PageHeader } from "@/components/shared/page-header";
 import { goldenVisaFaqs, fundsData } from "@/lib/data";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -208,4 +209,5 @@ export default function GoldenVisaPage() {
             </section>
         </>
     );
-}
+
+    
