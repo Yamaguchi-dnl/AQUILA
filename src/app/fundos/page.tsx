@@ -34,6 +34,8 @@ export default function FundosPage() {
       <div className="space-y-0">
       {fundsData.map((fund, index) => {
           const isPrimarySection = index % 2 === 1;
+          const isReversed = index % 2 !== 0;
+          
           return (
           <section 
               id={fund.slug} 
@@ -51,7 +53,7 @@ export default function FundosPage() {
               )}
               <div className="container relative z-10">
                   <div className="grid lg:grid-cols-3 gap-8 lg:gap-16 items-center">
-                      <div className="lg:col-span-2">
+                      <div className={cn("lg:col-span-2", isReversed && "lg:order-last")}>
                             <h2 className={cn("font-headline text-3xl md:text-4xl uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>{fund.nome}</h2>
                             {fund.detalhes.elegibilidadeGoldenVisa && <Badge variant="destructive" className="mt-2">Elegível para Golden Visa</Badge>}
                             <h3 className={cn("mt-2 text-xl font-headline", isPrimarySection ? "text-primary-foreground/80" : "text-muted-foreground")}>{fund.subtitulo}</h3>
