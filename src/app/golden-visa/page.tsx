@@ -45,14 +45,14 @@ export default function GoldenVisaPage() {
             
             <section className="bg-primary text-primary-foreground rounded-t-3xl">
                 <div className="container">
-                    <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+                    <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-12 items-stretch">
                         <div className="hidden lg:block">
                             <Image 
                                 src="https://ik.imagekit.io/leosmc2zb/golden-visa-portugal-nacionalidade-portuguesa.jpeg"
                                 alt="Passaporte europeu sobre um mapa"
                                 width={600}
                                 height={400}
-                                className="rounded-lg shadow-xl"
+                                className="rounded-lg shadow-xl h-full w-full object-cover"
                                 data-ai-hint="passport map"
                             />
                         </div>
