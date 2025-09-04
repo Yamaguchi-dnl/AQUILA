@@ -171,12 +171,8 @@ export default function GoldenVisaPage() {
                      <div className="text-center mt-12">
                         <Button asChild size="lg"><Link href="/contato">Fale com um especialista</Link></Button>
                     </div>
-                </div>
-            </section>
-             
-            <section className="py-8 bg-muted/50">
-                <div className="container">
-                     <div className="flex items-start gap-4 p-4 border border-border rounded-lg bg-card">
+
+                    <div className="flex items-start gap-4 p-4 mt-12 border border-border rounded-lg bg-background">
                         <ShieldAlert className="h-6 w-6 text-amber-600 shrink-0 mt-1" />
                         <div>
                              <h4 className="font-semibold text-foreground font-headline">Aviso Legal</h4>
