@@ -44,15 +44,15 @@ export default function FundosPage() {
               className={cn(
                   "scroll-mt-20 py-16 md:py-24 relative",
                   isPrimarySection ? "bg-primary text-primary-foreground" : "bg-background text-foreground",
-                  (isPrimarySection || fund.slug === 'aquila-real-estate') && 'rounded-t-3xl',
-                  fund.slug === 'aquila-hotel-invest' && 'md:-mt-16',
+                  'rounded-t-3xl',
+                  index > 0 && 'md:-mt-16',
                   fund.slug === 'aquila-real-estate' && 'z-10'
               )}
           >
               {isPrimarySection && (
                 <div
                     aria-hidden="true"
-                    className="absolute inset-0 bg-[radial-gradient(30%_40%_at_95%_95%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%),radial-gradient(30%_40%_at_5%_5%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)]"
+                    className="absolute inset-0 bg-[radial-gradient(30%_40%_at_95%_95%,rgba(255,255,255,0.2)_0%,rgba(255,255,255,0)_100%),radial-gradient(30%_40%_at_5%_5%,rgba(255,255,255,0.2)_0%,rgba(255,255,255,0)_100%)]"
                 />
               )}
               <div className="container relative z-10">
@@ -154,7 +154,7 @@ export default function FundosPage() {
                               <h4 className={cn("mt-4 text-2xl font-headline uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>Em Breve</h4>
                               <p className={cn("mt-2", isPrimarySection ? "text-primary-foreground/80" : "text-muted-foreground")}>Este fundo está em fase final de estruturação.</p>
                               <div className="mt-6">
-                                  <InterestFormDialog fundName={fund.nome} buttonVariant={isPrimarySection ? "secondary" : "default"} />
+                                  <InterestFormDialog fundName={fund.nome} buttonVariant={isPrimarySection ? "secondary" : "default"} buttonSize="lg" />
                               </div>
                           </Card>
                         </AnimatedSection>

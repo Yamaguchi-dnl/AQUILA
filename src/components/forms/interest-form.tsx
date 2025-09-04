@@ -37,9 +37,10 @@ const formSchema = z.object({
 type InterestFormDialogProps = {
   fundName: string;
   buttonVariant?: VariantProps<typeof buttonVariants>["variant"];
+  buttonSize?: VariantProps<typeof buttonVariants>["size"];
 };
 
-export function InterestFormDialog({ fundName, buttonVariant = "default" }: InterestFormDialogProps) {
+export function InterestFormDialog({ fundName, buttonVariant = "default", buttonSize = "default" }: InterestFormDialogProps) {
   const [isOpen, setIsOpen] = useState(false);
   const { toast } = useToast();
 
@@ -90,7 +91,7 @@ export function InterestFormDialog({ fundName, buttonVariant = "default" }: Inte
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button variant={buttonVariant} className="w-full">Quero ser avisado</Button>
+        <Button variant={buttonVariant} size={buttonSize} className="w-full">Quero ser avisado</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
