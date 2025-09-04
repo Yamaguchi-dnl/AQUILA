@@ -10,6 +10,7 @@ import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import { InterestFormDialog } from "@/components/forms/interest-form";
 import { cn } from "@/lib/utils";
+import { PageHeader } from "@/components/shared/page-header";
 
 export const metadata = {
   title: "Fundos de Investimento",
@@ -26,6 +27,10 @@ const FundDetail = ({ label, value, isPrimary }: { label: string; value: string 
 export default function FundosPage() {
   return (
     <>
+      <PageHeader 
+        title="Nossos Fundos"
+        subtitle="Explore nosso portfólio de fundos de investimento em Portugal, incluindo opções elegíveis para o Golden Visa."
+      />
       <div className="space-y-0">
       {fundsData.map((fund, index) => {
           const isPrimarySection = index % 2 === 1;
