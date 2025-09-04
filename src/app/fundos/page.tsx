@@ -91,10 +91,17 @@ export default function FundosPage() {
                               <div className="mt-12">
                                   <h4 className={cn("text-2xl font-headline text-center uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>Hotéis Sob Gestão</h4>
                                   <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                                      {fund.hoteis.map((hotel, i) => (
+                                      {fund.hoteis.map((hotel, i) => {
+                                          let imageUrl = `${hotel.imagem.src}?v=${hotel.imagem.v}`;
+                                          if (hotel.nome.includes('Intercontinental')) {
+                                              imageUrl = 'https://ik.imagekit.io/leosmc2zb/IC-Cascais-Estoril.jpg';
+                                          } else if (hotel.nome.includes('Palácio Condes de Azevedo')) {
+                                              imageUrl = 'https://ik.imagekit.io/leosmc2zb/62159451.jpg';
+                                          }
+                                          return (
                                           <Card key={`${hotel.nome}-${hotel.imagem.v}`} className={cn("overflow-hidden", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
                                               <Image 
-                                                src={hotel.nome.includes('Intercontinental') ? 'https://ik.imagekit.io/leosmc2zb/IC-Cascais-Estoril.jpg' : `${hotel.imagem.src}?v=${hotel.imagem.v}`} 
+                                                src={imageUrl} 
                                                 alt={hotel.nome} 
                                                 width={600} 
                                                 height={400} 
@@ -109,7 +116,8 @@ export default function FundosPage() {
                                                   <p className={cn("text-sm", isPrimarySection ? "text-primary-foreground/80" : "text-muted-foreground")}>{hotel.localizacao}</p>
                                               </CardContent>
                                           </Card>
-                                      ))}
+                                          )
+                                      })}
                                   </div>
                               </div>
                           )}

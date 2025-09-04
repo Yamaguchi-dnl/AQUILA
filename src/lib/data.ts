@@ -89,7 +89,7 @@ export const fundsData: Fund[] = [
       { nome: 'Valverde Sintra Palácio de Seteais', localizacao: 'Sintra, Lisboa', imagem: { src: 'https://ik.imagekit.io/leosmc2zb/L08zbS8tME0zWnJTbS9TTzdTbk1qbm0vZlpGRFNuLVNOWkZaS01qYVM3U1pNbXhnejY2UXR6dGRrcg.webp?updatedAt=1756822978399', v: 2 }, dataAiHint: 'historic palace hotel' },
       { nome: 'Valverde Santar Hotel & SPA', localizacao: 'Santar, Viseu', imagem: { src: 'https://ik.imagekit.io/leosmc2zb/hotel-spa-valverde-santar.jpg', v: 2 }, dataAiHint: 'hotel spa interior' },
       { nome: 'Hotel Intercontinental Estoril', localizacao: 'Cascais', imagem: { src: 'https://ik.imagekit.io/leosmc2zb/IC-Cascais-Estoril.jpg', v: 3 }, dataAiHint: 'coastal hotel view' },
-      { nome: 'Palácio Condes de Azevedo', localizacao: 'Centro do Porto', imagem: { src: 'https://picsum.photos/600/400?random=5', v: 1 }, dataAiHint: 'historic hotel facade' },
+      { nome: 'Palácio Condes de Azevedo', localizacao: 'Centro do Porto', imagem: { src: 'https://ik.imagekit.io/leosmc2zb/62159451.jpg', v: 1 }, dataAiHint: 'historic hotel facade' },
     ],
     status: 'ativo',
   },
