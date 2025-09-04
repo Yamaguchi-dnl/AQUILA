@@ -28,10 +28,17 @@ const FundDetail = ({ label, value, isPrimary }: { label: string; value: string 
 export default function FundosPage() {
   return (
     <>
-        <PageHeader 
-            title="Nossos Fundos"
-            subtitle="Explore nosso portfólio de fundos de investimento em Portugal, incluindo opções elegíveis para o Golden Visa."
-        />
+        <section className="relative bg-cover bg-center bg-no-repeat py-20 md:py-28" style={{backgroundImage: "url('https://picsum.photos/1920/400?grayscale&blur=2')"}}>
+            <div className="absolute inset-0 bg-primary/70" />
+            <div className="container relative z-10">
+                <div className="text-center">
+                    <h1 className="font-headline text-4xl md:text-5xl text-primary-foreground uppercase">Nossos Fundos</h1>
+                    <p className="mt-4 max-w-3xl mx-auto text-lg text-primary-foreground/90">
+                        Explore nosso portfólio de fundos de investimento em Portugal, incluindo opções elegíveis para o Golden Visa.
+                    </p>
+                </div>
+            </div>
+        </section>
       <div className="space-y-0">
       {fundsData.map((fund, index) => {
           const isPrimarySection = index % 2 !== 0;
@@ -59,10 +66,7 @@ export default function FundosPage() {
                   <div className="grid lg:grid-cols-3 gap-8 lg:gap-16 items-center">
                       <AnimatedSection className={cn("lg:col-span-2", isReversed && "lg:order-last")}>
                             {fund.detalhes.elegibilidadeGoldenVisa && (
-                                <>
-                                    {fund.slug === 'aquila-wheels' && <Badge variant="default" className="mb-2">Elegível para Golden Visa</Badge>}
-                                    {fund.slug === 'aquila-hotel-invest' && <Badge className="mb-2 bg-white/20 text-white backdrop-blur-sm border border-white/30">Elegível para Golden Visa</Badge>}
-                                </>
+                                <Badge variant={fund.slug === 'aquila-wheels' ? 'default' : 'secondary'} className={cn("mb-2", fund.slug === 'aquila-hotel-invest' && 'bg-white/20 text-white backdrop-blur-sm border border-white/30')}>Elegível para Golden Visa</Badge>
                             )}
                             <h2 className={cn("font-headline text-3xl md:text-4xl uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>{fund.nome}</h2>
                             <p className={cn("mt-2 text-lg font-semibold", isPrimarySection ? "text-primary-foreground/90" : "text-foreground")}>{fund.subtitulo}</p>
