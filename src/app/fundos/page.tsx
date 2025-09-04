@@ -94,7 +94,7 @@ export default function FundosPage() {
                                       {fund.hoteis.map((hotel, i) => (
                                           <Card key={`${hotel.nome}-${hotel.imagem.v}`} className={cn("overflow-hidden", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
                                               <Image 
-                                                src={`${hotel.imagem.src}?v=${hotel.imagem.v}`} 
+                                                src={hotel.nome.includes('Intercontinental') ? 'https://ik.imagekit.io/leosmc2zb/IC-Cascais-Estoril.jpg' : `${hotel.imagem.src}?v=${hotel.imagem.v}`} 
                                                 alt={hotel.nome} 
                                                 width={600} 
                                                 height={400} 
