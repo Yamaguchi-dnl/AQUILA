@@ -165,32 +165,34 @@ export default function GoldenVisaPage() {
                 </div>
             </section>
 
-            <section className="bg-card">
-                <div className="container max-w-4xl">
-                     <div className="text-center">
-                        <h2 className="font-headline text-4xl text-primary uppercase">Perguntas Frequentes</h2>
-                    </div>
-                    <Accordion type="single" collapsible className="w-full mt-8">
-                        {goldenVisaFaqs.map((faq, i) => (
-                             <AccordionItem value={`item-${i}`} key={i}>
-                                <AccordionTrigger className="text-lg text-left">{faq.question}</AccordionTrigger>
-                                <AccordionContent className="text-base text-muted-foreground">
-                                    {faq.answer}
-                                </AccordionContent>
-                            </AccordionItem>
-                        ))}
-                    </Accordion>
-                     <div className="text-center mt-12">
-                        <Button asChild size="lg"><Link href="/contato">Fale com um especialista</Link></Button>
-                    </div>
-
-                    <div className="flex items-start gap-4 p-4 mt-12 border border-border rounded-lg bg-background">
-                        <ShieldAlert className="h-6 w-6 text-amber-600 shrink-0 mt-1" />
-                        <div>
-                             <h4 className="font-semibold text-foreground font-headline">Aviso Legal</h4>
-                             <p className="text-sm text-muted-foreground mt-1">As informações nesta página são para fins informativos e não constituem aconselhamento jurídico ou fiscal. As condições e regulamentos do programa Golden Visa estão sujeitos a alterações pelo governo português. Recomendamos consultar um advogado de imigração para obter aconselhamento específico à sua situação.</p>
+            <section className="bg-muted/40">
+                <div className="container">
+                    <Card className="max-w-4xl mx-auto p-8 md:p-12 shadow-xl">
+                        <div className="text-center">
+                            <h2 className="font-headline text-4xl text-primary uppercase">Perguntas Frequentes</h2>
                         </div>
-                    </div>
+                        <Accordion type="single" collapsible className="w-full mt-8">
+                            {goldenVisaFaqs.map((faq, i) => (
+                                <AccordionItem value={`item-${i}`} key={i}>
+                                    <AccordionTrigger className="text-lg text-left">{faq.question}</AccordionTrigger>
+                                    <AccordionContent className="text-base text-muted-foreground">
+                                        {faq.answer}
+                                    </AccordionContent>
+                                </AccordionItem>
+                            ))}
+                        </Accordion>
+                        <div className="text-center mt-12">
+                            <Button asChild size="lg"><Link href="/contato">Fale com um especialista</Link></Button>
+                        </div>
+
+                        <div className="flex items-start gap-4 p-4 mt-12 border border-border rounded-lg bg-background">
+                            <ShieldAlert className="h-6 w-6 text-amber-600 shrink-0 mt-1" />
+                            <div>
+                                <h4 className="font-semibold text-foreground font-headline">Aviso Legal</h4>
+                                <p className="text-sm text-muted-foreground mt-1">As informações nesta página são para fins informativos e não constituem aconselhamento jurídico ou fiscal. As condições e regulamentos do programa Golden Visa estão sujeitos a alterações pelo governo português. Recomendamos consultar um advogado de imigração para obter aconselhamento específico à sua situação.</p>
+                            </div>
+                        </div>
+                    </Card>
                 </div>
             </section>
         </>
