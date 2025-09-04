@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, LayoutDashboard, FileText, LogOut } from "lucide-react";
+import { Menu, LayoutDashboard, FileText, LogOut, History } from "lucide-react";
 import { Logo } from "@/components/shared/logo";
 import { cn } from "@/lib/utils";
 
@@ -15,6 +15,7 @@ export function AdminSidebar() {
     const navLinks = [
         { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
         { href: '/admin/pages', label: 'Páginas', icon: FileText },
+        { href: '/admin/history', label: 'Histórico', icon: History },
     ];
     
     const renderNavLinks = () => (
@@ -25,7 +26,7 @@ export function AdminSidebar() {
                     href={link.href}
                     className={cn(
                         "flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary",
-                        pathname === link.href && "bg-muted text-primary"
+                        (pathname === link.href || (link.href !== '/admin' && pathname.startsWith(link.href))) && "bg-muted text-primary"
                     )}
                 >
                     <link.icon className="h-4 w-4" />
