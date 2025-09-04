@@ -211,7 +211,4 @@ export default function GoldenVisaPage() {
             </section>
         </>
     );
-
-    
-
-    
+}
