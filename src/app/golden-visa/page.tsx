@@ -1,4 +1,3 @@
-
 import { PageHeader } from "@/components/shared/page-header";
 import { goldenVisaFaqs, fundsData } from "@/lib/data";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -45,7 +44,7 @@ export default function GoldenVisaPage() {
             
             <section className="bg-primary text-primary-foreground rounded-t-3xl">
                 <div className="container">
-                    <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-12 items-stretch">
+                    <div className="grid lg:grid-cols-2 gap-12 items-stretch">
                         <div className="hidden lg:block">
                             <Image 
                                 src="https://ik.imagekit.io/leosmc2zb/golden-visa-portugal-nacionalidade-portuguesa.jpeg"
