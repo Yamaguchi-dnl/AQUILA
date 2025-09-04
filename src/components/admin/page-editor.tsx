@@ -25,6 +25,7 @@ type Block = {
     block_type: string;
     title: string | null;
     content: string | null;
+    sub_content: string | null;
     image_url: string | null;
 };
 
@@ -85,12 +86,23 @@ export function PageEditor({ initialPage, initialBlocks }: PageEditorProps) {
                                     </div>
                                 </CardHeader>
                                 <CardContent className="grid md:grid-cols-3 gap-6">
-                                    <div className="md:col-span-2 space-y-2">
-                                        <p className="text-sm font-semibold text-muted-foreground">Conteúdo</p>
-                                        <div 
-                                            className="prose prose-sm dark:prose-invert max-w-none text-muted-foreground" 
-                                            dangerouslySetInnerHTML={{__html: block.content || '<p>Sem conteúdo.</p>'}} 
-                                        />
+                                    <div className="md:col-span-2 space-y-4">
+                                        <div>
+                                            <p className="text-sm font-semibold text-muted-foreground">Conteúdo Principal</p>
+                                            <div 
+                                                className="prose prose-sm dark:prose-invert max-w-none text-muted-foreground" 
+                                                dangerouslySetInnerHTML={{__html: block.content || '<p>Sem conteúdo.</p>'}} 
+                                            />
+                                        </div>
+                                        {block.sub_content && (
+                                           <div>
+                                                <p className="text-sm font-semibold text-muted-foreground">Conteúdo Secundário</p>
+                                                <div 
+                                                    className="prose prose-sm dark:prose-invert max-w-none text-muted-foreground" 
+                                                    dangerouslySetInnerHTML={{__html: block.sub_content}} 
+                                                />
+                                            </div>
+                                        )}
                                     </div>
                                     {block.image_url && (
                                         <div className="space-y-2">
@@ -114,7 +126,7 @@ export function PageEditor({ initialPage, initialBlocks }: PageEditorProps) {
                                             <AlertDialogHeader>
                                                 <AlertDialogTitle>Tem certeza?</AlertDialogTitle>
                                                 <AlertDialogDescription>
-                                                    Esta ação não pode ser desfeita. Isso excluirá permanentemente o bloco e seus dados.
+                                                    Esta ação não pode ser desfeita. Isso excluirá permanentemente o bloco e seus dados. Apenas o histórico de versões será mantido.
                                                 </AlertDialogDescription>
                                             </AlertDialogHeader>
                                             <AlertDialogFooter>

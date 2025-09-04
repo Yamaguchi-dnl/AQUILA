@@ -25,6 +25,7 @@ type Block = {
   block_type: string;
   title: string | null;
   content: string | null;
+  sub_content: string | null;
   image_url: string | null;
 };
 
@@ -96,8 +97,13 @@ export function BlockFormDialog({ isOpen, setIsOpen, pageId, pageSlug, block, on
                     </div>
 
                     <div className="space-y-2">
-                       <Label htmlFor="content">Conteúdo (HTML permitido)</Label>
-                       <Textarea id="content" name="content" defaultValue={block?.content || ''} rows={8} />
+                       <Label htmlFor="content">Conteúdo Principal (HTML permitido)</Label>
+                       <Textarea id="content" name="content" defaultValue={block?.content || ''} rows={6} />
+                    </div>
+
+                    <div className="space-y-2">
+                       <Label htmlFor="sub_content">Conteúdo Secundário (opcional, HTML permitido)</Label>
+                       <Textarea id="sub_content" name="sub_content" defaultValue={block?.sub_content || ''} rows={4} />
                     </div>
 
                     {block?.image_url && (

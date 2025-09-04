@@ -13,34 +13,65 @@ function getPublicPathFromSlug(slug: string): string {
         'home': '/',
         'sobre': '/sobre',
         'trabalhe-conosco': '/trabalhe-conosco',
-        // Adicione outros mapeamentos se necessário
     };
     return slugToPathMap[slug] || `/${slug}`;
 }
 
-export async function saveBlock(formData: FormData) {
-    try {
-        const supabase = createClientForAction();
-        const { data: { user } } = await supabase.auth.getUser();
 
-        if (!user) {
-            return { success: false, message: 'Não autenticado. Por favor, faça login novamente.' };
-        }
+export async function saveBlock(formData: FormData) {
+    const supabase = createClientForAction();
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!user) {
+        return { success: false, message: 'Não autenticado. Por favor, faça login novamente.' };
+    }
         
+    const blockId = formData.get('id') as string | undefined;
+    const pageId = formData.get('page_id') as string;
+    const pageSlug = formData.get('pageSlug') as string;
+
+    // --- 1. Create a version of the current block BEFORE updating it ---
+    if (blockId) {
+        const { data: currentBlock } = await supabase
+            .from('blocks')
+            .select('*')
+            .eq('id', blockId)
+            .single();
+
+        if (currentBlock) {
+            const { error: versionError } = await supabase
+                .from('block_versions')
+                .insert({
+                    version_of_block_id: currentBlock.id,
+                    page_id: currentBlock.page_id,
+                    order_index: currentBlock.order_index,
+                    block_type: currentBlock.block_type,
+                    title: currentBlock.title,
+                    content: currentBlock.content,
+                    sub_content: currentBlock.sub_content,
+                    image_url: currentBlock.image_url,
+                    versioned_by: user.id,
+                });
+            if (versionError) console.error("Could not save block version:", versionError.message);
+        }
+    }
+    
+    // --- 2. Process the new data and update the 'blocks' table ---
+    try {
         const rawData = {
-            id: formData.get('id') as string || undefined,
-            page_id: formData.get('page_id') as string,
+            id: blockId,
+            page_id: pageId,
             order_index: parseInt(formData.get('order_index') as string, 10),
             title: formData.get('title') as string,
             block_type: formData.get('block_type') as string,
             content: formData.get('content') as string || undefined,
+            sub_content: formData.get('sub_content') as string || undefined,
         };
 
         if (!rawData.page_id || !rawData.title || !rawData.block_type || isNaN(rawData.order_index)) {
              return { success: false, message: 'Dados do bloco inválidos. Campos obrigatórios estão faltando.' };
         }
 
-        const pageSlug = formData.get('pageSlug') as string;
         const image_file = formData.get('image_file') as File | null;
         const current_image_url = formData.get('current_image_url') as string | null;
 
@@ -91,17 +122,25 @@ export async function saveBlock(formData: FormData) {
         
         if (!dataToUpsert.id) {
             delete dataToUpsert.id;
+            // When creating a new block, we set the updated_by as created_by
+            dataToUpsert.created_by = user.id;
         }
 
-        const { error: dbError } = await supabase.from('blocks').upsert(dataToUpsert, { onConflict: 'id' });
+        const { data: upsertedData, error: dbError } = await supabase
+            .from('blocks')
+            .upsert(dataToUpsert, { onConflict: 'id' })
+            .select()
+            .single();
 
         if (dbError) {
              console.error('Erro do Supabase:', dbError);
              return { success: false, message: `Erro no banco de dados: ${dbError.message}` };
         }
-
+        
+        // --- 3. Revalidate paths ---
         const publicPath = getPublicPathFromSlug(pageSlug);
         revalidatePath(`/admin/pages/${pageSlug}`);
+        revalidatePath(`/admin/history`);
         revalidatePath(publicPath);
         
         return { success: true, message: `Bloco ${dataToUpsert.id ? 'atualizado' : 'criado'} com sucesso.` };
@@ -111,6 +150,86 @@ export async function saveBlock(formData: FormData) {
         return { success: false, message: error.message || 'Ocorreu um erro inesperado no servidor.' };
     }
 }
+
+
+export async function revertBlockToVersion(versionId: string, pageSlug: string) {
+    const supabase = createClientForAction();
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!user) {
+        return { success: false, message: 'Não autenticado.' };
+    }
+
+    try {
+        // 1. Get the version data
+        const { data: versionData, error: versionError } = await supabase
+            .from('block_versions')
+            .select('*')
+            .eq('version_id', versionId)
+            .single();
+
+        if (versionError || !versionData) {
+            throw new Error('Versão não encontrada ou erro ao buscar.');
+        }
+
+        const blockId = versionData.version_of_block_id;
+
+        // 2. Save the CURRENT live block to history before overwriting it
+        const { data: currentBlock } = await supabase
+            .from('blocks')
+            .select('*')
+            .eq('id', blockId)
+            .single();
+
+        if (currentBlock) {
+             await supabase
+                .from('block_versions')
+                .insert({
+                    version_of_block_id: currentBlock.id,
+                    page_id: currentBlock.page_id,
+                    order_index: currentBlock.order_index,
+                    block_type: currentBlock.block_type,
+                    title: currentBlock.title,
+                    content: currentBlock.content,
+                    sub_content: currentBlock.sub_content,
+                    image_url: currentBlock.image_url,
+                    versioned_by: user.id,
+                });
+        }
+
+        // 3. Restore the old version to the live 'blocks' table
+        const { error: revertError } = await supabase
+            .from('blocks')
+            .update({
+                order_index: versionData.order_index,
+                block_type: versionData.block_type,
+                title: versionData.title,
+                content: versionData.content,
+                sub_content: versionData.sub_content,
+                image_url: versionData.image_url,
+                updated_at: new Date().toISOString(),
+                updated_by: user.id,
+            })
+            .eq('id', blockId);
+
+        if (revertError) {
+            throw new Error(`Erro ao reverter o bloco: ${revertError.message}`);
+        }
+
+        // 4. Revalidate paths
+        const publicPath = getPublicPathFromSlug(pageSlug);
+        revalidatePath(`/admin/pages/${pageSlug}`);
+        revalidatePath('/admin/history');
+        revalidatePath(publicPath);
+
+        return { success: true, message: 'Bloco restaurado para a versão selecionada.' };
+
+    } catch (error: any) {
+        console.error("Erro na ação de reverter:", error);
+        return { success: false, message: error.message };
+    }
+}
+
 
 export async function deleteBlock(blockId: string, pageSlug: string) {
     try {
@@ -156,6 +275,7 @@ export async function deleteBlock(blockId: string, pageSlug: string) {
             const publicPath = getPublicPathFromSlug(pageSlug);
             revalidatePath(`/admin/pages/${pageSlug}`);
             revalidatePath(publicPath);
+            revalidatePath('/admin/history');
         }
 
         return { message: 'Bloco excluído.', success: true };

@@ -19,16 +19,16 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { format, formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
+import { RevertButton } from "./revert-button";
 
 async function getChangeHistory() {
     const supabase = createClientForServerComponent();
     
-    // Removida a junção com a tabela de usuários para corrigir o erro
     const { data, error } = await supabase
-        .from('blocks')
+        .from('block_versions')
         .select(`
-            id,
-            updated_at,
+            version_id,
+            version_timestamp,
             title,
             block_type,
             page:pages (
@@ -36,7 +36,7 @@ async function getChangeHistory() {
                 title
             )
         `)
-        .order('updated_at', { ascending: false })
+        .order('version_timestamp', { ascending: false })
         .limit(50);
         
     if (error) {
@@ -48,6 +48,8 @@ async function getChangeHistory() {
         ...item,
         // @ts-ignore
         pageTitle: item.page?.title || 'N/A',
+        // @ts-ignore
+        pageSlug: item.page?.slug || '',
     }));
 }
 
@@ -58,14 +60,14 @@ export default async function HistoryPage() {
         <>
             <PageHeader
                 title="Histórico de Alterações"
-                subtitle="Veja as últimas atualizações de conteúdo feitas no site."
+                subtitle="Veja as últimas atualizações de conteúdo feitas no site e restaure versões anteriores se necessário."
             />
             <section className="py-8">
                 <Card>
                     <CardHeader>
-                        <CardTitle>Últimas 50 Alterações</CardTitle>
+                        <CardTitle>Últimas 50 Versões Guardadas</CardTitle>
                         <CardDescription>
-                            Lista de blocos de conteúdo que foram criados ou atualizados recentemente.
+                            Lista de versões de blocos de conteúdo que foram guardadas.
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -74,13 +76,14 @@ export default async function HistoryPage() {
                                 <TableRow>
                                     <TableHead>Bloco</TableHead>
                                     <TableHead>Página</TableHead>
-                                    <TableHead className="text-right">Data</TableHead>
+                                    <TableHead>Data da Versão</TableHead>
+                                    <TableHead className="text-right">Ações</TableHead>
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
                                 {history.length > 0 ? (
                                     history.map((item) => (
-                                        <TableRow key={item.id}>
+                                        <TableRow key={item.version_id}>
                                             <TableCell>
                                                 <div className="font-medium">{item.title}</div>
                                                 <div className="text-sm text-muted-foreground">{item.block_type}</div>
@@ -88,16 +91,19 @@ export default async function HistoryPage() {
                                             <TableCell>
                                                 <Badge variant="outline">{item.pageTitle}</Badge>
                                             </TableCell>
-                                            <TableCell className="text-right">
-                                                <div title={format(new Date(item.updated_at!), "dd/MM/yyyy 'às' HH:mm:ss")}>
-                                                     {formatDistanceToNow(new Date(item.updated_at!), { addSuffix: true, locale: ptBR })}
+                                            <TableCell>
+                                                <div title={format(new Date(item.version_timestamp!), "dd/MM/yyyy 'às' HH:mm:ss")}>
+                                                     {formatDistanceToNow(new Date(item.version_timestamp!), { addSuffix: true, locale: ptBR })}
                                                 </div>
+                                            </TableCell>
+                                            <TableCell className="text-right">
+                                               <RevertButton versionId={item.version_id} pageSlug={item.pageSlug} />
                                             </TableCell>
                                         </TableRow>
                                     ))
                                 ) : (
                                     <TableRow>
-                                        <TableCell colSpan={3} className="text-center">
+                                        <TableCell colSpan={4} className="text-center">
                                             Nenhum histórico de alterações encontrado.
                                         </TableCell>
                                     </TableRow>

@@ -1,3 +1,4 @@
+
 import { createClientForServerComponent } from "@/lib/supabase/server";
 
 export type Block = {
@@ -7,7 +8,7 @@ export type Block = {
     title: string | null;
     content: string | null;
     image_url: string | null;
-    sub_content?: string | null; // Added for blocks with more complex content
+    sub_content: string | null;
 };
 
 export async function getPageContentBySlug(slug: string): Promise<Block[]> {
