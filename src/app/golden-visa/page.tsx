@@ -59,7 +59,7 @@ export default function GoldenVisaPage() {
                 </div>
             </section>
 
-             <section className="bg-primary text-primary-foreground">
+             <section className="bg-primary text-primary-foreground pt-0 pb-16 md:pb-24 lg:pb-28">
                 <div className="container">
                      <h3 className="font-headline text-3xl md:text-4xl text-center uppercase text-primary-foreground">Etapas do Processo</h3>
                      <div className="mt-12">
