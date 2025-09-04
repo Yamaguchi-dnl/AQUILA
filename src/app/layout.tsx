@@ -7,6 +7,8 @@ import { Analytics } from '@vercel/analytics/react';
 import { DM_Sans, Inter } from 'next/font/google';
 import { cn } from '@/lib/utils';
 
+export const dynamic = 'force-dynamic';
+
 const fontSans = Inter({
   subsets: ['latin'],
   variable: '--font-sans',
