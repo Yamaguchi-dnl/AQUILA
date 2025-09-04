@@ -61,19 +61,23 @@ export default function GoldenVisaPage() {
              <section className="bg-primary text-primary-foreground">
                 <div className="container">
                      <h3 className="font-headline text-3xl md:text-4xl text-center uppercase text-primary-foreground">Etapas do Processo</h3>
-                     <div className="relative mt-12">
-                         <div className="hidden md:grid grid-cols-5 items-start">
+                     <div className="mt-12">
+                        {/* --- Desktop Timeline --- */}
+                        <div className="hidden md:grid grid-cols-5 items-start">
                             {processSteps.map((step, index) => (
                                 <div key={index} className="relative flex flex-col items-center gap-4 text-center">
-                                    <div className="flex items-center w-full">
-                                        <div className="flex-1 border-t-2 border-dashed border-primary-foreground/30" style={{ visibility: index === 0 ? 'hidden' : 'visible' }}></div>
-                                        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-secondary text-secondary-foreground ring-4 ring-primary font-bold text-lg z-10 relative">
+                                    <div className="flex items-center justify-center w-full">
+                                        {/* Left line */}
+                                        <div className="flex-1 border-t-2 border-dashed border-primary-foreground/30" style={{ visibility: index === 0 ? 'hidden' : 'visible' }} />
+                                        {/* Circle */}
+                                        <div className="mx-4 flex h-12 w-12 items-center justify-center rounded-full bg-secondary text-secondary-foreground ring-4 ring-primary font-bold text-lg z-10 shrink-0">
                                             {index + 1}
                                         </div>
-                                        <div className="flex-1 border-t-2 border-dashed border-primary-foreground/30" style={{ visibility: index === processSteps.length - 1 ? 'hidden' : 'visible' }}></div>
+                                        {/* Right line */}
+                                        <div className="flex-1 border-t-2 border-dashed border-primary-foreground/30" style={{ visibility: index === processSteps.length - 1 ? 'hidden' : 'visible' }} />
                                     </div>
                                     <Card className="bg-card/10 border-primary-foreground/20 text-primary-foreground transition-all duration-300 hover:scale-[1.02] hover:shadow-xl h-full w-full">
-                                        <CardHeader>
+                                        <CardHeader className="p-4">
                                             <h4 className="font-headline text-lg text-primary-foreground">{step.title}</h4>
                                         </CardHeader>
                                         <CardContent className="p-4 pt-0">
@@ -83,7 +87,9 @@ export default function GoldenVisaPage() {
                                 </div>
                             ))}
                         </div>
-                         <div className="md:hidden mt-12 relative flow-root">
+
+                        {/* --- Mobile Timeline --- */}
+                        <div className="md:hidden mt-12 relative flow-root">
                              <div className="absolute left-5 top-2 h-full w-px bg-primary-foreground/20" aria-hidden="true"></div>
                              <div className="space-y-12">
                                 {processSteps.map((step, index) => (
