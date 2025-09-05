@@ -28,7 +28,7 @@ export function TeamSummary({ isPage = false }: TeamSummaryProps) {
           {teamToShow.map((member) => (
             <div key={member.nome} className="flex flex-col items-center">
               <Avatar className="h-24 w-24 md:h-32 md:w-32 border-4 border-card">
-                <AvatarImage src={`${member.foto.src}?v=${member.foto.v}`} alt={member.nome} data-ai-hint={member.dataAiHint} />
+                <AvatarImage src={`${member.foto.src}?v=${member.foto.v}`} alt={member.nome} data-ai-hint={member.dataAiHint} className="object-cover" />
                 <AvatarFallback>{member.nome.charAt(0)}</AvatarFallback>
               </Avatar>
               <h3 className="mt-4 font-semibold text-lg text-foreground">{member.nome}</h3>
@@ -39,7 +39,7 @@ export function TeamSummary({ isPage = false }: TeamSummaryProps) {
         
         {!isPage && (
             <div className="text-center mt-12">
-                <Button asChild>
+                <Button asChild variant="default">
                     <Link href="/equipa">Conheça toda a equipe <ArrowRight className="ml-2 h-4 w-4" /></Link>
                 </Button>
             </div>
