@@ -17,6 +17,7 @@ type Block = {
     title: string | null;
     content: string | null;
     image_url: string | null;
+    sub_content: string | null;
 };
 
 async function getPageData(slug: string) {
@@ -33,15 +34,20 @@ async function getPageData(slug: string) {
         return { page: null, blocks: [] };
     }
     
-    const { data: blocksData, error: blocksError } = await supabase
+    let { data: blocksData, error: blocksError } = await supabase
         .from('blocks')
-        .select('id, order_index, block_type, title, content, image_url')
+        .select('id, order_index, block_type, title, content, image_url, sub_content')
         .eq('page_id', pageData.id)
         .order('order_index', { ascending: true });
 
     if (blocksError) {
         console.error("Error fetching blocks:", blocksError);
         return { page: pageData, blocks: [] };
+    }
+    
+    // Filtro específico para a página golden-visa para remover blocos antigos/duplicados
+    if (slug === 'golden-visa' && blocksData) {
+        blocksData = blocksData.filter(block => block.block_type.startsWith('golden-visa-'));
     }
     
     return { page: pageData, blocks: blocksData || [] };
