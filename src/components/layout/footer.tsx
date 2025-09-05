@@ -20,13 +20,13 @@ export function Footer() {
   
   const allNavLinks: NavItem[] = navItems.flatMap(item => item.subItems ? item.subItems.map(s => ({label: s.label, href: s.href})) : ({label: item.label, href: item.href!}));
 
-  const pagesWithoutMobileRadius = ['/contato', '/solucoes-tailor-made', '/fundos'];
-  const shouldRemoveRadiusOnMobile = pagesWithoutMobileRadius.includes(pathname);
+  const pagesWithoutRadius = ['/contato', '/solucoes-tailor-made', '/fundos'];
+  const shouldRemoveRadius = pagesWithoutRadius.includes(pathname);
 
   return (
     <footer className={cn(
-        "bg-primary text-primary-foreground/80 relative z-10",
-        shouldRemoveRadiusOnMobile ? "rounded-t-none md:rounded-t-3xl" : "rounded-t-3xl"
+        "bg-primary text-primary-foreground/80 relative",
+        !shouldRemoveRadius && "rounded-t-3xl"
     )}>
       <div className="container py-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
