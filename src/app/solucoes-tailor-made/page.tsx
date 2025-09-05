@@ -1,3 +1,4 @@
+
 import { PageHeader } from "@/components/shared/page-header";
 import { AnimatedSection } from "@/components/shared/animated-section";
 import Image from "next/image";
@@ -25,7 +26,7 @@ export default function SolucoesTailorMadePage() {
         title="Soluções Tailor Made"
         subtitle="No mercado de investimentos, opções não faltam. Mas quando se trata de potencializar retornos com inteligência e exclusividade, é preciso ir além do comum."
       />
-      <section className="bg-background pt-16 md:pt-24">
+      <section className="bg-primary text-primary-foreground pt-16 md:pt-24 rounded-t-3xl md:-mt-16 relative z-10">
         <div className="container">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <AnimatedSection>
@@ -39,22 +40,22 @@ export default function SolucoesTailorMadePage() {
                     />
                 </AnimatedSection>
                 <AnimatedSection delay={0.1}>
-                    <h2 className="font-headline text-3xl text-primary uppercase">Conexões de Valor para Investidores Únicos</h2>
-                    <p className="mt-4 text-muted-foreground text-lg">
+                    <h2 className="font-headline text-3xl text-primary-foreground uppercase">Conexões de Valor para Investidores Únicos</h2>
+                    <p className="mt-4 text-primary-foreground/80 text-lg">
                         A Aquila Fund FCR conecta investidores a ativos únicos em Portugal, cuidadosamente selecionados e organizados em estruturas que respeitam seu perfil, seus objetivos e o cenário de mercado.
                     </p>
                     <div className="mt-8 space-y-4">
                         {benefits.map((benefit, index) => (
                             <div key={index} className="flex items-start gap-3">
-                                <CheckCircle2 className="h-6 w-6 text-primary mt-1 shrink-0" />
-                                <span className="text-muted-foreground text-base">{benefit}</span>
+                                <CheckCircle2 className="h-6 w-6 text-primary-foreground/80 mt-1 shrink-0" />
+                                <span className="text-primary-foreground/90 text-base">{benefit}</span>
                             </div>
                         ))}
                     </div>
-                     <p className="mt-8 text-muted-foreground text-lg">
+                     <p className="mt-8 text-primary-foreground/80 text-lg">
                         Não se trata apenas de investir, mas de construir uma experiência personalizada, que coloca você no centro das decisões.
                     </p>
-                    <Button asChild size="lg" className="mt-8">
+                    <Button asChild size="lg" className="mt-8" variant="secondary">
                         <Link href="/contato">
                             Encontre o ativo perfeito para investir
                             <ArrowRight className="ml-2" />
