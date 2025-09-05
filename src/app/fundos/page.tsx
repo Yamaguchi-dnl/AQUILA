@@ -31,9 +31,10 @@ const getFundStaticData = (slug: string): Fund | undefined => {
 
 export default async function FundosPage() {
   const blocks = await getPageContentBySlug('fundos');
-
   const headerBlock = findBlock(blocks, 'fundos-header');
-  const fundBlocks = blocks.filter(b => b.block_type.startsWith('fund-'));
+
+  // We get the available funds from the static data, but their content will be from the DB
+  const availableFunds = fundsData;
 
   return (
     <>
@@ -49,11 +50,12 @@ export default async function FundosPage() {
             </div>
         </section>
       <div className="space-y-0">
-      {fundBlocks.map((block, index) => {
-          const fundSlug = block.block_type.replace('fund-', '');
-          const fund = getFundStaticData(fundSlug);
-          // Don't render a block if its corresponding static data doesn't exist.
-          if (!fund) return null;
+      {availableFunds.map((fund, index) => {
+          // Find the dynamic content block for the current fund
+          const block = findBlock(blocks, `fund-${fund.slug}`);
+          
+          // Don't render a section if its static data or dynamic block doesn't exist.
+          if (!fund || !block) return null;
 
           const isPrimarySection = index % 2 !== 0;
           const isReversed = index % 2 !== 0;
