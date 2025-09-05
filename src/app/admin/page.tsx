@@ -40,7 +40,10 @@ export default async function AdminDashboardPage() {
 
   return (
     <>
-      <PageHeader title="Dashboard" subtitle="Visão geral do conteúdo do seu site." />
+      <div>
+        <h1 className="text-2xl font-bold tracking-tight">Dashboard</h1>
+        <p className="text-muted-foreground">Visão geral do conteúdo do seu site.</p>
+      </div>
       <section className="py-8">
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             <Card>

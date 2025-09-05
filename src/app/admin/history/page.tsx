@@ -58,10 +58,10 @@ export default async function HistoryPage() {
     
     return (
         <>
-            <PageHeader
-                title="Histórico de Alterações"
-                subtitle="Veja as últimas atualizações de conteúdo feitas no site e restaure versões anteriores se necessário."
-            />
+            <div>
+                <h1 className="text-2xl font-bold tracking-tight">Histórico de Alterações</h1>
+                <p className="text-muted-foreground">Veja as últimas atualizações de conteúdo feitas no site e restaure versões anteriores se necessário.</p>
+            </div>
             <section className="py-8">
                 <Card>
                     <CardHeader>

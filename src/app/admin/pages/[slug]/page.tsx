@@ -65,13 +65,19 @@ export default async function AdminSinglePage({ params }: { params: { slug: stri
     
     if (!page) {
         return (
-             <PageHeader title="Página não encontrada" subtitle="A página que você está tentando acessar não existe." />
+             <div>
+                <h1 className="text-2xl font-bold tracking-tight">Página não encontrada</h1>
+                <p className="text-muted-foreground">A página que você está tentando acessar não existe.</p>
+            </div>
         );
     }
     
     return (
         <>
-            <PageHeader title={`Editando: ${page.title}`} subtitle={`Gerencie o conteúdo da página "${page.slug}"`} />
+            <div>
+                <h1 className="text-2xl font-bold tracking-tight">Editando: {page.title}</h1>
+                <p className="text-muted-foreground">Gerencie o conteúdo da página "{page.slug}"</p>
+            </div>
             <PageEditor initialPage={page} initialBlocks={blocks} />
         </>
     );
