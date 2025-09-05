@@ -11,6 +11,7 @@ export const navItems: NavItem[] = [
     ]
   },
   { href: '/fundos', label: 'Investimentos' },
+  { href: '/solucoes-tailor-made', label: 'Soluções Tailor Made' },
   { href: '/golden-visa', label: 'Golden Visa' },
   { href: '/contato', label: 'Contato' },
 ];

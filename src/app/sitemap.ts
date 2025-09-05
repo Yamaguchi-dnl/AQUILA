@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '',
     '/sobre',
     '/fundos',
+    '/solucoes-tailor-made',
     '/equipa',
     '/golden-visa',
     '/trabalhe-conosco',
