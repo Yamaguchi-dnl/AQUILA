@@ -1,4 +1,3 @@
-
 "use client";
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -12,12 +11,10 @@ type Props = {
   block: Block | null;
 }
 
-const defaultContent = {
-    title: 'Investimentos <span class="text-primary">Inteligentes</span> <span class="block">para o seu Futuro</span>',
-    content: 'Acesse fundos de investimento portugueses exclusivos com elegibilidade ao Golden Visa. Estratégias comprovadas em mercados especializados com gestão profissional e transparente.',
-}
-
 export function Hero({ block }: Props) {
+  const title = block?.title || 'Investimentos <span class="text-primary">Inteligentes</span> <span class="block">para o seu Futuro</span>';
+  const content = block?.content || 'Acesse fundos de investimento portugueses exclusivos com elegibilidade ao Golden Visa. Estratégias comprovadas em mercados especializados com gestão profissional e transparente.';
+  
   return (
     <section className="w-full bg-background relative overflow-hidden pt-32 md:pt-40">
        <div className="bg-animation z-0 hidden md:block">
@@ -35,12 +32,12 @@ export function Hero({ block }: Props) {
             <AnimatedSection delay={0.1}>
                 <h1 
                   className="font-headline text-3xl sm:text-4xl lg:text-5xl xl:text-6xl tracking-tight text-foreground uppercase mt-4"
-                  dangerouslySetInnerHTML={{ __html: block?.title || defaultContent.title }}
+                  dangerouslySetInnerHTML={{ __html: title }}
                 />
             </AnimatedSection>
             <AnimatedSection delay={0.2}>
                 <p className="mt-6 text-lg text-muted-foreground">
-                  {block?.content || defaultContent.content}
+                  {content}
                 </p>
             </AnimatedSection>
             <AnimatedSection delay={0.3}>

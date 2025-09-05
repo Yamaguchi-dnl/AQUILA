@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
@@ -33,11 +32,11 @@ type Props = {
   block: Block | null;
 }
 
-const defaultContent = {
-    title: 'Estratégia de investimento: o caminho para o sucesso',
-}
-
 export function InvestmentStrategy({ block }: Props) {
+  const title = block?.title || 'Estratégia de investimento: o caminho para o sucesso';
+  const imageUrl1 = block?.image_url || 'https://ik.imagekit.io/leosmc2zb/3550%20(1).jpg?updatedAt=1756312096783';
+  const imageUrl2 = block?.sub_content || 'https://ik.imagekit.io/leosmc2zb/golden-visa-portugal-nacionalidade-portuguesa.jpeg';
+
   return (
     <section id="investment-strategy" className="bg-transparent text-primary-foreground relative pt-0 md:pt-16 lg:pt-28 pb-16 md:pb-24 lg:pb-28">
       <div className="container relative z-10">
@@ -47,7 +46,7 @@ export function InvestmentStrategy({ block }: Props) {
                     <h2 className="text-sm uppercase tracking-widest text-primary-foreground/60 font-headline">
                         NOSSA ABORDAGEM
                     </h2>
-                    <h3 className="font-headline text-4xl text-primary-foreground uppercase mt-2">{block?.title || defaultContent.title}</h3>
+                    <h3 className="font-headline text-4xl text-primary-foreground uppercase mt-2">{title}</h3>
                 </AnimatedSection>
                 
                 <AnimatedSection delay={0.1}>
@@ -74,7 +73,7 @@ export function InvestmentStrategy({ block }: Props) {
             <AnimatedSection delay={0.2} className="hidden lg:block">
                 <div className="relative">
                     <Image 
-                        src="https://ik.imagekit.io/leosmc2zb/3550%20(1).jpg?updatedAt=1756312096783"
+                        src={imageUrl1}
                         alt="Paisagem de Portugal"
                         width={600}
                         height={800}
@@ -84,7 +83,7 @@ export function InvestmentStrategy({ block }: Props) {
                     />
                     <AnimatedSection delay={0.4}>
                         <Image 
-                            src="https://ik.imagekit.io/leosmc2zb/golden-visa-portugal-nacionalidade-portuguesa.jpeg"
+                            src={imageUrl2}
                             alt="Passaporte e documentos Golden Visa"
                             width={250}
                             height={160}

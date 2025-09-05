@@ -9,16 +9,10 @@ type AboutSummaryProps = {
   block: Block | null;
 }
 
-const defaultContent = {
-  title: "Seu capital, nossa expertise",
-  content: `<p>A Aquila Fund FCR é uma plataforma de investimentos portuguesa, com quatro fundos de investimento totalmente independentes e registrados na Comissão do Mercado de Valores Mobiliários (CMVM).</p><p>Com uma equipe experiente e altamente qualificada, oferecemos soluções seguras e rentáveis para investidores brasileiros, através de nossos fundos - Wheels, Agro, Hotel Invest e Real State.</p><p>Com estas soluções, você diversifica seu portfólio, ganha acesso facilitado ao passaporte europeu e protege seu patrimônio em um mercado estável e repleto de oportunidades.</p>`,
-  image_url: "https://ik.imagekit.io/leosmc2zb/5573.jpg",
-}
-
 export function AboutSummary({ block }: AboutSummaryProps) {
-  const title = block?.title || defaultContent.title;
-  const content = block?.content || defaultContent.content;
-  const imageUrl = block?.image_url || defaultContent.image_url;
+  const title = block?.title || "Seu capital, nossa expertise";
+  const content = block?.content || `<p>A Aquila Fund FCR é uma plataforma de investimentos portuguesa, com quatro fundos de investimento totalmente independentes e registrados na Comissão do Mercado de Valores Mobiliários (CMVM).</p><p>Com uma equipe experiente e altamente qualificada, oferecemos soluções seguras e rentáveis para investidores brasileiros, através de nossos fundos - Wheels, Agro, Hotel Invest e Real State.</p><p>Com estas soluções, você diversifica seu portfólio, ganha acesso facilitado ao passaporte europeu e protege seu patrimônio em um mercado estável e repleto de oportunidades.</p>`;
+  const imageUrl = block?.image_url || "https://ik.imagekit.io/leosmc2zb/5573.jpg";
 
   return (
     <section id="sobre" className="bg-primary text-primary-foreground overflow-hidden relative">
@@ -50,7 +44,7 @@ export function AboutSummary({ block }: AboutSummaryProps) {
             </AnimatedSection>
             <AnimatedSection className="flex-grow">
               <div 
-                className="mt-8 space-y-4 text-primary-foreground/80 prose prose-lg max-w-none"
+                className="mt-8 space-y-4 text-primary-foreground/80 prose prose-lg prose-invert max-w-none"
                 dangerouslySetInnerHTML={{ __html: content }}
               />
             </AnimatedSection>

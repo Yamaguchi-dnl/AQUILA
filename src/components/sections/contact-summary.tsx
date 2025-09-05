@@ -1,4 +1,3 @@
-
 import { ContactForm } from "../forms/contact-form";
 import Link from "next/link";
 import { Instagram, Linkedin } from "lucide-react";
@@ -10,12 +9,10 @@ type Props = {
   block: Block | null;
 }
 
-const defaultContent = {
-    title: 'Pronto para investir em Portugal?',
-    content: 'Preencha o formulário abaixo para agendar uma reunião com nossa equipe e conhecer as oportunidades de diversificação global de investimento com foco em Golden Visa. Estamos prontos para ajudar a alcançar seus objetivos financeiros em Portugal.',
-}
-
 export function ContactSummary({ block }: Props) {
+  const title = block?.title || 'Pronto para investir em Portugal?';
+  const content = block?.content || 'Preencha o formulário abaixo para agendar uma reunião com nossa equipe e conhecer as oportunidades de diversificação global de investimento com foco em Golden Visa. Estamos prontos para ajudar a alcançar seus objetivos financeiros em Portugal.';
+  
   return (
     <section id="contato" className="bg-card rounded-t-3xl relative z-10 shadow-2xl">
       <div className="container pb-16">
@@ -25,11 +22,11 @@ export function ContactSummary({ block }: Props) {
                  <h2 className="text-sm uppercase tracking-widest text-muted-foreground font-headline">
                     FALE CONOSCO
                   </h2>
-                 <h3 className="font-headline text-4xl text-primary uppercase mt-2">{block?.title || defaultContent.title}</h3>
+                 <h3 className="font-headline text-4xl text-primary uppercase mt-2">{title}</h3>
                 </AnimatedSection>
                  <AnimatedSection delay={0.1}>
                  <p className="mt-4 text-lg text-muted-foreground max-w-lg">
-                    {block?.content || defaultContent.content}
+                    {content}
                  </p>
                  </AnimatedSection>
                  <AnimatedSection delay={0.2}>

@@ -1,4 +1,3 @@
-
 import { fundsData } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -10,13 +9,10 @@ type Props = {
   block: Block | null;
 }
 
-const defaultContent = {
-    title: 'Nossos Fundos de Investimento',
-    content: 'Soluções de investimento seguras e rentáveis para investidores que buscam diversificação, proteção patrimonial e acesso ao Golden Visa em Portugal.',
-}
-
 export function FundsSummary({ block }: Props) {
     const activeFunds = fundsData.filter(f => f.status === 'ativo');
+    const title = block?.title || 'Nossos Fundos de Investimento';
+    const content = block?.content || 'Soluções de investimento seguras e rentáveis para investidores que buscam diversificação, proteção patrimonial e acesso ao Golden Visa em Portugal.';
     
   return (
     <section id="fundos">
@@ -26,9 +22,9 @@ export function FundsSummary({ block }: Props) {
            <h2 className="text-sm uppercase tracking-widest text-muted-foreground font-headline">
               PORTFÓLIO
           </h2>
-          <h3 className="font-headline text-4xl text-primary uppercase mt-2">{block?.title || defaultContent.title}</h3>
+          <h3 className="font-headline text-4xl text-primary uppercase mt-2">{title}</h3>
           <p className="mt-4 text-lg text-muted-foreground">
-            {block?.content || defaultContent.content}
+            {content}
           </p>
         </div>
         </AnimatedSection>

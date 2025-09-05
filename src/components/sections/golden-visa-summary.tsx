@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,19 +9,17 @@ type Props = {
   block: Block | null;
 }
 
-const defaultContent = {
-    title: 'O caminho para Portugal com o Golden Visa',
-    content: 'O Golden Visa é o seu passaporte para a União Europeia. Ao investir em nossos fundos elegíveis, você e sua família garantem o direito de residir em Portugal, com acesso a todos os benefícios de um cidadão europeu, como educação e saúde de qualidade.',
-    image_url: 'https://ik.imagekit.io/leosmc2zb/golden-visa-portugal-nacionalidade-portuguesa.jpeg'
-}
-
 export function GoldenVisaSummary({ block }: Props) {
+  const title = block?.title || 'O caminho para Portugal com o Golden Visa';
+  const content = block?.content || 'O Golden Visa é o seu passaporte para a União Europeia. Ao investir em nossos fundos elegíveis, você e sua família garantem o direito de residir em Portugal, com acesso a todos os benefícios de um cidadão europeu, como educação e saúde de qualidade.';
+  const imageUrl = block?.image_url || 'https://ik.imagekit.io/leosmc2zb/golden-visa-portugal-nacionalidade-portuguesa.jpeg';
+
   return (
     <section id="golden-visa" className="bg-card">
       <div className="container">
         <div className="relative rounded-lg overflow-hidden p-8 md:p-12 min-h-[400px] flex items-center">
             <Image 
-                src={block?.image_url || defaultContent.image_url}
+                src={imageUrl}
                 alt="Golden Visa Portugal"
                 data-ai-hint="passport document"
                 fill
@@ -33,12 +30,12 @@ export function GoldenVisaSummary({ block }: Props) {
                 <div className="text-primary-foreground">
                     <AnimatedSection>
                     <h3 className="font-headline text-4xl uppercase mt-2">
-                        {block?.title || defaultContent.title}
+                        {title}
                     </h3>
                     </AnimatedSection>
                     <AnimatedSection delay={0.1}>
                     <p className="mt-4 text-base md:text-lg text-primary-foreground/90 max-w-lg">
-                        {block?.content || defaultContent.content}
+                        {content}
                     </p>
                     </AnimatedSection>
                     <AnimatedSection delay={0.2}>

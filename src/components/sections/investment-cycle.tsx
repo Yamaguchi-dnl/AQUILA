@@ -1,4 +1,3 @@
-
 import { AnimatedSection } from "../shared/animated-section";
 import type { Block } from "@/lib/data-loader";
 
@@ -33,12 +32,10 @@ type Props = {
   block: Block | null;
 }
 
-const defaultContent = {
-    title: 'Entenda o ciclo completo do seu investimento',
-    content: 'Cada fundo da Aquila Fund FCR tem duração de 8 anos, com o capital levantado durante os primeiros dois anos e o período de desinvestimento ocorrendo nos últimos dois anos da vida do fundo.',
-}
-
 export function InvestmentCycle({ block }: Props) {
+  const title = block?.title || 'Entenda o ciclo completo do seu investimento';
+  const content = block?.content || 'Cada fundo da Aquila Fund FCR tem duração de 8 anos, com o capital levantado durante os primeiros dois anos e o período de desinvestimento ocorrendo nos últimos dois anos da vida do fundo.';
+
   return (
     <section id="investment-cycle" className="bg-transparent text-primary-foreground relative pt-16 md:pt-24 lg:pt-28">
       <div className="container relative z-10">
@@ -47,9 +44,9 @@ export function InvestmentCycle({ block }: Props) {
           <h2 className="text-sm uppercase tracking-widest text-primary-foreground/60 font-headline">
             COMO FUNCIONA
           </h2>
-          <h3 className="font-headline text-4xl text-primary-foreground uppercase mt-2">{block?.title || defaultContent.title}</h3>
+          <h3 className="font-headline text-4xl text-primary-foreground uppercase mt-2">{title}</h3>
           <p className="mt-4 text-lg text-primary-foreground/80">
-            {block?.content || defaultContent.content}
+            {content}
           </p>
         </div>
         </AnimatedSection>

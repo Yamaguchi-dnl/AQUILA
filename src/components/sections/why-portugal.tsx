@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Globe, ShieldCheck, TrendingUp, Handshake, Sun, Euro } from "lucide-react";
@@ -50,11 +49,9 @@ type Props = {
   block: Block | null;
 }
 
-const defaultContent = {
-    title: 'Por que investir<br/>em Portugal?',
-}
-
 export function WhyPortugal({ block }: Props) {
+  const title = block?.title || 'Por que investir<br/>em Portugal?';
+  
   return (
     <section id="why-portugal" className="bg-primary text-primary-foreground overflow-hidden relative">
        <div
@@ -77,7 +74,7 @@ export function WhyPortugal({ block }: Props) {
                 </h2>
                 <h3 
                   className="font-headline text-4xl text-primary-foreground uppercase mt-2"
-                  dangerouslySetInnerHTML={{ __html: block?.title || defaultContent.title}}
+                  dangerouslySetInnerHTML={{ __html: title}}
                 />
               </div>
               <div className="flex gap-2">
