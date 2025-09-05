@@ -1,10 +1,8 @@
-"use client";
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ArrowRight, PlayCircle } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { AnimatedSection } from '../shared/animated-section';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 import type { Block } from "@/lib/data-loader";
 
 type Props = {
@@ -49,16 +47,10 @@ export function Hero({ block }: Props) {
             </AnimatedSection>
         </div>
         <div className="flex justify-center items-center order-first md:order-last">
-             <motion.div
-                initial={{ opacity: 0, y: 50, scale: 0.9 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
+             <div
                 className="relative h-[300px] w-[250px] md:h-[500px] md:w-[400px]"
              >
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9, y: 50 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
+                <div
                     className="relative w-full h-full z-10"
                 >
                     <Image 
@@ -69,11 +61,8 @@ export function Hero({ block }: Props) {
                         data-ai-hint="lisbon portugal"
                         priority
                     />
-                </motion.div>
-                <motion.div
-                     initial={{ opacity: 0, scale: 0.8, y: -20 }}
-                     animate={{ opacity: 1, scale: 1, y: 0 }}
-                     transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
+                </div>
+                <div
                      className="absolute -top-4 -left-12 md:-left-16 z-30"
                 >
                     <Image 
@@ -85,11 +74,8 @@ export function Hero({ block }: Props) {
                         data-ai-hint="portugal flag"
                         priority
                     />
-                </motion.div>
-                <motion.div
-                     initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                     animate={{ opacity: 1, scale: 1, y: 0 }}
-                     transition={{ duration: 0.7, delay: 0.8, ease: "easeOut" }}
+                </div>
+                <div
                      className="absolute -bottom-4 -right-12 md:-right-16 z-20"
                 >
                      <Image 
@@ -101,8 +87,8 @@ export function Hero({ block }: Props) {
                         data-ai-hint="investment chart"
                         priority
                     />
-                </motion.div>
-            </motion.div>
+                </div>
+            </div>
         </div>
       </div>
     </section>
