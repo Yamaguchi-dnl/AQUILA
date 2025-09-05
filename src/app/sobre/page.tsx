@@ -7,6 +7,7 @@ import { TeamSummary } from "@/components/sections/team-summary";
 import Image from "next/image";
 import { getPageContentBySlug, findBlock } from '@/lib/data-loader';
 import { teamData } from "@/lib/data";
+import { AnimatedSection } from "@/components/shared/animated-section";
 
 export const metadata = {
   title: "Sobre a Aquila Fund FCR",
@@ -35,6 +36,7 @@ export default async function SobrePage() {
             <div id='stars2'></div>
             <div id='stars3'></div>
         </div>
+        <AnimatedSection>
         <div className="container relative z-10">
             <div className="text-center">
                 <p className="text-sm uppercase tracking-widest text-muted-foreground font-headline">Nossa Essência</p>
@@ -56,9 +58,11 @@ export default async function SobrePage() {
                 />
             </div>
         </div>
+        </AnimatedSection>
        </section>
 
       <section className="bg-primary text-primary-foreground rounded-t-3xl">
+        <AnimatedSection>
         <div className="container">
             <div className="text-center">
               <h2 className="font-headline text-4xl uppercase">{partnersBlock?.title || 'Nossos Parceiros Estratégicos'}</h2>
@@ -86,6 +90,7 @@ export default async function SobrePage() {
               </Button>
           </div>
         </div>
+        </AnimatedSection>
       </section>
 
       <TeamSummary team={teamData} />
