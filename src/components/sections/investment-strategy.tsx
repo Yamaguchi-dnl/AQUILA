@@ -35,7 +35,7 @@ type Props = {
 
 export function InvestmentStrategy({ block }: Props) {
   const title = block?.title || 'Estratégia de investimento: o caminho para o sucesso';
-  const imageUrl1 = block?.image_url || 'https://ik.imagekit.io/leosmc2zb/3550%20(1).jpg?updatedAt=1756312096783';
+  const imageUrl1 = block?.image_url || 'https://ik.imagekit.io/leosmc2zb/3550%20(1).jpg?updatedAt=1756312096783&tr=w-1200';
   const imageUrl2 = block?.sub_content || 'https://ik.imagekit.io/leosmc2zb/golden-visa-portugal-nacionalidade-portuguesa.jpeg';
 
   return (
@@ -76,8 +76,8 @@ export function InvestmentStrategy({ block }: Props) {
                     <Image 
                         src={imageUrl1}
                         alt="Paisagem de Portugal"
-                        width={600}
-                        height={800}
+                        width={800}
+                        height={1000}
                         priority
                         className="rounded-3xl object-cover h-[600px] w-full"
                         data-ai-hint="portugal lisbon"
