@@ -31,7 +31,7 @@ export default function SolucoesTailorMadePage() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <AnimatedSection>
                     <Image
-                        src="https://ik.imagekit.io/leosmc2zb/3550%20(1).jpg?updatedAt=1756312096783"
+                        src="https://ik.imagekit.io/leosmc2zb/6109119.jpg"
                         alt="Homem de fato a analisar um gráfico"
                         width={600}
                         height={700}
