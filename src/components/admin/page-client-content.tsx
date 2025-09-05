@@ -84,7 +84,7 @@ export function PageClientContent({ initialPages }: PageClientContentProps) {
 
   return (
     <>
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex items-center justify-between mb-4">
           <div>
             <h1 className="text-2xl font-bold tracking-tight">Páginas do Site</h1>
             <p className="text-muted-foreground">Gerencie as páginas e o conteúdo de cada uma.</p>
