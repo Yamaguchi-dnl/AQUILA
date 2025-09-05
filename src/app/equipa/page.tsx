@@ -15,7 +15,7 @@ export default async function EquipaPage() {
 
   return (
     <>
-      <section className="bg-background pt-32 md:pt-40">
+      <section className="bg-background pt-32 md:pt-40 pb-16 md:pb-24 lg:pb-28">
         <div className="container">
            <AnimatedSection>
             <div className="text-center max-w-3xl mx-auto">
@@ -25,14 +25,12 @@ export default async function EquipaPage() {
                       {heroBlock?.content || "Especialistas dedicados a transformar desafios em oportunidades e aspirações em conquistas."}
                   </p>
               </div>
-           </AnimatedSection>
-          <AnimatedSection delay={0.1}>
-            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {teamData.sort((a,b) => a.ordem - b.ordem).map((member) => (
-                <TeamMemberCard key={member.nome} member={member} />
-              ))}
-            </div>
           </AnimatedSection>
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {teamData.sort((a,b) => a.ordem - b.ordem).map((member) => (
+              <TeamMemberCard key={member.nome} member={member} />
+            ))}
+          </div>
         </div>
       </section>
     </>
