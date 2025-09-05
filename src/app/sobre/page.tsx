@@ -71,23 +71,29 @@ export default async function SobrePage() {
               </p>
             </div>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+            <AnimatedSection>
               <Card className="flex flex-col h-full bg-card/10 border-primary-foreground/20 text-primary-foreground transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
                   <CardHeader>
                       <h3 className="text-2xl font-headline card-title text-primary-foreground">{fundboxBlock?.title || 'FundBox'}</h3>
                   </CardHeader>
                   <CardContent className="prose max-w-none text-primary-foreground/80 flex-grow" dangerouslySetInnerHTML={{ __html: fundboxBlock?.content || '' }} />
               </Card>
+            </AnimatedSection>
+            <AnimatedSection delay={0.1}>
               <Card className="flex flex-col h-full bg-card/10 border-primary-foreground/20 text-primary-foreground transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
                   <CardHeader>
                       <h3 className="text-2xl font-headline card-title text-primary-foreground">{btgBlock?.title || 'BTG Pactual'}</h3>
                   </CardHeader>
                   <CardContent className="prose max-w-none text-primary-foreground/80 flex-grow" dangerouslySetInnerHTML={{ __html: btgBlock?.content || ''}} />
               </Card>
+            </AnimatedSection>
           </div>
           <div className="container text-center mt-12">
+            <AnimatedSection>
               <Button asChild size="lg" variant="secondary">
                   <Link href="/contato">Fale com um especialista</Link>
               </Button>
+            </AnimatedSection>
           </div>
         </div>
         </AnimatedSection>

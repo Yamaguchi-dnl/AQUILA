@@ -67,10 +67,8 @@ export default async function FundosPage() {
               className={cn(
                   "scroll-mt-20 py-16 md:py-24 relative",
                   isPrimarySection ? "bg-primary text-primary-foreground" : "bg-background text-foreground",
-                  'rounded-t-3xl',
-                  'md:-mt-20'
+                  'rounded-t-3xl'
               )}
-              style={{ zIndex: 10 - index }}
           >
               {isPrimarySection && (
                 <div

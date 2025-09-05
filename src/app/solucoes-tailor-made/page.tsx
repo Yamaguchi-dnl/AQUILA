@@ -30,7 +30,7 @@ export default async function SolucoesTailorMadePage() {
         title={headerBlock?.title || "Soluções Tailor Made"}
         subtitle={headerBlock?.content || "No mercado de investimentos, opções não faltam. Mas quando se trata de potencializar retornos com inteligência e exclusividade, é preciso ir além do comum."}
       />
-      <section className="bg-primary text-primary-foreground pt-16 md:pt-24 rounded-t-3xl md:-mt-16 relative z-10">
+      <section className="bg-primary text-primary-foreground pt-16 md:pt-24 rounded-t-3xl relative z-10">
         <div className="container">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <AnimatedSection>

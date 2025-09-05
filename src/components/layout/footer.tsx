@@ -25,7 +25,7 @@ export function Footer() {
 
   return (
     <footer className={cn(
-        "bg-primary text-primary-foreground/80 relative z-10 md:-mt-20",
+        "bg-primary text-primary-foreground/80 relative z-10",
         shouldRemoveRadiusOnMobile ? "rounded-t-none md:rounded-t-3xl" : "rounded-t-3xl"
     )}>
       <div className="container py-12 relative z-10">
