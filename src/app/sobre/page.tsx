@@ -43,10 +43,10 @@ export default async function SobrePage() {
             </div>
             <div className="mt-12 grid lg:grid-cols-2 gap-12 items-center">
                 <div 
-                  className="space-y-4 text-base text-muted-foreground text-justify prose lg:prose-lg max-w-none"
-                  dangerouslySetInnerHTML={{ __html: heroBlock?.sub_content || '' }}
+                className="space-y-4 text-base text-muted-foreground text-justify prose lg:prose-lg max-w-none"
+                dangerouslySetInnerHTML={{ __html: heroBlock?.sub_content || '' }}
                 />
-                 <Image
+                <Image
                     src={heroBlock?.image_url || "https://ik.imagekit.io/leosmc2zb/5573.jpg"}
                     alt="Escritório moderno com vista para a cidade"
                     width={600}
@@ -59,30 +59,32 @@ export default async function SobrePage() {
        </section>
 
       <section className="bg-primary text-primary-foreground rounded-t-3xl">
-        <div className="container text-center">
-            <h2 className="font-headline text-4xl uppercase">{partnersBlock?.title || 'Nossos Parceiros Estratégicos'}</h2>
-            <p className="mt-4 text-lg text-primary-foreground/80 max-w-3xl mx-auto">
-                {partnersBlock?.content || 'Colaboramos com líderes de mercado para oferecer estrutura, segurança e as melhores oportunidades para nossos investidores.'}
-            </p>
-        </div>
-        <div className="container mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-            <Card className="flex flex-col h-full bg-card/10 border-primary-foreground/20 text-primary-foreground transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
-                <CardHeader>
-                    <h3 className="text-2xl font-headline card-title text-primary-foreground">{fundboxBlock?.title || 'FundBox'}</h3>
-                </CardHeader>
-                <CardContent className="prose max-w-none text-primary-foreground/80 flex-grow" dangerouslySetInnerHTML={{ __html: fundboxBlock?.content || '' }} />
-            </Card>
-             <Card className="flex flex-col h-full bg-card/10 border-primary-foreground/20 text-primary-foreground transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
-                <CardHeader>
-                    <h3 className="text-2xl font-headline card-title text-primary-foreground">{btgBlock?.title || 'BTG Pactual'}</h3>
-                </CardHeader>
-                <CardContent className="prose max-w-none text-primary-foreground/80 flex-grow" dangerouslySetInnerHTML={{ __html: btgBlock?.content || ''}} />
-            </Card>
-        </div>
-        <div className="container text-center mt-12">
-             <Button asChild size="lg" variant="secondary">
-                <Link href="/contato">Fale com um especialista</Link>
-            </Button>
+        <div className="container">
+            <div className="text-center">
+              <h2 className="font-headline text-4xl uppercase">{partnersBlock?.title || 'Nossos Parceiros Estratégicos'}</h2>
+              <p className="mt-4 text-lg text-primary-foreground/80 max-w-3xl mx-auto">
+                  {partnersBlock?.content || 'Colaboramos com líderes de mercado para oferecer estrutura, segurança e as melhores oportunidades para nossos investidores.'}
+              </p>
+            </div>
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+              <Card className="flex flex-col h-full bg-card/10 border-primary-foreground/20 text-primary-foreground transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
+                  <CardHeader>
+                      <h3 className="text-2xl font-headline card-title text-primary-foreground">{fundboxBlock?.title || 'FundBox'}</h3>
+                  </CardHeader>
+                  <CardContent className="prose max-w-none text-primary-foreground/80 flex-grow" dangerouslySetInnerHTML={{ __html: fundboxBlock?.content || '' }} />
+              </Card>
+              <Card className="flex flex-col h-full bg-card/10 border-primary-foreground/20 text-primary-foreground transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
+                  <CardHeader>
+                      <h3 className="text-2xl font-headline card-title text-primary-foreground">{btgBlock?.title || 'BTG Pactual'}</h3>
+                  </CardHeader>
+                  <CardContent className="prose max-w-none text-primary-foreground/80 flex-grow" dangerouslySetInnerHTML={{ __html: btgBlock?.content || ''}} />
+              </Card>
+          </div>
+          <div className="container text-center mt-12">
+              <Button asChild size="lg" variant="secondary">
+                  <Link href="/contato">Fale com um especialista</Link>
+              </Button>
+          </div>
         </div>
       </section>
 
