@@ -65,12 +65,10 @@ export default async function SobrePage() {
 
       <section className="bg-primary text-primary-foreground rounded-t-3xl">
         <div className="container text-center">
-            <AnimatedSection>
             <h2 className="font-headline text-4xl uppercase">{partnersBlock?.title || 'Nossos Parceiros Estratégicos'}</h2>
             <p className="mt-4 text-lg text-primary-foreground/80 max-w-3xl mx-auto">
                 {partnersBlock?.content || 'Colaboramos com líderes de mercado para oferecer estrutura, segurança e as melhores oportunidades para nossos investidores.'}
             </p>
-            </AnimatedSection>
         </div>
         <div className="container mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
             <AnimatedSection delay={0.1}>
