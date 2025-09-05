@@ -20,7 +20,7 @@ export function AdminSidebar() {
     ];
     
     return (
-        <Sidebar>
+        <Sidebar collapsible="icon">
             <SidebarHeader>
                  <div className="flex items-center gap-2">
                     <Logo />
