@@ -69,46 +69,6 @@ export const fundsData: Fund[] = [
     ],
     status: 'ativo',
   },
-  {
-    slug: 'aquila-real-estate',
-    nome: 'Aquila Real State',
-    subtitulo: 'O Aquila Real State é um fundo focado em ativos imobiliários de alto valor, localizados em áreas privilegiadas e no mercado de residências assinadas.',
-    imagemResumo: 'https://ik.imagekit.io/leosmc2zb/147.jpg',
-    descricaoHtml: `<p>Com uma dimensão de €60 milhões, o Aquila Real Estate se especializa em ativos imobiliários localizados em áreas privilegiadas e/ou no mercado de residências de marca. Essa estrategia visa proporcionar retornos moderados ajustados ao risco, minimizando a exposição ao risco para nossos investidores.</p><p>O fundo aloca 60% do seu capital em propriedades que geram renda e valorização, com investimentos garantidos por ativos imobiliários. Além disso, até 40% do capital será investido no International Hospitality Fund.</p>`,
-    detalhes: {
-      tipo: 'Fundo de capital de risco fechado',
-      dimensao: '€60 milhões',
-      prazo: '8 anos',
-      investimentoInicial: '€100 mil',
-      movimentacaoMinima: '€100 mil',
-      retornoEsperado: '10% após fees',
-      elegibilidadeGoldenVisa: false,
-      parceria: "Parceria com a Overseas e BWA Group"
-    },
-    beneficios: [
-      'Segurança patrimonial — garantias em ativos imobiliários.',
-      'Localização estratégica — áreas privilegiadas, alta liquidez.',
-      'Diversificação inteligente — até 40% no International Hospitality Fund.',
-      'Perfil de risco moderado — estabilidade e previsibilidade.',
-    ],
-    status: 'ativo',
-  },
-  {
-    slug: 'aquila-agro',
-    nome: 'Aquila Agro',
-    subtitulo: 'Investindo no futuro da agricultura portuguesa',
-    descricaoHtml: `<p>O setor agrícola em Portugal apresenta um potencial de crescimento robusto, impulsionado pela inovação tecnológica e pela crescente demanda global por produtos de alta qualidade. O Aquila Agro será estruturado para capitalizar sobre estas oportunidades, focando em projetos sustentáveis e de alto valor agregado.</p>`,
-    detalhes: {
-      tipo: 'Fundo de capital de risco fechado',
-      dimensao: 'A definir',
-      prazo: 'A definir',
-      investimentoInicial: 'A definir',
-      movimentacaoMinima: 'A definir',
-      elegibilidadeGoldenVisa: false,
-    },
-    beneficios: [],
-    status: 'em_breve',
-  },
 ];
 
 export const teamData: TeamMember[] = [
