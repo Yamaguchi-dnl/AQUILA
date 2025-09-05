@@ -1,10 +1,12 @@
 
+
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { TeamSummary } from "@/components/sections/team-summary";
 import Image from "next/image";
 import { getPageContentBySlug, findBlock } from '@/lib/data-loader';
+import { teamData } from "@/lib/data";
 
 export const metadata = {
   title: "Sobre a Aquila Fund FCR",
@@ -84,7 +86,7 @@ export default async function SobrePage() {
         </div>
       </section>
 
-      <TeamSummary />
+      <TeamSummary team={teamData} />
     </>
   );
 }

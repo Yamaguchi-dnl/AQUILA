@@ -1,22 +1,24 @@
 
-import { teamData } from "@/lib/data";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import type { TeamMember } from "@/lib/types";
 
 type TeamSummaryProps = {
   isPage?: boolean;
+  team: TeamMember[];
 }
 
-export function TeamSummary({ isPage = false }: TeamSummaryProps) {
-  const featuredTeam = teamData.slice(0, 4);
-  const teamToShow = isPage ? teamData.sort((a,b) => a.ordem - b.ordem) : featuredTeam;
+export function TeamSummary({ isPage = false, team }: TeamSummaryProps) {
+  const featuredTeam = team.slice(0, 4);
+  const teamToShow = isPage ? team.sort((a,b) => a.ordem - b.ordem) : featuredTeam;
 
   return (
     <section id="equipa" className={cn(isPage ? "bg-background" : "bg-card")}>
-      <div className="container pb-16 md:pb-24 lg:pb-28">
+      <div className="container pb-16 md:pb-20">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="font-headline text-4xl text-primary uppercase">Liderança Experiente</h2>
           <p className="mt-4 text-lg text-muted-foreground">
