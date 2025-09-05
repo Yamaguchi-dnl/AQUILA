@@ -52,6 +52,7 @@ export default async function FundosPage() {
       {fundBlocks.map((block, index) => {
           const fundSlug = block.block_type.replace('fund-', '');
           const fund = getFundStaticData(fundSlug);
+          // Don't render a block if its corresponding static data doesn't exist.
           if (!fund) return null;
 
           const isPrimarySection = index % 2 !== 0;
@@ -81,9 +82,9 @@ export default async function FundosPage() {
                             {fund.detalhes.elegibilidadeGoldenVisa && (
                                 <Badge variant={fund.slug === 'aquila-wheels' ? 'default' : 'secondary'} className={cn("mb-2", fund.slug === 'aquila-hotel-invest' && 'bg-white/20 text-white backdrop-blur-sm border border-white/30')}>Elegível para Golden Visa</Badge>
                             )}
-                            <h2 className={cn("font-headline text-3xl md:text-4xl uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>{block.title || fund.nome}</h2>
-                            <p className={cn("mt-2 text-lg font-semibold", isPrimarySection ? "text-primary-foreground/90" : "text-foreground")}>{block.content || fund.subtitulo}</p>
-                            <div className={cn("mt-6 prose prose-lg max-w-none", isPrimarySection ? "text-primary-foreground/80" : "text-muted-foreground")} dangerouslySetInnerHTML={{ __html: block.sub_content || fund.descricaoHtml }} />
+                            <h2 className={cn("font-headline text-3xl md:text-4xl uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>{block.title}</h2>
+                            {block.content && <p className={cn("mt-2 text-lg font-semibold", isPrimarySection ? "text-primary-foreground/90" : "text-foreground")}>{block.content}</p>}
+                            {block.sub_content && <div className={cn("mt-6 prose prose-lg max-w-none", isPrimarySection ? "text-primary-foreground/80" : "text-muted-foreground")} dangerouslySetInnerHTML={{ __html: block.sub_content }} />}
                       </AnimatedSection>
                       <AnimatedSection delay={0.1}>
                           <Card className={cn("shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
