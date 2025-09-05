@@ -25,12 +25,9 @@ export function Header() {
     setIsMounted(true);
   }, []);
   
-  if (pathname.startsWith('/admin')) {
-      return null;
-  }
-
   // Prevent mismatch by delaying client-specific rendering
-  if (!isMounted) {
+  if (!isMounted || pathname.startsWith('/admin')) {
+    // Render a skeleton or placeholder header on the server and initial client render
     return (
         <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-screen-xl">
             <div className="container flex h-16 max-w-screen-2xl items-center justify-between rounded-full bg-background/80 backdrop-blur-sm border shadow-md">

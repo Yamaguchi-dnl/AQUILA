@@ -10,23 +10,38 @@ import { Button } from "../ui/button";
 import { Instagram, Linkedin } from "lucide-react";
 import type { NavItem } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { useEffect, useState } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export function Footer() {
   const pathname = usePathname();
-  const legalLinks = [
-    { href: "/politica-privacidade", label: "Política de Privacidade" },
-    { href: "/termos-uso", label: "Termos de Uso" },
-  ];
-  
-  const allNavLinks: NavItem[] = navItems.flatMap(item => item.subItems ? item.subItems.map(s => ({label: s.label, href: s.href})) : ({label: item.label, href: item.href!}));
+  const isMobile = useIsMobile();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const pagesWithoutRadius = ['/contato', '/solucoes-tailor-made', '/fundos'];
-  const shouldRemoveRadius = pagesWithoutRadius.includes(pathname);
+  let shouldRemoveRadius = pagesWithoutRadius.includes(pathname);
+
+  // When on mobile, we also need to check the path for the contact page
+  if (isMobile && pathname === '/contato') {
+      shouldRemoveRadius = true;
+  }
+  
+  if (!isMounted) {
+    return (
+         <footer className="bg-primary text-primary-foreground/80 relative">
+          {/* Skeleton or minimal footer to avoid layout shift */}
+         </footer>
+    );
+  }
 
   return (
     <footer className={cn(
         "bg-primary text-primary-foreground/80 relative",
-        !shouldRemoveRadius && "rounded-t-3xl"
+        shouldRemoveRadius ? "rounded-t-none" : "rounded-t-3xl"
     )}>
       <div className="container py-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -51,9 +66,10 @@ export function Footer() {
           <div>
             <h4 className="font-headline text-lg font-bold text-primary-foreground">Navegação</h4>
             <ul className="mt-4 space-y-2">
-              {allNavLinks.map((item) => (
+              {navItems.flatMap(item => item.subItems ? item.subItems : [item]).map((item) => (
+                item.href &&
                 <li key={item.href}>
-                  <Link href={item.href!} className="text-sm hover:text-white transition-colors">
+                  <Link href={item.href} className="text-sm hover:text-white transition-colors">
                     {item.label}
                   </Link>
                 </li>
@@ -63,7 +79,10 @@ export function Footer() {
           <div>
             <h4 className="font-headline text-lg font-bold text-primary-foreground">Legal</h4>
             <ul className="mt-4 space-y-2">
-              {legalLinks.map((item) => (
+              {[
+                  { href: "/politica-privacidade", label: "Política de Privacidade" },
+                  { href: "/termos-uso", label: "Termos de Uso" },
+              ].map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className="text-sm hover:text-white transition-colors">
                     {item.label}
