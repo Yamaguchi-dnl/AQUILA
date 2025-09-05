@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
@@ -77,6 +78,7 @@ export function InvestmentStrategy({ block }: Props) {
                         alt="Paisagem de Portugal"
                         width={600}
                         height={800}
+                        priority
                         className="rounded-3xl object-cover h-[600px] w-full"
                         data-ai-hint="portugal lisbon"
                         
