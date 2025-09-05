@@ -22,8 +22,9 @@ export default function ContatoPage() {
         pretitle="FALE CONOSCO"
         title="Contato"
         subtitle="Estamos à sua disposição para qualquer esclarecimento."
+        className="pb-0 md:pb-0 lg:pb-0"
       />
-      <section className="pt-0 md:pt-0 lg:pt-0 bg-primary text-primary-foreground rounded-t-3xl md:-mt-20">
+      <section className="bg-primary text-primary-foreground pt-16 md:pt-24 rounded-t-3xl md:-mt-20 relative z-10">
         <div className="container py-16 md:py-24">
           <div className="grid lg:grid-cols-5 gap-12">
             <AnimatedSection className="lg:col-span-2">
