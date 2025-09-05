@@ -84,7 +84,7 @@ export function PageClientContent({ initialPages }: PageClientContentProps) {
 
   return (
     <>
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold tracking-tight">Páginas do Site</h1>
             <p className="text-muted-foreground">Gerencie as páginas e o conteúdo de cada uma.</p>
@@ -92,7 +92,7 @@ export function PageClientContent({ initialPages }: PageClientContentProps) {
           <Button onClick={handleAddPage}><PlusCircle className="mr-2 h-4 w-4" /> Adicionar Nova Página</Button>
       </div>
       
-      <section>
+      <section className="py-8">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {initialPages.map(page => (
             <Card key={page.id} className="flex flex-col">
