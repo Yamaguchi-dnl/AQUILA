@@ -12,7 +12,7 @@ type PageHeaderProps = {
 
 export function PageHeader({ pretitle, title, subtitle, className, children }: PageHeaderProps) {
   return (
-    <section className={cn("bg-card relative overflow-hidden pt-24 md:pt-32", className)}>
+    <div className={cn("bg-card relative overflow-hidden pt-24 md:pt-32", className)}>
        <div className="container pt-12 md:pt-10 pb-6 md:pb-8 relative">
         <AnimatedSection>
         <div className="text-center">
@@ -33,6 +33,6 @@ export function PageHeader({ pretitle, title, subtitle, className, children }: P
         </AnimatedSection>
         {children && <div className="mt-6">{children}</div>}
       </div>
-    </section>
+    </div>
   );
 }
