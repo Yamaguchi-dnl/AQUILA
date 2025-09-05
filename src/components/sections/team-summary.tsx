@@ -16,7 +16,7 @@ export function TeamSummary({ isPage = false }: TeamSummaryProps) {
 
   return (
     <section id="equipa" className={cn(isPage ? "bg-background" : "bg-card")}>
-      <div className="container">
+      <div className="container pb-16 md:pb-24 lg:pb-28">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="font-headline text-4xl text-primary uppercase">Liderança Experiente</h2>
           <p className="mt-4 text-lg text-muted-foreground">

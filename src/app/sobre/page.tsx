@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { TeamSummary } from "@/components/sections/team-summary";
-import { AnimatedSection } from "@/components/shared/animated-section";
 import Image from "next/image";
 import { getPageContentBySlug, findBlock } from '@/lib/data-loader';
 
@@ -35,30 +34,24 @@ export default async function SobrePage() {
             <div id='stars3'></div>
         </div>
         <div className="container relative z-10">
-            <AnimatedSection>
-                <div className="text-center">
-                    <p className="text-sm uppercase tracking-widest text-muted-foreground font-headline">Nossa Essência</p>
-                    <h1 className="font-headline text-4xl md:text-5xl text-primary uppercase mt-2">{heroBlock?.title || 'Sobre a Aquila Fund FCR'}</h1>
-                    <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">{heroBlock?.content || 'Construindo um legado de confiança, transparência e excelência.'}</p>
-                </div>
-            </AnimatedSection>
+            <div className="text-center">
+                <p className="text-sm uppercase tracking-widest text-muted-foreground font-headline">Nossa Essência</p>
+                <h1 className="font-headline text-4xl md:text-5xl text-primary uppercase mt-2">{heroBlock?.title || 'Sobre a Aquila Fund FCR'}</h1>
+                <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">{heroBlock?.content || 'Construindo um legado de confiança, transparência e excelência.'}</p>
+            </div>
             <div className="mt-12 grid lg:grid-cols-2 gap-12 items-center">
-                <AnimatedSection>
-                    <div 
-                      className="space-y-4 text-base text-muted-foreground text-justify prose lg:prose-lg max-w-none"
-                      dangerouslySetInnerHTML={{ __html: heroBlock?.sub_content || '' }}
-                    />
-                </AnimatedSection>
-                <AnimatedSection delay={0.1}>
-                     <Image
-                        src={heroBlock?.image_url || "https://ik.imagekit.io/leosmc2zb/5573.jpg"}
-                        alt="Escritório moderno com vista para a cidade"
-                        width={600}
-                        height={400}
-                        className="rounded-lg shadow-lg"
-                        data-ai-hint="modern office city"
-                    />
-                </AnimatedSection>
+                <div 
+                  className="space-y-4 text-base text-muted-foreground text-justify prose lg:prose-lg max-w-none"
+                  dangerouslySetInnerHTML={{ __html: heroBlock?.sub_content || '' }}
+                />
+                 <Image
+                    src={heroBlock?.image_url || "https://ik.imagekit.io/leosmc2zb/5573.jpg"}
+                    alt="Escritório moderno com vista para a cidade"
+                    width={600}
+                    height={400}
+                    className="rounded-lg shadow-lg"
+                    data-ai-hint="modern office city"
+                />
             </div>
         </div>
        </section>
