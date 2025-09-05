@@ -1,13 +1,18 @@
 
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Logo } from "@/components/shared/logo";
 import { navItems } from "@/lib/data";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "../ui/button";
 import { Instagram, Linkedin } from "lucide-react";
 import type { NavItem } from "@/lib/types";
+import { cn } from "@/lib/utils";
 
 export function Footer() {
+  const pathname = usePathname();
   const legalLinks = [
     { href: "/politica-privacidade", label: "Política de Privacidade" },
     { href: "/termos-uso", label: "Termos de Uso" },
@@ -15,8 +20,14 @@ export function Footer() {
   
   const allNavLinks: NavItem[] = navItems.flatMap(item => item.subItems ? item.subItems.map(s => ({label: s.label, href: s.href})) : ({label: item.label, href: item.href!}));
 
+  const pagesWithoutMobileRadius = ['/contato', '/solucoes-tailor-made', '/fundos'];
+  const shouldRemoveRadiusOnMobile = pagesWithoutMobileRadius.includes(pathname);
+
   return (
-    <footer className="bg-primary text-primary-foreground/80 relative z-10 rounded-t-3xl md:-mt-20">
+    <footer className={cn(
+        "bg-primary text-primary-foreground/80 relative z-10 md:-mt-20",
+        shouldRemoveRadiusOnMobile ? "rounded-t-none md:rounded-t-3xl" : "rounded-t-3xl"
+    )}>
       <div className="container py-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-1">
