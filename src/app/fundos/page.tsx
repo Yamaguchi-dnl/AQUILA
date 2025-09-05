@@ -162,10 +162,12 @@ export default async function FundosPage() {
                               </div>
                           )}
 
-                          <AnimatedSection className="text-center mt-16">
+                          <AnimatedSection className="mt-16">
+                            <div className="flex justify-center">
                               <Button asChild size="lg" variant={isPrimarySection ? "secondary" : "default"}>
                                   <Link href="/contato">Fale com um especialista sobre o {fund.nome}</Link>
                               </Button>
+                            </div>
                           </AnimatedSection>
                       </>
                   ) : (
