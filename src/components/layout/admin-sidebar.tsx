@@ -22,12 +22,11 @@ export function AdminSidebar() {
     return (
         <Sidebar 
             collapsible="icon" 
-            className="bg-gradient-to-b from-primary to-blue-800 text-primary-foreground"
+            className="bg-primary text-primary-foreground"
         >
             <SidebarHeader>
-                 <div className="flex items-center gap-2">
-                    <Logo variant="light" />
-                    <SidebarTrigger className="ml-auto text-primary-foreground hover:text-primary-foreground/80 hover:bg-white/10" />
+                 <div className="flex items-center justify-center">
+                    <Logo variant="light" className="group-data-[collapsible=icon]:hidden"/>
                  </div>
             </SidebarHeader>
             <SidebarContent>
@@ -38,7 +37,7 @@ export function AdminSidebar() {
                                 asChild
                                 isActive={pathname === link.href || (link.href !== '/admin' && pathname.startsWith(link.href))}
                                 tooltip={{children: link.label}}
-                                className="text-primary-foreground data-[active=true]:bg-white/10 data-[active=true]:text-white hover:bg-white/10 hover:text-white"
+                                className="text-primary-foreground data-[active=true]:bg-white/10 data-[active=true]:text-white hover:bg-white/10 hover:text-white group-data-[collapsible=icon]:justify-center"
                             >
                                 <Link href={link.href}>
                                     <link.icon />
@@ -51,7 +50,7 @@ export function AdminSidebar() {
             </SidebarContent>
             <SidebarFooter>
                  <form action="/auth/signout" method="post" className="w-full">
-                    <SidebarMenuButton asChild tooltip={{children: 'Sair'}} className="text-primary-foreground hover:bg-white/10 hover:text-white">
+                    <SidebarMenuButton asChild tooltip={{children: 'Sair'}} className="text-primary-foreground hover:bg-white/10 hover:text-white group-data-[collapsible=icon]:justify-center">
                         <button type="submit" className="w-full">
                             <LogOut />
                             <span>Sair</span>
