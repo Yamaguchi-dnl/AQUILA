@@ -1,8 +1,5 @@
 
 import { createClientForServerComponent } from '@/lib/supabase/server';
-import { PageHeader } from '@/components/shared/page-header';
-import { Button } from '@/components/ui/button';
-import { PlusCircle } from 'lucide-react';
 import { PageClientContent } from '@/components/admin/page-client-content';
 
 type Page = {
@@ -32,7 +29,6 @@ export default async function AdminPagesListPage() {
 
   return (
     <>
-      <PageHeader title="Páginas do Site" subtitle="Gerencie as páginas e o conteúdo de cada uma." />
       <PageClientContent initialPages={pages} />
     </>
   );

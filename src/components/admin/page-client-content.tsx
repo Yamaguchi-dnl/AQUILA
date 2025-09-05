@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useEffect, useTransition } from 'react';
+import { useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
 import { Button } from '@/components/ui/button';
@@ -39,15 +39,9 @@ export function PageClientContent({ initialPages }: PageClientContentProps) {
   const { toast } = useToast();
   const router = useRouter();
   
-  const [pages, setPages] = useState<Page[]>(initialPages);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [selectedPage, setSelectedPage] = useState<Page | null>(null);
   const [isDeleting, startDeleteTransition] = useTransition();
-
-  // Update state if initialPages prop changes (e.g., on router.refresh())
-  useEffect(() => {
-    setPages(initialPages);
-  }, [initialPages]);
 
   const handleAddPage = () => {
     setSelectedPage(null);
@@ -77,7 +71,7 @@ export function PageClientContent({ initialPages }: PageClientContentProps) {
         if (pageError) throw pageError;
 
         toast({ title: 'Sucesso', description: 'Página e seus blocos foram excluídos.' });
-        router.refresh(); // Re-fetch server data
+        router.refresh(); // Re-fetches server data and updates initialPages prop
         } catch (error: any) {
             toast({ variant: 'destructive', title: 'Erro ao excluir', description: error.message });
         }
@@ -91,13 +85,17 @@ export function PageClientContent({ initialPages }: PageClientContentProps) {
 
   return (
     <>
-      <div className="text-center my-8">
-        <Button onClick={handleAddPage}><PlusCircle className="mr-2 h-4 w-4" /> Adicionar Nova Página</Button>
+      <div className="flex items-center justify-between mb-8">
+          <div>
+            <h1 className="text-2xl font-bold tracking-tight">Páginas do Site</h1>
+            <p className="text-muted-foreground">Gerencie as páginas e o conteúdo de cada uma.</p>
+          </div>
+          <Button onClick={handleAddPage}><PlusCircle className="mr-2 h-4 w-4" /> Adicionar Nova Página</Button>
       </div>
       
       <section>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {pages.map(page => (
+          {initialPages.map(page => (
             <Card key={page.id} className="flex flex-col">
               <CardHeader>
                 <CardTitle>{page.title}</CardTitle>
