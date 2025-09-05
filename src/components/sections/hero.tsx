@@ -46,7 +46,7 @@ export function Hero({ block }: Props) {
                 </div>
             </AnimatedSection>
         </div>
-        <div className="flex justify-center items-center order-first md:order-last">
+        <AnimatedSection delay={0.2} className="flex justify-center items-center order-first md:order-last">
              <div
                 className="relative h-[300px] w-[250px] md:h-[500px] md:w-[400px]"
              >
@@ -89,7 +89,7 @@ export function Hero({ block }: Props) {
                     />
                 </div>
             </div>
-        </div>
+        </AnimatedSection>
       </div>
     </section>
   );
