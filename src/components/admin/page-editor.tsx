@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useCallback, useTransition } from 'react';
+import { useState, useTransition } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
@@ -55,7 +55,6 @@ export function PageEditor({ initialPage, initialBlocks }: PageEditorProps) {
     };
     
     const handleSuccess = () => {
-        // Refreshes the current route, which will re-run the server component's data fetch
         router.refresh();
     };
 
@@ -65,7 +64,7 @@ export function PageEditor({ initialPage, initialBlocks }: PageEditorProps) {
             const result = await deleteBlock(blockId, page.slug);
             if (result.success) {
                 toast({ title: 'Sucesso', description: result.message });
-                handleSuccess(); // Refresh data on success
+                setBlocks((prevBlocks) => prevBlocks.filter((b) => b.id !== blockId));
             } else {
                 toast({ variant: 'destructive', title: 'Erro', description: result.message });
             }
