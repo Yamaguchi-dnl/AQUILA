@@ -21,7 +21,7 @@ export default async function Home() {
   const contactBlock = findBlock(blocks, 'contact-summary');
 
   return (
-    <>
+    <div className="-mt-20">
       <Hero block={heroBlock} />
       <AboutSummary block={aboutBlock} />
       <FundsSummary block={fundsBlock} />
@@ -36,6 +36,6 @@ export default async function Home() {
         <InvestmentStrategy block={investmentStrategyBlock} />
         <ContactSummary block={contactBlock} />
       </div>
-    </>
+    </div>
   );
 }
