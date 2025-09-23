@@ -11,7 +11,7 @@ type Props = {
 }
 
 export function Hero({ block }: Props) {
-  const title = block?.title || 'Investimentos <span class="text-white">Inteligentes</span> <span class="block">para o seu Futuro</span>';
+  const title = block?.title || 'Investimentos Inteligentes para o seu Futuro';
   const imageUrl = block?.image_url || 'https://ik.imagekit.io/leosmc2zb/dest_portugal_porto_douro-river_gettyimages-698822614_universal_within-usage-period_46109.jpg?updatedAt=1758670295788';
   
   return (
@@ -24,7 +24,7 @@ export function Hero({ block }: Props) {
             data-ai-hint="douru river porto"
             priority
         />
-        <div className="absolute inset-0 bg-black/40 z-10"></div>
+        <div className="absolute inset-0 bg-black/60 z-10"></div>
         <div className="container relative z-20">
             <AnimatedSection>
                 <h1 
