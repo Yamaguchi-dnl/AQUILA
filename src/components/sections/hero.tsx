@@ -27,10 +27,9 @@ export function Hero({ block }: Props) {
         <div className="absolute inset-0 bg-black/60 z-10"></div>
         <div className="container relative z-20">
             <AnimatedSection>
-                <h1 
-                  className="font-headline text-3xl sm:text-4xl lg:text-5xl xl:text-6xl tracking-tight text-white uppercase"
-                  dangerouslySetInnerHTML={{ __html: title }}
-                />
+                <h1 className="font-headline text-3xl sm:text-4xl lg:text-5xl xl:text-6xl tracking-tight text-white uppercase">
+                  {title.replace(/<br\s*\/?>/gi, ' ')}
+                </h1>
             </AnimatedSection>
         </div>
     </section>
