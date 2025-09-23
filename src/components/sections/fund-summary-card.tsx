@@ -1,9 +1,7 @@
-import { Card, CardContent } from "@/components/ui/card";
+
+import { Card } from "@/components/ui/card";
 import type { Fund } from "@/lib/types";
 import Image from "next/image";
-import { Badge } from "../ui/badge";
-import { CheckCircle2 } from "lucide-react";
-import { Button } from "../ui/button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
@@ -13,56 +11,30 @@ type FundSummaryCardProps = {
 
 export function FundSummaryCard({ fund }: FundSummaryCardProps) {
     return (
-        <Card className="overflow-hidden flex flex-col transition-all duration-300 hover:shadow-xl border border-transparent hover:border-primary h-full">
-            <div className="relative overflow-hidden">
+        <Link href={`/fundos#${fund.slug}`} className="group block h-full">
+            <Card className="overflow-hidden relative flex flex-col justify-end transition-all duration-300 border border-transparent hover:border-primary h-full min-h-[400px] md:min-h-[500px]">
                 <Image 
                     src={fund.imagemResumo || `https://picsum.photos/600/350?random=${fund.slug}`}
                     alt={`Imagem do fundo ${fund.nome}`}
-                    width={600}
-                    height={350}
+                    fill
                     className={cn(
-                        "w-full h-56 object-cover",
+                        "w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110",
                         fund.slug === 'aquila-real-estate' ? 'object-center' : 'object-bottom'
                     )}
                     data-ai-hint="investment theme"
                 />
-                {fund.detalhes.elegibilidadeGoldenVisa && (
-                    <Badge variant="destructive" className="absolute top-4 right-4 text-sm py-1 px-3">GOLDEN VISA</Badge>
-                )}
-            </div>
-            <CardContent className="p-6 flex flex-col flex-grow">
-                <h3 className="font-headline text-3xl text-primary uppercase">{fund.nome}</h3>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
                 
-                <div className="flex gap-2 my-4">
-                    {fund.detalhes.retornoEsperado && <Badge variant="outline" className="border-green-500 bg-green-50 text-green-700 dark:bg-green-900/50 dark:text-green-300">{fund.detalhes.retornoEsperado}</Badge>}
-                    {fund.detalhes.investimentoInicial && <Badge variant="outline" className="border-blue-500 bg-blue-50 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300">{fund.detalhes.investimentoInicial}</Badge>}
+                {/* Overlay com descrição que aparece no hover */}
+                <div className="absolute inset-0 p-6 flex items-center justify-center text-center bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <p className="text-primary-foreground/90 text-base">{fund.subtitulo}</p>
                 </div>
 
-                <p className="text-muted-foreground">{fund.subtitulo}</p>
-
-                {fund.beneficios.length > 0 ? (
-                    <ul className="my-6 space-y-3 flex-grow">
-                       {fund.beneficios.slice(0, 3).map((beneficio, index) => (
-                            <li key={index} className="flex items-center gap-3">
-                                <CheckCircle2 className="h-5 w-5 text-primary shrink-0" />
-                                <span className="text-muted-foreground">{beneficio}</span>
-                            </li>
-                       ))}
-                    </ul>
-                ) : (
-                    <div className="flex-grow my-6"></div>
-                )}
-                
-                <div className="grid grid-cols-2 gap-4 mt-auto">
-                    <Button asChild size="lg">
-                        <Link href={`/fundos#${fund.slug}`}>Saber Mais</Link>
-                    </Button>
-                     <Button asChild size="lg" variant="outline">
-                        <Link href="/contato">Investir Agora</Link>
-                    </Button>
+                {/* Nome do fundo sempre visível */}
+                <div className="relative p-6 transition-transform duration-300 group-hover:-translate-y-4">
+                    <h3 className="font-headline text-3xl text-white uppercase">{fund.nome}</h3>
                 </div>
-
-            </CardContent>
-        </Card>
+            </Card>
+        </Link>
     );
 }
