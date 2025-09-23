@@ -6,7 +6,6 @@ import { InvestmentCycle } from '@/components/sections/investment-cycle';
 import { ContactSummary } from '@/components/sections/contact-summary';
 import { Hero } from '@/components/sections/hero';
 import { InvestmentStrategy } from '@/components/sections/investment-strategy';
-import SectionLink from '@/components/shared/section-link';
 import { getPageContentBySlug, findBlock } from '@/lib/data-loader';
 
 export default async function Home() {
@@ -24,9 +23,6 @@ export default async function Home() {
   return (
     <>
       <Hero block={heroBlock} />
-      <div className="hidden md:block -mt-20">
-        <SectionLink topColor="hsl(var(--card))" bottomColor="hsl(var(--primary))" height={120} variant="quebrada" />
-      </div>
       <AboutSummary block={aboutBlock} />
       <FundsSummary block={fundsBlock} />
       <WhyPortugal block={whyPortugalBlock} />
