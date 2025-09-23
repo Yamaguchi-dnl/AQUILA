@@ -54,7 +54,7 @@ export default async function GoldenVisaPage() {
             <section className="bg-primary text-primary-foreground rounded-t-3xl relative z-10 -mt-16">
                  <div
                     aria-hidden="true"
-                    className="absolute inset-0 bg-[radial-gradient(30%_40%_at_95%_95%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%),radial-gradient(30%_40%_at_5%_5%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)]"
+                    className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(50,130,250,0.15)_0%,_transparent_70%)]"
                 />
                 <div className="container py-16">
                     <AnimatedSection>
@@ -86,10 +86,10 @@ export default async function GoldenVisaPage() {
                 </div>
             </section>
 
-             <section className="bg-primary text-primary-foreground pt-0 pb-16 md:pb-24 lg:pb-28">
+             <section className="bg-primary text-primary-foreground pt-0 pb-16 md:pb-24 lg:pb-28 relative">
                  <div
                     aria-hidden="true"
-                    className="absolute inset-0 bg-[radial-gradient(30%_40%_at_95%_95%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%),radial-gradient(30%_40%_at_5%_5%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)]"
+                    className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(50,130,250,0.15)_0%,_transparent_70%)]"
                 />
                 <div className="container">
                      <AnimatedSection>

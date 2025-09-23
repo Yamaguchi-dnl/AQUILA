@@ -19,7 +19,7 @@ export function AboutSummary({ block }: AboutSummaryProps) {
     <section id="sobre" className="bg-primary text-primary-foreground overflow-hidden relative">
        <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(30%_40%_at_5%_5%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%),radial-gradient(30%_40%_at_95%_95%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)]"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(50,130,250,0.15)_0%,_transparent_70%)]"
       />
       <div className="container relative z-20 pt-16 pb-24">
         <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-stretch">
