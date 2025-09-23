@@ -29,32 +29,27 @@ export function Header() {
   if (!isMounted || pathname.startsWith('/admin')) {
     // Render a skeleton or placeholder header on the server and initial client render
     return (
-        <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-screen-xl">
-            <div className="container flex h-16 max-w-screen-2xl items-center justify-between rounded-full bg-background/80 backdrop-blur-sm border shadow-md">
-                <Logo />
-                 <div className="flex items-center justify-end gap-2">
-                    <Button asChild className="hidden sm:flex" variant={'default'}>
-                        <Link href="/contato">Fale com um especialista</Link>
-                    </Button>
-                     <Sheet>
-                        <SheetTrigger asChild>
-                        <Button variant="ghost" size="icon" className="md:hidden">
-                            <Menu className="h-4 w-4" />
-                            <span className="sr-only">Toggle navigation menu</span>
-                        </Button>
-                        </SheetTrigger>
-                     </Sheet>
-                 </div>
-            </div>
-        </header>
+      <header className="fixed top-0 left-0 z-50 w-full">
+        <div className="container flex h-20 items-center justify-between">
+          <Logo variant="light" />
+          <Sheet>
+            <SheetTrigger asChild>
+            <Button variant="ghost" size="icon" className="md:hidden text-primary-foreground hover:bg-white/10">
+                <Menu className="h-4 w-4" />
+                <span className="sr-only">Toggle navigation menu</span>
+            </Button>
+            </SheetTrigger>
+          </Sheet>
+        </div>
+      </header>
     );
   }
 
   return (
-     <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-screen-xl">
-      <div className="container flex h-16 max-w-screen-2xl items-center justify-between rounded-full bg-background/80 backdrop-blur-sm border shadow-md">
-        <Logo />
-        <nav className="hidden md:flex items-center absolute left-1/2 -translate-x-1/2">
+     <header className="fixed top-0 left-0 z-50 w-full">
+      <div className="container flex h-20 items-center justify-between">
+        <Logo variant="light" />
+        <nav className="hidden md:flex items-center">
           {navItems.map((item) =>
             item.subItems ? (
               <DropdownMenu key={item.label}>
@@ -62,8 +57,9 @@ export function Header() {
                   <Button
                     variant="ghost"
                     className={cn(
-                      "text-sm font-medium transition-colors px-3 py-2 gap-1 hover:text-primary",
-                      item.subItems.some((sub) => pathname.startsWith(sub.href)) ? "text-primary" : "text-foreground/80"
+                      "text-sm font-medium transition-colors px-3 py-2 gap-1",
+                      item.subItems.some((sub) => pathname.startsWith(sub.href)) ? "text-white" : "text-primary-foreground/80",
+                      "hover:text-white"
                     )}
                   >
                     {item.label}
@@ -88,8 +84,9 @@ export function Header() {
                 key={item.href}
                 href={item.href!}
                 className={cn(
-                  "text-sm font-medium transition-colors px-3 py-2 hover:text-primary",
-                  pathname === item.href ? "text-primary" : "text-foreground/80"
+                  "text-sm font-medium transition-colors px-3 py-2",
+                  pathname === item.href ? "text-white" : "text-primary-foreground/80",
+                  "hover:text-white"
                 )}
               >
                 {item.label}
@@ -98,12 +95,9 @@ export function Header() {
           )}
         </nav>
         <div className="flex items-center justify-end gap-2">
-          <Button asChild className="hidden sm:flex" variant={'default'}>
-            <Link href="/contato">Fale com um especialista</Link>
-          </Button>
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
+              <Button variant="ghost" size="icon" className="md:hidden text-primary-foreground hover:bg-white/10">
                 <Menu className="h-4 w-4" />
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
