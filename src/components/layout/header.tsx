@@ -49,52 +49,52 @@ export function Header() {
      <header className="fixed top-0 left-0 z-50 w-full">
       <div className="container flex h-20 items-center justify-between">
         <Logo variant="light" />
-        <nav className="hidden md:flex items-center">
-          {navItems.map((item) =>
-            item.subItems ? (
-              <DropdownMenu key={item.label}>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    className={cn(
-                      "text-sm font-medium transition-colors px-3 py-2 gap-1",
-                      item.subItems.some((sub) => pathname.startsWith(sub.href)) ? "text-white" : "text-primary-foreground/80",
-                      "hover:text-white"
-                    )}
-                  >
-                    {item.label}
-                    <ChevronDown className="h-4 w-4" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  {item.subItems.map((subItem) => (
-                    <Link key={subItem.href} href={subItem.href} passHref>
-                      <DropdownMenuItem>
-                        <div>
-                            <div className="font-medium">{subItem.label}</div>
-                            <p className="text-xs text-muted-foreground">{subItem.description}</p>
-                        </div>
-                      </DropdownMenuItem>
-                    </Link>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
-            ) : (
-              <Link
-                key={item.href}
-                href={item.href!}
-                className={cn(
-                  "text-sm font-medium transition-colors px-3 py-2",
-                  pathname === item.href ? "text-white" : "text-primary-foreground/80",
-                  "hover:text-white"
-                )}
-              >
-                {item.label}
-              </Link>
-            )
-          )}
-        </nav>
-        <div className="flex items-center justify-end gap-2">
+        <div className="flex items-center gap-4">
+          <nav className="hidden md:flex items-center">
+            {navItems.map((item) =>
+              item.subItems ? (
+                <DropdownMenu key={item.label}>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      className={cn(
+                        "text-sm font-medium transition-colors px-3 py-2 gap-1",
+                        item.subItems.some((sub) => pathname.startsWith(sub.href)) ? "text-white" : "text-primary-foreground/80",
+                        "hover:text-white"
+                      )}
+                    >
+                      {item.label}
+                      <ChevronDown className="h-4 w-4" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent>
+                    {item.subItems.map((subItem) => (
+                      <Link key={subItem.href} href={subItem.href} passHref>
+                        <DropdownMenuItem>
+                          <div>
+                              <div className="font-medium">{subItem.label}</div>
+                              <p className="text-xs text-muted-foreground">{subItem.description}</p>
+                          </div>
+                        </DropdownMenuItem>
+                      </Link>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href!}
+                  className={cn(
+                    "text-sm font-medium transition-colors px-3 py-2",
+                    pathname === item.href ? "text-white" : "text-primary-foreground/80",
+                    "hover:text-white"
+                  )}
+                >
+                  {item.label}
+                </Link>
+              )
+            )}
+          </nav>
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="md:hidden text-primary-foreground hover:bg-white/10">
