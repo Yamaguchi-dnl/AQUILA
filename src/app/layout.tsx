@@ -67,8 +67,8 @@ export default function RootLayout({
     <html lang="pt-PT" suppressHydrationWarning>
       <head />
       <body className={cn("font-sans antialiased bg-background text-foreground", fontSans.variable, fontHeadline.variable)}>
+        <Header />
         <div className="flex flex-col min-h-screen">
-          <Header />
           <main className="flex-grow">{children}</main>
           <Footer />
         </div>

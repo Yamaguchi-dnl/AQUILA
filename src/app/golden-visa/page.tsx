@@ -50,8 +50,8 @@ export default async function GoldenVisaPage() {
                 subtitle={headerBlock?.content || "Seu passaporte para a Europa através de investimentos de valor."}
             />
             
-            <section className="bg-primary text-primary-foreground rounded-t-3xl relative z-10">
-                <div className="container">
+            <section className="bg-primary text-primary-foreground rounded-t-3xl relative z-10 -mt-16">
+                <div className="container py-16">
                     <AnimatedSection>
                         <div className="grid lg:grid-cols-2 gap-12 items-stretch">
                             <div className="hidden lg:block">

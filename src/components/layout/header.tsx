@@ -27,22 +27,8 @@ export function Header() {
   
   // Prevent mismatch by delaying client-specific rendering
   if (!isMounted || pathname.startsWith('/admin')) {
-    // Render a skeleton or placeholder header on the server and initial client render
-    return (
-      <header className="fixed top-0 left-0 z-50 w-full">
-        <div className="container flex h-20 items-center justify-between">
-          <Logo variant="light" />
-          <Sheet>
-            <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="md:hidden text-primary-foreground hover:bg-white/10">
-                <Menu className="h-4 w-4" />
-                <span className="sr-only">Toggle navigation menu</span>
-            </Button>
-            </SheetTrigger>
-          </Sheet>
-        </div>
-      </header>
-    );
+    // Render nothing on the server and initial client render, or for admin routes
+    return null;
   }
 
   return (

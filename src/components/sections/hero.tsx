@@ -15,7 +15,7 @@ export function Hero({ block }: Props) {
   const imageUrl = block?.image_url || 'https://ik.imagekit.io/leosmc2zb/dest_portugal_porto_douro-river_gettyimages-698822614_universal_within-usage-period_46109.jpg?updatedAt=1758670295788';
   
   return (
-    <section className="w-full h-[70vh] md:h-screen bg-primary text-primary-foreground relative flex items-center justify-center text-center">
+    <section className="w-full h-screen bg-primary text-primary-foreground relative flex items-center justify-center text-center">
         <Image
             src={imageUrl}
             alt="Rio Douro, Porto, Portugal"
@@ -25,7 +25,7 @@ export function Hero({ block }: Props) {
             priority
         />
         <div className="absolute inset-0 bg-black/40 z-10"></div>
-        <div className="container relative z-20 pt-20">
+        <div className="container relative z-20">
             <AnimatedSection>
                 <h1 
                   className="font-headline text-3xl sm:text-4xl lg:text-5xl xl:text-6xl tracking-tight text-white uppercase"

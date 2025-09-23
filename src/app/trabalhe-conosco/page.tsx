@@ -17,8 +17,8 @@ export default function TrabalheConoscoPage() {
         subtitle="Procuramos talentos excepcionais que partilhem da nossa paixão por excelência e inovação no mercado financeiro."
         className=""
       />
-      <section className="bg-background rounded-t-3xl pt-16 md:pt-24">
-        <div className="container max-w-2xl">
+      <section className="bg-background rounded-t-3xl -mt-16">
+        <div className="container max-w-2xl py-16">
           <AnimatedSection>
             <div className="bg-card p-8 rounded-lg shadow-lg">
               <h2 className="text-2xl font-bold text-foreground mb-2 font-headline">Envie sua Candidatura</h2>
