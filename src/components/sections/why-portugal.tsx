@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Globe, ShieldCheck, TrendingUp, Handshake, Sun, Euro } from "lucide-react";

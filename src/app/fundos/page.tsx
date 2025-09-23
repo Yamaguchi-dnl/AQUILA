@@ -39,6 +39,10 @@ export default async function FundosPage() {
   return (
     <>
         <section className="relative bg-primary pt-32 md:pt-40 pb-20 md:pb-24">
+            <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-[radial-gradient(30%_40%_at_95%_95%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%),radial-gradient(30%_40%_at_5%_5%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)]"
+            />
             <div className="container relative z-10">
                 <div className="text-center">
                     <p className="text-sm uppercase tracking-widest text-primary-foreground/80 font-headline">Conheça as oportunidades</p>

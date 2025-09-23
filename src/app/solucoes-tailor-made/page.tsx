@@ -1,3 +1,4 @@
+
 import { PageHeader } from "@/components/shared/page-header";
 import { AnimatedSection } from "@/components/shared/animated-section";
 import Image from "next/image";
@@ -31,6 +32,10 @@ export default async function SolucoesTailorMadePage() {
         subtitle={headerBlock?.content || "No mercado de investimentos, opções não faltam. Mas quando se trata de potencializar retornos com inteligência e exclusividade, é preciso ir além do comum."}
       />
       <section className="bg-primary text-primary-foreground pt-16 md:pt-24 rounded-t-3xl relative z-10 -mt-16">
+        <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-[radial-gradient(30%_40%_at_95%_95%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%),radial-gradient(30%_40%_at_5%_5%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)]"
+        />
         <div className="container">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <AnimatedSection>

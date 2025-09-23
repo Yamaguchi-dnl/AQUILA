@@ -1,3 +1,4 @@
+
 import { PageHeader } from "@/components/shared/page-header";
 import { goldenVisaFaqs, fundsData } from "@/lib/data";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -51,6 +52,10 @@ export default async function GoldenVisaPage() {
             />
             
             <section className="bg-primary text-primary-foreground rounded-t-3xl relative z-10 -mt-16">
+                 <div
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-[radial-gradient(30%_40%_at_95%_95%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%),radial-gradient(30%_40%_at_5%_5%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)]"
+                />
                 <div className="container py-16">
                     <AnimatedSection>
                         <div className="grid lg:grid-cols-2 gap-12 items-stretch">
@@ -82,6 +87,10 @@ export default async function GoldenVisaPage() {
             </section>
 
              <section className="bg-primary text-primary-foreground pt-0 pb-16 md:pb-24 lg:pb-28">
+                 <div
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-[radial-gradient(30%_40%_at_95%_95%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%),radial-gradient(30%_40%_at_5%_5%,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0)_100%)]"
+                />
                 <div className="container">
                      <AnimatedSection>
                      <h3 className="font-headline text-3xl md:text-4xl text-center uppercase text-primary-foreground">{processBlock?.title || "Etapas do Processo"}</h3>

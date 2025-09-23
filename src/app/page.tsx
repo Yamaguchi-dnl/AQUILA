@@ -1,3 +1,4 @@
+
 import { AboutSummary } from '@/components/sections/about-summary';
 import { FundsSummary } from '@/components/sections/funds-summary';
 import { WhyPortugal } from '@/components/sections/why-portugal';
