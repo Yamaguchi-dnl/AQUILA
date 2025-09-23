@@ -11,11 +11,11 @@ type Props = {
 }
 
 export function Hero({ block }: Props) {
-  const title = block?.title || 'Investimentos Inteligentes para o seu Futuro';
+  const title = block?.title || 'Investimentos <br/> Inteligentes para o seu Futuro';
   const imageUrl = block?.image_url || 'https://ik.imagekit.io/leosmc2zb/dest_portugal_porto_douro-river_gettyimages-698822614_universal_within-usage-period_46109.jpg?updatedAt=1758670295788';
   
   return (
-    <section className="w-full h-screen bg-primary text-primary-foreground relative flex items-center justify-center text-center">
+    <section id="hero" className="w-full h-screen bg-primary text-primary-foreground relative flex items-center justify-center text-center">
         <Image
             src={imageUrl}
             alt="Rio Douro, Porto, Portugal"

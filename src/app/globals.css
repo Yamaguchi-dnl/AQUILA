@@ -188,3 +188,7 @@
 #stars3:after {
  box-shadow: 940px 1360px hsl(var(--foreground)) , 1071px 539px hsl(var(--foreground)) , 1710px 1414px hsl(var(--foreground)) , 836px 299px hsl(var(--foreground)) , 1944px 1420px hsl(var(--foreground)) , 253px 1449px hsl(var(--foreground)) , 1257px 1250px hsl(var(--foreground)) , 1588px 1830px hsl(var(--foreground)) , 1077px 1204px hsl(var(--foreground)) , 273px 1081px hsl(var(--foreground)) , 1993px 766px hsl(var(--foreground)) , 1808px 479px hsl(var(--foreground)) , 917px 263px hsl(var(--foreground)) , 663px 1820px hsl(var(--foreground)) , 342px 1988px hsl(var(--foreground)) , 727px 1250px hsl(var(--foreground)) , 636px 1666px hsl(var(--foreground)) , 692px 1112px hsl(var(--foreground)) , 248px 1211px hsl(var(--foreground)) , 1422px 1121px hsl(var(--foreground));
 }
+
+#hero h1 span {
+    color: inherit !important;
+}
