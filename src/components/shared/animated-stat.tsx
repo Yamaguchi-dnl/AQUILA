@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
@@ -40,7 +41,7 @@ export function AnimatedStat({ value, prefix = '', suffix = '', duration = 1500 
     }, [isInView, value, duration]);
 
     return (
-        <p ref={ref} className="text-4xl font-bold text-primary-foreground mt-2">
+        <p ref={ref} className="text-4xl font-bold text-primary mt-2">
             {prefix}{count}{suffix}
         </p>
     );
