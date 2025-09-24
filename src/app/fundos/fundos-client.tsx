@@ -37,15 +37,11 @@ export default function FundosClient({ headerBlock, allBlocks, fundsData }: Fund
   return (
     <>
         <section className="w-full h-screen bg-primary text-primary-foreground relative flex items-center justify-center text-center overflow-hidden">
-             <Image
-                src={headerBlock?.image_url || "https://ik.imagekit.io/leosmc2zb/3103.jpg"}
-                alt={headerBlock?.title || "Nossos Fundos"}
-                fill
-                className="object-cover"
-                data-ai-hint="investment portfolio"
-                priority
-            />
-            <div className="absolute inset-0 bg-black/70 z-10"></div>
+            <div className="bg-animation">
+                <div id="stars"></div>
+                <div id="stars2"></div>
+                <div id="stars3"></div>
+            </div>
             <div className="container relative z-20">
                 <AnimatedSection>
                     <p className="text-sm uppercase tracking-widest text-primary-foreground/80 font-headline">Conheça as oportunidades</p>
