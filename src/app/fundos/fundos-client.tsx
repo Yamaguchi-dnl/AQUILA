@@ -36,21 +36,24 @@ export default function FundosClient({ headerBlock, allBlocks, fundsData }: Fund
 
   return (
     <>
-        <section className="relative bg-primary pt-32 md:pt-40 pb-20 md:pb-24">
-            <div
-                aria-hidden="true"
-                className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(50,130,250,0.2)_0%,_transparent_70%)]"
+        <section className="w-full h-screen bg-primary text-primary-foreground relative flex items-center justify-center text-center overflow-hidden">
+             <Image
+                src={headerBlock?.image_url || "https://ik.imagekit.io/leosmc2zb/6109119.jpg"}
+                alt={headerBlock?.title || "Nossos Fundos"}
+                fill
+                className="object-cover"
+                data-ai-hint="investment portfolio"
+                priority
             />
-            <div className="container relative z-10">
+            <div className="absolute inset-0 bg-black/60 z-10"></div>
+            <div className="container relative z-20">
                 <AnimatedSection>
-                <div className="text-center">
                     <p className="text-sm uppercase tracking-widest text-primary-foreground/80 font-headline">Conheça as oportunidades</p>
                     <h1 className="font-headline text-4xl md:text-5xl text-primary-foreground uppercase mt-2">{headerBlock?.title || 'Nossos Fundos'}</h1>
-                    
-                </div>
                 </AnimatedSection>
             </div>
         </section>
+
       <div className="space-y-0">
       {availableFunds.map((fund, index) => {
           const block = findBlock(allBlocks, `fund-${fund.slug}`);
