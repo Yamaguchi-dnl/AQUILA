@@ -44,6 +44,7 @@ export default async function FundosPage() {
                 className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(50,130,250,0.2)_0%,_transparent_70%)]"
             />
             <div className="container relative z-10">
+                <AnimatedSection>
                 <div className="text-center">
                     <p className="text-sm uppercase tracking-widest text-primary-foreground/80 font-headline">Conheça as oportunidades</p>
                     <h1 className="font-headline text-4xl md:text-5xl text-primary-foreground uppercase mt-2">{headerBlock?.title || 'Nossos Fundos'}</h1>
@@ -51,6 +52,7 @@ export default async function FundosPage() {
                         {headerBlock?.content || 'Explore nosso portfólio de fundos de investimento em Portugal, incluindo opções elegíveis para o Golden Visa.'}
                     </p>
                 </div>
+                </AnimatedSection>
             </div>
         </section>
       <div className="space-y-0">
@@ -111,25 +113,30 @@ export default async function FundosPage() {
                   {fund.status === 'ativo' ? (
                       <>
                           {fund.beneficios.length > 0 && (
-                                <AnimatedSection className="mt-12">
-                                    <h4 className={cn("text-4xl font-headline text-center uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>Benefícios</h4>
+                                <div className="mt-12">
+                                    <AnimatedSection>
+                                      <h4 className={cn("text-4xl font-headline text-center uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>Benefícios</h4>
+                                    </AnimatedSection>
                                     <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
                                         {fund.beneficios.map((beneficio, i) => (
-                                            <Card key={i} className={cn("text-center flex flex-col", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
+                                            <AnimatedSection key={i} delay={0.1 + i * 0.1}>
+                                            <Card className={cn("text-center flex flex-col h-full", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
                                                 <CardContent className="p-6 flex-grow flex flex-col items-center justify-center">
                                                     <CheckCircle className="mx-auto h-8 w-8 text-green-500 shrink-0" />
                                                     <p className={cn("mt-4 font-medium", isPrimarySection ? "text-primary-foreground/90" : "text-muted-foreground")}>{beneficio}</p>
                                                 </CardContent>
                                             </Card>
+                                            </AnimatedSection>
                                         ))}
                                     </div>
-                                </AnimatedSection>
+                                </div>
                           )}
 
                           {fund.hoteis && (
                               <div className="mt-12">
                                 <AnimatedSection>
                                   <h4 className={cn("text-4xl font-headline text-center uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>Hotéis Sob Gestão</h4>
+                                </AnimatedSection>
                                   <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
                                       {fund.hoteis.map((hotel, i) => {
                                           let imageUrl = `${hotel.imagem.src}?v=${hotel.imagem.v}`;
@@ -139,7 +146,7 @@ export default async function FundosPage() {
                                               imageUrl = 'https://ik.imagekit.io/leosmc2zb/62159451.jpg';
                                           }
                                           return (
-                                            <AnimatedSection key={`${hotel.nome}-${hotel.imagem.v}`} delay={i * 0.1}>
+                                            <AnimatedSection key={`${hotel.nome}-${hotel.imagem.v}`} delay={0.1 + i * 0.1}>
                                                 <Card className={cn("overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-xl h-full", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
                                                     <Image 
                                                         src={imageUrl} 
@@ -161,7 +168,6 @@ export default async function FundosPage() {
                                           )
                                       })}
                                   </div>
-                                </AnimatedSection>
                               </div>
                           )}
 

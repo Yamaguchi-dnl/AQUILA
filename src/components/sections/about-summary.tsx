@@ -43,13 +43,13 @@ export function AboutSummary({ block }: AboutSummaryProps) {
               <h3 className="font-headline text-4xl text-primary-foreground mt-2 uppercase">{title}</h3>
               
             </AnimatedSection>
-            <AnimatedSection className="flex-grow">
+            <AnimatedSection className="flex-grow" delay={0.1}>
               <div 
                 className="mt-8 space-y-4 text-primary-foreground/80 prose prose-lg prose-invert max-w-none"
                 dangerouslySetInnerHTML={{ __html: content }}
               />
             </AnimatedSection>
-            <AnimatedSection className="mt-8">
+            <AnimatedSection className="mt-8" delay={0.2}>
               <Button asChild size="lg" variant="secondary">
                 <Link href="/contato">FALE COM UM ESPECIALISTA!</Link>
               </Button>

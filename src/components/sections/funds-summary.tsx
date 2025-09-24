@@ -31,13 +31,13 @@ export function FundsSummary({ block }: Props) {
 
         <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
           {activeFunds.map((fund, index) => (
-            <AnimatedSection key={fund.slug} delay={index * 0.1}>
+            <AnimatedSection key={fund.slug} delay={0.1 + index * 0.1}>
               <FundSummaryCard fund={fund} />
             </AnimatedSection>
           ))}
         </div>
 
-        <AnimatedSection className="text-center mt-12">
+        <AnimatedSection className="text-center mt-12" delay={0.3}>
             <Button asChild size="lg">
                 <Link href="/fundos">SAIBA MAIS SOBRE OS FUNDOS!</Link>
             </Button>

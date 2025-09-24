@@ -50,26 +50,26 @@ export function InvestmentStrategy({ block }: Props) {
                     <h3 className="font-headline text-4xl text-primary-foreground uppercase mt-2">{title}</h3>
                 </AnimatedSection>
                 
-                <AnimatedSection delay={0.1}>
-                    <div className="mt-12 relative">
-                        {processSteps.map((step, index) => (
-                           <div key={step.number} className="relative pl-16 pb-12 last:pb-0">
-                               {index !== processSteps.length - 1 && (
-                                <div className="absolute left-[22px] top-5 h-full w-px bg-primary-foreground/20" />
-                               )}
-                               <div className="absolute left-0 top-0 flex h-12 w-12 items-center justify-center rounded-full bg-secondary text-secondary-foreground ring-4 ring-primary font-bold text-lg z-10">
-                                   {step.number}
-                               </div>
-                               <Card className="ml-4 bg-primary-foreground/5 border-primary-foreground/10 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
-                                   <CardContent className="p-4">
-                                       <h3 className="font-headline text-lg text-primary-foreground">{step.title}</h3>
-                                       <p className="text-primary-foreground/70 mt-2 text-sm">{step.description}</p>
-                                   </CardContent>
-                               </Card>
+                <div className="mt-12 relative">
+                    {processSteps.map((step, index) => (
+                       <AnimatedSection key={step.number} delay={0.1 + index * 0.1}>
+                       <div className="relative pl-16 pb-12 last:pb-0">
+                           {index !== processSteps.length - 1 && (
+                            <div className="absolute left-[22px] top-5 h-full w-px bg-primary-foreground/20" />
+                           )}
+                           <div className="absolute left-0 top-0 flex h-12 w-12 items-center justify-center rounded-full bg-secondary text-secondary-foreground ring-4 ring-primary font-bold text-lg z-10">
+                               {step.number}
                            </div>
-                        ))}
-                    </div>
-                </AnimatedSection>
+                           <Card className="ml-4 bg-primary-foreground/5 border-primary-foreground/10 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
+                               <CardContent className="p-4">
+                                   <h3 className="font-headline text-lg text-primary-foreground">{step.title}</h3>
+                                   <p className="text-primary-foreground/70 mt-2 text-sm">{step.description}</p>
+                               </CardContent>
+                           </Card>
+                       </div>
+                       </AnimatedSection>
+                    ))}
+                </div>
             </div>
             <AnimatedSection delay={0.2} className="hidden lg:block">
                 <div className="relative">

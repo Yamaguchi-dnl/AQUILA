@@ -92,7 +92,8 @@ export function InvestmentCycle({ block }: Props) {
                 
                 <div className="space-y-12">
                     {mobileTimelineData.map((item, index) => (
-                        <div key={index} className="relative pl-12">
+                        <AnimatedSection key={index} delay={index * 0.1}>
+                        <div className="relative pl-12">
                             <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-secondary-foreground ring-4 ring-primary font-bold text-lg">
                                 {index + 1}
                             </div>
@@ -102,6 +103,7 @@ export function InvestmentCycle({ block }: Props) {
                                 <p className="text-primary-foreground/80 text-sm">{item.description}</p>
                             </div>
                         </div>
+                        </AnimatedSection>
                     ))}
                 </div>
             </div>

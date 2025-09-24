@@ -55,22 +55,28 @@ export default async function SolucoesTailorMadePage() {
                     </p>
                     <div className="mt-8 space-y-4">
                         {benefits.map((benefit, index) => (
-                            <div key={index} className="flex items-start gap-3">
+                           <AnimatedSection key={index} delay={0.2 + index * 0.05}>
+                            <div className="flex items-start gap-3">
                                 <CheckCircle2 className="h-6 w-6 text-primary-foreground/80 mt-1 shrink-0" />
                                 <span className="text-primary-foreground/90 text-base">{benefit}</span>
                             </div>
+                            </AnimatedSection>
                         ))}
                     </div>
+                     <AnimatedSection delay={0.4}>
                      <div 
                         className="mt-8 text-primary-foreground/80 text-lg prose prose-invert max-w-none"
                         dangerouslySetInnerHTML={{ __html: contentBlock?.sub_content || '<p>Não se trata apenas de investir, mas de construir uma experiência personalizada, que coloca você no centro das decisões.</p>' }} 
                      />
+                    </AnimatedSection>
+                    <AnimatedSection delay={0.5}>
                     <Button asChild size="lg" className="mt-8" variant="secondary">
                         <Link href="/contato">
                             Encontre o ativo perfeito para investir
                             <ArrowRight className="ml-2" />
                         </Link>
                     </Button>
+                    </AnimatedSection>
                 </AnimatedSection>
             </div>
         </div>

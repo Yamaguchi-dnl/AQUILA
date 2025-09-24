@@ -85,10 +85,10 @@ export function WhyPortugal({ block }: Props) {
             </div>
           </AnimatedSection>
           
-          <AnimatedSection delay={0.2}>
-            <CarouselContent className="-ml-4">
-              {benefits.map((benefit, index) => (
-                <CarouselItem key={index} className="pl-4 basis-auto">
+          <CarouselContent className="-ml-4">
+            {benefits.map((benefit, index) => (
+              <CarouselItem key={index} className="pl-4 basis-auto">
+                  <AnimatedSection delay={0.1 + index * 0.05}>
                     <Card className="bg-primary-foreground/5 border-primary-foreground/10 text-primary-foreground hover:bg-primary-foreground/10 transition-colors h-[280px] w-[280px]">
                         <CardContent className="p-6 h-full flex flex-col items-center justify-center text-center">
                             <div className="flex-shrink-0 rounded-full bg-primary-foreground/10 p-3 w-fit mb-4">
@@ -100,10 +100,10 @@ export function WhyPortugal({ block }: Props) {
                             </div>
                         </CardContent>
                     </Card>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </AnimatedSection>
+                  </AnimatedSection>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
         </Carousel>
       </div>
     </section>

@@ -57,32 +57,34 @@ export default async function GoldenVisaPage() {
                     className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(50,130,250,0.2)_0%,_transparent_70%)]"
                 />
                 <div className="container py-16">
-                    <AnimatedSection>
-                        <div className="grid lg:grid-cols-2 gap-12 items-stretch">
-                            <div className="hidden lg:block">
-                                <Image 
-                                    src={benefitsBlock?.image_url || "https://ik.imagekit.io/leosmc2zb/golden-visa-portugal-nacionalidade-portuguesa.jpeg"}
-                                    alt="Passaporte europeu sobre um mapa"
-                                    width={600}
-                                    height={400}
-                                    className="rounded-lg shadow-xl h-full w-full object-cover"
-                                    data-ai-hint="passport map"
-                                />
-                            </div>
-                            <div>
+                    <div className="grid lg:grid-cols-2 gap-12 items-stretch">
+                        <AnimatedSection className="hidden lg:block">
+                            <Image 
+                                src={benefitsBlock?.image_url || "https://ik.imagekit.io/leosmc2zb/golden-visa-portugal-nacionalidade-portuguesa.jpeg"}
+                                alt="Passaporte europeu sobre um mapa"
+                                width={600}
+                                height={400}
+                                className="rounded-lg shadow-xl h-full w-full object-cover"
+                                data-ai-hint="passport map"
+                            />
+                        </AnimatedSection>
+                        <div>
+                            <AnimatedSection delay={0.1}>
                                 <h2 className="font-headline text-3xl md:text-4xl text-primary-foreground uppercase">{benefitsBlock?.title || "Benefícios de um Futuro Europeu"}</h2>
                                 <p className="mt-4 text-primary-foreground/80">{benefitsBlock?.content || "O programa Golden Visa de Portugal é um dos mais procurados do mundo, oferecendo um caminho claro para a residência e cidadania europeia em troca de um investimento qualificado no país."}</p>
-                                <ul className="mt-6 space-y-3">
-                                   {benefits.map((benefit, i) => (
-                                       <li key={i} className="flex items-start">
-                                           <Check className="h-5 w-5 text-green-400 mr-3 mt-1 shrink-0" />
-                                           <span className="text-primary-foreground/90">{benefit}</span>
-                                       </li>
-                                   ))}
-                                </ul>
-                            </div>
+                            </AnimatedSection>
+                            <ul className="mt-6 space-y-3">
+                               {benefits.map((benefit, i) => (
+                                   <AnimatedSection key={i} delay={0.2 + i * 0.05}>
+                                   <li className="flex items-start">
+                                       <Check className="h-5 w-5 text-green-400 mr-3 mt-1 shrink-0" />
+                                       <span className="text-primary-foreground/90">{benefit}</span>
+                                   </li>
+                                   </AnimatedSection>
+                               ))}
+                            </ul>
                         </div>
-                    </AnimatedSection>
+                    </div>
                 </div>
             </section>
 
@@ -95,12 +97,12 @@ export default async function GoldenVisaPage() {
                      <AnimatedSection>
                      <h3 className="font-headline text-3xl md:text-4xl text-center uppercase text-primary-foreground">{processBlock?.title || "Etapas do Processo"}</h3>
                      </AnimatedSection>
-                     <AnimatedSection delay={0.1}>
                      <div className="mt-12">
                         {/* --- Desktop Timeline --- */}
                         <div className="hidden md:grid grid-cols-5">
                             {processSteps.map((step, index) => (
-                                <div key={index} className="relative flex flex-col items-center">
+                                <AnimatedSection key={index} delay={0.1 + index * 0.1}>
+                                <div className="relative flex flex-col items-center">
                                     {/* Horizontal Line Segment - REMOVED */}
                                     
                                     {/* Vertical Connector and Card */}
@@ -151,6 +153,7 @@ export default async function GoldenVisaPage() {
                                         )}
                                     </div>
                                 </div>
+                                </AnimatedSection>
                             ))}
                         </div>
 
@@ -159,7 +162,8 @@ export default async function GoldenVisaPage() {
                              <div className="absolute left-5 top-2 h-full w-px bg-primary-foreground/20" aria-hidden="true"></div>
                              <div className="space-y-12">
                                 {processSteps.map((step, index) => (
-                                    <div key={index} className="relative pl-12">
+                                     <AnimatedSection key={index} delay={index * 0.1}>
+                                    <div className="relative pl-12">
                                         <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-secondary-foreground ring-4 ring-primary font-bold text-lg">
                                             {index + 1}
                                         </div>
@@ -168,11 +172,11 @@ export default async function GoldenVisaPage() {
                                             <p className="text-primary-foreground/80 mt-1 text-sm">{step.description}</p>
                                         </div>
                                     </div>
+                                    </AnimatedSection>
                                 ))}
                             </div>
                         </div>
                      </div>
-                     </AnimatedSection>
                 </div>
             </section>
             
@@ -184,7 +188,7 @@ export default async function GoldenVisaPage() {
                     </AnimatedSection>
                     <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                         {eligibleFunds.map((fund, index) => (
-                            <AnimatedSection key={fund.slug} delay={index * 0.1}>
+                            <AnimatedSection key={fund.slug} delay={0.1 + index * 0.1}>
                                 <FundCard fund={fund} />
                             </AnimatedSection>
                         ))}
