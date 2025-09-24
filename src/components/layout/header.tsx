@@ -20,21 +20,20 @@ import { useEffect, useState } from "react";
 export function Header() {
   const pathname = usePathname();
   const [isMounted, setIsMounted] = useState(false);
+  const isHomePage = pathname === '/';
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
   
-  // Prevent mismatch by delaying client-specific rendering
   if (!isMounted || pathname.startsWith('/admin')) {
-    // Render nothing on the server and initial client render, or for admin routes
     return null;
   }
 
   return (
      <header className="absolute top-0 left-0 z-50 w-full">
       <div className="container flex h-20 items-center justify-between">
-        <Logo variant="light" />
+        <Logo variant={isHomePage ? "light" : "dark"} />
         <div className="flex items-center gap-4">
           <nav className="hidden md:flex items-center">
             {navItems.map((item) =>
@@ -45,8 +44,10 @@ export function Header() {
                       variant="ghost"
                       className={cn(
                         "text-sm font-medium transition-colors px-3 py-2 gap-1",
-                        item.subItems.some((sub) => pathname.startsWith(sub.href)) ? "text-white" : "text-primary-foreground/80",
-                        "hover:text-white"
+                        item.subItems.some((sub) => pathname.startsWith(sub.href)) 
+                          ? (isHomePage ? "text-white" : "text-primary") 
+                          : (isHomePage ? "text-primary-foreground/80" : "text-muted-foreground"),
+                        isHomePage ? "hover:text-white" : "hover:text-primary"
                       )}
                     >
                       {item.label}
@@ -72,8 +73,10 @@ export function Header() {
                   href={item.href!}
                   className={cn(
                     "text-sm font-medium transition-colors px-3 py-2",
-                    pathname === item.href ? "text-white" : "text-primary-foreground/80",
-                    "hover:text-white"
+                    pathname === item.href 
+                      ? (isHomePage ? "text-white" : "text-primary") 
+                      : (isHomePage ? "text-primary-foreground/80" : "text-muted-foreground"),
+                    isHomePage ? "hover:text-white" : "hover:text-primary"
                   )}
                 >
                   {item.label}
@@ -83,7 +86,7 @@ export function Header() {
           </nav>
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden text-primary-foreground hover:bg-white/10">
+              <Button variant="ghost" size="icon" className={cn("md:hidden", isHomePage ? "text-primary-foreground hover:bg-white/10" : "text-primary hover:bg-accent")}>
                 <Menu className="h-4 w-4" />
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
