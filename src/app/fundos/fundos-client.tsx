@@ -39,6 +39,10 @@ export default function FundosClient({ headerBlock, allBlocks, fundsData }: Fund
     <>
         <section className="w-full h-screen bg-primary text-primary-foreground relative flex items-center justify-center text-center overflow-hidden">
              <ParticlesContainer />
+             <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(255,255,255,0.1)_0%,_transparent_70%)]"
+            />
             <div className="container relative z-20">
                 <AnimatedSection>
                     <p className="text-sm uppercase tracking-widest text-primary-foreground/80 font-headline">Conheça as oportunidades</p>
