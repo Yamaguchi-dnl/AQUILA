@@ -73,7 +73,7 @@ export default function ParticlesContainer({ className }: ParticlesContainerProp
           density: {
             enable: true,
           },
-          value: 80,
+          value: 120,
         },
         opacity: {
           value: 0.2,
