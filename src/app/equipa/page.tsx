@@ -30,16 +30,12 @@ export default async function EquipaPage() {
                 </AnimatedSection>
             </div>
         </section>
-      <section className="bg-primary text-primary-foreground relative">
-        <div
-            aria-hidden="true"
-            className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(255,255,255,0.15)_0%,_transparent_70%)]"
-        />
+      <section className="bg-background text-foreground relative">
         <div className="container relative z-10">
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamData.sort((a,b) => a.ordem - b.ordem).map((member, index) => (
               <AnimatedSection key={member.nome} delay={0.1 + index * 0.05} direction="up">
-                <TeamMemberCard member={member} isDark />
+                <TeamMemberCard member={member} />
               </AnimatedSection>
             ))}
           </div>
