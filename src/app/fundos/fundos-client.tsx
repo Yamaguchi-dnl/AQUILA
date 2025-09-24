@@ -38,7 +38,7 @@ export default function FundosClient({ headerBlock, allBlocks, fundsData }: Fund
     <>
         <section className="w-full h-screen bg-primary text-primary-foreground relative flex items-center justify-center text-center overflow-hidden">
              <Image
-                src={headerBlock?.image_url || "https://ik.imagekit.io/leosmc2zb/6109119.jpg"}
+                src={headerBlock?.image_url || "https://ik.imagekit.io/leosmc2zb/3103.jpg"}
                 alt={headerBlock?.title || "Nossos Fundos"}
                 fill
                 className="object-cover"
