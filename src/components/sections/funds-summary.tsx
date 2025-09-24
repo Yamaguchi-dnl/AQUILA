@@ -1,4 +1,5 @@
 
+
 import { fundsData } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -18,7 +19,7 @@ export function FundsSummary({ block }: Props) {
   return (
     <section id="fundos">
       <div className="container">
-        <AnimatedSection>
+        <AnimatedSection direction="up">
         <div className="text-center max-w-3xl mx-auto">
            <h2 className="text-sm uppercase tracking-widest text-muted-foreground font-headline">
               PORTFÓLIO
@@ -32,7 +33,7 @@ export function FundsSummary({ block }: Props) {
 
         <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
           {activeFunds.map((fund, index) => (
-            <AnimatedSection key={fund.slug} delay={0.1 + index * 0.1} direction="up">
+            <AnimatedSection key={fund.slug} delay={0.1 + index * 0.1} direction={index % 2 === 0 ? "left" : "right"}>
               <FundSummaryCard fund={fund} />
             </AnimatedSection>
           ))}

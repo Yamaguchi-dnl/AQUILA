@@ -1,4 +1,5 @@
 
+
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
@@ -39,7 +40,7 @@ export function GoldenVisaSummary({ block }: Props) {
                         {content}
                     </p>
                     </AnimatedSection>
-                    <AnimatedSection delay={0.2} direction="up">
+                    <AnimatedSection delay={0.3} direction="up">
                     <Button asChild variant="secondary" className="mt-8 text-base">
                         <Link href="/golden-visa">
                             SAIBA MAIS! <ArrowRight className="ml-2 h-4 w-4" />

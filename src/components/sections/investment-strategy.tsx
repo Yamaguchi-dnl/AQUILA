@@ -53,7 +53,7 @@ export function InvestmentStrategy({ block }: Props) {
                 
                 <div className="mt-12 relative">
                     {processSteps.map((step, index) => (
-                       <AnimatedSection key={step.number} delay={0.1 + index * 0.1} direction="up">
+                       <AnimatedSection key={step.number} delay={0.2 + index * 0.1} direction="up">
                        <div className="relative pl-16 pb-12 last:pb-0">
                            {index !== processSteps.length - 1 && (
                             <div className="absolute left-[22px] top-5 h-full w-px bg-primary-foreground/20" />
@@ -72,7 +72,8 @@ export function InvestmentStrategy({ block }: Props) {
                     ))}
                 </div>
             </div>
-            <AnimatedSection delay={0.2} className="hidden lg:block" direction="right">
+            <div className="hidden lg:block">
+            <AnimatedSection delay={0.2} direction="right">
                 <div className="relative">
                     <Image 
                         src={imageUrl1}
@@ -84,7 +85,7 @@ export function InvestmentStrategy({ block }: Props) {
                         data-ai-hint="portugal lisbon"
                         
                     />
-                    <AnimatedSection delay={0.4} direction="up">
+                     <AnimatedSection delay={0.5} direction="up">
                         <Image 
                             src={imageUrl2}
                             alt="Passaporte e documentos Golden Visa"
@@ -96,6 +97,7 @@ export function InvestmentStrategy({ block }: Props) {
                     </AnimatedSection>
                 </div>
             </AnimatedSection>
+            </div>
         </div>
       </div>
     </section>

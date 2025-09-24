@@ -1,4 +1,5 @@
 
+
 import { ContactForm } from "../forms/contact-form";
 import Link from "next/link";
 import { Instagram, Linkedin } from "lucide-react";
@@ -38,7 +39,7 @@ export function ContactSummary({ block }: Props) {
                     <p className="text-muted-foreground"><strong>Email:</strong> <Link href="mailto:info@aquilafund.com" className="hover:text-primary">info@aquilafund.com</Link></p>
                  </div>
                  </AnimatedSection>
-                 <AnimatedSection delay={0.3} direction="up">
+                 <AnimatedSection delay={0.4} direction="up">
                  <div className="flex gap-4 mt-4">
                     <Button asChild variant="outline" size="icon">
                         <Link href="https://www.instagram.com/aquilafcr/" target="_blank" aria-label="Instagram">
@@ -53,7 +54,7 @@ export function ContactSummary({ block }: Props) {
                  </div>
                  </AnimatedSection>
             </div>
-            <AnimatedSection delay={0.1} direction="right">
+            <AnimatedSection delay={0.2} direction="right">
             <div className="bg-card p-8 rounded-lg shadow-lg transition-all duration-300 border border-transparent hover:border-primary">
                  <h3 className="text-xl font-bold text-foreground mb-4 font-headline">Fale com um especialista</h3>
                  <ContactForm isSummary={true} />

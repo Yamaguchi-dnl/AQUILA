@@ -20,8 +20,7 @@ export function AboutSummary({ block }: AboutSummaryProps) {
     <section id="sobre" className="bg-background text-foreground overflow-hidden relative">
       <div className="container relative z-20">
         <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-stretch">
-          <div className="order-last md:order-first">
-            <AnimatedSection direction="left">
+          <AnimatedSection direction="left" className="order-last md:order-first">
             <Image 
                 src={imageUrl}
                 alt="Escritório moderno em Lisboa"
@@ -30,8 +29,7 @@ export function AboutSummary({ block }: AboutSummaryProps) {
                 className="rounded-lg object-cover shadow-xl w-full"
                 data-ai-hint="modern office lisbon"
             />
-            </AnimatedSection>
-          </div>
+          </AnimatedSection>
            <div className="order-first md:order-last flex flex-col">
             <AnimatedSection direction="right">
               <h2 className="text-sm uppercase tracking-widest text-muted-foreground font-headline">
@@ -46,7 +44,7 @@ export function AboutSummary({ block }: AboutSummaryProps) {
                 dangerouslySetInnerHTML={{ __html: content }}
               />
             </AnimatedSection>
-            <AnimatedSection className="mt-8" delay={0.2} direction="right">
+            <AnimatedSection className="mt-8" delay={0.2} direction="up">
               <Button asChild size="lg" variant="default">
                 <Link href="/contato">FALE COM UM ESPECIALISTA!</Link>
               </Button>
