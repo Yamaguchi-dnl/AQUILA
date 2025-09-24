@@ -30,27 +30,20 @@ export default function ParticlesContainer({ className }: ParticlesContainerProp
     () => ({
       background: {
         color: {
-          value: "#15233b",
+          value: "transparent",
         },
       },
       fpsLimit: 120,
       interactivity: {
         events: {
-          onClick: {
-            enable: true,
-            mode: "push",
-          },
           onHover: {
             enable: true,
             mode: "repulse",
           },
         },
         modes: {
-          push: {
-            quantity: 4,
-          },
           repulse: {
-            distance: 200,
+            distance: 100,
             duration: 0.4,
           },
         },
@@ -63,7 +56,7 @@ export default function ParticlesContainer({ className }: ParticlesContainerProp
           color: "#ffffff",
           distance: 150,
           enable: true,
-          opacity: 0.5,
+          opacity: 0.2,
           width: 1,
         },
         move: {
@@ -73,7 +66,7 @@ export default function ParticlesContainer({ className }: ParticlesContainerProp
             default: "out",
           },
           random: false,
-          speed: 6,
+          speed: 2,
           straight: false,
         },
         number: {
@@ -83,13 +76,13 @@ export default function ParticlesContainer({ className }: ParticlesContainerProp
           value: 80,
         },
         opacity: {
-          value: 0.5,
+          value: 0.2,
         },
         shape: {
           type: "circle",
         },
         size: {
-          value: { min: 1, max: 5 },
+          value: { min: 1, max: 3 },
         },
       },
       detectRetina: true,
