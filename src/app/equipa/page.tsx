@@ -22,12 +22,16 @@ export default async function EquipaPage() {
         title={heroBlock?.title || "Nossa Equipa"}
         subtitle={heroBlock?.content || "Especialistas dedicados a transformar desafios em oportunidades e aspirações em conquistas."}
       />
-      <section className="bg-background">
-        <div className="container">
+      <section className="bg-primary text-primary-foreground relative">
+        <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(255,255,255,0.15)_0%,_transparent_70%)]"
+        />
+        <div className="container relative z-10">
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamData.sort((a,b) => a.ordem - b.ordem).map((member, index) => (
               <AnimatedSection key={member.nome} delay={0.1 + index * 0.05} direction="up">
-                <TeamMemberCard member={member} />
+                <TeamMemberCard member={member} isDark />
               </AnimatedSection>
             ))}
           </div>

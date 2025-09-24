@@ -5,24 +5,33 @@ import { cn } from "@/lib/utils";
 
 type TeamMemberCardProps = {
   member: TeamMember;
+  isDark?: boolean;
 };
 
-export function TeamMemberCard({ member }: TeamMemberCardProps) {
+export function TeamMemberCard({ member, isDark = false }: TeamMemberCardProps) {
   return (
-    <Card className="flex flex-col h-full text-center transition-all duration-300 hover:scale-105 hover:shadow-xl">
+    <Card className={cn(
+      "flex flex-col h-full text-center transition-all duration-300 hover:scale-105 hover:shadow-xl",
+      isDark && "bg-card/10 border-primary-foreground/20 text-primary-foreground"
+    )}>
       <CardHeader className="items-center">
         <Image
           src={`${member.foto.src}?v=${member.foto.v}`}
           alt={member.nome}
           width={128}
           height={128}
-          className="rounded-full w-32 h-32 object-cover border-4 border-card"
+          className={cn("rounded-full w-32 h-32 object-cover border-4", isDark ? "border-card/10" : "border-card")}
           data-ai-hint={member.dataAiHint}
         />
-        <CardTitle className="pt-4 font-headline text-2xl">{member.nome}</CardTitle>
-        <p className="text-sm font-medium text-primary">{member.cargo}</p>
+        <CardTitle className={cn("pt-4 font-headline text-2xl", isDark && "text-primary-foreground")}>{member.nome}</CardTitle>
+        <p className={cn("text-sm font-medium", isDark ? "text-secondary" : "text-primary")}>{member.cargo}</p>
       </CardHeader>
-      <CardContent className="text-sm text-muted-foreground text-center" dangerouslySetInnerHTML={{ __html: member.bioHtml }} />
+      <CardContent 
+        className={cn(
+            "text-sm text-muted-foreground text-center",
+            isDark && "text-primary-foreground/80"
+        )} 
+        dangerouslySetInnerHTML={{ __html: member.bioHtml }} />
     </Card>
   );
 }

@@ -40,12 +40,16 @@ export default async function SobrePage() {
           imageAiHint="modern office city"
        />
 
-       <section className="bg-background">
-        <div className="container">
+       <section className="bg-primary text-primary-foreground relative">
+        <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(255,255,255,0.15)_0%,_transparent_70%)]"
+        />
+        <div className="container relative z-10">
             <div className="mt-12 grid lg:grid-cols-2 gap-12 items-center">
                 <AnimatedSection delay={0.1} direction="left">
                     <div 
-                    className="space-y-4 text-base text-muted-foreground text-justify prose lg:prose-lg max-w-none"
+                    className="space-y-4 text-base text-primary-foreground/80 text-justify prose prose-lg max-w-none prose-invert"
                     dangerouslySetInnerHTML={{ __html: heroBlock?.sub_content || '' }}
                     />
                 </AnimatedSection>

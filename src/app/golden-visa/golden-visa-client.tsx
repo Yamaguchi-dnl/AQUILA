@@ -52,8 +52,12 @@ export default function GoldenVisaClient({
             />
             
             <div className="relative z-10 bg-background">
-                <section className="bg-background text-foreground relative z-10">
-                    <div className="container">
+                <section className="bg-primary text-primary-foreground relative z-10">
+                     <div
+                        aria-hidden="true"
+                        className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(255,255,255,0.15)_0%,_transparent_70%)]"
+                    />
+                    <div className="container relative z-10">
                         <div className="grid lg:grid-cols-2 gap-12 items-center">
                             <AnimatedSection className="hidden lg:block" direction="left">
                                 <Image 
@@ -67,15 +71,15 @@ export default function GoldenVisaClient({
                             </AnimatedSection>
                             <div>
                                 <AnimatedSection delay={0.1} direction="right">
-                                    <h2 className="font-headline text-3xl md:text-4xl text-primary uppercase">{benefitsBlock?.title || "Benefícios de um Futuro Europeu"}</h2>
-                                    <p className="mt-4 text-muted-foreground">{benefitsBlock?.content || "O programa Golden Visa de Portugal é um dos mais procurados do mundo, oferecendo um caminho claro para a residência e cidadania europeia em troca de um investimento qualificado no país."}</p>
+                                    <h2 className="font-headline text-3xl md:text-4xl text-primary-foreground uppercase">{benefitsBlock?.title || "Benefícios de um Futuro Europeu"}</h2>
+                                    <p className="mt-4 text-primary-foreground/80">{benefitsBlock?.content || "O programa Golden Visa de Portugal é um dos mais procurados do mundo, oferecendo um caminho claro para a residência e cidadania europeia em troca de um investimento qualificado no país."}</p>
                                 </AnimatedSection>
                                 <ul className="mt-6 space-y-3">
                                 {benefits.map((benefit, i) => (
                                     <AnimatedSection key={i} delay={0.2 + i * 0.05} direction="up">
                                     <li className="flex items-start">
                                         <Check className="h-5 w-5 text-green-500 mr-3 mt-1 shrink-0" />
-                                        <span className="text-foreground/90">{benefit}</span>
+                                        <span className="text-primary-foreground/90">{benefit}</span>
                                     </li>
                                     </AnimatedSection>
                                 ))}
