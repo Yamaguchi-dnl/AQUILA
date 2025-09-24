@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -43,6 +44,7 @@ export default function FundosClient({ headerBlock, allBlocks, fundsData }: Fund
                 className="object-cover"
                 priority
              />
+             <div className="absolute inset-0 bg-black/60"></div>
             <div className="container relative z-20">
                 <AnimatedSection>
                     <p className="text-sm uppercase tracking-widest text-primary-foreground/80 font-headline">Conheça as oportunidades</p>
