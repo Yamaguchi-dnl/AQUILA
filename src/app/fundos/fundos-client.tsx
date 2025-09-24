@@ -37,7 +37,7 @@ export default function FundosClient({ headerBlock, allBlocks, fundsData }: Fund
 
   return (
     <>
-        <section className="w-full h-screen bg-primary text-primary-foreground relative flex items-center justify-center text-center overflow-hidden">
+        <section className="w-full h-[50vh] bg-primary text-primary-foreground relative flex items-center justify-center text-center overflow-hidden">
              <ParticlesContainer />
              <div
                 aria-hidden="true"
