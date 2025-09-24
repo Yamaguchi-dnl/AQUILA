@@ -49,7 +49,7 @@ export default async function FundosPage() {
                 <div className="text-center">
                     <p className="text-sm uppercase tracking-widest text-primary-foreground/80 font-headline">Conheça as oportunidades</p>
                     <h1 className="font-headline text-4xl md:text-5xl text-primary-foreground uppercase mt-2">{headerBlock?.title || 'Nossos Fundos'}</h1>
-                    <p className="mt-4 mb-16 max-w-3xl mx-auto text-lg text-primary-foreground/90">
+                    <p className="mt-4 max-w-3xl mx-auto text-lg text-primary-foreground/90">
                         {headerBlock?.content || 'Explore nosso portfólio de fundos de investimento em Portugal, incluindo opções elegíveis para o Golden Visa.'}
                     </p>
                 </div>
@@ -74,7 +74,6 @@ export default async function FundosPage() {
               className={cn(
                   "scroll-mt-20 py-16 md:py-24 relative",
                   isPrimarySection ? "bg-primary text-primary-foreground" : "bg-background text-foreground",
-                  'rounded-t-3xl',
                   index === 0 && '-mt-20'
               )}
           >

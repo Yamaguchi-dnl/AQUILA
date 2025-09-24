@@ -65,7 +65,7 @@ export default async function SobrePage() {
         </div>
        </section>
 
-      <section className="bg-primary text-primary-foreground rounded-t-3xl relative">
+      <section className="bg-primary text-primary-foreground relative">
         <div
             aria-hidden="true"
             className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(50,130,250,0.2)_0%,_transparent_70%)]"

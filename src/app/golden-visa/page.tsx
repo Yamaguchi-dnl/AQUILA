@@ -52,7 +52,7 @@ export default async function GoldenVisaPage() {
                 subtitle={headerBlock?.content || "Seu passaporte para a Europa através de investimentos de valor."}
             />
             
-            <section className="bg-primary text-primary-foreground rounded-t-3xl relative z-10 -mt-16">
+            <section className="bg-primary text-primary-foreground relative z-10 -mt-16">
                  <div
                     aria-hidden="true"
                     className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(50,130,250,0.2)_0%,_transparent_70%)]"

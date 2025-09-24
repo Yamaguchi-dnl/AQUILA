@@ -17,7 +17,7 @@ export default function TrabalheConoscoPage() {
         subtitle="Procuramos talentos excepcionais que partilhem da nossa paixão por excelência e inovação no mercado financeiro."
         className=""
       />
-      <section className="bg-background rounded-t-3xl -mt-16">
+      <section className="bg-background -mt-16">
         <div className="container max-w-2xl py-16">
           <AnimatedSection>
             <div className="bg-card p-8 rounded-lg shadow-lg">

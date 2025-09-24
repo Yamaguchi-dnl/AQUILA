@@ -15,7 +15,7 @@ export function ContactSummary({ block }: Props) {
   const content = block?.content || 'Preencha o formulário abaixo para agendar uma reunião com nossa equipe e conhecer as oportunidades de diversificação global de investimento com foco em Golden Visa. Estamos prontos para ajudar a alcançar seus objetivos financeiros em Portugal.';
   
   return (
-    <section id="contato" className="bg-card rounded-t-3xl relative z-10 shadow-2xl">
+    <section id="contato" className="bg-card relative z-10 shadow-2xl">
       <div className="container pb-16">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>

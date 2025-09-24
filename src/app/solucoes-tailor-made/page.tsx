@@ -32,7 +32,7 @@ export default async function SolucoesTailorMadePage() {
         title={headerBlock?.title || "Soluções Tailor Made"}
         subtitle={headerBlock?.content || "No mercado de investimentos, opções não faltam. Mas quando se trata de potencializar retornos com inteligência e exclusividade, é preciso ir além do comum."}
       />
-      <section className="bg-primary text-primary-foreground pt-16 md:pt-24 rounded-t-3xl relative z-10 -mt-16">
+      <section className="bg-primary text-primary-foreground pt-16 md:pt-24 relative z-10 -mt-16">
         <div
             aria-hidden="true"
             className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(50,130,250,0.2)_0%,_transparent_70%)]"

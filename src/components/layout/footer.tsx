@@ -41,7 +41,6 @@ export function Footer() {
   return (
     <footer className={cn(
         "bg-primary text-primary-foreground/80 relative",
-        shouldRemoveRadius ? "rounded-t-none" : "rounded-t-3xl"
     )}>
       <div className="container py-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
