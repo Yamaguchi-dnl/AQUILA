@@ -3,7 +3,7 @@
 
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { cn } from '@/lib/utils';
+import Image from 'next/image';
 import { AnimatedSection } from '@/components/shared/animated-section';
 
 type GoldenVisaHeaderProps = {
@@ -21,23 +21,33 @@ export default function GoldenVisaHeader({ pretitle, title, subtitle, imageUrl }
     offset: ['start start', 'end start']
   });
 
-  const backgroundSize = useTransform(scrollYProgress, [0, 1], ["100%", "150%"]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.5]);
   const filterBlur = useTransform(scrollYProgress, [0, 1], ["blur(0px)", "blur(5px)"]);
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
   return (
     <div ref={containerRef} className="relative h-screen">
-      <motion.div
-        className="feature fixed top-0 left-0 w-full h-full"
-        style={{
-          backgroundImage: `url(${imageUrl})`,
-          backgroundPosition: 'center center',
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: backgroundSize,
-          filter: filterBlur,
-          opacity: opacity,
-        }}
-      />
+      <div className="feature fixed top-0 left-0 w-full h-full">
+        <motion.div
+            style={{
+                scale,
+                filter: filterBlur,
+                opacity: opacity,
+            }}
+            className="w-full h-full"
+        >
+            {imageUrl && (
+                <Image
+                    src={imageUrl}
+                    alt={title}
+                    fill
+                    className="object-cover"
+                    priority
+                />
+            )}
+        </motion.div>
+      </div>
+      
       <div 
         aria-hidden="true" 
         className="fixed top-0 left-0 w-full h-full"
