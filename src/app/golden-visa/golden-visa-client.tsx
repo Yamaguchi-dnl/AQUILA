@@ -48,7 +48,7 @@ export default function GoldenVisaClient({
                 pretitle="O seu caminho para a Europa"
                 title={headerBlock?.title || "Golden Visa Portugal"}
                 subtitle={headerBlock?.content || "Seu passaporte para a Europa através de investimentos de valor."}
-                imageUrl={benefitsBlock?.image_url || "http://s3.nikecdn.com/pass/NikeBasketball/LeBron_Poster.jpg"}
+                imageUrl={"https://ik.imagekit.io/leosmc2zb/VB_blog_golden_visa.jpg"}
             />
             
             <div className="relative z-10 bg-background">
