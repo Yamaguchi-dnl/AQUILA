@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Button } from '@/components/ui/button';
@@ -22,7 +21,7 @@ export function Hero({ block }: Props) {
         <motion.div
             initial={{ y: "-100%" }}
             animate={{ y: "0%" }}
-            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
             className="absolute inset-0 z-0"
         >
             <Image
@@ -36,7 +35,7 @@ export function Hero({ block }: Props) {
         </motion.div>
         <div className="absolute inset-0 bg-black/60 z-10"></div>
         <div className="container relative z-20">
-            <AnimatedSection delay={0.5}>
+            <AnimatedSection delay={1.2}>
                 <h1 
                   className="font-headline text-3xl sm:text-4xl lg:text-5xl xl:text-6xl tracking-tight text-white uppercase"
                   dangerouslySetInnerHTML={{ __html: title }}
