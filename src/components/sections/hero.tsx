@@ -16,7 +16,7 @@ export function Hero({ block }: Props) {
   return (
       <section id="hero" className="w-full h-screen relative flex items-center justify-center text-center -mt-[100vh]">
           <div className="container relative z-20 overflow-hidden">
-              <h1 className="font-headline text-3xl sm:text-4xl lg:text-5xl xl:text-6xl tracking-tight text-white uppercase">
+              <h1 className="font-headline text-4xl sm:text-4xl lg:text-5xl xl:text-6xl tracking-tight text-white uppercase">
                 <AnimatedSection delay={0.5} direction="left">
                     <span>{titleLine1}</span>
                 </AnimatedSection>
