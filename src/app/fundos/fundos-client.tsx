@@ -45,7 +45,7 @@ export default function FundosClient({ headerBlock, allBlocks, fundsData }: Fund
                 data-ai-hint="investment portfolio"
                 priority
             />
-            <div className="absolute inset-0 bg-black/60 z-10"></div>
+            <div className="absolute inset-0 bg-black/70 z-10"></div>
             <div className="container relative z-20">
                 <AnimatedSection>
                     <p className="text-sm uppercase tracking-widest text-primary-foreground/80 font-headline">Conheça as oportunidades</p>
@@ -194,5 +194,4 @@ export default function FundosClient({ headerBlock, allBlocks, fundsData }: Fund
     </>
   );
 }
-
     
