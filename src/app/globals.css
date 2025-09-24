@@ -94,7 +94,7 @@
     @apply bg-background text-foreground;
   }
   section {
-    @apply w-full py-16 md:py-24 lg:py-28; /* Increased padding for more breathing room */
+    @apply w-full py-20 md:py-28 lg:py-32;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-headline);
@@ -179,6 +179,3 @@
 #hero h1 span {
     color: inherit !important;
 }
-
-
-

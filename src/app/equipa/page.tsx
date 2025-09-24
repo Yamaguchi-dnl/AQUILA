@@ -16,7 +16,7 @@ export default async function EquipaPage() {
 
   return (
     <>
-      <section className="bg-background pt-32 md:pt-40 pb-20 md:pb-28 lg:pb-32">
+      <section className="bg-background pt-32 md:pt-40 pb-20">
         <div className="container">
            <AnimatedSection>
             <div className="text-center max-w-3xl mx-auto">

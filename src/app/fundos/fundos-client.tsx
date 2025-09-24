@@ -67,7 +67,7 @@ export default function FundosClient({ headerBlock, allBlocks, fundsData }: Fund
               id={fund.slug} 
               key={fund.slug} 
               className={cn(
-                  "scroll-mt-20 py-16 md:py-24 relative",
+                  "scroll-mt-20 relative",
                   isPrimarySection ? "bg-primary text-primary-foreground" : "bg-background text-foreground"
               )}
           >

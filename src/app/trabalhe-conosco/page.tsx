@@ -18,7 +18,7 @@ export default function TrabalheConoscoPage() {
         className=""
       />
       <section className="bg-background">
-        <div className="container max-w-2xl py-16">
+        <div className="container max-w-2xl">
           <AnimatedSection direction="up">
             <div className="bg-card p-8 rounded-lg shadow-xl">
               <h2 className="text-2xl font-bold text-foreground mb-2 font-headline">Envie sua Candidatura</h2>

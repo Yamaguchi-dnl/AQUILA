@@ -57,7 +57,7 @@ export default async function GoldenVisaPage() {
                     aria-hidden="true"
                     className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(255,255,255,0.15)_0%,_transparent_70%)]"
                 />
-                <div className="container py-16">
+                <div className="container">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         <AnimatedSection className="hidden lg:block" direction="left">
                             <Image 
@@ -89,7 +89,7 @@ export default async function GoldenVisaPage() {
                 </div>
             </section>
 
-             <section className="bg-primary text-primary-foreground pt-0 pb-16 md:pb-24 lg:pb-28 relative">
+             <section className="bg-primary text-primary-foreground pt-0 relative">
                  <div
                     aria-hidden="true"
                     className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(255,255,255,0.15)_0%,_transparent_70%)]"

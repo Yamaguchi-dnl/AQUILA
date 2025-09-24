@@ -38,7 +38,7 @@ export function InvestmentCycle({ block }: Props) {
   const content = block?.content || 'Cada fundo da Aquila Fund FCR tem duração de 8 anos, com o capital levantado durante os primeiros dois anos e o período de desinvestimento ocorrendo nos últimos dois anos da vida do fundo.';
 
   return (
-    <section id="investment-cycle" className="bg-transparent text-primary-foreground relative pt-16 md:pt-24 lg:pt-28">
+    <section id="investment-cycle" className="bg-transparent text-primary-foreground relative pt-20 md:pt-28 lg:pt-32">
       <div className="container relative z-10">
         <AnimatedSection>
         <div className="text-center max-w-3xl mx-auto">

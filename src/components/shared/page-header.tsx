@@ -12,8 +12,8 @@ type PageHeaderProps = {
 
 export function PageHeader({ pretitle, title, subtitle, className, children }: PageHeaderProps) {
   return (
-    <div className={cn("bg-card relative overflow-hidden pt-24 md:pt-32", className)}>
-       <div className="container pt-12 md:pt-10 pb-6 md:pb-8 relative">
+    <div className={cn("bg-card relative overflow-hidden pt-32 md:pt-40", className)}>
+       <div className="container pt-12 pb-8 md:pb-12 relative">
         <AnimatedSection>
         <div className="text-center">
             {pretitle && (

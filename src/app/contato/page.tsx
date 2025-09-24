@@ -24,7 +24,7 @@ export default function ContatoPage() {
         subtitle="Estamos à sua disposição para qualquer esclarecimento."
       />
       <section className="bg-primary text-primary-foreground relative z-10">
-        <div className="container py-16">
+        <div className="container">
           <div className="grid lg:grid-cols-5 gap-12">
             <AnimatedSection className="lg:col-span-2" direction="right">
                 <h2 className="font-headline text-3xl text-primary-foreground font-bold">Informações de Contato</h2>

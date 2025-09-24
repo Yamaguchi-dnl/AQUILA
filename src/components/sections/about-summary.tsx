@@ -22,7 +22,7 @@ export function AboutSummary({ block }: AboutSummaryProps) {
         aria-hidden="true"
         className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(255,255,255,0.15)_0%,_transparent_70%)]"
       />
-      <div className="container relative z-20 pt-16 pb-24">
+      <div className="container relative z-20">
         <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-stretch">
           <div className="order-last md:order-first">
             <AnimatedSection direction="left">

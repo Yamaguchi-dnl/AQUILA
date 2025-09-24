@@ -40,7 +40,7 @@ export function InvestmentStrategy({ block }: Props) {
   const imageUrl2 = block?.sub_content || 'https://ik.imagekit.io/leosmc2zb/golden-visa-portugal-nacionalidade-portuguesa.jpeg';
 
   return (
-    <section id="investment-strategy" className="bg-transparent text-primary-foreground relative pt-0 md:pt-16 lg:pt-28 pb-16 md:pb-24 lg:pb-28">
+    <section id="investment-strategy" className="bg-transparent text-primary-foreground relative pt-0 pb-20 md:pb-28 lg:pb-32">
       <div className="container relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>

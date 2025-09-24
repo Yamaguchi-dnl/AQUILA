@@ -28,7 +28,7 @@ export default function SolucoesTailorMadeClient({ headerBlock, contentBlock }: 
         pretitle="INVESTIMENTOS PERSONALIZADOS"
         title={headerBlock?.title || "Soluções Tailor Made"}
       />
-      <section className="bg-background text-foreground pt-16 md:pt-24 relative z-10">
+      <section className="bg-background text-foreground relative z-10">
         <div className="container">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <AnimatedSection direction="left">

@@ -16,7 +16,7 @@ export function ContactSummary({ block }: Props) {
   
   return (
     <section id="contato" className="bg-card relative z-10 shadow-2xl">
-      <div className="container pb-16">
+      <div className="container">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
                 <AnimatedSection direction="left">
