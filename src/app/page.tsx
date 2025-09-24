@@ -24,18 +24,20 @@ export default async function Home() {
   return (
     <>
       <Hero block={heroBlock} />
-      <AboutSummary block={aboutBlock} />
-      <FundsSummary block={fundsBlock} />
-      <WhyPortugal block={whyPortugalBlock} />
-      <GoldenVisaSummary block={goldenVisaBlock} />
-      <div className='relative bg-primary'>
-        <div
-            aria-hidden="true"
-            className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(255,255,255,0.15)_0%,_transparent_70%)]"
-        />
-        <InvestmentCycle block={investmentCycleBlock} />
-        <InvestmentStrategy block={investmentStrategyBlock} />
-        <ContactSummary block={contactBlock} />
+      <div className="relative z-10 bg-background">
+        <AboutSummary block={aboutBlock} />
+        <FundsSummary block={fundsBlock} />
+        <WhyPortugal block={whyPortugalBlock} />
+        <GoldenVisaSummary block={goldenVisaBlock} />
+        <div className='relative bg-primary'>
+          <div
+              aria-hidden="true"
+              className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(255,255,255,0.15)_0%,_transparent_70%)]"
+          />
+          <InvestmentCycle block={investmentCycleBlock} />
+          <InvestmentStrategy block={investmentStrategyBlock} />
+          <ContactSummary block={contactBlock} />
+        </div>
       </div>
     </>
   );
