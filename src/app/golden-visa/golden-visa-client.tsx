@@ -12,7 +12,7 @@ import Image from "next/image";
 import { AnimatedSection } from "@/components/shared/animated-section";
 import type { Block } from "@/lib/data-loader";
 import type { Fund, FaqItem } from "@/lib/types";
-import GoldenVisaHeader from "./golden-visa-header";
+import ParticlesContainer from "@/components/shared/particles-container";
 
 type ProcessStep = {
     title: string;
@@ -44,12 +44,19 @@ export default function GoldenVisaClient({
 }: GoldenVisaClientProps) {
     return (
         <>
-            <GoldenVisaHeader
-                pretitle="O seu caminho para a Europa"
-                title={headerBlock?.title || "Golden Visa Portugal"}
-                subtitle={headerBlock?.content || "Seu passaporte para a Europa através de investimentos de valor."}
-                imageUrl={"https://ik.imagekit.io/leosmc2zb/VB_blog_golden_visa.jpg"}
-            />
+            <section className="w-full h-[60vh] bg-primary text-primary-foreground relative flex items-center justify-center text-center overflow-hidden">
+                <ParticlesContainer />
+                <div
+                    aria-hidden="true"
+                    className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(255,255,255,0.1)_0%,_transparent_70%)]"
+                />
+                <div className="container relative z-20">
+                    <AnimatedSection>
+                        <p className="text-sm uppercase tracking-widest text-primary-foreground/80 font-headline">O seu caminho para a Europa</p>
+                        <h1 className="font-headline text-4xl md:text-5xl text-primary-foreground uppercase mt-2">{headerBlock?.title || "Golden Visa Portugal"}</h1>
+                    </AnimatedSection>
+                </div>
+            </section>
             
             <div className="relative z-10 bg-background">
                 <section className="bg-primary text-primary-foreground relative z-10">
@@ -61,7 +68,7 @@ export default function GoldenVisaClient({
                         <div className="grid lg:grid-cols-2 gap-12 items-center">
                             <AnimatedSection className="hidden lg:block" direction="left">
                                 <Image 
-                                    src={benefitsBlock?.image_url || "https://ik.imagekit.io/leosmc2zb/golden-visa-portugal-nacionalidade-portuguesa.jpeg"}
+                                    src={"https://ik.imagekit.io/leosmc2zb/VB_blog_golden_visa.jpg"}
                                     alt="Passaporte europeu sobre um mapa"
                                     width={600}
                                     height={400}
