@@ -194,3 +194,5 @@ export default function FundosClient({ headerBlock, allBlocks, fundsData }: Fund
     </>
   );
 }
+
+    
