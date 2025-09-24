@@ -1,15 +1,19 @@
+
 "use client";
 
 import { useRef, useEffect } from 'react';
-import { motion, useInView, useAnimation } from 'framer-motion';
+import { motion, useInView, useAnimation, Variants } from 'framer-motion';
+
+type AnimationDirection = 'up' | 'down' | 'left' | 'right';
 
 interface AnimatedSectionProps {
   children: React.ReactNode;
   className?: string;
   delay?: number;
+  direction?: AnimationDirection;
 }
 
-export function AnimatedSection({ children, className, delay = 0 }: AnimatedSectionProps) {
+export function AnimatedSection({ children, className, delay = 0, direction = 'up' }: AnimatedSectionProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
   const mainControls = useAnimation();
@@ -20,13 +24,23 @@ export function AnimatedSection({ children, className, delay = 0 }: AnimatedSect
     }
   }, [isInView, mainControls]);
 
+  const variants: Variants = {
+    hidden: {
+      opacity: 0,
+      x: direction === 'left' ? -75 : direction === 'right' ? 75 : 0,
+      y: direction === 'up' ? 75 : direction === 'down' ? -75 : 0,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+    },
+  };
+
   return (
     <div ref={ref} className={className}>
       <motion.div
-        variants={{
-          hidden: { opacity: 0, y: 75 },
-          visible: { opacity: 1, y: 0 },
-        }}
+        variants={variants}
         initial="hidden"
         animate={mainControls}
         transition={{ duration: 0.5, delay: delay }}

@@ -1,4 +1,5 @@
 
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle, Clock } from "lucide-react";
 import Image from "next/image";
@@ -85,7 +86,7 @@ export default async function FundosPage() {
               )}
               <div className="container relative z-10">
                   <div className="grid lg:grid-cols-3 gap-8 lg:gap-16 items-center">
-                      <AnimatedSection className={cn("lg:col-span-2", isReversed && "lg:order-last")}>
+                      <AnimatedSection className={cn("lg:col-span-2", isReversed && "lg:order-last")} direction={isReversed ? 'right' : 'left'}>
                             {fund.detalhes.elegibilidadeGoldenVisa && (
                                 <Badge variant={fund.slug === 'aquila-wheels' ? 'default' : 'secondary'} className={cn("mb-2", fund.slug === 'aquila-hotel-invest' && 'bg-white/20 text-white backdrop-blur-sm border border-white/30')}>Elegível para Golden Visa</Badge>
                             )}
@@ -93,7 +94,7 @@ export default async function FundosPage() {
                             {block.content && <p className={cn("mt-2 text-lg font-semibold", isPrimarySection ? "text-primary-foreground/90" : "text-foreground")}>{block.content}</p>}
                             {block.sub_content && <div className={cn("mt-6 prose prose-lg max-w-none", isPrimarySection ? "text-primary-foreground/80" : "text-muted-foreground")} dangerouslySetInnerHTML={{ __html: block.sub_content }} />}
                       </AnimatedSection>
-                      <AnimatedSection delay={0.1}>
+                      <AnimatedSection delay={0.1} direction={isReversed ? 'left' : 'right'}>
                           <Card className={cn("shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
                               <CardHeader><CardTitle className={cn("font-headline", isPrimarySection && "text-primary-foreground")}>Detalhes do Fundo</CardTitle></CardHeader>
                               <CardContent>
@@ -119,7 +120,7 @@ export default async function FundosPage() {
                                     </AnimatedSection>
                                     <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
                                         {fund.beneficios.map((beneficio, i) => (
-                                            <AnimatedSection key={i} delay={0.1 + i * 0.1}>
+                                            <AnimatedSection key={i} delay={0.1 + i * 0.1} direction="up">
                                             <Card className={cn("text-center flex flex-col h-full", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
                                                 <CardContent className="p-6 flex-grow flex flex-col items-center justify-center">
                                                     <CheckCircle className="mx-auto h-8 w-8 text-green-500 shrink-0" />
@@ -146,7 +147,7 @@ export default async function FundosPage() {
                                               imageUrl = 'https://ik.imagekit.io/leosmc2zb/62159451.jpg';
                                           }
                                           return (
-                                            <AnimatedSection key={`${hotel.nome}-${hotel.imagem.v}`} delay={0.1 + i * 0.1}>
+                                            <AnimatedSection key={`${hotel.nome}-${hotel.imagem.v}`} delay={0.1 + i * 0.1} direction="up">
                                                 <Card className={cn("overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-xl h-full", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
                                                     <Image 
                                                         src={imageUrl} 
@@ -171,7 +172,7 @@ export default async function FundosPage() {
                               </div>
                           )}
 
-                          <AnimatedSection className="mt-16">
+                          <AnimatedSection className="mt-16" direction="up">
                             <div className="flex justify-center">
                               <Button asChild size="lg" variant={isPrimarySection ? "secondary" : "default"}>
                                   <Link href="/contato">Fale com um especialista sobre o {fund.nome}</Link>
@@ -180,7 +181,7 @@ export default async function FundosPage() {
                           </AnimatedSection>
                       </>
                   ) : (
-                        <AnimatedSection className="text-center mt-16">
+                        <AnimatedSection className="text-center mt-16" direction="up">
                           <Card className={cn("max-w-2xl mx-auto p-8 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
                               <Clock className="mx-auto h-12 w-12 text-primary" />
                               <h4 className={cn("mt-4 text-4xl font-headline uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>Em Breve</h4>

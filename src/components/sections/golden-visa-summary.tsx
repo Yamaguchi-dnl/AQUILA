@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
@@ -28,17 +29,17 @@ export function GoldenVisaSummary({ block }: Props) {
             <div className="absolute inset-0 bg-primary/80"></div>
             <div className="relative z-10 grid md:grid-cols-2 gap-8 items-center">
                 <div className="text-primary-foreground">
-                    <AnimatedSection>
+                    <AnimatedSection direction="left">
                     <h3 className="font-headline text-4xl uppercase mt-2">
                         {title}
                     </h3>
                     </AnimatedSection>
-                    <AnimatedSection delay={0.1}>
+                    <AnimatedSection delay={0.1} direction="left">
                     <p className="mt-4 text-base md:text-lg text-primary-foreground/90 max-w-lg">
                         {content}
                     </p>
                     </AnimatedSection>
-                    <AnimatedSection delay={0.2}>
+                    <AnimatedSection delay={0.2} direction="up">
                     <Button asChild variant="secondary" className="mt-8 text-base">
                         <Link href="/golden-visa">
                             SAIBA MAIS! <ArrowRight className="ml-2 h-4 w-4" />

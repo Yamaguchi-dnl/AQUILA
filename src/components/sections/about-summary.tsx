@@ -1,4 +1,5 @@
 
+
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
@@ -24,7 +25,7 @@ export function AboutSummary({ block }: AboutSummaryProps) {
       <div className="container relative z-20 pt-16 pb-24">
         <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-stretch">
           <div className="order-last md:order-first">
-            <AnimatedSection>
+            <AnimatedSection direction="left">
             <Image 
                 src={imageUrl}
                 alt="Escritório moderno em Lisboa"
@@ -36,20 +37,20 @@ export function AboutSummary({ block }: AboutSummaryProps) {
             </AnimatedSection>
           </div>
            <div className="order-first md:order-last flex flex-col">
-            <AnimatedSection>
+            <AnimatedSection direction="right">
               <h2 className="text-sm uppercase tracking-widest text-primary-foreground/60 font-headline">
                   <Link href="/sobre">QUEM SOMOS</Link>
               </h2>
               <h3 className="font-headline text-4xl text-primary-foreground mt-2 uppercase">{title}</h3>
               
             </AnimatedSection>
-            <AnimatedSection className="flex-grow" delay={0.1}>
+            <AnimatedSection className="flex-grow" delay={0.1} direction="right">
               <div 
                 className="mt-8 space-y-4 text-primary-foreground/80 prose prose-lg prose-invert max-w-none"
                 dangerouslySetInnerHTML={{ __html: content }}
               />
             </AnimatedSection>
-            <AnimatedSection className="mt-8" delay={0.2}>
+            <AnimatedSection className="mt-8" delay={0.2} direction="right">
               <Button asChild size="lg" variant="secondary">
                 <Link href="/contato">FALE COM UM ESPECIALISTA!</Link>
               </Button>
@@ -57,7 +58,7 @@ export function AboutSummary({ block }: AboutSummaryProps) {
           </div>
         </div>
 
-        <AnimatedSection delay={0.2} className="mt-20">
+        <AnimatedSection delay={0.2} className="mt-20" direction="up">
             <StatsCard />
         </AnimatedSection>
       </div>

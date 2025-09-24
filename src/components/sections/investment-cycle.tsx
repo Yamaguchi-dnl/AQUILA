@@ -1,3 +1,4 @@
+
 import { AnimatedSection } from "../shared/animated-section";
 import type { Block } from "@/lib/data-loader";
 
@@ -50,7 +51,7 @@ export function InvestmentCycle({ block }: Props) {
           </p>
         </div>
         </AnimatedSection>
-        <AnimatedSection delay={0.1}>
+        <AnimatedSection delay={0.1} direction="up">
         {/* Desktop Timeline */}
         <div className="mt-20 hidden md:block">
             <div className="relative">
@@ -92,7 +93,7 @@ export function InvestmentCycle({ block }: Props) {
                 
                 <div className="space-y-12">
                     {mobileTimelineData.map((item, index) => (
-                        <AnimatedSection key={index} delay={index * 0.1}>
+                        <AnimatedSection key={index} delay={index * 0.1} direction="up">
                         <div className="relative pl-12">
                             <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-secondary-foreground ring-4 ring-primary font-bold text-lg">
                                 {index + 1}

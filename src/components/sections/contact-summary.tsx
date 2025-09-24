@@ -1,3 +1,4 @@
+
 import { ContactForm } from "../forms/contact-form";
 import Link from "next/link";
 import { Instagram, Linkedin } from "lucide-react";
@@ -18,18 +19,18 @@ export function ContactSummary({ block }: Props) {
       <div className="container pb-16">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-                <AnimatedSection>
+                <AnimatedSection direction="left">
                  <h2 className="text-sm uppercase tracking-widest text-muted-foreground font-headline">
                     FALE CONOSCO
                   </h2>
                  <h3 className="font-headline text-4xl text-primary uppercase mt-2">{title}</h3>
                 </AnimatedSection>
-                 <AnimatedSection delay={0.1}>
+                 <AnimatedSection delay={0.1} direction="left">
                  <p className="mt-4 text-lg text-muted-foreground max-w-lg">
                     {content}
                  </p>
                  </AnimatedSection>
-                 <AnimatedSection delay={0.2}>
+                 <AnimatedSection delay={0.2} direction="left">
                  <div className="mt-8 text-base space-y-2">
                     <p className="text-muted-foreground"><strong>Endereço:</strong> Avenida Engenheiro Duarte Pacheco, Torre 1, 15º(2) 1070 – 101 Lisboa, Portugal</p>
                     <p className="text-muted-foreground"><strong>Telefone:</strong> +351 21 310 36 20</p>
@@ -37,7 +38,7 @@ export function ContactSummary({ block }: Props) {
                     <p className="text-muted-foreground"><strong>Email:</strong> <Link href="mailto:info@aquilafund.com" className="hover:text-primary">info@aquilafund.com</Link></p>
                  </div>
                  </AnimatedSection>
-                 <AnimatedSection delay={0.3}>
+                 <AnimatedSection delay={0.3} direction="up">
                  <div className="flex gap-4 mt-4">
                     <Button asChild variant="outline" size="icon">
                         <Link href="https://www.instagram.com/aquilafcr/" target="_blank" aria-label="Instagram">
@@ -52,7 +53,7 @@ export function ContactSummary({ block }: Props) {
                  </div>
                  </AnimatedSection>
             </div>
-            <AnimatedSection delay={0.1}>
+            <AnimatedSection delay={0.1} direction="right">
             <div className="bg-card p-8 rounded-lg shadow-lg transition-all duration-300 border border-transparent hover:border-primary">
                  <h3 className="text-xl font-bold text-foreground mb-4 font-headline">Fale com um especialista</h3>
                  <ContactForm isSummary={true} />

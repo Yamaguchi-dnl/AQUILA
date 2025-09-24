@@ -29,7 +29,7 @@ export default async function EquipaPage() {
           </AnimatedSection>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamData.sort((a,b) => a.ordem - b.ordem).map((member, index) => (
-              <AnimatedSection key={member.nome} delay={0.1 + index * 0.05}>
+              <AnimatedSection key={member.nome} delay={0.1 + index * 0.05} direction="up">
                 <TeamMemberCard member={member} />
               </AnimatedSection>
             ))}

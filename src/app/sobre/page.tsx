@@ -45,13 +45,13 @@ export default async function SobrePage() {
             </div>
             </AnimatedSection>
             <div className="mt-12 grid lg:grid-cols-2 gap-12 items-center">
-                <AnimatedSection delay={0.1}>
+                <AnimatedSection delay={0.1} direction="left">
                     <div 
                     className="space-y-4 text-base text-muted-foreground text-justify prose lg:prose-lg max-w-none"
                     dangerouslySetInnerHTML={{ __html: heroBlock?.sub_content || '' }}
                     />
                 </AnimatedSection>
-                <AnimatedSection delay={0.2}>
+                <AnimatedSection delay={0.2} direction="right">
                 <Image
                     src={heroBlock?.image_url || "https://ik.imagekit.io/leosmc2zb/5573.jpg"}
                     alt="Escritório moderno com vista para a cidade"
@@ -80,7 +80,7 @@ export default async function SobrePage() {
             </div>
             </AnimatedSection>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-            <AnimatedSection delay={0.1}>
+            <AnimatedSection delay={0.1} direction="up">
               <Card className="flex flex-col h-full bg-card/10 border-primary-foreground/20 text-primary-foreground transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
                   <CardHeader>
                       <h3 className="text-2xl font-headline card-title text-primary-foreground">{fundboxBlock?.title || 'FundBox'}</h3>
@@ -88,7 +88,7 @@ export default async function SobrePage() {
                   <CardContent className="prose max-w-none text-primary-foreground/80 flex-grow" dangerouslySetInnerHTML={{ __html: fundboxBlock?.content || '' }} />
               </Card>
             </AnimatedSection>
-            <AnimatedSection delay={0.2}>
+            <AnimatedSection delay={0.2} direction="up">
               <Card className="flex flex-col h-full bg-card/10 border-primary-foreground/20 text-primary-foreground transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
                   <CardHeader>
                       <h3 className="text-2xl font-headline card-title text-primary-foreground">{btgBlock?.title || 'BTG Pactual'}</h3>
@@ -98,7 +98,7 @@ export default async function SobrePage() {
             </AnimatedSection>
           </div>
           <div className="container text-center mt-12">
-            <AnimatedSection delay={0.3}>
+            <AnimatedSection delay={0.3} direction="up">
               <Button asChild size="lg" variant="secondary">
                   <Link href="/contato">Fale com um especialista</Link>
               </Button>
