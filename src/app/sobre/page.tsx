@@ -8,7 +8,7 @@ import Image from "next/image";
 import { getPageContentBySlug, findBlock } from '@/lib/data-loader';
 import { teamData } from "@/lib/data";
 import { AnimatedSection } from "@/components/shared/animated-section";
-import { PageHeader } from "@/components/shared/page-header";
+import ParticlesContainer from "@/components/shared/particles-container";
 
 export const metadata = {
   title: "Sobre a Aquila Fund FCR",
@@ -31,14 +31,19 @@ export default async function SobrePage() {
 
   return (
     <>
-       <PageHeader
-          pretitle="Nossa Essência"
-          title={heroBlock?.title || 'Sobre a Aquila Fund FCR'}
-          subtitle={heroBlock?.content || 'Construindo um legado de confiança, transparência e excelência.'}
-          imageUrl={heroBlock?.image_url || "https://ik.imagekit.io/leosmc2zb/5573.jpg"}
-          imageAlt="Escritório moderno com vista para a cidade"
-          imageAiHint="modern office city"
-       />
+       <section className="w-full h-[60vh] bg-primary text-primary-foreground relative flex items-center justify-center text-center overflow-hidden">
+             <ParticlesContainer />
+             <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(255,255,255,0.1)_0%,_transparent_70%)]"
+            />
+            <div className="container relative z-20">
+                <AnimatedSection>
+                    <p className="text-sm uppercase tracking-widest text-primary-foreground/80 font-headline">Nossa Essência</p>
+                    <h1 className="font-headline text-4xl md:text-5xl text-primary-foreground uppercase mt-2">{heroBlock?.title || 'Sobre a Aquila Fund FCR'}</h1>
+                </AnimatedSection>
+            </div>
+        </section>
 
        <section className="bg-primary text-primary-foreground relative">
         <div
