@@ -21,8 +21,8 @@ export default function GoldenVisaHeader({ pretitle, title, subtitle, imageUrl }
     offset: ['start start', 'end start']
   });
 
-  const backgroundSize = useTransform(scrollYProgress, [0, 1], ["250%", "100%"]);
-  const filterBlur = useTransform(scrollYProgress, [0, 1], ["blur(0px)", "blur(10px)"]);
+  const backgroundSize = useTransform(scrollYProgress, [0, 1], ["100%", "150%"]);
+  const filterBlur = useTransform(scrollYProgress, [0, 1], ["blur(0px)", "blur(5px)"]);
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
   return (
@@ -46,7 +46,7 @@ export default function GoldenVisaHeader({ pretitle, title, subtitle, imageUrl }
         }}
       />
 
-      <div className="content relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4 pt-[35%] sm:pt-[25%] md:pt-[20%]">
+      <div className="content relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
           <AnimatedSection>
               <div className="max-w-3xl mx-auto">
                   {pretitle && (

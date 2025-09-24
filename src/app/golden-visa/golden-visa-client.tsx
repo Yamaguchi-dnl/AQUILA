@@ -85,7 +85,7 @@ export default function GoldenVisaClient({
                     </div>
                 </section>
 
-                <section className="bg-primary text-primary-foreground pt-0 relative">
+                <section className="bg-primary text-primary-foreground relative">
                     <div
                         aria-hidden="true"
                         className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(255,255,255,0.15)_0%,_transparent_70%)]"
