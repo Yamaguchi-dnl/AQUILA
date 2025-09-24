@@ -13,7 +13,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 0 0% 8%;
+    --primary: 0 0% 0%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -179,5 +179,6 @@
 #hero h1 span {
     color: inherit !important;
 }
+
 
 
