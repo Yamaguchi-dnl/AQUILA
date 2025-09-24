@@ -31,7 +31,7 @@ export default async function Home() {
       <div className='relative bg-primary'>
         <div
             aria-hidden="true"
-            className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(50,130,250,0.2)_0%,_transparent_70%)]"
+            className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(255,255,255,0.1)_0%,_transparent_70%)]"
         />
         <InvestmentCycle block={investmentCycleBlock} />
         <InvestmentStrategy block={investmentStrategyBlock} />
