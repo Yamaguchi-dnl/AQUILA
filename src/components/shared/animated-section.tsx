@@ -43,7 +43,7 @@ export function AnimatedSection({ children, className, delay = 0, direction = 'u
         variants={variants}
         initial="hidden"
         animate={mainControls}
-        transition={{ duration: 0.9, delay: delay }}
+        transition={{ duration: 0.7, delay: delay }}
       >
         {children}
       </motion.div>
