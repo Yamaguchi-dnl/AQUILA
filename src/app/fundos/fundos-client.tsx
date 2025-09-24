@@ -37,11 +37,14 @@ export default function FundosClient({ headerBlock, allBlocks, fundsData }: Fund
   return (
     <>
         <section className="w-full h-screen bg-primary text-primary-foreground relative flex items-center justify-center text-center overflow-hidden">
-            <div className="bg-animation">
-                <div id="stars"></div>
-                <div id="stars2"></div>
-                <div id="stars3"></div>
-            </div>
+             <Image
+                src="https://ik.imagekit.io/leosmc2zb/143069.jpg"
+                alt="Fundo da seção de fundos"
+                fill
+                className="object-cover"
+                priority
+             />
+             <div className="absolute inset-0 bg-black/70 z-10"></div>
             <div className="container relative z-20">
                 <AnimatedSection>
                     <p className="text-sm uppercase tracking-widest text-primary-foreground/80 font-headline">Conheça as oportunidades</p>
