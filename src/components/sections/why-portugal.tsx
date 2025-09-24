@@ -57,7 +57,7 @@ export function WhyPortugal({ block }: Props) {
     <section id="why-portugal" className="bg-primary text-primary-foreground overflow-hidden relative">
        <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(50,130,250,0.15)_0%,_transparent_70%)]"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(50,130,250,0.2)_0%,_transparent_70%)]"
       />
       <div className="container relative z-10">
         <Carousel

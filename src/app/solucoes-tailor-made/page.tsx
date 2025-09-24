@@ -34,7 +34,7 @@ export default async function SolucoesTailorMadePage() {
       <section className="bg-primary text-primary-foreground pt-16 md:pt-24 rounded-t-3xl relative z-10 -mt-16">
         <div
             aria-hidden="true"
-            className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(50,130,250,0.15)_0%,_transparent_70%)]"
+            className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(50,130,250,0.2)_0%,_transparent_70%)]"
         />
         <div className="container">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
