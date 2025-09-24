@@ -31,11 +31,6 @@ export default async function SobrePage() {
   return (
     <>
        <section className="bg-background pt-32 md:pt-40 relative overflow-hidden">
-        <div className="bg-animation z-0 hidden md:block">
-            <div id='stars'></div>
-            <div id='stars2'></div>
-            <div id='stars3'></div>
-        </div>
         <div className="container relative z-10">
             <AnimatedSection>
             <div className="text-center">
@@ -81,7 +76,7 @@ export default async function SobrePage() {
             </AnimatedSection>
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
             <AnimatedSection delay={0.1} direction="up">
-              <Card className="flex flex-col h-full bg-card/10 border-primary-foreground/20 text-primary-foreground transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
+              <Card className="flex flex-col h-full bg-card/10 border-primary-foreground/20 text-primary-foreground">
                   <CardHeader>
                       <h3 className="text-2xl font-headline card-title text-primary-foreground">{fundboxBlock?.title || 'FundBox'}</h3>
                   </CardHeader>
@@ -89,7 +84,7 @@ export default async function SobrePage() {
               </Card>
             </AnimatedSection>
             <AnimatedSection delay={0.2} direction="up">
-              <Card className="flex flex-col h-full bg-card/10 border-primary-foreground/20 text-primary-foreground transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
+              <Card className="flex flex-col h-full bg-card/10 border-primary-foreground/20 text-primary-foreground">
                   <CardHeader>
                       <h3 className="text-2xl font-headline card-title text-primary-foreground">{btgBlock?.title || 'BTG Pactual'}</h3>
                   </CardHeader>

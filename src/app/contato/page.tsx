@@ -26,14 +26,15 @@ export default function ContatoPage() {
       <section className="bg-primary text-primary-foreground relative z-10 -mt-16">
         <div className="container py-16">
           <div className="grid lg:grid-cols-5 gap-12">
-            <AnimatedSection className="lg:col-span-2">
+            <AnimatedSection className="lg:col-span-2" direction="right">
                 <h2 className="font-headline text-3xl text-primary-foreground font-bold">Informações de Contato</h2>
                 <p className="mt-4 text-primary-foreground/80">
                     Entre em contato conosco por telefone, e-mail ou visite nosso escritório.
                 </p>
                 <div className="mt-8 space-y-6">
                     {contactDetails.map((detail, index) => (
-                        <div key={index} className="flex items-start gap-4">
+                         <AnimatedSection key={index} delay={0.1 + index * 0.1} direction="up">
+                        <div className="flex items-start gap-4">
                             <detail.icon className="h-6 w-6 text-primary-foreground mt-1 shrink-0" />
                             <div className="whitespace-pre-line text-primary-foreground/90">
                                 {detail.href ? (
@@ -45,10 +46,11 @@ export default function ContatoPage() {
                                 )}
                             </div>
                         </div>
+                        </AnimatedSection>
                     ))}
                 </div>
             </AnimatedSection>
-            <AnimatedSection className="lg:col-span-3" delay={0.1}>
+            <AnimatedSection className="lg:col-span-3" delay={0.1} direction="left">
               <div className="bg-card p-8 rounded-lg shadow-lg text-card-foreground">
                 <h2 className="text-2xl font-bold font-headline text-primary mb-2">Fale com um especialista</h2>
                 <p className="text-muted-foreground mb-6">Preencha o formulário e nossa equipe entrará em contato para uma consulta personalizada.</p>

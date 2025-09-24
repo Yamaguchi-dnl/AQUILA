@@ -58,7 +58,7 @@ export default async function GoldenVisaPage() {
                     className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(50,130,250,0.2)_0%,_transparent_70%)]"
                 />
                 <div className="container py-16">
-                    <div className="grid lg:grid-cols-2 gap-12 items-stretch">
+                    <div className="grid lg:grid-cols-2 gap-12 items-center">
                         <AnimatedSection className="hidden lg:block" direction="left">
                             <Image 
                                 src={benefitsBlock?.image_url || "https://ik.imagekit.io/leosmc2zb/golden-visa-portugal-nacionalidade-portuguesa.jpeg"}
@@ -200,7 +200,7 @@ export default async function GoldenVisaPage() {
             <section className="bg-background pt-0">
                 <div className="container">
                     <AnimatedSection direction="up">
-                    <Card className="max-w-4xl mx-auto p-8 md:p-12 shadow-xl">
+                    <Card className="max-w-4xl mx-auto p-8 md:p-12">
                         <div className="text-center">
                             <h2 className="font-headline text-4xl text-primary uppercase">{faqBlock?.title || "Perguntas Frequentes"}</h2>
                         </div>
@@ -218,7 +218,7 @@ export default async function GoldenVisaPage() {
                             <Button asChild size="lg"><Link href="/contato">Fale com um especialista</Link></Button>
                         </div>
 
-                        <div className="flex items-start gap-4 p-4 mt-12 border border-border rounded-lg bg-background">
+                        <div className="flex items-start gap-4 p-4 mt-12 border border-amber-500/20 rounded-lg bg-amber-500/5">
                             <ShieldAlert className="h-6 w-6 text-amber-600 shrink-0 mt-1" />
                             <div>
                                 <h4 className="font-semibold text-foreground font-headline">Aviso Legal</h4>

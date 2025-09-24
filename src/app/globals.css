@@ -5,34 +5,34 @@
 @layer base {
   :root {
     --background: 0 0% 100%; /* White */
-    --foreground: 0 0% 10%; /* Near Black */
+    --foreground: 222.2 84% 4.9%; /* Near Black */
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 10%;
+    --card-foreground: 222.2 84% 4.9%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
+    --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 206 100% 5%; /* Even Darker Blue, near black */
-    --primary-foreground: 0 0% 100%; /* White */
+    --primary: 215, 65%, 16%;
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 0 0% 95%; /* Light Gray */
-    --secondary-foreground: 0 0% 10%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
 
-    --muted: 0 0% 90%; /* Lighter Gray */
-    --muted-foreground: 0 0% 45%; /* Mid Gray */
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 0 0% 85%; /* Gray for accents */
-    --accent-foreground: 0 0% 10%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 210 40% 98%;
     
-    --highlight: 0 0% 20%; /* Dark Gray for highlight */
+    --highlight: 215, 28%, 17%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 85%;
-    --ring: 0 0% 10%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
 
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
@@ -47,35 +47,33 @@
   }
 
   .dark {
-    --background: 0 0% 0%; /* Black */
-    --foreground: 0 0% 95%; /* Near White */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
 
-    --card: 0 0% 4%;
-    --card-foreground: 0 0% 95%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 0 0% 0%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 210 100% 80%; /* Light Blue */
-    --primary-foreground: 0 0% 0%; /* Black */
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
 
-    --secondary: 0 0% 15%; /* Dark Gray */
-    --secondary-foreground: 0 0% 95%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%; /* Mid-Light Gray */
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 0 0% 25%; /* Gray for accents */
-    --accent-foreground: 0 0% 95%;
-    
-    --highlight: 0 0% 80%; /* Light Gray for highlight */
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 0 0% 85%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
     
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
@@ -106,17 +104,6 @@
   }
 }
 
-@layer utilities {
-  .bg-pattern-subtle {
-    background-image:
-      linear-gradient(45deg, hsl(var(--primary) / 0.05) 25%, transparent 25%),
-      linear-gradient(-45deg, hsl(var(--primary) / 0.05) 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, hsl(var(--primary) / 0.05) 75%),
-      linear-gradient(-45deg, transparent 75%, hsl(var(--primary) / 0.05) 75%);
-    background-size: 20px 20px;
-    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
-  }
-}
 
 /* Star Animation */
 .bg-animation {
@@ -192,5 +179,3 @@
 #hero h1 span {
     color: inherit !important;
 }
-
-    
