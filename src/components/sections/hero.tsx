@@ -17,7 +17,6 @@ export function Hero({ block }: Props) {
   const imageUrl = block?.image_url || 'https://ik.imagekit.io/leosmc2zb/dest_portugal_porto_douro-river_gettyimages-698822614_universal_within-usage-period_46109.jpg?updatedAt=1758670295788';
   
   return (
-    <div className="h-screen">
       <section id="hero" className="w-full h-screen bg-primary text-primary-foreground relative flex items-center justify-center text-center overflow-hidden sticky top-0">
           <div
               className="absolute inset-0 z-0"
@@ -41,6 +40,5 @@ export function Hero({ block }: Props) {
               </AnimatedSection>
           </div>
       </section>
-    </div>
   );
 }
