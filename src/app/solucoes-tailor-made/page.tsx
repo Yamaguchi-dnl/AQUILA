@@ -1,5 +1,6 @@
 import { getPageContentBySlug, findBlock } from "@/lib/data-loader";
 import SolucoesTailorMadeClient from "./solucoes-tailor-made-client";
+import { PageHeader } from "@/components/shared/page-header";
 
 export const metadata = {
   title: "Soluções Tailor Made",
@@ -12,9 +13,14 @@ export default async function SolucoesTailorMadePage() {
   const contentBlock = findBlock(blocks, 'solucoes-content');
 
   return (
-    <SolucoesTailorMadeClient
-      headerBlock={headerBlock}
-      contentBlock={contentBlock}
-    />
+    <>
+      <PageHeader
+        pretitle="INVESTIMENTOS PERSONALIZADOS"
+        title={headerBlock?.title || "Soluções Tailor Made"}
+      />
+      <SolucoesTailorMadeClient
+        contentBlock={contentBlock}
+      />
+    </>
   );
 }

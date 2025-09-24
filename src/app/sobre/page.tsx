@@ -8,6 +8,7 @@ import Image from "next/image";
 import { getPageContentBySlug, findBlock } from '@/lib/data-loader';
 import { teamData } from "@/lib/data";
 import { AnimatedSection } from "@/components/shared/animated-section";
+import { PageHeader } from "@/components/shared/page-header";
 
 export const metadata = {
   title: "Sobre a Aquila Fund FCR",
@@ -30,15 +31,17 @@ export default async function SobrePage() {
 
   return (
     <>
-       <section className="bg-background pt-32 md:pt-40 relative overflow-hidden">
-        <div className="container relative z-10">
-            <AnimatedSection>
-            <div className="text-center">
-                <p className="text-sm uppercase tracking-widest text-muted-foreground font-headline">Nossa Essência</p>
-                <h1 className="font-headline text-4xl md:text-5xl text-primary uppercase mt-2">{heroBlock?.title || 'Sobre a Aquila Fund FCR'}</h1>
-                <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">{heroBlock?.content || 'Construindo um legado de confiança, transparência e excelência.'}</p>
-            </div>
-            </AnimatedSection>
+       <PageHeader
+          pretitle="Nossa Essência"
+          title={heroBlock?.title || 'Sobre a Aquila Fund FCR'}
+          subtitle={heroBlock?.content || 'Construindo um legado de confiança, transparência e excelência.'}
+          imageUrl={heroBlock?.image_url || "https://ik.imagekit.io/leosmc2zb/5573.jpg"}
+          imageAlt="Escritório moderno com vista para a cidade"
+          imageAiHint="modern office city"
+       />
+
+       <section className="bg-background">
+        <div className="container">
             <div className="mt-12 grid lg:grid-cols-2 gap-12 items-center">
                 <AnimatedSection delay={0.1} direction="left">
                     <div 

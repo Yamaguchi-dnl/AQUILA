@@ -1,6 +1,5 @@
 "use client";
 
-import { PageHeader } from "@/components/shared/page-header";
 import { AnimatedSection } from "@/components/shared/animated-section";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -16,18 +15,12 @@ const benefits = [
 ]
 
 type SolucoesTailorMadeClientProps = {
-  headerBlock: Block | null;
   contentBlock: Block | null;
 };
 
-export default function SolucoesTailorMadeClient({ headerBlock, contentBlock }: SolucoesTailorMadeClientProps) {
+export default function SolucoesTailorMadeClient({ contentBlock }: SolucoesTailorMadeClientProps) {
 
   return (
-    <>
-      <PageHeader
-        pretitle="INVESTIMENTOS PERSONALIZADOS"
-        title={headerBlock?.title || "Soluções Tailor Made"}
-      />
       <section className="bg-background text-foreground relative z-10">
         <div className="container">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -74,6 +67,5 @@ export default function SolucoesTailorMadeClient({ headerBlock, contentBlock }: 
             </div>
         </div>
       </section>
-    </>
   );
 }

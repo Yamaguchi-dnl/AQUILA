@@ -3,7 +3,7 @@ import { PageHeader } from "@/components/shared/page-header";
 export default function PoliticaPrivacidadePage() {
   return (
     <>
-      <PageHeader title="Política de Privacidade" />
+      <PageHeader title="Política de Privacidade" subtitle="A sua privacidade é importante para nós." />
       <section>
         <div className="container max-w-4xl prose lg:prose-lg">
             <p>Última atualização: [Data]</p>

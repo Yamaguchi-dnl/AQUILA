@@ -15,7 +15,6 @@ export default function TrabalheConoscoPage() {
         pretitle="Junte-se à nossa equipa"
         title="Trabalhe Conosco"
         subtitle="Procuramos talentos excepcionais que partilhem da nossa paixão por excelência e inovação no mercado financeiro."
-        className=""
       />
       <section className="bg-background">
         <div className="container max-w-2xl">

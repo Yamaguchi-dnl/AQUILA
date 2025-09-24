@@ -3,7 +3,7 @@ import { PageHeader } from "@/components/shared/page-header";
 export default function TermosUsoPage() {
   return (
     <>
-      <PageHeader title="Termos de Uso" />
+      <PageHeader title="Termos de Uso" subtitle="Regras para utilização do nosso site." />
       <section>
         <div className="container max-w-4xl prose lg:prose-lg">
             <p>Última atualização: [Data]</p>
