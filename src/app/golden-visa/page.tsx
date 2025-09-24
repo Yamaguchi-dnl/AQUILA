@@ -52,7 +52,7 @@ export default async function GoldenVisaPage() {
                 subtitle={headerBlock?.content || "Seu passaporte para a Europa através de investimentos de valor."}
             />
             
-            <section className="bg-primary text-primary-foreground relative z-10 -mt-16">
+            <section className="bg-primary text-primary-foreground relative z-10">
                  <div
                     aria-hidden="true"
                     className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(50,130,250,0.2)_0%,_transparent_70%)]"
@@ -200,7 +200,7 @@ export default async function GoldenVisaPage() {
             <section className="bg-background pt-0">
                 <div className="container">
                     <AnimatedSection direction="up">
-                    <Card className="max-w-4xl mx-auto p-8 md:p-12">
+                    <Card className="max-w-4xl mx-auto p-8 md:p-12 shadow-xl">
                         <div className="text-center">
                             <h2 className="font-headline text-4xl text-primary uppercase">{faqBlock?.title || "Perguntas Frequentes"}</h2>
                         </div>

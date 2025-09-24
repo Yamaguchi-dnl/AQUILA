@@ -73,8 +73,7 @@ export default async function FundosPage() {
               key={fund.slug} 
               className={cn(
                   "scroll-mt-20 py-16 md:py-24 relative",
-                  isPrimarySection ? "bg-primary text-primary-foreground" : "bg-background text-foreground",
-                  index === 0 && '-mt-20'
+                  isPrimarySection ? "bg-primary text-primary-foreground" : "bg-background text-foreground"
               )}
           >
               {isPrimarySection && (
@@ -94,7 +93,7 @@ export default async function FundosPage() {
                             {block.sub_content && <div className={cn("mt-6 prose prose-lg max-w-none", isPrimarySection ? "text-primary-foreground/80" : "text-muted-foreground")} dangerouslySetInnerHTML={{ __html: block.sub_content }} />}
                       </AnimatedSection>
                       <AnimatedSection delay={0.1} direction={isReversed ? 'left' : 'right'}>
-                          <Card className={cn("shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-xl", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
+                          <Card className={cn("shadow-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
                               <CardHeader><CardTitle className={cn("font-headline", isPrimarySection && "text-primary-foreground")}>Detalhes do Fundo</CardTitle></CardHeader>
                               <CardContent>
                                   <dl>
@@ -120,7 +119,7 @@ export default async function FundosPage() {
                                     <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
                                         {fund.beneficios.map((beneficio, i) => (
                                             <AnimatedSection key={i} delay={0.1 + i * 0.1} direction="up">
-                                            <Card className={cn("text-center flex flex-col h-full", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
+                                            <Card className={cn("text-center flex flex-col h-full shadow-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
                                                 <CardContent className="p-6 flex-grow flex flex-col items-center justify-center">
                                                     <CheckCircle className="mx-auto h-8 w-8 text-green-500 shrink-0" />
                                                     <p className={cn("mt-4 font-medium", isPrimarySection ? "text-primary-foreground/90" : "text-muted-foreground")}>{beneficio}</p>
@@ -147,7 +146,7 @@ export default async function FundosPage() {
                                           }
                                           return (
                                             <AnimatedSection key={`${hotel.nome}-${hotel.imagem.v}`} delay={0.1 + i * 0.1} direction="up">
-                                                <Card className={cn("overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-xl h-full", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
+                                                <Card className={cn("overflow-hidden shadow-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl h-full", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
                                                     <Image 
                                                         src={imageUrl} 
                                                         alt={hotel.nome} 
@@ -181,7 +180,7 @@ export default async function FundosPage() {
                       </>
                   ) : (
                         <AnimatedSection className="text-center mt-16" direction="up">
-                          <Card className={cn("max-w-2xl mx-auto p-8 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
+                          <Card className={cn("max-w-2xl mx-auto p-8 shadow-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>
                               <Clock className="mx-auto h-12 w-12 text-primary" />
                               <h4 className={cn("mt-4 text-4xl font-headline uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>Em Breve</h4>
                               <p className={cn("mt-2", isPrimarySection ? "text-primary-foreground/80" : "text-muted-foreground")}>Este fundo está em fase final de estruturação.</p>

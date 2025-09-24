@@ -23,7 +23,7 @@ export default function ContatoPage() {
         title="Contato"
         subtitle="Estamos à sua disposição para qualquer esclarecimento."
       />
-      <section className="bg-primary text-primary-foreground relative z-10 -mt-16">
+      <section className="bg-primary text-primary-foreground relative z-10">
         <div className="container py-16">
           <div className="grid lg:grid-cols-5 gap-12">
             <AnimatedSection className="lg:col-span-2" direction="right">
@@ -51,7 +51,7 @@ export default function ContatoPage() {
                 </div>
             </AnimatedSection>
             <AnimatedSection className="lg:col-span-3" delay={0.1} direction="left">
-              <div className="bg-card p-8 rounded-lg shadow-lg text-card-foreground">
+              <div className="bg-card p-8 rounded-lg shadow-xl text-card-foreground">
                 <h2 className="text-2xl font-bold font-headline text-primary mb-2">Fale com um especialista</h2>
                 <p className="text-muted-foreground mb-6">Preencha o formulário e nossa equipe entrará em contato para uma consulta personalizada.</p>
                 <ContactForm />
