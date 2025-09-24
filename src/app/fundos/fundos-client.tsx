@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 import { AnimatedSection } from "@/components/shared/animated-section";
 import type { Block } from "@/lib/data-loader";
 import type { Fund } from "@/lib/types";
+import ParticlesContainer from "@/components/shared/particles-container";
 
 const FundDetail = ({ label, value, isPrimary }: { label: string; value: string | undefined, isPrimary?: boolean }) => (
     <div className="flex justify-between py-2 border-b">
@@ -37,14 +38,7 @@ export default function FundosClient({ headerBlock, allBlocks, fundsData }: Fund
   return (
     <>
         <section className="w-full h-screen bg-primary text-primary-foreground relative flex items-center justify-center text-center overflow-hidden">
-             <Image
-                src="https://ik.imagekit.io/leosmc2zb/143069.jpg"
-                alt="Fundo da seção de fundos"
-                fill
-                className="object-cover"
-                priority
-             />
-             <div className="absolute inset-0 bg-black/60"></div>
+             <ParticlesContainer />
             <div className="container relative z-20">
                 <AnimatedSection>
                     <p className="text-sm uppercase tracking-widest text-primary-foreground/80 font-headline">Conheça as oportunidades</p>
