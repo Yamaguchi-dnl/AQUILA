@@ -20,7 +20,7 @@ import { useEffect, useState } from "react";
 export function Header() {
   const pathname = usePathname();
   const [isMounted, setIsMounted] = useState(false);
-  const isHomePage = pathname === '/';
+  const useLightHeader = pathname === '/' || pathname === '/fundos';
 
   useEffect(() => {
     setIsMounted(true);
@@ -33,7 +33,7 @@ export function Header() {
   return (
      <header className="absolute top-0 left-0 z-50 w-full">
       <div className="container flex h-20 items-center justify-between">
-        <Logo variant={isHomePage ? "light" : "dark"} />
+        <Logo variant={useLightHeader ? "light" : "dark"} />
         <div className="flex items-center gap-4">
           <nav className="hidden md:flex items-center">
             {navItems.map((item) =>
@@ -45,9 +45,9 @@ export function Header() {
                       className={cn(
                         "text-sm font-medium transition-colors px-3 py-2 gap-1",
                         item.subItems.some((sub) => pathname.startsWith(sub.href)) 
-                          ? (isHomePage ? "text-white" : "text-primary") 
-                          : (isHomePage ? "text-primary-foreground/80" : "text-muted-foreground"),
-                        isHomePage ? "hover:text-white" : "hover:text-primary"
+                          ? (useLightHeader ? "text-white" : "text-primary") 
+                          : (useLightHeader ? "text-primary-foreground/80" : "text-muted-foreground"),
+                        useLightHeader ? "hover:text-white" : "hover:text-primary"
                       )}
                     >
                       {item.label}
@@ -74,9 +74,9 @@ export function Header() {
                   className={cn(
                     "text-sm font-medium transition-colors px-3 py-2",
                     pathname === item.href 
-                      ? (isHomePage ? "text-white" : "text-primary") 
-                      : (isHomePage ? "text-primary-foreground/80" : "text-muted-foreground"),
-                    isHomePage ? "hover:text-white" : "hover:text-primary"
+                      ? (useLightHeader ? "text-white" : "text-primary") 
+                      : (useLightHeader ? "text-primary-foreground/80" : "text-muted-foreground"),
+                    useLightHeader ? "hover:text-white" : "hover:text-primary"
                   )}
                 >
                   {item.label}
@@ -86,7 +86,7 @@ export function Header() {
           </nav>
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className={cn("md:hidden", isHomePage ? "text-primary-foreground hover:bg-white/10" : "text-primary hover:bg-accent")}>
+              <Button variant="ghost" size="icon" className={cn("md:hidden", useLightHeader ? "text-primary-foreground hover:bg-white/10" : "text-primary hover:bg-accent")}>
                 <Menu className="h-4 w-4" />
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
