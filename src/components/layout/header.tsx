@@ -20,7 +20,8 @@ import { useEffect, useState } from "react";
 export function Header() {
   const pathname = usePathname();
   const [isMounted, setIsMounted] = useState(false);
-  const useLightHeader = pathname === '/' || pathname === '/fundos';
+  const pagesWithLightHeader = ['/', '/fundos', '/sobre', '/equipa', '/golden-visa', '/solucoes-tailor-made'];
+  const useLightHeader = pagesWithLightHeader.includes(pathname);
 
   useEffect(() => {
     setIsMounted(true);
