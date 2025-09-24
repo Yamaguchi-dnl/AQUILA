@@ -14,23 +14,9 @@ type Props = {
 
 export function Hero({ block }: Props) {
   const title = block?.title || 'Investimentos <br/> Inteligentes para o seu Futuro';
-  const imageUrl = block?.image_url || 'https://ik.imagekit.io/leosmc2zb/dest_portugal_porto_douro-river_gettyimages-698822614_universal_within-usage-period_46109.jpg?updatedAt=1758670295788';
   
   return (
-      <section id="hero" className="w-full h-screen bg-primary text-primary-foreground relative flex items-center justify-center text-center overflow-hidden sticky top-0">
-          <div
-              className="absolute inset-0 z-0"
-          >
-              <Image
-                  src={imageUrl}
-                  alt="Rio Douro, Porto, Portugal"
-                  fill
-                  className="object-cover"
-                  data-ai-hint="douru river porto"
-                  priority
-              />
-          </div>
-          <div className="absolute inset-0 bg-black/60 z-10"></div>
+      <section id="hero" className="w-full h-screen relative flex items-center justify-center text-center -mt-[100vh]">
           <div className="container relative z-20">
               <AnimatedSection delay={0.5}>
                   <h1 
