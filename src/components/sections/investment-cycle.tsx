@@ -57,15 +57,15 @@ export function InvestmentCycle({ block }: Props) {
             <div className="relative">
                 {/* Top Row: Subscription Period */}
                 <div className="mb-4">
-                    <div className="w-[22.22%] bg-timeline-fg/20 p-2 rounded text-center">
+                    <div className="w-[22.22%] bg-primary-foreground/10 p-2 rounded text-center">
                          <p className="font-semibold text-primary-foreground">Período de Inscrição</p>
                     </div>
                 </div>
 
                 {/* Year Markers */}
-                <div className="flex text-center text-timeline-fg">
+                <div className="flex text-center text-primary-foreground">
                     {timelineData.years.map(year => (
-                        <div key={year} className="relative flex-1 border-l border-timeline-fg/30 first:border-l-0 px-2 py-4">
+                        <div key={year} className="relative flex-1 border-l border-primary-foreground/20 first:border-l-0 px-2 py-4">
                             <p className="text-sm">Ano</p>
                             <p className="text-6xl font-light">{year}</p>
                         </div>
@@ -74,11 +74,11 @@ export function InvestmentCycle({ block }: Props) {
 
                 {/* Bottom Row: Investment & Divestment */}
                 <div className="flex mt-4 gap-2">
-                    <div className="w-[77.77%] bg-timeline-bg p-3 rounded text-center">
+                    <div className="w-[77.77%] bg-primary-foreground/10 p-3 rounded text-center">
                          <p className="font-semibold text-primary-foreground">Investimento</p>
                         <p className="text-sm text-primary-foreground/80">Período de 6 anos</p>
                     </div>
-                    <div className="flex-1 bg-timeline-bg p-3 rounded text-center">
+                    <div className="flex-1 bg-primary-foreground/10 p-3 rounded text-center">
                          <p className="font-semibold text-primary-foreground">Retenção e Desinvestimento</p>
                         <p className="text-sm text-primary-foreground/80">Período 2 anos</p>
                     </div>
