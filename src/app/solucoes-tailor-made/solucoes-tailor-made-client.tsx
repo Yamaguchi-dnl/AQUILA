@@ -4,8 +4,14 @@ import { AnimatedSection } from "@/components/shared/animated-section";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, Building, Gem, Briefcase } from "lucide-react";
 import type { Block } from "@/lib/data-loader";
+
+const assetTypes = [
+    { icon: Building, text: "Imobiliários" },
+    { icon: Briefcase, text: "Private Equity e funding internacional" },
+    { icon: Gem, text: "Outros bens patrimoniais" },
+];
 
 const benefits = [
     "Aproveitar ativos exclusivos, fora do alcance do investidor tradicional.",
@@ -19,6 +25,9 @@ type SolucoesTailorMadeClientProps = {
 };
 
 export default function SolucoesTailorMadeClient({ contentBlock }: SolucoesTailorMadeClientProps) {
+  const introText = contentBlock?.content || 'No mercado de investimentos, opções não faltam. Mas quando se trata de potencializar retornos com inteligência e exclusividade, é preciso ir além do comum.';
+  const connectText = 'O Aquila Fund FCR conecta ativos específicos em Portugal a investidores com necessidades especiais:';
+  const outroText = contentBlock?.sub_content || '<p>Não se trata apenas de investir, mas de construir uma experiência personalizada, que coloca você no centro das decisões.</p>'
 
   return (
       <section className="bg-background text-foreground relative z-10">
@@ -36,10 +45,21 @@ export default function SolucoesTailorMadeClient({ contentBlock }: SolucoesTailo
                 </AnimatedSection>
                 <AnimatedSection delay={0.1} direction="right">
                     <h2 className="font-headline text-3xl text-primary uppercase">{contentBlock?.title || "Conexões de Valor para Investidores Únicos"}</h2>
-                    <p className="mt-4 text-muted-foreground text-lg">
-                        {contentBlock?.content || 'O Aquila Fund FCR conecta investidores a ativos únicos em Portugal, cuidadosamente selecionados e organizados em estruturas que respeitam seu perfil, seus objetivos e o cenário de mercado.'}
-                    </p>
-                    <div className="mt-8 space-y-4">
+                    
+                    <p className="mt-4 text-muted-foreground text-lg">{introText}</p>
+                    <p className="mt-4 text-muted-foreground text-lg">{connectText}</p>
+
+                    <div className="mt-6 space-y-3">
+                        {assetTypes.map((asset, index) => (
+                            <div key={index} className="flex items-center gap-3">
+                                <asset.icon className="h-5 w-5 text-primary shrink-0" />
+                                <span className="text-foreground font-medium">{asset.text}</span>
+                            </div>
+                        ))}
+                    </div>
+
+                    <p className="mt-8 text-foreground font-semibold">Com nossas soluções tailor made, você tem a oportunidade de:</p>
+                    <div className="mt-4 space-y-4">
                         {benefits.map((benefit, index) => (
                            <AnimatedSection key={index} delay={0.2 + index * 0.05} direction="up">
                             <div className="flex items-start gap-3">
@@ -52,7 +72,7 @@ export default function SolucoesTailorMadeClient({ contentBlock }: SolucoesTailo
                      <AnimatedSection delay={0.4} direction="up">
                      <div 
                         className="mt-8 text-muted-foreground text-lg prose max-w-none"
-                        dangerouslySetInnerHTML={{ __html: contentBlock?.sub_content || '<p>Não se trata apenas de investir, mas de construir uma experiência personalizada, que coloca você no centro das decisões.</p>' }} 
+                        dangerouslySetInnerHTML={{ __html: outroText }} 
                      />
                     </AnimatedSection>
                     <AnimatedSection delay={0.5} direction="up">
