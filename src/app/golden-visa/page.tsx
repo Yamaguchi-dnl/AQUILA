@@ -28,7 +28,9 @@ const processSteps = [
 
 export default async function GoldenVisaPage() {
     const eligibleFunds = fundsData.filter(f => f.detalhes.elegibilidadeGoldenVisa);
-    const blocks = await getPageContentBySlug('golden-visa');
+    // A chamada a getPageContentBySlug foi removida para evitar erros quando o slug não existe no CMS.
+    // O componente GoldenVisaClient já possui textos alternativos para os blocos.
+    const blocks: any[] = [];
     
     const headerBlock = findBlock(blocks, 'golden-visa-header');
     const benefitsBlock = findBlock(blocks, 'golden-visa-benefits');
