@@ -20,7 +20,7 @@ export async function getPageContentBySlug(slug: string): Promise<Block[]> {
         .eq('slug', slug)
         .single();
     
-    // Se a página não for encontrada (erro PGRST116) ou outro erro ocorrer, retorna um array vazio.
+    // Se a página não for encontrada ou ocorrer um erro, retorna um array vazio.
     // Isso evita poluir o console com erros para páginas que ainda não existem no CMS.
     if (pageError && pageError.code !== 'PGRST116') {
         console.error(`Error fetching page with slug "${slug}":`, pageError);
