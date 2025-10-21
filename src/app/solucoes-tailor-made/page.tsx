@@ -1,6 +1,5 @@
-import { getPageContentBySlug, findBlock } from "@/lib/data-loader";
+
 import SolucoesTailorMadeClient from "./solucoes-tailor-made-client";
-import { PageHeader } from "@/components/shared/page-header";
 import { AnimatedSection } from "@/components/shared/animated-section";
 import ParticlesContainer from "@/components/shared/particles-container";
 
@@ -10,9 +9,8 @@ export const metadata = {
 };
 
 export default async function SolucoesTailorMadePage() {
-  const blocks = await getPageContentBySlug('solucoes-tailor-made');
-  const headerBlock = findBlock(blocks, 'solucoes-header');
-  const contentBlock = findBlock(blocks, 'solucoes-content');
+  const headerBlock = null;
+  const contentBlock = null;
 
   return (
     <>
