@@ -42,6 +42,8 @@ export default function GoldenVisaClient({
     processSteps,
     faqs
 }: GoldenVisaClientProps) {
+    const introText = "O Golden Visa é um programa de residência por investimento que oferece a cidadãos não-europeus a oportunidade de obter uma autorização de residência em Portugal. O visto é concedido em troca de um investimento qualificado no país, proporcionando uma série de benefícios significativos para o investidor e sua família. É uma via estratégica para quem busca diversificação global, acesso a um mercado promissor e a possibilidade de residir, estudar e trabalhar em Portugal.";
+
     return (
         <>
             <section className="w-full min-h-[70vh] bg-primary text-primary-foreground relative flex items-center justify-center text-center overflow-hidden">
@@ -53,7 +55,6 @@ export default function GoldenVisaClient({
                 <div className="container relative z-20">
                     <AnimatedSection>
                         <h1 className="font-headline text-4xl md:text-5xl text-primary-foreground uppercase mt-2">{headerBlock?.title || "Golden Visa: sua porta de entrada para a Europa"}</h1>
-                        <p className="mt-4 text-lg text-primary-foreground/90 max-w-3xl mx-auto">{headerBlock?.content || "O Golden Visa é um programa de residência por investimento que oferece a cidadãos não-europeus a oportunidade de obter uma autorização de residência em Portugal. O visto é concedido em troca de um investimento qualificado no país, proporcionando uma série de benefícios significativos para o investidor e sua família. É uma via estratégica para quem busca diversificação global, acesso a um mercado promissor e a possibilidade de residir, estudar e trabalhar em Portugal."}</p>
                     </AnimatedSection>
                 </div>
             </section>
@@ -61,6 +62,9 @@ export default function GoldenVisaClient({
             <div className="relative z-10 bg-background">
                 <section className="bg-background text-foreground relative z-10">
                     <div className="container relative z-10">
+                         <AnimatedSection className="max-w-3xl mx-auto text-center mb-12">
+                            <p className="text-lg text-muted-foreground">{headerBlock?.content || introText}</p>
+                        </AnimatedSection>
                         <div className="grid lg:grid-cols-2 gap-12 items-center">
                             <AnimatedSection className="hidden lg:block" direction="left">
                                 <Image 
