@@ -1,7 +1,7 @@
 
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -69,9 +69,6 @@ export default function GoldenVisaClient({
             <div className="relative z-10 bg-background">
                 <section className="bg-background text-foreground relative z-10">
                     <div className="container relative z-10">
-                         <AnimatedSection className="max-w-3xl mx-auto text-center mb-12">
-                            <p className="text-lg text-muted-foreground">{introText}</p>
-                        </AnimatedSection>
                         <div className="grid lg:grid-cols-2 gap-12 items-center">
                             <AnimatedSection className="hidden lg:block" direction="left">
                                 <Image 
@@ -86,6 +83,7 @@ export default function GoldenVisaClient({
                             <div>
                                 <AnimatedSection delay={0.1} direction="right">
                                     <h2 className="font-headline text-3xl md:text-4xl text-primary uppercase">{benefitsBlock?.title || "Benefícios Exclusivos"}</h2>
+                                    <p className="mt-4 text-lg text-muted-foreground">{introText}</p>
                                 </AnimatedSection>
                                 <ul className="mt-6 space-y-3">
                                 {benefits.map((benefit, i) => (
@@ -203,7 +201,17 @@ export default function GoldenVisaClient({
                         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                             {eligibleFunds.map((fund, index) => (
                                 <AnimatedSection key={fund.slug} delay={0.1 + index * 0.1} direction="up">
-                                    <FundCard fund={fund} />
+                                    <Card className="flex flex-col h-full overflow-hidden">
+                                        <CardHeader>
+                                            <CardTitle className="font-headline text-2xl">{fund.nome}</CardTitle>
+                                        </CardHeader>
+                                        <CardContent className="flex-grow">
+                                            <p className="text-muted-foreground text-sm">{fund.slug === 'aquila-wheels' ? 'Fundo focado em carros clássicos, que oferece não apenas retornos financeiros, mas também a elegibilidade para o Golden Visa.' : 'Fundo de capital de risco que investe no promissor setor hoteleiro português, proporcionando rentabilidade e qualificação para o Golden Visa.'}</p>
+                                        </CardContent>
+                                        <CardFooter>
+                                            <Button asChild variant="secondary" className="w-full"><Link href={`/fundos#${fund.slug}`}>Saber Mais</Link></Button>
+                                        </CardFooter>
+                                    </Card>
                                 </AnimatedSection>
                             ))}
                         </div>
