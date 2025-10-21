@@ -2,7 +2,6 @@
 
 import { TeamMemberCard } from "@/components/shared/team-member-card";
 import { teamData } from "@/lib/data";
-import { getPageContentBySlug, findBlock } from "@/lib/data-loader";
 import { AnimatedSection } from "@/components/shared/animated-section";
 import ParticlesContainer from "@/components/shared/particles-container";
 
@@ -12,8 +11,7 @@ export const metadata = {
 };
 
 export default async function EquipaPage() {
-  const blocks = await getPageContentBySlug('equipa');
-  const heroBlock = findBlock(blocks, 'equipa-hero');
+  const heroBlock = null;
 
   return (
     <>

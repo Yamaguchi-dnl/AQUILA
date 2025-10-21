@@ -5,7 +5,6 @@ import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import { TeamSummary } from "@/components/sections/team-summary";
 import Image from "next/image";
-import { getPageContentBySlug, findBlock } from '@/lib/data-loader';
 import { teamData } from "@/lib/data";
 import { AnimatedSection } from "@/components/shared/animated-section";
 import ParticlesContainer from "@/components/shared/particles-container";

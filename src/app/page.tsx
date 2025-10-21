@@ -6,7 +6,6 @@ import { InvestmentCycle } from '@/components/sections/investment-cycle';
 import { ContactSummary } from '@/components/sections/contact-summary';
 import { Hero } from '@/components/sections/hero';
 import { InvestmentStrategy } from '@/components/sections/investment-strategy';
-import { getPageContentBySlug, findBlock } from '@/lib/data-loader';
 import Image from 'next/image';
 
 export default async function Home() {

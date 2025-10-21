@@ -1,5 +1,4 @@
 
-import { getPageContentBySlug, findBlock } from "@/lib/data-loader";
 import { fundsData } from "@/lib/data";
 import { goldenVisaFaqs } from "@/lib/data";
 import GoldenVisaClient from "./golden-visa-client";
@@ -26,13 +25,12 @@ const processSteps = [
 
 export default async function GoldenVisaPage() {
     const eligibleFunds = fundsData.filter(f => f.detalhes.elegibilidadeGoldenVisa);
-    const blocks: any[] = [];
     
-    const headerBlock = findBlock(blocks, 'golden-visa-header');
-    const benefitsBlock = findBlock(blocks, 'golden-visa-benefits');
-    const processBlock = findBlock(blocks, 'golden-visa-process');
-    const eligibleFundsBlock = findBlock(blocks, 'golden-visa-eligible-funds');
-    const faqBlock = findBlock(blocks, 'golden-visa-faq');
+    const headerBlock = null;
+    const benefitsBlock = null;
+    const processBlock = null;
+    const eligibleFundsBlock = null;
+    const faqBlock = null;
 
     return (
         <GoldenVisaClient
