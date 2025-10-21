@@ -1,60 +1,44 @@
+
 import { AnimatedSection } from "@/components/shared/animated-section";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import ParticlesContainer from "@/components/shared/particles-container";
-import { Globe, ShieldCheck, TrendingUp, Handshake, Sun, Euro } from "lucide-react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
+import { ShieldAlert, ShieldCheck } from "lucide-react";
 
 export const metadata = {
   title: "Por que investir em Portugal?",
   description: "Descubra as vantagens de investir em Portugal: diversificação, segurança, e um caminho para a cidadania europeia.",
 };
 
-const benefits = [
-    { 
-        icon: Globe, 
-        title: "Diversificação global",
-        description: "Expanda seu portfólio, reduzindo riscos e buscando novas oportunidades de crescimento."
-    },
-    { 
-        icon: Handshake, 
-        title: "Passaporte europeu",
-        description: "Obtenha residência e cidadania em Portugal, abrindo portas para a União Europeia e seus benefícios."
-    },
-    { 
-        icon: ShieldCheck, 
-        title: "Proteção patrimonial",
-        description: "Garanta a segurança de seus ativos em um ambiente econômico e jurídico estável."
-    },
-    { 
-        icon: Euro, 
-        title: "Benefícios fiscais",
-        description: "Aproveite incentivos fiscais e regimes especiais para investidores não residentes."
-    },
-    { 
-        icon: TrendingUp, 
-        title: "Mercado promissor",
-        description: "Participe do crescimento de um dos mercados mais dinâmicos e atraentes da Europa."
-    },
-    { 
-        icon: Sun,
-        title: "Qualidade de vida",
-        description: "Desfrute de um país com excelente infraestrutura, segurança e cultura rica."
-    }
+const risks = [
+    "Patrimônio exposto aos riscos econômicos e jurídicos do Brasil;",
+    "Falta de liquidez e acesso a mercados internacionais;",
+    "Carga fiscal pesada e imprevisível;",
+    "Custos sucessórios elevados;",
+    "Risco pessoal para empresários devido à legislação trabalhista;",
+    "Proteção patrimonial inadequada.",
 ];
 
+const taxBenefits = [
+    "Isenção de impostos sobre ganhos de capital para não residentes fiscais;",
+    "Isenção de impostos sobre remessas internacionais;",
+    "Sem retenção na fonte para rendimentos enviados a outros países;",
+    "Isenção sobre renda global obtida fora de Portugal;",
+    "Possibilidade de redução de impostos por até 10 anos para quem adere ao regime de Residente Não Habitual (NHR).",
+]
+
+const inheritanceBenefits = [
+    "Heranças entre pais e filhos são isentas de tributação;",
+    "Doações entre descendentes diretos não sofrem cobrança de imposto;",
+    "Estrutura legal que permite planejamento sucessório eficiente e previsível, sem custos excessivos.",
+]
+
 export default function PorQueInvestirPage() {
-    const title = 'Por que investir<br/>em Portugal?';
-    const subtitle = 'Está na hora de olhar para Portugal como a sua próxima grande oportunidade.';
+    const title = 'Por que o Aquila é essencial para você?';
+    const subtitle = 'Já pensou em como seu patrimônio está exposto no Brasil?';
 
   return (
     <>
-       <section className="w-full h-[60vh] bg-primary text-primary-foreground relative flex items-center justify-center text-center overflow-hidden">
+       <section className="w-full h-[70vh] bg-primary text-primary-foreground relative flex items-center justify-center text-center overflow-hidden">
              <ParticlesContainer />
              <div
                 aria-hidden="true"
@@ -62,34 +46,96 @@ export default function PorQueInvestirPage() {
             />
             <div className="container relative z-20">
                 <AnimatedSection>
-                    <p className="text-sm uppercase tracking-widest text-primary-foreground/80 font-headline">Oportunidades Globais</p>
-                    <h1 className="font-headline text-4xl md:text-5xl text-primary-foreground uppercase mt-2" dangerouslySetInnerHTML={{ __html: title }}></h1>
+                    <h1 className="font-headline text-4xl md:text-5xl text-primary-foreground uppercase mt-2">{title}</h1>
                     <p className="mt-4 text-lg text-primary-foreground/90 max-w-3xl mx-auto">{subtitle}</p>
                 </AnimatedSection>
             </div>
         </section>
       
-      <section className="bg-background text-foreground relative">
-        <div className="container relative z-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => (
-              <AnimatedSection key={index} delay={0.1 + index * 0.05} direction="up">
-                <Card className="bg-card border text-card-foreground hover:border-primary transition-colors h-full">
-                    <CardContent className="p-6 h-full flex flex-col items-center justify-center text-center">
-                        <div className="flex-shrink-0 rounded-full bg-primary/10 text-primary p-4 w-fit mb-4">
-                            <benefit.icon className="h-8 w-8" />
+        <section className="bg-background text-foreground relative">
+            <div className="container">
+                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                    <AnimatedSection direction="left">
+                        <h2 className="font-headline text-3xl md:text-4xl text-primary uppercase">A proteção que seu patrimônio merece</h2>
+                        <div className="mt-6 space-y-4 text-muted-foreground prose prose-lg max-w-none">
+                            <p>A alta carga tributária, as mudanças constantes nas regras fiscais e até um simples processo trabalhista podem colocar seu patrimônio em risco.</p>
+                            <p>Por isso, cada vez mais investidores estão buscando alternativas fora do país — não apenas para diversificar, mas para proteger e planejar o futuro do seu patrimônio com segurança e estabilidade.</p>
                         </div>
-                        <div>
-                          <h3 className="text-xl font-bold font-headline text-primary">{benefit.title}</h3>
-                          <p className="mt-2 text-sm text-muted-foreground">{benefit.description}</p>
-                        </div>
-                    </CardContent>
-                </Card>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
+                    </AnimatedSection>
+                    <AnimatedSection direction="right" delay={0.1}>
+                        <Card>
+                            <CardHeader>
+                                <CardTitle className="flex items-center gap-2">
+                                    <ShieldAlert className="h-6 w-6 text-destructive" />
+                                    Riscos de não diversificar
+                                </CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <ul className="space-y-3">
+                                    {risks.map((risk, index) => (
+                                        <li key={index} className="flex items-start">
+                                            <ShieldAlert className="h-5 w-5 text-destructive mr-3 mt-1 shrink-0" />
+                                            <span className="text-muted-foreground">{risk}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </CardContent>
+                        </Card>
+                    </AnimatedSection>
+                </div>
+            </div>
+        </section>
+        <section className="bg-card text-foreground relative">
+            <div className="container">
+                <AnimatedSection className="max-w-4xl mx-auto text-center">
+                    <h2 className="font-headline text-3xl md:text-4xl text-primary uppercase">Quais os benefícios de investir em Portugal?</h2>
+                    <p className="mt-4 text-lg text-muted-foreground">Investir em Portugal é uma forma inteligente de otimizar seus rendimentos e proteger o patrimônio familiar. O país oferece um ambiente econômico estável, com uma das legislações fiscais mais atrativas da Europa para investidores estrangeiros.</p>
+                </AnimatedSection>
+
+                <div className="mt-12 grid md:grid-cols-2 gap-8 items-start">
+                    <AnimatedSection direction="up" delay={0.1}>
+                         <Card className="h-full">
+                            <CardHeader>
+                                <CardTitle className="flex items-center gap-2">
+                                    <ShieldCheck className="h-6 w-6 text-green-600" />
+                                    Tributação dos Fundos
+                                </CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <ul className="space-y-3">
+                                    {taxBenefits.map((item, index) => (
+                                        <li key={index} className="flex items-start">
+                                            <ShieldCheck className="h-5 w-5 text-green-600 mr-3 mt-1 shrink-0" />
+                                            <span className="text-muted-foreground">{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </CardContent>
+                        </Card>
+                    </AnimatedSection>
+                     <AnimatedSection direction="up" delay={0.2}>
+                         <Card className="h-full">
+                            <CardHeader>
+                                <CardTitle className="flex items-center gap-2">
+                                    <ShieldCheck className="h-6 w-6 text-green-600" />
+                                    Imposto sobre Herança e Doação
+                                </CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <ul className="space-y-3">
+                                    {inheritanceBenefits.map((item, index) => (
+                                        <li key={index} className="flex items-start">
+                                            <ShieldCheck className="h-5 w-5 text-green-600 mr-3 mt-1 shrink-0" />
+                                            <span className="text-muted-foreground">{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </CardContent>
+                        </Card>
+                    </AnimatedSection>
+                </div>
+            </div>
+        </section>
     </>
   );
 }
