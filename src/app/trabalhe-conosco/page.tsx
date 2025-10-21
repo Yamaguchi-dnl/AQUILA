@@ -5,7 +5,7 @@ import ParticlesContainer from "@/components/shared/particles-container";
 
 export const metadata = {
   title: "Trabalhe Conosco",
-  description: "Junte-se a uma equipe de alta performance. Envie sua candidatura e faça parte da história da Aquila Fund FCR.",
+  description: "Junte-se a uma equipe de alta performance. Envie sua candidatura e faça parte da história do Aquila Fund FCR.",
 };
 
 export default function TrabalheConoscoPage() {

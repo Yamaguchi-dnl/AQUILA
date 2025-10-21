@@ -11,12 +11,12 @@ import { AnimatedSection } from "@/components/shared/animated-section";
 import ParticlesContainer from "@/components/shared/particles-container";
 
 export const metadata = {
-  title: "Sobre a Aquila Fund FCR",
-  description: "Conheça a história, missão e os parceiros estratégicos da Aquila Fund FCR, sua plataforma de investimentos de valor em Portugal.",
+  title: "Sobre o Aquila Fund FCR",
+  description: "Conheça a história, missão e os parceiros estratégicos do Aquila Fund FCR, sua plataforma de investimentos de valor em Portugal.",
 };
 
 const historyItems = [
-    { year: "2022", event: "Fundação da Aquila Fund FCR com a visão de criar uma plataforma de investimentos inovadora." },
+    { year: "2022", event: "Fundação do Aquila Fund FCR com a visão de criar uma plataforma de investimentos inovadora." },
     { year: "2023", event: "Lançamento dos fundos pioneiros, Aquila Wheels e Aquila Hotel Invest, ambos elegíveis para o Golden Visa." },
     { year: "2024", event: "Expansão do portfólio com o Aquila Real Estate e consolidação de parcerias estratégicas com líderes de mercado." },
     { year: "Futuro", event: "Continuar a crescer, inovar e gerar valor sustentável para nossos investidores, com novos fundos como o Aquila Agro." },
@@ -40,7 +40,7 @@ export default async function SobrePage() {
             <div className="container relative z-20">
                 <AnimatedSection>
                     <p className="text-sm uppercase tracking-widest text-primary-foreground/80 font-headline">Nossa Essência</p>
-                    <h1 className="font-headline text-4xl md:text-5xl text-primary-foreground uppercase mt-2">{heroBlock?.title || 'Sobre a Aquila Fund FCR'}</h1>
+                    <h1 className="font-headline text-4xl md:text-5xl text-primary-foreground uppercase mt-2">{heroBlock?.title || 'Sobre o Aquila Fund FCR'}</h1>
                 </AnimatedSection>
             </div>
         </section>

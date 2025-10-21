@@ -8,7 +8,7 @@ import ParticlesContainer from "@/components/shared/particles-container";
 
 export const metadata = {
   title: "Nossa Equipa",
-  description: "Conheça a equipe de liderança da Aquila Fund FCR, especialistas com vasta experiência no mercado financeiro global.",
+  description: "Conheça a equipe de liderança do Aquila Fund FCR, especialistas com vasta experiência no mercado financeiro global.",
 };
 
 export default async function EquipaPage() {

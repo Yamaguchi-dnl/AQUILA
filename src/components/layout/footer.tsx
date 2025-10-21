@@ -104,7 +104,7 @@ export function Footer() {
         <div className="text-center text-xs space-y-2">
             <p>As informações não constituem oferta pública de valores mobiliários nem recomendação de investimento.</p>
             <p>Rentabilidade passada não é garantia de resultados futuros. Condições do Golden Visa sujeitas a alterações regulatórias.</p>
-            <p className="pt-4">2025 © Áquila Fund FCR. Todos os direitos reservados. | <Link href="/admin" className="hover:text-white">Admin</Link></p>
+            <p className="pt-4">2025 © Aquila Fund FCR. Todos os direitos reservados. | <Link href="/admin" className="hover:text-white">Admin</Link></p>
         </div>
       </div>
     </footer>

@@ -9,7 +9,7 @@ export default function PoliticaPrivacidadePage() {
             <p>Última atualização: [Data]</p>
             
             <h2>1. Introdução</h2>
-            <p>A Áquila Fund FCR ("nós", "nosso") respeita a sua privacidade e está empenhada em proteger os seus dados pessoais. Esta política de privacidade irá informá-lo sobre como cuidamos dos seus dados pessoais quando visita o nosso site (independentemente de onde o visita) e informá-lo sobre os seus direitos de privacidade e como a lei o protege.</p>
+            <p>O Aquila Fund FCR ("nós", "nosso") respeita a sua privacidade e está empenhado em proteger os seus dados pessoais. Esta política de privacidade irá informá-lo sobre como cuidamos dos seus dados pessoais quando visita o nosso site (independentemente de onde o visita) e informá-lo sobre os seus direitos de privacidade e como a lei o protege.</p>
             
             <h2>2. Dados que recolhemos sobre si</h2>
             <p>Podemos recolher, usar, armazenar e transferir diferentes tipos de dados pessoais sobre si, que agrupamos da seguinte forma:</p>

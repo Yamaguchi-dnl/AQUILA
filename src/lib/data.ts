@@ -2,17 +2,18 @@ import type { Fund, TeamMember, FaqItem, NavItem } from './types';
 
 export const navItems: NavItem[] = [
   { href: '/', label: 'Home' },
+  { href: '/por-que-investir', label: 'Por que investir?' },
+  { href: '/fundos', label: 'Fundos' },
+  { href: '/solucoes-tailor-made', label: 'Soluções Tailor Made' },
+  { href: '/golden-visa', label: 'Golden Visa' },
   { 
     label: 'Sobre',
     subItems: [
       { href: '/sobre', label: 'Sobre Nós', description: 'Conheça nossa história e missão.' },
-      { href: '/equipa', label: 'Nossa Equipa', description: 'Conheça os especialistas por trás da Aquila.' },
+      { href: '/equipa', label: 'Nossa Equipa', description: 'Conheça os especialistas por trás do Aquila.' },
       { href: '/trabalhe-conosco', label: 'Trabalhe Conosco', description: 'Faça parte da nossa equipe de talentos.' },
     ]
   },
-  { href: '/fundos', label: 'Investimentos' },
-  { href: '/solucoes-tailor-made', label: 'Soluções Tailor Made' },
-  { href: '/golden-visa', label: 'Golden Visa' },
   { href: '/contato', label: 'Contato' },
 ];
 
@@ -22,7 +23,7 @@ export const fundsData: Fund[] = [
     nome: 'Aquila Wheels',
     subtitulo: 'Imagine unir sua paixão por carros clássicos e icônicos a uma estratégia financeira sólida e rentável. Com o Aquila Wheels, é possível! Um investimento inovador que o coloca na rota do sucesso.',
     imagemResumo: 'https://ik.imagekit.io/leosmc2zb/1331.jpg?updatedAt=1756868086309',
-    descricaoHtml: `<p>O Aquila Wheels é um fundo de investimento inovador que transforma a paixão por carros clássicos e icônicos em uma estratégia financeira sólida e rentável. Focado na aquisição e gestão de veículos de alto valor, o fundo aproveita a valorização histórica desse mercado, que na última década, valorizou impressionantes 193%.</p><p>A Aquila combina conhecimento de mercado, análise de dados e parcerias estratégicas globais para selecionar veículos com maior potencial de valorização. Além disso, o fundo é 100% elegível ao Golden Visa português, permitindo que investidores obtenham residência europeia por meio de um ativo tangível e exclusivo.</p>`,
+    descricaoHtml: `<p>O Aquila Wheels é um fundo de investimento inovador que transforma a paixão por carros clássicos e icônicos em uma estratégia financeira sólida e rentável. Focado na aquisição e gestão de veículos de alto valor, o fundo aproveita a valorização histórica desse mercado, que na última década, valorizou impressionantes 193%.</p><p>O Aquila combina conhecimento de mercado, análise de dados e parcerias estratégicas globais para selecionar veículos com maior potencial de valorização. Além disso, o fundo é 100% elegível ao Golden Visa português, permitindo que investidores obtenham residência europeia por meio de um ativo tangível e exclusivo.</p>`,
     detalhes: {
       tipo: 'Fundo de capital de risco fechado',
       dimensao: '€20 milhões',
@@ -76,7 +77,7 @@ export const teamData: TeamMember[] = [
   {
     nome: 'Luís Assis Teixeira',
     cargo: 'CEO & Founder',
-    bioHtml: '<p>Com mais de 20 anos de experiência no mercado financeiro, Luís é especialista em gestão de ativos e private equity. Liderou operações em bancos de investimento globais antes de fundar a Aquila para oferecer soluções de investimento mais alinhadas com as necessidades dos investidores de alta renda.</p>',
+    bioHtml: '<p>Com mais de 20 anos de experiência no mercado financeiro, Luís é especialista em gestão de ativos e private equity. Liderou operações em bancos de investimento globais antes de fundar o Aquila para oferecer soluções de investimento mais alinhadas com as necessidades dos investidores de alta renda.</p>',
     foto: { src: 'https://ik.imagekit.io/leosmc2zb/Luis-Assis-Teixeira-251x300.jpg', v: 1 },
     dataAiHint: 'male executive portrait',
     ordem: 1,
@@ -84,7 +85,7 @@ export const teamData: TeamMember[] = [
   {
     nome: 'Diana Bizzarro',
     cargo: 'Chief Investment Officer',
-    bioHtml: '<p>Diana possui um profundo conhecimento em análise de risco e mercados de capitais. É responsável pela estratégia de alocação de ativos e pela seleção de oportunidades de investimento em todos os fundos da Aquila, garantindo um portfólio diversificado e de alta performance.</p>',
+    bioHtml: '<p>Diana possui um profundo conhecimento em análise de risco e mercados de capitais. É responsável pela estratégia de alocação de ativos e pela seleção de oportunidades de investimento em todos os fundos do Aquila, garantindo um portfólio diversificado e de alta performance.</p>',
     foto: { src: 'https://picsum.photos/400/400?random=11', v: 1 },
     dataAiHint: 'female executive portrait',
     ordem: 2,
@@ -100,7 +101,7 @@ export const teamData: TeamMember[] = [
   {
     nome: 'Luiz Godinho Lopes',
     cargo: 'Head of Alternative Investments',
-    bioHtml: '<p>Apaixonado por ativos não convencionais, Luiz é a força motriz por trás do Aquila Wheels. Sua expertise em mercados de nicho e bens de luxo permite à Aquila explorar novas fronteiras de rentabilidade.</p>',
+    bioHtml: '<p>Apaixonado por ativos não convencionais, Luiz é a força motriz por trás do Aquila Wheels. Sua expertise em mercados de nicho e bens de luxo permite ao Aquila explorar novas fronteiras de rentabilidade.</p>',
     foto: { src: 'https://ik.imagekit.io/leosmc2zb/Captura-de-Tela-2024-07-27-as-11.47.20-e1723138867854-300x300.png', v: 1 },
     dataAiHint: 'male professional glasses',
     ordem: 4,
@@ -116,7 +117,7 @@ export const teamData: TeamMember[] = [
   {
     nome: 'Tânia Marreiros Silva',
     cargo: 'Head of Legal & Compliance',
-    bioHtml: '<p>Tânia garante que todas as operações da Aquila estejam em conformidade com as mais rigorosas regulamentações financeiras. Sua experiência jurídica é vital para a segurança e transparência dos investimentos.</p>',
+    bioHtml: '<p>Tânia garante que todas as operações do Aquila estejam em conformidade com as mais rigorosas regulamentações financeiras. Sua experiência jurídica é vital para a segurança e transparência dos investimentos.</p>',
     foto: { src: 'https://ik.imagekit.io/leosmc2zb/Tania-Marreiros-Silva-251x300.jpg', v: 1 },
     dataAiHint: 'female professional glasses',
     ordem: 6,
@@ -125,7 +126,7 @@ export const teamData: TeamMember[] = [
 
 export const goldenVisaFaqs: FaqItem[] = [
     {
-      question: "Quais fundos da Aquila são elegíveis para o Golden Visa?",
+      question: "Quais fundos do Aquila são elegíveis para o Golden Visa?",
       answer: "Atualmente, os fundos Aquila Wheels e Aquila Hotel Invest são 100% elegíveis para o programa Golden Visa de Portugal, permitindo que investidores obtenham residência europeia."
     },
     {

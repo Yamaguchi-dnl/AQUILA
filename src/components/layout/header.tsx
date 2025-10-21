@@ -20,7 +20,7 @@ import { useEffect, useState } from "react";
 export function Header() {
   const pathname = usePathname();
   const [isMounted, setIsMounted] = useState(false);
-  const pagesWithLightHeader = ['/', '/fundos', '/sobre', '/equipa', '/golden-visa', '/solucoes-tailor-made', '/contato', '/trabalhe-conosco'];
+  const pagesWithLightHeader = ['/', '/fundos', '/sobre', '/equipa', '/golden-visa', '/solucoes-tailor-made', '/contato', '/trabalhe-conosco', '/por-que-investir'];
   const useLightHeader = pagesWithLightHeader.includes(pathname);
 
   useEffect(() => {
@@ -45,7 +45,7 @@ export function Header() {
                       variant="ghost"
                       className={cn(
                         "text-sm font-medium transition-colors px-3 py-2 gap-1",
-                        item.subItems.some((sub) => pathname.startsWith(sub.href)) 
+                        item.subItems.some((sub) => sub.href && pathname.startsWith(sub.href)) 
                           ? (useLightHeader ? "text-white" : "text-primary") 
                           : (useLightHeader ? "text-primary-foreground/80" : "text-muted-foreground"),
                         useLightHeader ? "hover:text-white" : "hover:text-primary"

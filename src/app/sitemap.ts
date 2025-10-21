@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/golden-visa',
     '/trabalhe-conosco',
     '/contato',
+    '/por-que-investir',
   ].map((route) => ({
     url: `${domain}${route}`,
     lastModified: new Date(),

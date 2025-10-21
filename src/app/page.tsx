@@ -1,7 +1,6 @@
 
 import { AboutSummary } from '@/components/sections/about-summary';
 import { FundsSummary } from '@/components/sections/funds-summary';
-import { WhyPortugal } from '@/components/sections/why-portugal';
 import { GoldenVisaSummary } from '@/components/sections/golden-visa-summary';
 import { InvestmentCycle } from '@/components/sections/investment-cycle';
 import { ContactSummary } from '@/components/sections/contact-summary';
@@ -16,7 +15,6 @@ export default async function Home() {
   const heroBlock = findBlock(blocks, 'hero');
   const aboutBlock = findBlock(blocks, 'about-summary');
   const fundsBlock = findBlock(blocks, 'funds-summary');
-  const whyPortugalBlock = findBlock(blocks, 'why-portugal');
   const goldenVisaBlock = findBlock(blocks, 'golden-visa-summary');
   const investmentCycleBlock = findBlock(blocks, 'investment-cycle');
   const investmentStrategyBlock = findBlock(blocks, 'investment-strategy');
@@ -40,7 +38,6 @@ export default async function Home() {
         <div className="relative z-10 bg-background">
             <AboutSummary block={aboutBlock} />
             <FundsSummary block={fundsBlock} />
-            <WhyPortugal block={whyPortugalBlock} />
             <GoldenVisaSummary block={goldenVisaBlock} />
             <div className='relative bg-primary'>
             <div

@@ -7,7 +7,7 @@ import ParticlesContainer from "@/components/shared/particles-container";
 
 export const metadata = {
   title: "Contato",
-  description: "Fale com um especialista da Aquila Fund FCR. Estamos disponíveis para responder às suas perguntas sobre nossos fundos de investimento.",
+  description: "Fale com um especialista do Aquila Fund FCR. Estamos disponíveis para responder às suas perguntas sobre nossos fundos de investimento.",
 };
 
 const contactDetails = [

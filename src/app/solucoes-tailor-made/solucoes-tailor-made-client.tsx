@@ -37,7 +37,7 @@ export default function SolucoesTailorMadeClient({ contentBlock }: SolucoesTailo
                 <AnimatedSection delay={0.1} direction="right">
                     <h2 className="font-headline text-3xl text-primary uppercase">{contentBlock?.title || "Conexões de Valor para Investidores Únicos"}</h2>
                     <p className="mt-4 text-muted-foreground text-lg">
-                        {contentBlock?.content || 'A Aquila Fund FCR conecta investidores a ativos únicos em Portugal, cuidadosamente selecionados e organizados em estruturas que respeitam seu perfil, seus objetivos e o cenário de mercado.'}
+                        {contentBlock?.content || 'O Aquila Fund FCR conecta investidores a ativos únicos em Portugal, cuidadosamente selecionados e organizados em estruturas que respeitam seu perfil, seus objetivos e o cenário de mercado.'}
                     </p>
                     <div className="mt-8 space-y-4">
                         {benefits.map((benefit, index) => (
