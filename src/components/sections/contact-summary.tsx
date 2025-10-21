@@ -13,7 +13,7 @@ type Props = {
 
 export function ContactSummary({ block }: Props) {
   const title = block?.title || 'Pronto para investir em Portugal?';
-  const content = block?.content || 'Preencha o formulário abaixo para agendar uma reunião com nossa equipe e conhecer as oportunidades de diversificação global de investimento com foco em Golden Visa. Estamos prontos para ajudar a alcançar seus objetivos financeiros em Portugal.';
+  const content = block?.content || 'Preencha o formulário abaixo e fale com nossa equipe. Vamos te mostrar as melhores oportunidades para diversificar seus investimentos e conquistar o Golden Visa.';
   
   return (
     <section id="contato" className="bg-card relative z-10 shadow-2xl">
@@ -21,9 +21,6 @@ export function ContactSummary({ block }: Props) {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
                 <AnimatedSection direction="left">
-                 <h2 className="text-sm uppercase tracking-widest text-muted-foreground font-headline">
-                    FALE CONOSCO
-                  </h2>
                  <h3 className="font-headline text-4xl text-primary uppercase mt-2">{title}</h3>
                 </AnimatedSection>
                  <AnimatedSection delay={0.1} direction="left">
@@ -56,7 +53,6 @@ export function ContactSummary({ block }: Props) {
             </div>
             <AnimatedSection delay={0.2} direction="right">
             <div className="bg-card p-8 rounded-lg shadow-lg transition-all duration-300 border border-transparent hover:border-primary">
-                 <h3 className="text-xl font-bold text-foreground mb-4 font-headline">Fale com um especialista</h3>
                  <ContactForm isSummary={true} />
             </div>
             </AnimatedSection>

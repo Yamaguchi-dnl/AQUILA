@@ -93,7 +93,7 @@ export function Footer() {
           <div>
             <h4 className="font-headline text-lg font-bold text-primary-foreground">Contato</h4>
             <address className="mt-4 space-y-2 text-sm not-italic">
-              <p>Av. Engenheiro Duarte Pacheco, Torre 1, 15º(2)<br />1070 – 101 Lisboa, Portugal</p>
+              <p>Avenida Engenheiro Duarte Pacheco, Torre 1, 15º(2) 1070 – 101 Lisboa, Portugal</p>
               <p><strong>Telefone:</strong> +351 21 310 36 20</p>
               <p><strong>Fax:</strong> +351 21 310 36 29</p>
               <p><strong>Email:</strong> <Link href="mailto:info@aquilafund.com" className="hover:text-white">info@aquilafund.com</Link></p>

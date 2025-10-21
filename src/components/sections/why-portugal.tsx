@@ -21,24 +21,24 @@ const benefits = [
         description: "Expanda seu portfólio, reduzindo riscos e buscando novas oportunidades de crescimento."
     },
     { 
-        icon: ShieldCheck, 
-        title: "Proteção patrimonial",
-        description: "Garanta a segurança de seus ativos em um ambiente econômico e jurídico estável."
-    },
-    { 
-        icon: TrendingUp, 
-        title: "Mercado promissor",
-        description: "Participe do crescimento de um dos mercados mais dinâmicos e atraentes da Europa."
-    },
-    { 
         icon: Handshake, 
         title: "Passaporte europeu",
         description: "Obtenha residência e cidadania em Portugal, abrindo portas para a União Europeia e seus benefícios."
     },
     { 
+        icon: ShieldCheck, 
+        title: "Proteção patrimonial",
+        description: "Garanta a segurança de seus ativos em um ambiente econômico e jurídico estável."
+    },
+    { 
         icon: Euro, 
         title: "Benefícios fiscais",
         description: "Aproveite incentivos fiscais e regimes especiais para investidores não residentes."
+    },
+    { 
+        icon: TrendingUp, 
+        title: "Mercado promissor",
+        description: "Participe do crescimento de um dos mercados mais dinâmicos e atraentes da Europa."
     },
     { 
         icon: Sun,
@@ -53,6 +53,7 @@ type Props = {
 
 export function WhyPortugal({ block }: Props) {
   const title = block?.title || 'Por que investir<br/>em Portugal?';
+  const subtitle = block?.content || 'Está na hora de olhar para Portugal como a sua próxima grande oportunidade.';
   
   return (
     <section id="why-portugal" className="bg-primary text-primary-foreground overflow-hidden relative">
@@ -69,17 +70,15 @@ export function WhyPortugal({ block }: Props) {
           className="w-full"
         >
           <AnimatedSection>
-            <div className="flex justify-between items-center mb-8">
+            <div className="flex flex-col md:flex-row justify-between md:items-end mb-8">
               <div>
-                <h2 className="text-sm uppercase tracking-widest text-primary-foreground/60 font-headline">
-                    OPORTUNIDADES
-                </h2>
                 <h3 
                   className="font-headline text-4xl text-primary-foreground uppercase mt-2"
                   dangerouslySetInnerHTML={{ __html: title}}
                 />
+                <p className="mt-4 text-lg text-primary-foreground/80 max-w-lg">{subtitle}</p>
               </div>
-              <div className="flex gap-2">
+              <div className="flex gap-2 mt-4 md:mt-0">
                   <CarouselPrevious className="static -translate-y-0 text-primary-foreground bg-primary-foreground/10 hover:bg-primary-foreground/20 border-primary-foreground/20" />
                   <CarouselNext className="static -translate-y-0 text-primary-foreground bg-primary-foreground/10 hover:bg-primary-foreground/20 border-primary-foreground/20" />
               </div>

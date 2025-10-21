@@ -12,14 +12,14 @@ type AboutSummaryProps = {
 }
 
 export function AboutSummary({ block }: AboutSummaryProps) {
-  const title = block?.title || "Seu capital, nossa expertise";
-  const content = block?.content || `<p>A Aquila Fund FCR é uma plataforma de investimentos portuguesa, com quatro fundos de investimento totalmente independentes e registrados na Comissão do Mercado de Valores Mobiliários (CMVM).</p><p>Com uma equipe experiente e altamente qualificada, oferecemos soluções seguras e rentáveis para investidores brasileiros, através de nossos fundos - Wheels, Agro, Hotel Invest e Real State.</p><p>Com estas soluções, você diversifica seu portfólio, ganha acesso facilitado ao passaporte europeu e protege seu patrimônio em um mercado estável e repleto de oportunidades.</p>`;
+  const title = block?.title || "Evite riscos desnecessários e aproveite os benefícios das estruturas internacionais";
+  const content = block?.content || `<p>Você já se perguntou o que realmente aconteceria com seu patrimônio e com a tranquilidade da sua família se não estivessem devidamente protegidos? A vida é feita de incertezas, e adiar sua segurança financeira é o mesmo que se expor a riscos desnecessários.</p><p>No Aquila Fund FRC, blindamos o seu patrimônio com investimentos seguros, rentáveis e personalizados. Aqui, você diversifica seu portfólio, ganha acesso facilitado ao passaporte europeu e protege seu patrimônio em um mercado repleto de oportunidades.</p>`;
   const imageUrl = block?.image_url || "https://ik.imagekit.io/leosmc2zb/5573.jpg";
 
   return (
     <section id="sobre" className="bg-background text-foreground overflow-hidden relative">
       <div className="container relative z-20">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-stretch">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
           <AnimatedSection direction="left" className="order-last md:order-first">
             <Image 
                 src={imageUrl}
@@ -30,11 +30,8 @@ export function AboutSummary({ block }: AboutSummaryProps) {
                 data-ai-hint="modern office lisbon"
             />
           </AnimatedSection>
-           <div className="order-first md:order-last flex flex-col">
+           <div className="order-first md:order-last flex flex-col justify-center">
             <AnimatedSection direction="right">
-              <h2 className="text-sm uppercase tracking-widest text-muted-foreground font-headline">
-                  <Link href="/sobre">QUEM SOMOS</Link>
-              </h2>
               <h3 className="font-headline text-4xl text-primary mt-2 uppercase">{title}</h3>
               
             </AnimatedSection>
@@ -46,7 +43,7 @@ export function AboutSummary({ block }: AboutSummaryProps) {
             </AnimatedSection>
             <AnimatedSection className="mt-8" delay={0.2} direction="up">
               <Button asChild size="lg" variant="default">
-                <Link href="/contato">FALE COM UM ESPECIALISTA!</Link>
+                <Link href="/contato">DÊ O PRÓXIMO PASSO!</Link>
               </Button>
             </AnimatedSection>
           </div>

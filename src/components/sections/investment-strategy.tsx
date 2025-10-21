@@ -10,23 +10,23 @@ import type { Block } from "@/lib/data-loader";
 const processSteps = [
     {
         number: "1",
-        title: "Origem e Seleção",
-        description: "Nossa expertise e vasta rede de relacionamentos nos permitem identificar mercados relevantes, realizar uma análise rigorosa e selecionar as melhores oportunidades de investimento."
+        title: "Origem de negócios",
+        description: "Nossa expertise e nossa vasta rede de relacionamentos nos permitem identificar mercados relevantes e oportunidades atraentes de investimentos."
     },
     {
         number: "2",
+        title: "Seleção e Due Diligence",
+        description: "Realizamos uma análise rigorosa e rápida das perspectivas de aquisição para alcançar acordos de compra e venda vinculativos em tempo hábil."
+    },
+    {
+        number: "3",
         title: "Criação de valor",
         description: "Implementamos estratégias sólidas em cada subfundo para otimizar o valor dos ativos e potencializar o retorno dos investimentos."
     },
     {
-        number: "3",
-        title: "Exit (Saída)",
-        description: "Possuímos habilidades comprovadas em transações e um histórico de múltiplas saídas bem-sucedidas, garantindo a execução no momento certo para a venda."
-    },
-    {
         number: "4",
-        title: "Due Diligence",
-        description: "Realizamos uma análise rápida e rigorosa das perspectivas de aquisição para alcançar acordos de compra e venda vinculativos em tempo hábil."
+        title: "Exit",
+        description: "Possuímos habilidades comprovadas em transações e um histórico de múltiplas saídas bem-sucedidas, garantindo que o momento certo para a venda seja identificado e executado."
     }
 ];
 
@@ -45,9 +45,6 @@ export function InvestmentStrategy({ block }: Props) {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
                 <AnimatedSection direction="left">
-                    <h2 className="text-sm uppercase tracking-widest text-primary-foreground/60 font-headline">
-                        NOSSA ABORDAGEM
-                    </h2>
                     <h3 className="font-headline text-4xl text-primary-foreground uppercase mt-2">{title}</h3>
                 </AnimatedSection>
                 

@@ -20,7 +20,7 @@ export const fundsData: Fund[] = [
   {
     slug: 'aquila-wheels',
     nome: 'Aquila Wheels',
-    subtitulo: 'O Aquila Wheels é um fundo de investimento inovador que transforma a paixão por carros clássicos e icônicos em uma estratégia financeira sólida e rentável.',
+    subtitulo: 'Imagine unir sua paixão por carros clássicos e icônicos a uma estratégia financeira sólida e rentável. Com o Aquila Wheels, é possível! Um investimento inovador que o coloca na rota do sucesso.',
     imagemResumo: 'https://ik.imagekit.io/leosmc2zb/1331.jpg?updatedAt=1756868086309',
     descricaoHtml: `<p>O Aquila Wheels é um fundo de investimento inovador que transforma a paixão por carros clássicos e icônicos em uma estratégia financeira sólida e rentável. Focado na aquisição e gestão de veículos de alto valor, o fundo aproveita a valorização histórica desse mercado, que na última década, valorizou impressionantes 193%.</p><p>A Aquila combina conhecimento de mercado, análise de dados e parcerias estratégicas globais para selecionar veículos com maior potencial de valorização. Além disso, o fundo é 100% elegível ao Golden Visa português, permitindo que investidores obtenham residência europeia por meio de um ativo tangível e exclusivo.</p>`,
     detalhes: {
@@ -43,7 +43,7 @@ export const fundsData: Fund[] = [
   {
     slug: 'aquila-hotel-invest',
     nome: 'Aquila Hotel Invest',
-    subtitulo: 'O Aquila Hotel Invest é um fundo de capital de risco com investimento em empresas de gestão hoteleira, focado na aquisição e gestão de hotéis de luxo em Portugal.',
+    subtitulo: 'O Aquila Hotel Invest é a sua porta de entrada para o setor hoteleiro de luxo em Portugal. Um fundo de capital de risco focado na aquisição e gestão de hotéis de luxo.',
     imagemResumo: 'https://ik.imagekit.io/leosmc2zb/L08zbS8tME0zWnJTbS9TTzdTbk1qbm0vZlpGRFNuLVNOWkZaS01qYVM3U1pNbXhnejY2UXR6dGRrcg.webp',
     descricaoHtml: `<p>O Hotel Invest é um fundo de capital de risco que investe na gestão hoteleira de luxo em Portugal. Com foco em hotéis de luxo, o investimento busca alta rentabilidade e distribuição anual de dividendos isentos de impostos, alinhando-se ao sucesso do turismo português e oferecendo benefícios significativos aos investidores.</p><p>O fundo visa angariar 100 milhões de euros para investimento na empresa de gestão hoteleira Estoril 8023 SA, que atualmente gerencia 7 hotéis de luxo em Portugal, com o objetivo de expandir para 30 operações hoteleiras em 4 anos.</p>`,
     detalhes: {

@@ -13,7 +13,7 @@ type Props = {
 
 export function FundsSummary({ block }: Props) {
     const activeFunds = fundsData.filter(f => f.status === 'ativo');
-    const title = block?.title || 'Nossos Fundos de Investimento';
+    const title = block?.title || 'SOLUÇÕES ESTRUTURADAS EM PORTUGAL E NA EUROPA';
     const content = block?.content || 'Soluções de investimento seguras e rentáveis para investidores que buscam diversificação, proteção patrimonial e acesso ao Golden Visa em Portugal.';
     
   return (
@@ -21,13 +21,7 @@ export function FundsSummary({ block }: Props) {
       <div className="container">
         <AnimatedSection direction="up">
         <div className="text-center max-w-3xl mx-auto">
-           <h2 className="text-sm uppercase tracking-widest text-muted-foreground font-headline">
-              PORTFÓLIO
-          </h2>
           <h3 className="font-headline text-4xl text-primary uppercase mt-2">{title}</h3>
-          <p className="mt-4 text-lg text-muted-foreground">
-            {content}
-          </p>
         </div>
         </AnimatedSection>
 

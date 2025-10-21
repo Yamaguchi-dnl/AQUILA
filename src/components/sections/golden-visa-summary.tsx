@@ -12,8 +12,9 @@ type Props = {
 }
 
 export function GoldenVisaSummary({ block }: Props) {
-  const title = block?.title || 'O caminho para Portugal com o Golden Visa';
-  const content = block?.content || 'O Golden Visa é o seu passaporte para a União Europeia. Ao investir em nossos fundos elegíveis, você e sua família garantem o direito de residir em Portugal, com acesso a todos os benefícios de um cidadão europeu, como educação e saúde de qualidade.';
+  const title = block?.title || 'Sua nova vida na Europa te espera';
+  const content = block?.content || 'O Golden Visa é a sua porta de entrada para a Europa. Ao investir em fundos elegíveis do Aquila Fund FCR, você e sua família garantem o direito de residir legalmente em Portugal. Isso significa acesso imediato a um futuro de qualidade, com educação de excelência, saúde pública de alto padrão e todos os benefícios sociais assegurados a residentes permanentes.';
+  const subContent = block?.sub_content || 'Transforme seu investimento em novas oportunidades. Uma via segura e inteligente para a cidadania europeia.';
   const imageUrl = block?.image_url || 'https://ik.imagekit.io/leosmc2zb/golden-visa-portugal-nacionalidade-portuguesa.jpeg';
 
   return (
@@ -36,8 +37,11 @@ export function GoldenVisaSummary({ block }: Props) {
                     </h3>
                     </AnimatedSection>
                     <AnimatedSection delay={0.1} direction="left">
-                    <p className="mt-4 text-base md:text-lg text-primary-foreground/90 max-w-lg">
+                    <p className="mt-4 text-base md:text-lg text-primary-foreground/90 max-w-xl">
                         {content}
+                    </p>
+                    <p className="mt-4 text-base md:text-lg text-primary-foreground/90 font-semibold max-w-xl">
+                        {subContent}
                     </p>
                     </AnimatedSection>
                     <AnimatedSection delay={0.3} direction="up">
