@@ -162,7 +162,11 @@ export default function GoldenVisaClient({
                     </div>
                 </section>
 
-                <section className="bg-primary text-primary-foreground">
+                <section className="bg-primary text-primary-foreground relative">
+                     <div
+                        aria-hidden="true"
+                        className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_center,_rgba(255,255,255,0.1)_0%,_transparent_70%)]"
+                    />
                      <div className="container">
                         <AnimatedSection>
                         <Card className="max-w-4xl mx-auto p-8 md:p-12 shadow-xl bg-card/10 border border-primary-foreground/20 text-primary-foreground">
@@ -246,3 +250,5 @@ export default function GoldenVisaClient({
         </>
     );
 }
+
+    
