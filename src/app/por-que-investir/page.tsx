@@ -3,6 +3,7 @@ import { AnimatedSection } from "@/components/shared/animated-section";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import ParticlesContainer from "@/components/shared/particles-container";
 import { ShieldAlert, ShieldCheck } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export const metadata = {
   title: "Por que investir em Portugal?",
@@ -85,19 +86,23 @@ export default function PorQueInvestirPage() {
                 </div>
             </div>
         </section>
-        <section className="bg-card text-foreground relative">
-            <div className="container">
+        <section className="bg-primary text-primary-foreground relative">
+             <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(255,255,255,0.15)_0%,_transparent_70%)]"
+            />
+            <div className="container relative z-10">
                 <AnimatedSection className="max-w-4xl mx-auto text-center">
-                    <h2 className="font-headline text-3xl md:text-4xl text-primary uppercase">Quais os benefícios de investir em Portugal?</h2>
-                    <p className="mt-4 text-lg text-muted-foreground">Investir em Portugal é uma forma inteligente de otimizar seus rendimentos e proteger o patrimônio familiar. O país oferece um ambiente econômico estável, com uma das legislações fiscais mais atrativas da Europa para investidores estrangeiros.</p>
+                    <h2 className="font-headline text-3xl md:text-4xl text-primary-foreground uppercase">Quais os benefícios de investir em Portugal?</h2>
+                    <p className="mt-4 text-lg text-primary-foreground/80">Investir em Portugal é uma forma inteligente de otimizar seus rendimentos e proteger o patrimônio familiar. O país oferece um ambiente econômico estável, com uma das legislações fiscais mais atrativas da Europa para investidores estrangeiros.</p>
                 </AnimatedSection>
 
                 <div className="mt-12 grid md:grid-cols-2 gap-8 items-start">
                     <AnimatedSection direction="up" delay={0.1}>
-                         <Card className="h-full">
+                         <Card className="h-full bg-card/10 border-primary-foreground/20 text-primary-foreground">
                             <CardHeader>
-                                <CardTitle className="flex items-center gap-2">
-                                    <ShieldCheck className="h-6 w-6 text-green-600" />
+                                <CardTitle className="flex items-center gap-2 text-primary-foreground">
+                                    <ShieldCheck className="h-6 w-6 text-green-500" />
                                     Tributação dos Fundos
                                 </CardTitle>
                             </CardHeader>
@@ -105,8 +110,8 @@ export default function PorQueInvestirPage() {
                                 <ul className="space-y-3">
                                     {taxBenefits.map((item, index) => (
                                         <li key={index} className="flex items-start">
-                                            <ShieldCheck className="h-5 w-5 text-green-600 mr-3 mt-1 shrink-0" />
-                                            <span className="text-muted-foreground">{item}</span>
+                                            <ShieldCheck className="h-5 w-5 text-green-500 mr-3 mt-1 shrink-0" />
+                                            <span className="text-primary-foreground/80">{item}</span>
                                         </li>
                                     ))}
                                 </ul>
@@ -114,10 +119,10 @@ export default function PorQueInvestirPage() {
                         </Card>
                     </AnimatedSection>
                      <AnimatedSection direction="up" delay={0.2}>
-                         <Card className="h-full">
+                         <Card className="h-full bg-card/10 border-primary-foreground/20 text-primary-foreground">
                             <CardHeader>
-                                <CardTitle className="flex items-center gap-2">
-                                    <ShieldCheck className="h-6 w-6 text-green-600" />
+                                <CardTitle className="flex items-center gap-2 text-primary-foreground">
+                                    <ShieldCheck className="h-6 w-6 text-green-500" />
                                     Imposto sobre Herança e Doação
                                 </CardTitle>
                             </CardHeader>
@@ -125,8 +130,8 @@ export default function PorQueInvestirPage() {
                                 <ul className="space-y-3">
                                     {inheritanceBenefits.map((item, index) => (
                                         <li key={index} className="flex items-start">
-                                            <ShieldCheck className="h-5 w-5 text-green-600 mr-3 mt-1 shrink-0" />
-                                            <span className="text-muted-foreground">{item}</span>
+                                            <ShieldCheck className="h-5 w-5 text-green-500 mr-3 mt-1 shrink-0" />
+                                            <span className="text-primary-foreground/80">{item}</span>
                                         </li>
                                     ))}
                                 </ul>
