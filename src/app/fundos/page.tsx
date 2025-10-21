@@ -1,5 +1,4 @@
 
-import { getPageContentBySlug, findBlock } from "@/lib/data-loader";
 import { fundsData } from "@/lib/data";
 import FundosClient from "./fundos-client";
 
@@ -9,16 +8,13 @@ export const metadata = {
 };
 
 export default async function FundosPage() {
-  // A página 'fundos' não existe no CMS, esta chamada causa o erro.
-  // No entanto, as descrições de cada fundo vêm de lá.
-  // Vamos carregar os blocos da página 'home' temporariamente, que é onde estão
-  const blocks = await getPageContentBySlug('home');
-  const headerBlock = findBlock(blocks, 'fundos-header');
-
+  // A página de fundos não depende de conteúdo dinâmico do CMS.
+  // A chamada a getPageContentBySlug foi removida para evitar erros caso a página 'home' não exista.
+  // O componente FundosClient já possui textos alternativos.
   return (
     <FundosClient
-        headerBlock={headerBlock}
-        allBlocks={blocks}
+        headerBlock={null}
+        allBlocks={[]}
         fundsData={fundsData}
     />
   );
