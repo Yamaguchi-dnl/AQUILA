@@ -41,7 +41,6 @@ export default function SolucoesTailorMadeClient({ contentBlock }: SolucoesTailo
             <AnimatedSection direction="up">
                 <h2 className="font-headline text-3xl text-primary-foreground uppercase">{"Conexões de Valor para Investidores Únicos"}</h2>
                 <p className="mt-4 text-primary-foreground/80 text-lg max-w-3xl mx-auto">{introText}</p>
-                <p className="mt-4 text-primary-foreground/80 text-lg max-w-3xl mx-auto">O Aquila Fund FCR conecta ativos específicos em Portugal a investidores com necessidades especiais:</p>
             </AnimatedSection>
             
             <div className="mt-8 grid sm:grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
@@ -57,8 +56,12 @@ export default function SolucoesTailorMadeClient({ contentBlock }: SolucoesTailo
         </div>
       </section>
       
-      <section className="bg-card text-foreground relative">
-        <div className="container">
+      <section className="bg-primary text-primary-foreground relative">
+         <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(255,255,255,0.15)_0%,_transparent_70%)]"
+        />
+        <div className="container relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
               <AnimatedSection direction="left" className="flex">
                   <Image
@@ -72,27 +75,27 @@ export default function SolucoesTailorMadeClient({ contentBlock }: SolucoesTailo
               </AnimatedSection>
               <AnimatedSection delay={0.1} direction="right" className="flex flex-col">
                   <div>
-                      <h2 className="font-headline text-3xl text-primary uppercase">Oportunidades Únicas Para Você</h2>
-                      <p className="mt-4 text-foreground font-semibold">Com nossas soluções tailor made, você tem a oportunidade de:</p>
+                      <h2 className="font-headline text-3xl text-primary-foreground uppercase">Oportunidades Únicas Para Você</h2>
+                      <p className="mt-4 text-primary-foreground/90 font-semibold">Com nossas soluções tailor made, você tem a oportunidade de:</p>
                       <div className="mt-4 space-y-4">
                           {benefits.map((benefit, index) => (
                           <AnimatedSection key={index} delay={0.2 + index * 0.05} direction="up">
                               <div className="flex items-start gap-3">
-                                  <CheckCircle2 className="h-6 w-6 text-primary mt-1 shrink-0" />
-                                  <span className="text-foreground text-base">{benefit}</span>
+                                  <CheckCircle2 className="h-6 w-6 text-secondary mt-1 shrink-0" />
+                                  <span className="text-primary-foreground/90 text-base">{benefit}</span>
                               </div>
                               </AnimatedSection>
                           ))}
                       </div>
                       <AnimatedSection delay={0.4} direction="up">
                       <div 
-                          className="mt-8 text-muted-foreground text-lg prose max-w-none"
+                          className="mt-8 text-primary-foreground/80 text-lg prose max-w-none prose-p:text-primary-foreground/80"
                           dangerouslySetInnerHTML={{ __html: outroText }} 
                       />
                       </AnimatedSection>
                   </div>
                   <AnimatedSection delay={0.5} direction="up" className="mt-auto pt-8">
-                      <Button asChild size="lg" className="w-full md:w-auto" variant="default">
+                      <Button asChild size="lg" className="w-full md:w-auto" variant="secondary">
                           <Link href="/contato">
                               Encontre o ativo perfeito para investir
                               <ArrowRight className="ml-2" />
