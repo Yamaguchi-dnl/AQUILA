@@ -42,7 +42,7 @@ export default function GoldenVisaClient({
     processSteps,
     faqs
 }: GoldenVisaClientProps) {
-    const introText = "O Golden Visa é um programa de residência por investimento que oferece a cidadãos não-europeus a oportunidade de obter uma autorização de residência em Portugal. O visto é concedido em troca de um investimento qualificado no país, proporcionando uma série de benefícios significativos para o investidor e sua família. É uma via estratégica para quem busca diversificação global, acesso a um mercado promissor e a possibilidade de residir, estudar e trabalhar em Portugal.";
+    const introText = "O Golden Visa é um programa de residência por investimento para não-europeus, que concede autorização de residência em Portugal através de um investimento qualificado. É uma via estratégica para diversificação global e acesso a um mercado promissor.";
 
     return (
         <>
