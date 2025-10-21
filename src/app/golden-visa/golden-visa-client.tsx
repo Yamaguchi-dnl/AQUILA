@@ -1,7 +1,7 @@
 
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -192,7 +192,7 @@ export default function GoldenVisaClient({
                     </div>
                 </section>
                 
-                <section className="bg-background pt-0">
+                <section className="bg-background pb-20">
                     <div className="container">
                         <AnimatedSection className="text-center max-w-3xl mx-auto">
                             <h2 className="font-headline text-4xl text-primary uppercase">{eligibleFundsBlock?.title || "Fundos Elegíveis"}</h2>
@@ -231,13 +231,8 @@ export default function GoldenVisaClient({
                         <AnimatedSection className="text-center mt-12" direction="up">
                             <Button asChild size="lg"><Link href="/contato">Fale com um especialista</Link></Button>
                         </AnimatedSection>
-                    </div>
-                </section>
-
-                <section className="bg-card pt-12 pb-20">
-                    <div className="container">
-                        <AnimatedSection direction="up">
-                            <div className="flex items-start gap-4 p-4 mt-12 border border-amber-500/20 rounded-lg bg-amber-500/5 max-w-4xl mx-auto">
+                        <AnimatedSection direction="up" className="mt-12">
+                            <div className="flex items-start gap-4 p-4 border border-amber-500/20 rounded-lg bg-amber-500/5 max-w-4xl mx-auto">
                                 <ShieldAlert className="h-6 w-6 text-amber-600 shrink-0 mt-1" />
                                 <div>
                                     <h4 className="font-semibold text-foreground font-headline">Aviso Legal</h4>
