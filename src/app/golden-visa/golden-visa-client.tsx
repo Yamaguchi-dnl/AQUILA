@@ -54,7 +54,14 @@ export default function GoldenVisaClient({
                 />
                 <div className="container relative z-20">
                     <AnimatedSection>
-                        <h1 className="font-headline text-4xl md:text-5xl text-primary-foreground uppercase mt-2">{headerBlock?.title || "Golden Visa: sua porta de entrada para a Europa"}</h1>
+                        <h1 className="font-headline text-4xl md:text-5xl text-primary-foreground uppercase mt-2">
+                            {headerBlock?.title || (
+                                <>
+                                    Golden Visa:
+                                    <span className="block">sua porta de entrada para a Europa</span>
+                                </>
+                            )}
+                        </h1>
                     </AnimatedSection>
                 </div>
             </section>
@@ -63,7 +70,7 @@ export default function GoldenVisaClient({
                 <section className="bg-background text-foreground relative z-10">
                     <div className="container relative z-10">
                          <AnimatedSection className="max-w-3xl mx-auto text-center mb-12">
-                            <p className="text-lg text-muted-foreground">{headerBlock?.content || introText}</p>
+                            <p className="text-lg text-muted-foreground">{introText}</p>
                         </AnimatedSection>
                         <div className="grid lg:grid-cols-2 gap-12 items-center">
                             <AnimatedSection className="hidden lg:block" direction="left">
