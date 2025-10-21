@@ -202,8 +202,21 @@ export default function GoldenVisaClient({
                             {eligibleFunds.map((fund, index) => (
                                 <AnimatedSection key={fund.slug} delay={0.1 + index * 0.1} direction="up">
                                     <Card className="flex flex-col h-full overflow-hidden">
-                                        <CardHeader>
-                                            <CardTitle className="font-headline text-2xl">{fund.nome}</CardTitle>
+                                        <CardHeader className="p-0">
+                                            {fund.imagemResumo && (
+                                                <div className="aspect-video relative">
+                                                    <Image
+                                                        src={fund.imagemResumo}
+                                                        alt={`Imagem do fundo ${fund.nome}`}
+                                                        fill
+                                                        className="object-cover"
+                                                        data-ai-hint="investment theme"
+                                                    />
+                                                </div>
+                                            )}
+                                            <div className="p-6">
+                                                <CardTitle className="font-headline text-2xl">{fund.nome}</CardTitle>
+                                            </div>
                                         </CardHeader>
                                         <CardContent className="flex-grow">
                                             <p className="text-muted-foreground text-sm">{fund.slug === 'aquila-wheels' ? 'Fundo focado em carros clássicos, que oferece não apenas retornos financeiros, mas também a elegibilidade para o Golden Visa.' : 'Fundo de capital de risco que investe no promissor setor hoteleiro português, proporcionando rentabilidade e qualificação para o Golden Visa.'}</p>
@@ -238,3 +251,5 @@ export default function GoldenVisaClient({
         </>
     );
 }
+
+    
