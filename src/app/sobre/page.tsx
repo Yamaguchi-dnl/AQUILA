@@ -15,19 +15,28 @@ export const metadata = {
   description: "Conheça a história, missão e os parceiros estratégicos do Aquila Fund FCR, sua plataforma de investimentos de valor em Portugal.",
 };
 
-const historyItems = [
-    { year: "2022", event: "Fundação do Aquila Fund FCR com a visão de criar uma plataforma de investimentos inovadora." },
-    { year: "2023", event: "Lançamento dos fundos pioneiros, Aquila Wheels e Aquila Hotel Invest, ambos elegíveis para o Golden Visa." },
-    { year: "2024", event: "Expansão do portfólio com o Aquila Real Estate e consolidação de parcerias estratégicas com líderes de mercado." },
-    { year: "Futuro", event: "Continuar a crescer, inovar e gerar valor sustentável para nossos investidores, com novos fundos como o Aquila Agro." },
-];
-
 export default async function SobrePage() {
   const blocks = await getPageContentBySlug('sobre');
   const heroBlock = findBlock(blocks, 'sobre-hero');
   const partnersBlock = findBlock(blocks, 'sobre-partners');
   const fundboxBlock = findBlock(blocks, 'partner-fundbox');
   const btgBlock = findBlock(blocks, 'partner-btg');
+
+  const heroSubContent = `
+    <p>O Aquila Fund FCR nasceu há dois anos com a visão de ser uma plataforma de investimentos diferenciada, focada em oferecer soluções inovadoras para investidores de alta renda. Desde o início, temos nos dedicado a construir um legado de confiança, transparência e excelência no mercado financeiro português.</p>
+    <p>Nossa jornada é marcada pela busca incessante por oportunidades que gerem valor real e sustentável para nossos clientes, sempre com um olhar atento às dinâmicas do mercado global e às necessidades específicas de cada investidor.</p>
+    <p>Nossa missão é guiar nossos clientes através do complexo cenário de investimentos, transformando desafios em oportunidades e aspirações em conquistas. Com uma equipe de especialistas altamente qualificados e uma abordagem personalizada, construímos relacionamentos duradouros baseados na confiança e no compromisso com resultados.</p>
+  `;
+
+  const fundboxContent = `
+    <p>Nossos fundos são geridos pela FundBox, empresa de investimento independente líder em Portugal que gera ativamente cerca de €420 milhões em ativos sob gestão (AUM) através de dois gestores de fundos regulados, especializados em fundos imobiliários, classes de investimento alternativo e investimentos em private equity (FundBox SCR).</p>
+    <p>A FundBox oferece estruturação e execução de transações de primeira classe, livre de qualquer agenda conflitante, e com envolvimento ativo de executivos seniores ao longo de todo o processo de investimento.</p>
+  `;
+
+  const btgContent = `
+    <p>Para facilitar ainda mais o seu acesso aos nossos fundos, estabelecemos uma parceria exclusiva com o BTG Pactual. Isso significa que nossos clientes podem investir nos fundos Aquila mantendo seus ativos no Brasil como garantia, sem a necessidade de transferir capital para o exterior.</p>
+    <p>Essa solução é ideal para quem busca diversificação internacional e as oportunidades de crescimento que nossos fundos oferecem, sem desmobilizar seus investimentos atuais no Brasil.</p>
+  `;
 
   return (
     <>
@@ -51,7 +60,7 @@ export default async function SobrePage() {
                 <AnimatedSection delay={0.1} direction="left">
                     <div 
                     className="space-y-4 text-base text-muted-foreground text-justify prose prose-lg max-w-none"
-                    dangerouslySetInnerHTML={{ __html: heroBlock?.sub_content || '' }}
+                    dangerouslySetInnerHTML={{ __html: heroBlock?.sub_content || heroSubContent }}
                     />
                 </AnimatedSection>
                 <AnimatedSection delay={0.2} direction="right">
@@ -88,7 +97,7 @@ export default async function SobrePage() {
                   <CardHeader>
                       <h3 className="text-2xl font-headline card-title text-primary-foreground">{fundboxBlock?.title || 'FundBox'}</h3>
                   </CardHeader>
-                  <CardContent className="prose max-w-none text-primary-foreground/80 flex-grow" dangerouslySetInnerHTML={{ __html: fundboxBlock?.content || '' }} />
+                  <CardContent className="prose max-w-none text-primary-foreground/80 flex-grow" dangerouslySetInnerHTML={{ __html: fundboxBlock?.content || fundboxContent }} />
               </Card>
             </AnimatedSection>
             <AnimatedSection delay={0.2} direction="up">
@@ -96,7 +105,7 @@ export default async function SobrePage() {
                   <CardHeader>
                       <h3 className="text-2xl font-headline card-title text-primary-foreground">{btgBlock?.title || 'BTG Pactual'}</h3>
                   </CardHeader>
-                  <CardContent className="prose max-w-none text-primary-foreground/80 flex-grow" dangerouslySetInnerHTML={{ __html: btgBlock?.content || ''}} />
+                  <CardContent className="prose max-w-none text-primary-foreground/80 flex-grow" dangerouslySetInnerHTML={{ __html: btgBlock?.content || btgContent}} />
               </Card>
             </AnimatedSection>
           </div>
