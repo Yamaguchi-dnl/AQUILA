@@ -1,4 +1,3 @@
-
 "use client";
 
 import { AnimatedSection } from "@/components/shared/animated-section";
@@ -27,8 +26,8 @@ type SolucoesTailorMadeClientProps = {
 };
 
 export default function SolucoesTailorMadeClient({ contentBlock }: SolucoesTailorMadeClientProps) {
-  const introText = contentBlock?.content || 'O Aquila Fund FCR conecta ativos específicos em Portugal a investidores com necessidades especiais:';
-  const outroText = contentBlock?.sub_content || '<p>Não se trata apenas de investir, mas de construir uma experiência personalizada, que coloca você no centro das decisões.</p>'
+  const introText = 'No mercado de investimentos, opções não faltam. Mas quando se trata de potencializar retornos com inteligência e exclusividade, é preciso ir além do comum.';
+  const outroText = '<p>Não se trata apenas de investir, mas de construir uma experiência personalizada, que coloca você no centro das decisões.</p>';
 
   return (
     <>
@@ -37,6 +36,7 @@ export default function SolucoesTailorMadeClient({ contentBlock }: SolucoesTailo
             <AnimatedSection direction="up">
                 <h2 className="font-headline text-3xl text-primary uppercase">{"Conexões de Valor para Investidores Únicos"}</h2>
                  <p className="mt-4 text-muted-foreground text-lg max-w-3xl mx-auto">{introText}</p>
+                 <p className="mt-4 text-muted-foreground text-lg max-w-3xl mx-auto">O Aquila Fund FCR conecta ativos específicos em Portugal a investidores com necessidades especiais:</p>
             </AnimatedSection>
             
             <div className="mt-8 grid sm:grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
@@ -55,7 +55,7 @@ export default function SolucoesTailorMadeClient({ contentBlock }: SolucoesTailo
       <section className="bg-primary text-primary-foreground relative">
          <div
             aria-hidden="true"
-            className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(255,255,255,0.15)_0%,_transparent_70%)]"
+            className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(255,255,255,0.15)_0%,_transparent_70%)]"
         />
         <div className="container relative">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -64,8 +64,8 @@ export default function SolucoesTailorMadeClient({ contentBlock }: SolucoesTailo
                       src={contentBlock?.image_url || "https://ik.imagekit.io/leosmc2zb/6109119.jpg"}
                       alt="Homem de fato a analisar um gráfico"
                       width={600}
-                      height={700}
-                      className="rounded-lg shadow-lg object-cover w-full h-full"
+                      height={400}
+                      className="rounded-lg shadow-lg object-cover w-full"
                       data-ai-hint="businessman looking chart"
                   />
               </AnimatedSection>
