@@ -27,28 +27,24 @@ type SolucoesTailorMadeClientProps = {
 };
 
 export default function SolucoesTailorMadeClient({ contentBlock }: SolucoesTailorMadeClientProps) {
-  const introText = contentBlock?.content || 'No mercado de investimentos, opções não faltam. Mas quando se trata de potencializar retornos com inteligência e exclusividade, é preciso ir além do comum.';
+  const introText = contentBlock?.content || 'O Aquila Fund FCR conecta ativos específicos em Portugal a investidores com necessidades especiais:';
   const outroText = contentBlock?.sub_content || '<p>Não se trata apenas de investir, mas de construir uma experiência personalizada, que coloca você no centro das decisões.</p>'
 
   return (
     <>
-      <section className="bg-primary text-primary-foreground relative z-10">
-        <div
-            aria-hidden="true"
-            className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(255,255,255,0.1)_0%,_transparent_70%)]"
-        />
+      <section className="bg-background text-foreground relative z-10">
         <div className="container relative z-10 text-center">
             <AnimatedSection direction="up">
-                <h2 className="font-headline text-3xl text-primary-foreground uppercase">{"Conexões de Valor para Investidores Únicos"}</h2>
-                <p className="mt-4 text-primary-foreground/80 text-lg max-w-3xl mx-auto">{introText}</p>
+                <h2 className="font-headline text-3xl text-primary uppercase">{"Conexões de Valor para Investidores Únicos"}</h2>
+                 <p className="mt-4 text-muted-foreground text-lg max-w-3xl mx-auto">{introText}</p>
             </AnimatedSection>
             
             <div className="mt-8 grid sm:grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
                 {assetTypes.map((asset, index) => (
                     <AnimatedSection key={index} delay={0.1 + index * 0.1} direction="up">
                         <div className="flex flex-col items-center gap-3 p-4 rounded-lg">
-                            <asset.icon className="h-8 w-8 text-primary-foreground" />
-                            <span className="text-primary-foreground font-semibold mt-2">{asset.text}</span>
+                            <asset.icon className="h-8 w-8 text-primary" />
+                            <span className="text-foreground font-semibold mt-2">{asset.text}</span>
                         </div>
                     </AnimatedSection>
                 ))}
@@ -69,7 +65,7 @@ export default function SolucoesTailorMadeClient({ contentBlock }: SolucoesTailo
                       alt="Homem de fato a analisar um gráfico"
                       width={600}
                       height={700}
-                      className="rounded-lg shadow-lg object-cover w-full h-[500px]"
+                      className="rounded-lg shadow-lg object-cover w-full h-full"
                       data-ai-hint="businessman looking chart"
                   />
               </AnimatedSection>
