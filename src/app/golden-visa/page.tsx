@@ -10,26 +10,22 @@ export const metadata = {
 };
 
 const benefits = [
-    "Direito de viver, trabalhar e estudar em Portugal",
-    "Livre circulação no Espaço Schengen (27 países europeus)",
-    "Reagrupamento familiar, estendendo os benefícios ao cônjuge, filhos e pais",
-    "Acesso a sistemas de saúde e educação de alta qualidade",
-    "Requisito de permanência mínima flexível (média de 7 dias por ano)",
-    "Caminho para a cidadania portuguesa e passaporte europeu após 5 anos",
+    "Liberdade de residência: Direito de residir, estudar e trabalhar em Portugal para você e toda a sua família.",
+    "Acesso à Europa: Entrada livre em Portugal e em todo o Espaço Schengen, composto por 27 países europeus, sem a necessidade de visto.",
+    "Caminho para a cidadania: Possibilidade de solicitar a Residência Permanente e a nacionalidade portuguesa após 5 anos.",
+    "Vantagens fiscais: Os titulares do Golden Visa não têm qualquer impacto fiscal a nível pessoal em Portugal, tornando-o ainda mais atrativo."
 ];
 
 const processSteps = [
-    { title: "Consulta Inicial", description: "Fale com nossos especialistas para avaliar seu perfil e objetivos." },
-    { title: "Escolha do Fundo", description: "Selecione um de nossos fundos elegíveis, como o Aquila Wheels ou Hotel Invest." },
-    { title: "Processo de Investimento", description: "Realize o investimento e obtenha a declaração necessária do gestor do fundo." },
-    { title: "Aplicação ao Golden Visa", description: "Com o suporte de advogados parceiros, submeta sua aplicação online ao AIMA." },
-    { title: "Biometria e Emissão", description: "Agende e compareça à sua entrevista biométrica para finalizar o processo e receber seu cartão de residência." },
+    { title: "Investimento inicial", description: "Subscrição de €500.000 em fundos portugueses elegíveis e realização do processo KYC para validação do investidor." },
+    { title: "Candidatura online", description: "Envio da solicitação pela plataforma oficial, com pagamento da taxa administrativa." },
+    { title: "Pré-aprovação", description: "Análise do pedido pelo Immigration Office e verificação do cumprimento dos requisitos do Golden Visa." },
+    { title: "Coleta biométrica", description: "Comparecimento de investidores e familiares ao serviço de imigração para registro dos dados biométricos." },
+    { title: "Aprovação final", description: "Revisão da documentação original, aprovação e pagamento das taxas de residência e entrega." },
 ];
 
 export default async function GoldenVisaPage() {
     const eligibleFunds = fundsData.filter(f => f.detalhes.elegibilidadeGoldenVisa);
-    // A chamada a getPageContentBySlug foi removida para evitar erros quando o slug não existe no CMS.
-    // O componente GoldenVisaClient já possui textos alternativos para os blocos.
     const blocks: any[] = [];
     
     const headerBlock = findBlock(blocks, 'golden-visa-header');

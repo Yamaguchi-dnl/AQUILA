@@ -6,7 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { FundCard } from "@/components/shared/fund-card";
-import { Check, ShieldAlert } from "lucide-react";
+import { Check, ShieldAlert, BadgeCheck, Landmark, Euro, LinkIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { AnimatedSection } from "@/components/shared/animated-section";
@@ -44,7 +44,7 @@ export default function GoldenVisaClient({
 }: GoldenVisaClientProps) {
     return (
         <>
-            <section className="w-full h-[60vh] bg-primary text-primary-foreground relative flex items-center justify-center text-center overflow-hidden">
+            <section className="w-full min-h-[70vh] bg-primary text-primary-foreground relative flex items-center justify-center text-center overflow-hidden">
                 <ParticlesContainer />
                 <div
                     aria-hidden="true"
@@ -52,8 +52,8 @@ export default function GoldenVisaClient({
                 />
                 <div className="container relative z-20">
                     <AnimatedSection>
-                        <p className="text-sm uppercase tracking-widest text-primary-foreground/80 font-headline">O seu caminho para a Europa</p>
-                        <h1 className="font-headline text-4xl md:text-5xl text-primary-foreground uppercase mt-2">{headerBlock?.title || "Golden Visa Portugal"}</h1>
+                        <h1 className="font-headline text-4xl md:text-5xl text-primary-foreground uppercase mt-2">{headerBlock?.title || "Golden Visa: sua porta de entrada para a Europa"}</h1>
+                        <p className="mt-4 text-lg text-primary-foreground/90 max-w-3xl mx-auto">{headerBlock?.content || "O Golden Visa é um programa de residência por investimento que oferece a cidadãos não-europeus a oportunidade de obter uma autorização de residência em Portugal. O visto é concedido em troca de um investimento qualificado no país, proporcionando uma série de benefícios significativos para o investidor e sua família. É uma via estratégica para quem busca diversificação global, acesso a um mercado promissor e a possibilidade de residir, estudar e trabalhar em Portugal."}</p>
                     </AnimatedSection>
                 </div>
             </section>
@@ -74,8 +74,7 @@ export default function GoldenVisaClient({
                             </AnimatedSection>
                             <div>
                                 <AnimatedSection delay={0.1} direction="right">
-                                    <h2 className="font-headline text-3xl md:text-4xl text-primary uppercase">{benefitsBlock?.title || "Benefícios de um Futuro Europeu"}</h2>
-                                    <p className="mt-4 text-muted-foreground">{benefitsBlock?.content || "O programa Golden Visa de Portugal é um dos mais procurados do mundo, oferecendo um caminho claro para a residência e cidadania europeia em troca de um investimento qualificado no país."}</p>
+                                    <h2 className="font-headline text-3xl md:text-4xl text-primary uppercase">{benefitsBlock?.title || "Benefícios Exclusivos"}</h2>
                                 </AnimatedSection>
                                 <ul className="mt-6 space-y-3">
                                 {benefits.map((benefit, i) => (
@@ -99,59 +98,33 @@ export default function GoldenVisaClient({
                     />
                     <div className="container">
                         <AnimatedSection>
-                        <h3 className="font-headline text-3xl md:text-4xl text-center uppercase text-primary-foreground">{processBlock?.title || "Etapas do Processo"}</h3>
+                        <h3 className="font-headline text-3xl md:text-4xl text-center uppercase text-primary-foreground">{processBlock?.title || "Como obter o Golden Visa?"}</h3>
+                         <p className="mt-4 text-lg text-primary-foreground/80 max-w-3xl mx-auto text-center">
+                            {processBlock?.content || "O processo para obtenção do Golden Visa através de investimento em fundos do Aquila Fund FCR é estruturado e transparente, garantindo segurança e eficiência:"}
+                         </p>
                         </AnimatedSection>
                         <div className="mt-12">
-                            {/* --- Desktop Timeline --- */}
                             <div className="hidden md:grid grid-cols-5">
                                 {processSteps.map((step, index) => (
                                     <AnimatedSection key={index} delay={0.1 + index * 0.1} direction="up">
                                     <div className="relative flex flex-col items-center">
-                                        {/* Horizontal Line Segment - REMOVED */}
-                                        
-                                        {/* Vertical Connector and Card */}
-                                        <div className={cn(
-                                            "flex flex-col items-center w-full",
-                                            index % 2 === 0 ? "justify-end" : "justify-start"
-                                        )}>
-                                            {/* Card for odd items (top) */}
+                                        <div className={cn("flex flex-col items-center w-full", index % 2 === 0 ? "justify-end" : "justify-start")}>
                                             {index % 2 === 0 && (
                                                 <div className="order-1 mb-4">
                                                     <Card className="bg-card/10 border-primary-foreground/20 text-primary-foreground transition-all duration-300 hover:scale-[1.02] hover:shadow-xl w-[220px]">
-                                                        <CardHeader className="p-4">
-                                                            <h4 className="font-headline text-lg text-primary-foreground">{step.title}</h4>
-                                                        </CardHeader>
-                                                        <CardContent className="p-4 pt-0">
-                                                            <p className="text-primary-foreground/80 mt-2 text-sm">{step.description}</p>
-                                                        </CardContent>
+                                                        <CardHeader className="p-4"><h4 className="font-headline text-lg text-primary-foreground">{step.title}</h4></CardHeader>
+                                                        <CardContent className="p-4 pt-0"><p className="text-primary-foreground/80 mt-2 text-sm">{step.description}</p></CardContent>
                                                     </Card>
                                                 </div>
                                             )}
-
-                                            {/* Vertical line */}
                                             <div className="h-10 w-px bg-primary-foreground/30 order-2"></div>
-
-                                            {/* Circle */}
-                                            <div className="order-3 relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-secondary text-secondary-foreground ring-4 ring-primary font-bold text-lg shrink-0">
-                                                {index + 1}
-                                            </div>
-
-                                            {/* Vertical line for even items */}
-                                            <div className={cn(
-                                                "h-10 w-px bg-primary-foreground/30 order-4",
-                                                index % 2 !== 0 ? "block" : "hidden"
-                                            )}></div>
-
-                                            {/* Card for even items (bottom) */}
+                                            <div className="order-3 relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-secondary text-secondary-foreground ring-4 ring-primary font-bold text-lg shrink-0">{index + 1}</div>
+                                            <div className={cn("h-10 w-px bg-primary-foreground/30 order-4", index % 2 !== 0 ? "block" : "hidden")}></div>
                                             {index % 2 !== 0 && (
                                                 <div className="order-5 mt-4">
                                                     <Card className="bg-card/10 border-primary-foreground/20 text-primary-foreground transition-all duration-300 hover:scale-[1.02] hover:shadow-xl w-[220px]">
-                                                        <CardHeader className="p-4">
-                                                            <h4 className="font-headline text-lg text-primary-foreground">{step.title}</h4>
-                                                        </CardHeader>
-                                                        <CardContent className="p-4 pt-0">
-                                                            <p className="text-primary-foreground/80 mt-2 text-sm">{step.description}</p>
-                                                        </CardContent>
+                                                        <CardHeader className="p-4"><h4 className="font-headline text-lg text-primary-foreground">{step.title}</h4></CardHeader>
+                                                        <CardContent className="p-4 pt-0"><p className="text-primary-foreground/80 mt-2 text-sm">{step.description}</p></CardContent>
                                                     </Card>
                                                 </div>
                                             )}
@@ -160,17 +133,13 @@ export default function GoldenVisaClient({
                                     </AnimatedSection>
                                 ))}
                             </div>
-
-                            {/* --- Mobile Timeline --- */}
                             <div className="md:hidden mt-12 relative flow-root">
                                 <div className="absolute left-5 top-2 h-full w-px bg-primary-foreground/20" aria-hidden="true"></div>
                                 <div className="space-y-12">
                                     {processSteps.map((step, index) => (
                                         <AnimatedSection key={index} delay={index * 0.1} direction="up">
                                         <div className="relative pl-12">
-                                            <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-secondary-foreground ring-4 ring-primary font-bold text-lg">
-                                                {index + 1}
-                                            </div>
+                                            <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-full bg-secondary text-secondary-foreground ring-4 ring-primary font-bold text-lg">{index + 1}</div>
                                             <div className="ml-4">
                                                 <h4 className="font-headline text-lg text-primary-foreground">{step.title}</h4>
                                                 <p className="text-primary-foreground/80 mt-1 text-sm">{step.description}</p>
@@ -183,12 +152,42 @@ export default function GoldenVisaClient({
                         </div>
                     </div>
                 </section>
-                
+
                 <section className="bg-background">
+                     <div className="container">
+                        <AnimatedSection>
+                        <Card className="max-w-4xl mx-auto p-8 md:p-12 shadow-xl bg-card">
+                            <div className="text-center">
+                                <h2 className="font-headline text-4xl text-primary uppercase">Conquiste o Golden Visa sem desmobilizar seu atual investimento</h2>
+                            </div>
+                            <div className="grid md:grid-cols-2 gap-8 mt-8 text-center">
+                                <div className="flex flex-col items-center">
+                                    <BadgeCheck className="h-10 w-10 text-primary" />
+                                    <h4 className="font-semibold mt-2">Colateral no Brasil como garantia</h4>
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    <Landmark className="h-10 w-10 text-primary" />
+                                    <h4 className="font-semibold mt-2">Financiamento via Luxemburgo a taxas europeias</h4>
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    <Euro className="h-10 w-10 text-primary" />
+                                    <h4 className="font-semibold mt-2">Golden Visa com custo zero</h4>
+                                </div>
+                                <div className="flex flex-col items-center">
+                                    <LinkIcon className="h-10 w-10 text-primary" />
+                                    <h4 className="font-semibold mt-2">Em parceria com instituições de referência</h4>
+                                </div>
+                            </div>
+                        </Card>
+                        </AnimatedSection>
+                    </div>
+                </section>
+                
+                <section className="bg-background pt-0">
                     <div className="container">
                         <AnimatedSection className="text-center max-w-3xl mx-auto">
-                            <h2 className="font-headline text-4xl text-primary uppercase">{eligibleFundsBlock?.title || "Fundos Elegíveis para Golden Visa"}</h2>
-                            <p className="mt-4 text-lg text-muted-foreground">{eligibleFundsBlock?.content || "Invista em ativos de alta performance enquanto garante seu futuro na Europa. Conheça nossos fundos qualificados para o programa."}</p>
+                            <h2 className="font-headline text-4xl text-primary uppercase">{eligibleFundsBlock?.title || "Fundos Elegíveis"}</h2>
+                            <p className="mt-4 text-lg text-muted-foreground">{eligibleFundsBlock?.content || "O Aquila Fund FCR oferece fundos de investimento que são elegíveis para o programa Golden Visa, permitindo que você combine seus objetivos financeiros com a obtenção da residência europeia. Nossos fundos elegíveis são:"}</p>
                         </AnimatedSection>
                         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                             {eligibleFunds.map((fund, index) => (
@@ -197,38 +196,22 @@ export default function GoldenVisaClient({
                                 </AnimatedSection>
                             ))}
                         </div>
+                        <AnimatedSection className="text-center mt-12" direction="up">
+                            <Button asChild size="lg"><Link href="/contato">Fale com um especialista</Link></Button>
+                        </AnimatedSection>
                     </div>
                 </section>
 
-                <section className="bg-background pt-0">
+                <section className="bg-card pt-12 pb-20">
                     <div className="container">
                         <AnimatedSection direction="up">
-                        <Card className="max-w-4xl mx-auto p-8 md:p-12 shadow-xl">
-                            <div className="text-center">
-                                <h2 className="font-headline text-4xl text-primary uppercase">{faqBlock?.title || "Perguntas Frequentes"}</h2>
-                            </div>
-                            <Accordion type="single" collapsible className="w-full mt-8">
-                                {faqs.map((faq, i) => (
-                                    <AccordionItem value={`item-${i}`} key={i}>
-                                        <AccordionTrigger className="text-lg text-left">{faq.question}</AccordionTrigger>
-                                        <AccordionContent className="text-base text-muted-foreground">
-                                            {faq.answer}
-                                        </AccordionContent>
-                                    </AccordionItem>
-                                ))}
-                            </Accordion>
-                            <div className="text-center mt-12">
-                                <Button asChild size="lg"><Link href="/contato">Fale com um especialista</Link></Button>
-                            </div>
-
-                            <div className="flex items-start gap-4 p-4 mt-12 border border-amber-500/20 rounded-lg bg-amber-500/5">
+                            <div className="flex items-start gap-4 p-4 mt-12 border border-amber-500/20 rounded-lg bg-amber-500/5 max-w-4xl mx-auto">
                                 <ShieldAlert className="h-6 w-6 text-amber-600 shrink-0 mt-1" />
                                 <div>
                                     <h4 className="font-semibold text-foreground font-headline">Aviso Legal</h4>
                                     <p className="text-sm text-muted-foreground mt-1">As informações nesta página são para fins informativos e não constituem aconselhamento jurídico ou fiscal. As condições e regulamentos do programa Golden Visa estão sujeitos a alterações pelo governo português. Recomendamos consultar um advogado de imigração para obter aconselhamento específico à sua situação.</p>
                                 </div>
                             </div>
-                        </Card>
                         </AnimatedSection>
                     </div>
                 </section>
