@@ -10,15 +10,13 @@ import { getPageContentBySlug, findBlock } from '@/lib/data-loader';
 import Image from 'next/image';
 
 export default async function Home() {
-  const blocks = await getPageContentBySlug('home');
-  
-  const heroBlock = findBlock(blocks, 'hero');
-  const aboutBlock = findBlock(blocks, 'about-summary');
-  const fundsBlock = findBlock(blocks, 'funds-summary');
-  const goldenVisaBlock = findBlock(blocks, 'golden-visa-summary');
-  const investmentCycleBlock = findBlock(blocks, 'investment-cycle');
-  const investmentStrategyBlock = findBlock(blocks, 'investment-strategy');
-  const contactBlock = findBlock(blocks, 'contact-summary');
+  const heroBlock = null;
+  const aboutBlock = null;
+  const fundsBlock = null;
+  const goldenVisaBlock = null;
+  const investmentCycleBlock = null;
+  const investmentStrategyBlock = null;
+  const contactBlock = null;
   const imageUrl = heroBlock?.image_url || 'https://ik.imagekit.io/leosmc2zb/dest_portugal_porto_douro-river_gettyimages-698822614_universal_within-usage-period_46109.jpg?updatedAt=1758670295788';
 
   return (
