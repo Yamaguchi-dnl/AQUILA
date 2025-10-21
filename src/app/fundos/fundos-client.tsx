@@ -23,6 +23,7 @@ const FundDetail = ({ label, value, isPrimary }: { label: string; value: string 
 
 // Helper to find a specific block from the array
 function findBlock(blocks: Block[], blockType: string): Block | null {
+    if (!blocks) return null;
     return blocks.find(b => b.block_type === blockType) || null;
 }
 
@@ -55,7 +56,12 @@ export default function FundosClient({ headerBlock, allBlocks, fundsData }: Fund
       {availableFunds.map((fund, index) => {
           const block = findBlock(allBlocks, `fund-${fund.slug}`);
           
-          if (!fund || !block) return null;
+          if (!fund) return null;
+
+          const title = fund.nome;
+          const content = fund.subtitulo;
+          const sub_content = fund.descricaoHtml;
+
 
           const isPrimarySection = index % 2 !== 0;
           const isReversed = index % 2 !== 0;
@@ -81,9 +87,9 @@ export default function FundosClient({ headerBlock, allBlocks, fundsData }: Fund
                             {fund.detalhes.elegibilidadeGoldenVisa && (
                                 <Badge variant={fund.slug === 'aquila-wheels' ? 'default' : 'secondary'} className={cn("mb-2", fund.slug === 'aquila-hotel-invest' && 'bg-white/20 text-white backdrop-blur-sm border border-white/30')}>Elegível para Golden Visa</Badge>
                             )}
-                            <h2 className={cn("font-headline text-3xl md:text-4xl uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>{block.title}</h2>
-                            {block.content && <p className={cn("mt-2 text-lg font-semibold", isPrimarySection ? "text-primary-foreground/90" : "text-foreground")}>{block.content}</p>}
-                            {block.sub_content && <div className={cn("mt-6 prose prose-lg max-w-none", isPrimarySection ? "text-primary-foreground/80" : "text-muted-foreground")} dangerouslySetInnerHTML={{ __html: block.sub_content }} />}
+                            <h2 className={cn("font-headline text-3xl md:text-4xl uppercase", isPrimarySection ? "text-primary-foreground" : "text-primary")}>{title}</h2>
+                            {content && <p className={cn("mt-2 text-lg font-semibold", isPrimarySection ? "text-primary-foreground/90" : "text-foreground")}>{content}</p>}
+                            {sub_content && <div className={cn("mt-6 prose prose-lg max-w-none", isPrimarySection ? "text-primary-foreground/80" : "text-muted-foreground")} dangerouslySetInnerHTML={{ __html: sub_content }} />}
                       </AnimatedSection>
                       <AnimatedSection delay={0.1} direction={isReversed ? 'left' : 'right'}>
                           <Card className={cn("shadow-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl", isPrimarySection && "bg-card/10 border-primary-foreground/20 text-primary-foreground")}>

@@ -9,7 +9,10 @@ export const metadata = {
 };
 
 export default async function FundosPage() {
-  const blocks = await getPageContentBySlug('fundos');
+  // A página 'fundos' não existe no CMS, esta chamada causa o erro.
+  // No entanto, as descrições de cada fundo vêm de lá.
+  // Vamos carregar os blocos da página 'home' temporariamente, que é onde estão
+  const blocks = await getPageContentBySlug('home');
   const headerBlock = findBlock(blocks, 'fundos-header');
 
   return (
