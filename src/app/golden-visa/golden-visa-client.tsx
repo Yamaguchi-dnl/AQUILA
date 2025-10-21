@@ -100,7 +100,7 @@ export default function GoldenVisaClient({
                     </div>
                 </section>
 
-                <section className="bg-primary text-primary-foreground relative">
+                <section className="bg-primary text-primary-foreground relative pt-20 md:pt-28 lg:pt-32 pb-0">
                     <div
                         aria-hidden="true"
                         className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_rgba(255,255,255,0.15)_0%,_transparent_70%)]"
@@ -159,40 +159,34 @@ export default function GoldenVisaClient({
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </section>
 
-                <section className="bg-primary text-primary-foreground relative">
-                     <div
-                        aria-hidden="true"
-                        className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_center,_rgba(255,255,255,0.1)_0%,_transparent_70%)]"
-                    />
-                     <div className="container">
-                        <AnimatedSection>
-                        <Card className="max-w-4xl mx-auto p-8 md:p-12 shadow-xl bg-card/10 border border-primary-foreground/20 text-primary-foreground">
-                            <div className="text-center">
-                                <h2 className="font-headline text-4xl text-primary-foreground uppercase">Conquiste o Golden Visa sem desmobilizar seu atual investimento</h2>
-                            </div>
-                            <div className="grid md:grid-cols-2 gap-8 mt-8 text-center">
-                                <div className="flex flex-col items-center">
-                                    <BadgeCheck className="h-10 w-10 text-secondary" />
-                                    <h4 className="font-semibold mt-2">Colateral no Brasil como garantia</h4>
-                                </div>
-                                <div className="flex flex-col items-center">
-                                    <Landmark className="h-10 w-10 text-secondary" />
-                                    <h4 className="font-semibold mt-2">Financiamento via Luxemburgo a taxas europeias</h4>
-                                </div>
-                                <div className="flex flex-col items-center">
-                                    <Euro className="h-10 w-10 text-secondary" />
-                                    <h4 className="font-semibold mt-2">Golden Visa com custo zero</h4>
-                                </div>
-                                <div className="flex flex-col items-center">
-                                    <LinkIcon className="h-10 w-10 text-secondary" />
-                                    <h4 className="font-semibold mt-2">Em parceria com instituições de referência</h4>
-                                </div>
-                            </div>
-                        </Card>
-                        </AnimatedSection>
+                         <div className="py-20 md:py-28 lg:py-32">
+                           <AnimatedSection>
+                                <Card className="max-w-4xl mx-auto p-8 md:p-12 shadow-xl bg-card/10 border border-primary-foreground/20 text-primary-foreground">
+                                    <div className="text-center">
+                                        <h2 className="font-headline text-4xl text-primary-foreground uppercase">Conquiste o Golden Visa sem desmobilizar seu atual investimento</h2>
+                                    </div>
+                                    <div className="grid md:grid-cols-2 gap-8 mt-8 text-center">
+                                        <div className="flex flex-col items-center">
+                                            <BadgeCheck className="h-10 w-10 text-secondary" />
+                                            <h4 className="font-semibold mt-2">Colateral no Brasil como garantia</h4>
+                                        </div>
+                                        <div className="flex flex-col items-center">
+                                            <Landmark className="h-10 w-10 text-secondary" />
+                                            <h4 className="font-semibold mt-2">Financiamento via Luxemburgo a taxas europeias</h4>
+                                        </div>
+                                        <div className="flex flex-col items-center">
+                                            <Euro className="h-10 w-10 text-secondary" />
+                                            <h4 className="font-semibold mt-2">Golden Visa com custo zero</h4>
+                                        </div>
+                                        <div className="flex flex-col items-center">
+                                            <LinkIcon className="h-10 w-10 text-secondary" />
+                                            <h4 className="font-semibold mt-2">Em parceria com instituições de referência</h4>
+                                        </div>
+                                    </div>
+                                </Card>
+                            </AnimatedSection>
+                        </div>
                     </div>
                 </section>
                 
