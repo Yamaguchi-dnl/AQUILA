@@ -16,11 +16,10 @@ export const metadata = {
 };
 
 export default async function SobrePage() {
-  const blocks = await getPageContentBySlug('sobre');
-  const heroBlock = findBlock(blocks, 'sobre-hero');
-  const partnersBlock = findBlock(blocks, 'sobre-partners');
-  const fundboxBlock = findBlock(blocks, 'partner-fundbox');
-  const btgBlock = findBlock(blocks, 'partner-btg');
+  const heroBlock = null;
+  const partnersBlock = null;
+  const fundboxBlock = null;
+  const btgBlock = null;
 
   const heroSubContent = `
     <p>O Aquila Fund FCR nasceu há dois anos com a visão de ser uma plataforma de investimentos diferenciada, focada em oferecer soluções inovadoras para investidores de alta renda. Desde o início, temos nos dedicado a construir um legado de confiança, transparência e excelência no mercado financeiro português.</p>
