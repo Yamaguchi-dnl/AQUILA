@@ -86,7 +86,7 @@ export const teamData: TeamMember[] = [
     nome: 'Diana Bizzarro',
     cargo: 'Chief Investment Officer',
     bioHtml: '<p>Diana possui um profundo conhecimento em análise de risco e mercados de capitais. É responsável pela estratégia de alocação de ativos e pela seleção de oportunidades de investimento em todos os fundos do Aquila, garantindo um portfólio diversificado e de alta performance.</p>',
-    foto: { src: 'https://picsum.photos/400/400?random=11', v: 1 },
+    foto: { src: 'https://ik.imagekit.io/leosmc2zb/44465f81-eade-46a9-ab3d-1c115c95f2c9.jpg', v: 2 },
     dataAiHint: 'female executive portrait',
     ordem: 2,
   },
