@@ -1,9 +1,11 @@
+
 "use client";
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { useActionState, useEffect } from "react";
+import { useEffect } from "react";
+import { useFormState, useFormStatus } from "react-dom";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -47,8 +49,17 @@ const initialState = {
   success: false,
 };
 
+function SubmitButton() {
+    const { pending } = useFormStatus();
+    return (
+        <Button type="submit" className="w-full" size="lg" disabled={pending}>
+          {pending ? "Enviando..." : "Enviar Candidatura"}
+        </Button>
+    )
+}
+
 export function JobApplicationForm() {
-  const [state, formAction] = useActionState(submitJobApplication, initialState);
+  const [state, formAction] = useFormState(submitJobApplication, initialState);
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -63,8 +74,6 @@ export function JobApplicationForm() {
       consentimento: false,
     },
   });
-
-  const { isSubmitting } = form.formState;
   
   useEffect(() => {
     if (state.message) {
@@ -86,7 +95,17 @@ export function JobApplicationForm() {
 
   return (
     <Form {...form}>
-      <form action={formAction} className="space-y-6">
+      <form 
+        action={(formData) => {
+            // we need to manually trigger the validation
+            form.trigger().then((isValid) => {
+                if (isValid) {
+                    formAction(formData)
+                }
+            })
+        }} 
+        className="space-y-6"
+      >
         <FormField
           control={form.control}
           name="nome"
@@ -193,9 +212,7 @@ export function JobApplicationForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
-          {isSubmitting ? "Enviando..." : "Enviar Candidatura"}
-        </Button>
+        <SubmitButton />
       </form>
     </Form>
   );

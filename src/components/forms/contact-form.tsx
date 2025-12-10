@@ -1,9 +1,11 @@
+
 "use client";
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { useActionState, useEffect } from "react";
+import { useEffect } from "react";
+import { useFormState, useFormStatus } from "react-dom";
 import { useRouter } from 'next/navigation';
 
 import { Button } from "@/components/ui/button";
@@ -50,8 +52,17 @@ type ContactFormProps = {
   isSummary?: boolean;
 };
 
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <Button type="submit" className="w-full" size="lg" disabled={pending}>
+      {pending ? "Enviando..." : "Enviar Mensagem"}
+    </Button>
+  );
+}
+
 export function ContactForm({ isSummary = false }: ContactFormProps) {
-  const [state, formAction] = useActionState(submitContactForm, initialState);
+  const [state, formAction] = useFormState(submitContactForm, initialState);
   const { toast } = useToast();
   const router = useRouter();
 
@@ -68,8 +79,6 @@ export function ContactForm({ isSummary = false }: ContactFormProps) {
       consentimento: false,
     },
   });
-
-  const { isSubmitting } = form.formState;
 
   useEffect(() => {
     if (state.message) {
@@ -91,7 +100,20 @@ export function ContactForm({ isSummary = false }: ContactFormProps) {
 
   return (
     <Form {...form}>
-      <form action={formAction} className="space-y-4">
+      <form
+        action={formAction}
+        className="space-y-4"
+        onSubmit={form.handleSubmit(() => {
+          const formData = new FormData();
+          const data = form.getValues();
+          Object.entries(data).forEach(([key, value]) => {
+            if (value !== undefined && value !== null) {
+              formData.append(key, String(value));
+            }
+          });
+          formAction(formData);
+        })}
+      >
         <FormField
           control={form.control}
           name="nome"
@@ -210,9 +232,7 @@ export function ContactForm({ isSummary = false }: ContactFormProps) {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
-          {isSubmitting ? "Enviando..." : "Enviar Mensagem"}
-        </Button>
+        <SubmitButton />
       </form>
     </Form>
   );

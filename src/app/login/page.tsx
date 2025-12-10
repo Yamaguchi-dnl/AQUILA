@@ -12,14 +12,24 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { signIn } from "@/actions/auth";
-import { useActionState, useEffect } from "react";
+import { useEffect } from "react";
+import { useFormState, useFormStatus } from "react-dom";
 import { useToast } from "@/hooks/use-toast";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
 
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <Button type="submit" className="w-full" disabled={pending}>
+      {pending ? "Entrando..." : "Login"}
+    </Button>
+  );
+}
+
 export default function LoginPage() {
     const { toast } = useToast();
-    const [state, formAction, isPending] = useActionState(signIn, null);
+    const [state, formAction] = useFormState(signIn, null);
 
     useEffect(() => {
         if (state?.error) {
@@ -63,9 +73,7 @@ export default function LoginPage() {
                 <AlertDescription>{state.error}</AlertDescription>
               </Alert>
             )}
-            <Button type="submit" className="w-full" disabled={isPending}>
-              {isPending ? "Entrando..." : "Login"}
-            </Button>
+            <SubmitButton />
           </form>
         </CardContent>
       </Card>
