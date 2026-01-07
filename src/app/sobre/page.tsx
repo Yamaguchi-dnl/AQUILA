@@ -18,7 +18,6 @@ export default async function SobrePage() {
   const heroBlock = null;
   const partnersBlock = null;
   const fundboxBlock = null;
-  const btgBlock = null;
 
   const heroSubContent = `
     <p>O Aquila Fund FCR nasceu há dois anos com a visão de ser uma plataforma de investimentos diferenciada, focada em oferecer soluções inovadoras para investidores de alta renda. Desde o início, temos nos dedicado a construir um legado de confiança, transparência e excelência no mercado financeiro português.</p>
@@ -29,11 +28,6 @@ export default async function SobrePage() {
   const fundboxContent = `
     <p>Nossos fundos são geridos pela FundBox, empresa de investimento independente líder em Portugal que gera ativamente cerca de €420 milhões em ativos sob gestão (AUM) através de dois gestores de fundos regulados, especializados em fundos imobiliários, classes de investimento alternativo e investimentos em private equity (FundBox SCR).</p>
     <p>A FundBox oferece estruturação e execução de transações de primeira classe, livre de qualquer agenda conflitante, e com envolvimento ativo de executivos seniores ao longo de todo o processo de investimento.</p>
-  `;
-
-  const btgContent = `
-    <p>Para facilitar ainda mais o seu acesso aos nossos fundos, estabelecemos uma parceria exclusiva com o BTG Pactual. Isso significa que nossos clientes podem investir nos fundos Aquila mantendo seus ativos no Brasil como garantia, sem a necessidade de transferir capital para o exterior.</p>
-    <p>Essa solução é ideal para quem busca diversificação internacional e as oportunidades de crescimento que nossos fundos oferecem, sem desmobilizar seus investimentos atuais no Brasil.</p>
   `;
 
   return (
@@ -83,27 +77,19 @@ export default async function SobrePage() {
         <div className="container">
             <AnimatedSection>
             <div className="text-center">
-              <h2 className="font-headline text-4xl uppercase">{partnersBlock?.title || 'Nossos Parceiros Estratégicos'}</h2>
+              <h2 className="font-headline text-4xl uppercase">{partnersBlock?.title || 'Nosso Parceiro Estratégico'}</h2>
               <p className="mt-4 text-lg text-primary-foreground/80 max-w-3xl mx-auto">
                   {partnersBlock?.content || 'Colaboramos com líderes de mercado para oferecer estrutura, segurança e as melhores oportunidades para nossos investidores.'}
               </p>
             </div>
             </AnimatedSection>
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-1 gap-8 items-stretch max-w-3xl mx-auto">
             <AnimatedSection delay={0.1} direction="up">
               <Card className="flex flex-col h-full bg-card/10 border-primary-foreground/20 text-primary-foreground">
                   <CardHeader>
                       <h3 className="text-2xl font-headline card-title text-primary-foreground">{fundboxBlock?.title || 'FundBox'}</h3>
                   </CardHeader>
                   <CardContent className="prose max-w-none text-primary-foreground/80 flex-grow" dangerouslySetInnerHTML={{ __html: fundboxBlock?.content || fundboxContent }} />
-              </Card>
-            </AnimatedSection>
-            <AnimatedSection delay={0.2} direction="up">
-              <Card className="flex flex-col h-full bg-card/10 border-primary-foreground/20 text-primary-foreground">
-                  <CardHeader>
-                      <h3 className="text-2xl font-headline card-title text-primary-foreground">{btgBlock?.title || 'BTG Pactual'}</h3>
-                  </CardHeader>
-                  <CardContent className="prose max-w-none text-primary-foreground/80 flex-grow" dangerouslySetInnerHTML={{ __html: btgBlock?.content || btgContent}} />
               </Card>
             </AnimatedSection>
           </div>
