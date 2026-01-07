@@ -4,8 +4,8 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { useEffect } from "react";
-import { useFormState, useFormStatus } from "react-dom";
+import { useEffect, useActionState } from "react";
+import { useFormStatus } from "react-dom";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -59,7 +59,7 @@ function SubmitButton() {
 }
 
 export function JobApplicationForm() {
-  const [state, formAction] = useFormState(submitJobApplication, initialState);
+  const [state, formAction] = useActionState(submitJobApplication, initialState);
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({

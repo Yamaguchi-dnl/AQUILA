@@ -12,8 +12,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { signIn } from "@/actions/auth";
-import { useEffect } from "react";
-import { useFormState, useFormStatus } from "react-dom";
+import { useEffect, useActionState } from "react";
+import { useFormStatus } from "react-dom";
 import { useToast } from "@/hooks/use-toast";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
@@ -29,7 +29,7 @@ function SubmitButton() {
 
 export default function LoginPage() {
     const { toast } = useToast();
-    const [state, formAction] = useFormState(signIn, null);
+    const [state, formAction] = useActionState(signIn, null);
 
     useEffect(() => {
         if (state?.error) {
